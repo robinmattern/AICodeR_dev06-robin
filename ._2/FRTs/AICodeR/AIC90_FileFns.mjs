@@ -252,7 +252,7 @@ return  aData
     try {
 //          ---------------------------------------------------------
 
-     const  pResponse       =   await fetch( API_URL, 
+     const  pResponse       =   await fetch( aAPI_URL, 
              {  method : 'POST'
              ,  headers: 
                  { 'Content-Type' : 'application/json'
@@ -263,7 +263,7 @@ return  aData
 //          ---------------------------------------------------------
 
        if (!pResponse.ok) {
-       var  pResponse_err   = { Error: `HTTP Status: ${response.status}, URL: ${aAPI_URL}` }
+       var  pResponse_err   = { Error: `HTTP Status: ${pResponse.status}, URL: ${aAPI_URL}` }
 //          throw new Error(   `Error: ${ pResponse_err.Error }` );
             console.error( `\n* Error: ${ pResponse_err.Error }` );
     return  pResponse_err                   

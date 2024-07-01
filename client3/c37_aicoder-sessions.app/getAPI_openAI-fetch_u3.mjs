@@ -53,19 +53,23 @@
 
 // ----------------------------------------------------------------------------------------------------
 
-     const  pRequestMessage =  await FRT.readFile( aRequest_JSON )
+     const  pRequestMessage =   await FRT.readFile( aRequest_JSON )
 
 // --------------------------------------------------------------------------------------------------
-       var  aRetreived = 'no' 
-        if (aRetreived == 'no') {
+       var  aRetreived      =  'no' 
+        if (aRetreived     ==  'no') {
        var  pResponse       =   await fetchFromOpenAI( API_URL, pRequestMessage, API_KEY )          // .(40701.06.3 RAM Add API_URL and API_KEY)
+        if (pResponse.Error) {                                                                      // .(40701.07.1 RAM Check for error Beg)
+            console.error(   `* Error: ${pResponse.Error}` )
+            process.exit() 
+            }                                                                                       // .(40701.07.2 End)
        var  aMarkdown       =   pResponse.choices[0].message.content; 
             
-            FRT.writeFile( aResponse_JSON, JSON.stringify( pResponse, null, 2 ) );
-            FRT.writeFile( aMarkdown_Save, aMarkdown );
+                                FRT.writeFile( aResponse_JSON, JSON.stringify( pResponse, null, 2 ) );
+                                FRT.writeFile( aMarkdown_Save, aMarkdown );
 
-//          console.log(   pResponse )
-            console.log(   aMarkdown )
+//          console.log(       "Response:", pResponse )
+            console.log(       "Markdown:", aMarkdown )
             }
 
             await listScripts( aMarkdown_Save )                     // <===  Step 5

@@ -1,0 +1,28 @@
+{
+    "model": "gpt-4o",
+    "messages": [
+      {
+        "role": "system",
+        "content": [
+          {
+            "type": "text",
+            "text": "I want you to assist me in developing a NodeJS Express web application. Please format your response as follows in a markdown file. Begin with an overview of the code you write and a directory structure for the script files.\nThen, for each script, return the following\na heading for the filename using ### File: to start the line.\na sentence thata describes the purpose of the script\nthe script contents in a code block using three tics, ``` with the name of the language.\nafter the code block, list steps that explain the major sections of the code.\nFinish with the steps that are required to install the necessary modules and how to run the application.\nFor JavaScript files, please use ES6 modules with an .mjs extension and remember to use import statements, not require()."
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Can you write me a Nodejs batch script (not using express) that submits and receives a JSON object \nto the OpenAI V1 API. Use only fetch (not using the openai node module). The message object being submitted should follow \nthe latest spec which I believe supports an array of content records.  Assume that the response \nis not streamed.  Also code all the necessary error handling\n"
+          }
+        ]
+      }
+    ],
+    "temperature": 1,
+    "max_tokens": 4095,
+    "top_p": 1,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+  };
