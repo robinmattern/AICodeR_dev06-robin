@@ -1,12 +1,12 @@
 #!/bin/sh
-#   AIT Launcher (Prod Copy)
+#   AIC Launcher (Prod Copy)
 
-        AIT_Scr=AIT02_Main1.mjs
+        AIC_Scr=AIC02_Main1.mjs
 
-#       AIT_Dir=$( dirname "$0" )
-        AIT_Dir=$( realpath "$0" ); AIT_Dir=$( dirname "${AIT_Dir}" )
-        AIT02_Main1=$AIT_Dir/$AIT_Scr
+#       AIC_Dir=$( dirname "$0" )
+        AIC_Dir=$( realpath "$0" ); AIC_Dir=$( dirname "${AIC_Dir}" )
+        AIC02_Main1=$AIC_Dir/$AIC_Scr
 
-#echo "$AIT02_Main1" "$@"; exit
- node "$AIT02_Main1" "$@"
+#echo "$AIC02_Main1" "$@"; exit
+ node "$AIC02_Main1" "$@"
 

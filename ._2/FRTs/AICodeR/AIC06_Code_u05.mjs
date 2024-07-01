@@ -1,4 +1,4 @@
-    import  FRT          from './fileFns.mjs'
+    import  FRT          from './AIC90_FileFns.mjs'
 
        var  bIsNotCalled    =  FRT.isCalled( import.meta.url, process.argv[1]); 
 //          console.log( bIsNotCalled ? 'not called' : 'called'    ) 
@@ -61,8 +61,8 @@
 
        if (bIsNotCalled) {  
 //          saveScripts(  aMarkdown_File )
-//          listScripts( "E:/Repos/Robin/AIObjs_/._/DOCs/code-sessions/AITables-markdown_u13.4.40625.1409.md" )
-            listScripts( "E:/Repos/Robin/AIObjs_/._/DOCs/code-sessions/AITables-markdown_u13.8.40625.1452.md" )
+//          listScripts( "E:/Repos/Robin/AIObjs_/._/DOCs/code-sessions/FRTables-markdown_u13.4.40625.1409.md" )
+            listScripts( "E:/Repos/Robin/AIObjs_/._/DOCs/code-sessions/FRTables-markdown_u13.8.40625.1452.md" )
             }
 
 // ------------------------------------------------------------------------------------------------------------------

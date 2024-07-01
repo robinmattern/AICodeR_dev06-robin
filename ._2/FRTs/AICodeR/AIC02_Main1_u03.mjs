@@ -1,12 +1,12 @@
-    import  AIR_Data from './AIT03_Data_u03.mjs'
-    import  AIT_Data from './AIT03_Data_u03.mjs'
 
-            AIT_Data.Model( 'gpt-4o' )
-//          AIT_Data.addMessage( )
+    import  AIC_Data from './AIC03_Data_u03.mjs'
 
-       var  nVer         =  AIT_Data.NextVerNo()
+            AIC_Data.Model( 'gpt-4o' )
+//          AIC_Data.addMessage( )
 
-            console.log( AIT_Data );
+       var  nVer         =  AIC_Data.NextVerNo()
+
+            console.log( AIC_Data );
             process.exit()
 
 //     var  mSystMessages       =
@@ -17,8 +17,8 @@
        var  mUserMessages       = [ ]
        var  mAsstMessages       = [ ]
 
-//          mUserMessages[  0 ] =  AIT_Data.UserMessage( 0 )
-//          mUserMessages[  1 ] =  AIT_Data.UserMessage( 1 )
+//          mUserMessages[  0 ] =  AIC_Data.UserMessage( 0 )
+//          mUserMessages[  1 ] =  AIC_Data.UserMessage( 1 )
 
             mUserMessages[  0 ] = "I have a challenging project using lit components. Are you up for it?"
 
@@ -34,7 +34,7 @@
             an attribute of \`draggable\` and \`resizeable\`. Furthermore, Pleased create global property, \`dndEnabled\`,
             that will allow me to turn on and off the user's ability to drag and resize the floating boxes.
             `
-            mAsstMessages[  1 ] =  AIT_Data.AsstMessage( 1 )
+            mAsstMessages[  1 ] =  AIC_Data.AsstMessage( 1 )
 
             mUserMessages[  2 ] = { Message: `
             Pretty good. But there are three problems you need to fix.
@@ -50,13 +50,13 @@
           , Scripts: [ { Floating_Box: `_u${nVer}` } ] }
 
 //     var  pUserMessage        =  mUserMessages[  nVer ]
-//                                 AIT_Data.UserMessage(  nVer, pUserMessage       )  // Should be the same as mUserMessages[ nVer ]
-                                   AIT_Data.UserMessage(  nVer, mUserMessages[ 2 ] )  // Should be the same as mUserMessages[ nVer ]
-            mUserMessages[nVer] =  AIT_Data.UserMessage(  nVer )
+//                                 AIC_Data.UserMessage(  nVer, pUserMessage       )  // Should be the same as mUserMessages[ nVer ]
+                                   AIC_Data.UserMessage(  nVer, mUserMessages[ 2 ] )  // Should be the same as mUserMessages[ nVer ]
+            mUserMessages[nVer] =  AIC_Data.UserMessage(  nVer )
 
-//                           await  AIT_Data.SendMessages( nVer )
+//                           await  AIC_Data.SendMessages( nVer )
 
-            mAsstMessages[nVer] =  AIT_Data.AsstMessage(  nVer )
+            mAsstMessages[nVer] =  AIC_Data.AsstMessage(  nVer )
 
                                    console.log( mAsstMessages[nVer].Message )
                                    console.log( mAsstMessages[nVer].Scripts )

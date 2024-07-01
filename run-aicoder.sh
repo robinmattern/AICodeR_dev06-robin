@@ -1,25 +1,25 @@
 #!/bin/bash
 
-cd ._2/NJSs/aiR 
+cd ._2/FRTs/AICodeR 
 
     export CALL_IT=1
-                                     AIT05_Schema_IO="AIT05_Schema-IO_u07.mjs"
-    if [ "$1" == "1" ]; then node "${AIT05_Schema_IO}" $@; exit; fi   
-    if [ "$1" == "2" ]; then node "${AIT05_Schema_IO}" $@; exit; fi   
-    if [ "$1" == "3" ]; then node "${AIT05_Schema_IO}" $@; exit; fi   
-    if [ "$1" == "4" ]; then node "${AIT05_Schema_IO}" $@; exit; fi   
-    if [ "$1" == "5" ]; then node "${AIT05_Schema_IO}" $@; exit; fi   
-    if [ "$1" == "7" ]; then node "${AIT05_Schema_IO}" $@; exit; fi   
-    if [ "$1" == "8" ]; then node "${AIT05_Schema_IO}" $@; exit; fi   
+                                     AIC05_Schema_IO="AIC05_Schema-IO_u07.mjs"
+    if [ "$1" == "1" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
+    if [ "$1" == "2" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
+    if [ "$1" == "3" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
+    if [ "$1" == "4" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
+    if [ "$1" == "5" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
+    if [ "$1" == "7" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
+    if [ "$1" == "8" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
 
     echo ""
     echo "  AICoder Commands: "
     echo "    1                               Save to Continue JSON File from Continue Sessions files"
     echo "    7                               List Continue Sessions JSON files"
-    echo "    2  [Date]                       Save AITables JSON File from Continue JSON File for [Date]"
-    echo "    8                               List Continue Sessions in AITables JSON .db File"
-    echo "    3  [Date.Time]                  Format Sessions from AITables JSON File"
-    echo "    4   S.M [TS]  [App] [Model]     Save Message Markdown file from AITables JSON File for [App Model]"
+    echo "    2  [Date]                       Save FRTables JSON File from Continue JSON File for [Date]"
+    echo "    8                               List Continue Sessions in FRTables JSON .db File"
+    echo "    3  [Date.Time]                  Format Sessions from FRTables JSON File"
+    echo "    4   S.M [TS]  [App] [Model]     Save Message Markdown file from FRTables JSON File for [App Model]"
     echo "    5  [S[.M.TS]] [App] [Model]     Show App scripts for [last] Message Markdown  File for [App Model]"
     echo "    6  [S[.M.TS]] [App] [Model]     Save App scripts for [last] Message Markdown  File for [App Model]"
     echo "" 
