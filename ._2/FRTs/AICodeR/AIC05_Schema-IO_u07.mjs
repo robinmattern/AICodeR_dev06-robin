@@ -24,7 +24,7 @@
        var  aAppName        =  FRT.setPaths( aAppName )
        var  aSession_Dir    =  FRT.join( __basedir, `docs/${aAppName}/${aModel}` )
        var  aSessions_Dir   =  FRT.join( __basedir, `../._/DOCs/code-sessions` )
-       var _FRTables_Dir    =  aSessions_Dir                                                        // .(40701.05.1 RAM Add Global)
+       var _FRTables_Dir    =  aSessions_Dir                                                        // .(40701.05.1 RAM Add Global)  
        var _Continue_Dir    =                       '/C/Users/Robin/.continue/sessions'
 
        var  aTS             = `${FRT._TS}`
