@@ -248,7 +248,7 @@ return  aData
         }
 // ---------------------------------------------------------------------------------
 
- async  function fetchFromOpenAI( pMessageObject ) {
+ async  function fetchFromOpenAI( aAPI_URL, pMessageObject, aAPI_KEY ) {                            // .(40701.06.1 RAM Add API_URL and API_KEY)
     try {
 //          ---------------------------------------------------------
 
@@ -256,14 +256,14 @@ return  aData
              {  method : 'POST'
              ,  headers: 
                  { 'Content-Type' : 'application/json'
-                 , 'Authorization': `Bearer ${API_KEY}`
+                 , 'Authorization': `Bearer ${aAPI_KEY}`
                     }
              ,  body   :  JSON.stringify( pMessageObject )
                 } );
 //          ---------------------------------------------------------
 
        if (!pResponse.ok) {
-       var  pResponse_err   = { Error: `HTTP Status: ${response.status}, URL: ${API_URL}` }
+       var  pResponse_err   = { Error: `HTTP Status: ${response.status}, URL: ${aAPI_URL}` }
 //          throw new Error(   `Error: ${ pResponse_err.Error }` );
             console.error( `\n* Error: ${ pResponse_err.Error }` );
     return  pResponse_err                   
@@ -276,7 +276,7 @@ return  aData
 //          ---------------------------------------------------------
 
         if (pResponse_data.error) {
-       var  pResponse_err   = { Error: `OpenAI API Data message: ${response_data.error.message}, URL: ${API_URL}` }
+       var  pResponse_err   = { Error: `OpenAI API Data message: ${response_data.error.message}, URL: ${aAPI_URL}` }
 //          throw new Error(   `Error: ${ pResponse_err.Error }` );
             console.error( `\n* Error: ${ pResponse_err.Error }` );
     return  pResponse_err                   
@@ -288,7 +288,7 @@ return  aData
 //          ---------------------------------------------------------
 
    } catch( pError) {
-       var  pResponse_err   = { Error: `Fetch Message: ${pError.message}, URL: ${API_URL}` }
+       var  pResponse_err   = { Error: `Fetch Message: ${pError.message}, URL: ${aAPI_URL}` }
             console.error( `\n* Error: ${ pResponse_err.Error }` );
     return  pResponse_err   
             }
