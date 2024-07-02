@@ -145,7 +145,7 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
 
         var aUV             =  aMarkdown_File.match( /_([uv])/ )[1], aTS
 //      var aVersion        =  aMarkdown_File.match( /_([vu][\d.`]+)\.md/   )[1]
-        var aVersion        =  aMarkdown_File.match( /_([vu][\d.`]+).*\.md/ )[1]                         // .(40702.06.1 RAM)
+        var aVersion        =  aMarkdown_File.match( /_([vu][\d.`]+).*\.md/ )[1]                    // .(40702.05.4 RAM Adjust for new pattern)
             aVersion        =  aVersion.match( /`/ ) ?  aVersion.replace( /.+`/, '.') : aVersion
         var mVersion        =  aVersion.split( "." )
         if (mVersion[1] ) { aTS = mVersion.slice(1).join(".") } else { aTS = FRT._TS}
