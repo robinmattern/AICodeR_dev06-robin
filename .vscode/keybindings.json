@@ -1,0 +1,11 @@
+[ 
+  {
+    "key"    : "shift+alt+m",
+    "when"   : "editorTextFocus",
+    "command": "tasks.runTask",            // Command to run
+    "args"   : "Create New Project Folder" // Name of the task to run
+     } 
+  ]
+
+
+  // see "C:\Users\Robin\AppData\Roaming\Code\User\keybindings.json"
