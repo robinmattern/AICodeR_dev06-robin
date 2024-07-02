@@ -42,6 +42,7 @@ var  Models1         =
       [ [ ' 1.', 'gp4oopw', 'GPT-4o_OpenAI-web       ' ] // ##    markdown, text, json (playground)
       , [ ' 2.', 'gp4oopu', 'GPT-4o_OpenAI-curl      ' ] // ##    json text
       , [ ' 3.', 'gp4oopn', 'GPT-4o_OpenAI-node      ' ] //       json object
+      , [ ' 3.', 'gp4oopm', 'GPT-4o_OpenAI-maxi      ' ] //       json object             // .(40702.06.1 RAM New Models)
       , [ ' 4.', 'gp4oopf', 'GPT-4o_OpenAI-fetch     ' ] //       json object
       , [ ' 5.', 'gp4oopc', 'GPT-4o_OpenAI-cont      ' ] //       markdown /share
       , [ ' 6.', 'qw7bolu', 'Qwen2-7b_Ollama-curl    ' ]
@@ -52,10 +53,11 @@ var  Models1         =
       , [ '11.', 'cg2bolc', 'CodeGemma-7b_Ollama-cont' ]
       , [ '12.', 'c2q5lmn', 'Claude2-Q5_LMStudio-node' ]
       , [ '13.', 'c2q3lmn', 'Claude2-Q3_LMStudio-node' ]
-      , [ '14.', 'st20lmn', 'StarCoder2_LMStudio-node' ]
-      , [ '15.', 'cl00lmn', 'CodeLlama_LMStudio-node ' ]
-      , [ '16.', 'gp4ovcp', 'CodeParrot_VSCode-copy  ' ]
-      , [ '17.', 'ge15gvw', 'Gemini1.5_Vertex-web    ' ]
+      , [ '14.', 'c2soanm', 'Claude3-So_Anthropic-maxi']                                  // .(40702.06.2)
+      , [ '15.', 'st20lmn', 'StarCoder2_LMStudio-node' ]
+      , [ '16.', 'cl00lmn', 'CodeLlama_LMStudio-node ' ]
+      , [ '17.', 'gp4ovcp', 'CodeParrot_VSCode-copy  ' ]
+      , [ '18.', 'ge15gvw', 'Gemini1.5_Vertex-web    ' ]
          ] 
 
          var  Models3         = 
