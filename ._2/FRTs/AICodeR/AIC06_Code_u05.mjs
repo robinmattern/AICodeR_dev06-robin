@@ -118,8 +118,8 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
                            if (mMatch && mMatch[1]) {
 //                         var aScript = aCode.replace( /(File: *|`)/, '' ).replace( /[\n\r`]+/g, '' ).trim()  
                            var aScript = mMatch[0].replace( /(File: *|`)/, '' ).replace( /[\n\r`]+/g, '' ).trim()
-//                             aScript = aScript.slice(0, `${aScript} `.indexOf( ' ' )).trim()      //#.(40702.01.1 RAM No spaces)
-                               aScript = (aScript.indexOf( ' ' ) == -1) ? aScript : ''              // .(40702.01.1 RAM No spaces)
+//                             aScript = aScript.slice(0, `${aScript} `.indexOf( ' ' )).trim()      //#.(40702.01.1 RAM No spaces in script name)
+                               aScript = (aScript.indexOf( ' ' ) == -1) ? aScript : ''              // .(40702.01.1)
                            if (aScript.match(/\.(json|js|mjs|html)/)) {
                    return [ i, aScript ] } }
                                } )
