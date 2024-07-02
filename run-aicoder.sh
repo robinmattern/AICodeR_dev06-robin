@@ -3,7 +3,7 @@
 cd ._2/FRTs/AICodeR 
 
     export CALL_IT=1
-                                     AIC05_Schema_IO="AIC05_Schema-IO_u07.mjs"
+                                     AIC05_Schema_IO="AIC05_Schema-IO_u08.mjs"
     if [ "$1" == "1" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
     if [ "$1" == "2" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
     if [ "$1" == "3" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
