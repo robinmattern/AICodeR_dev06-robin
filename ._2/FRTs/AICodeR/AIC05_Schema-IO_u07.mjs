@@ -112,8 +112,8 @@
 // --- ---  --------------  =  -------------------------------------------------------------
 
 //     var  aSteps = bRun ? `,1,` : aSteps
-//      if (aSteps.match( /,1,/ )) { // Run save Sessions as FRTables
-        if (aSteps.match( /,1,/ )) { // Save Sessions   from Original Continue JSON files to Continue JSON file
+//      if (aSteps.match(   /,1,/  )) { // Run save Sessions as FRTables
+        if (aSteps.match(   /,1,/  )) { // Save Sessions   from Original Continue JSON files to Continue JSON file
 
 //     var  aSessions_File  =  FRT.join( aSessions_Dir, `Continue-sessions_u${FRT._TS}.json` )
 
@@ -122,8 +122,8 @@
             }
 //     ---  --------------  =  -----------------------------------------------
 
-//    var  aSteps = bRun ? `,2,` : aSteps;   // console.log( `aSteps: ${aSteps} - bRun: ${bRun}` ); process.exit() 
-        if (aSteps.match( /,2/ )) { // Save Sessions   from Continue JSON files          to FRTables JSON file
+//     var  aSteps = bRun ? `,2,` : aSteps;   // console.log( `aSteps: ${aSteps} - bRun: ${bRun}` ); process.exit() 
+        if (aSteps.match(   /,2,/  )) { // Save Sessions   from Continue JSON files          to FRTables JSON file
 
 //     var  aAppName        = 'c39_login-app'
 //     var  aModel          = 'GPT-4o_OpenAI-cont'         //       markdown /share
@@ -163,7 +163,7 @@
 //     ---  --------------  =  -----------------------------------------------
 
 //     var  aSteps = bRun ? `,3,` : aSteps
-        if (aSteps.match( /,3,/ )) { // Format Sessions from Original Continue JSON files to .txt file
+        if (aSteps.match(   /,3,/  )) { // Format Sessions from Original Continue JSON files to .txt file
 
        var  aVer            =  getLastVer( 'Continue-sessions', 'json' )
 //     var  aSessions_File  =  FRT.join( aSessions_Dir, `Continue-sessions_u40623.2230.json` )
@@ -181,7 +181,7 @@
 //     var  aSteps = bRun ? `,4,` : aSteps 
 //     var  aAppName        = 'c39_login-app'
 //     var  aModel          = 'GPT-4o_OpenAI-cont'
-        if (aSteps.match( /,4,/ )) { // Save Sessions from FRTables JSON file             to .md  file for nSession, nMessage
+        if (aSteps.match(   /,4,/  )) { // Save Sessions from FRTables JSON file             to .md  file for nSession, nMessage
 
        var  nRecs  =  [ 13, 4 ]
        var  nRecs  =  [ 14,   ]
@@ -216,33 +216,47 @@
             }
 //     ---  --------------  =  -----------------------------------------------
 
-//     var  aSteps = bRun ? `,5,` : aSteps, nSession = 16
-        if (aSteps.match( /,5,/ )) { // Show Scripts  from FRTables JSON file                          for nSession, nMessage
+//     var  aModel          = 'OpenAI-GPT-4o-maxi'
+       var  aModel          = 'GPT-4o_OpenAI-node'
+       var  aApp            = 'c35_calendar-app'
+       var  aMod            =  getModel( 3, aModel )[1]
 
-       var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : nSession
-       var  aVer2           =  getLastVer( 'FRTables-markdown', 'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
+//     var  aSteps = bRun ? `,5,` : aSteps, nSession = 16
+        if (aSteps.match(   /,5,/  )) { // Show Scripts  from FRTables JSON file                    //  Step 6 listScripts
+
+       var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : '' // nSession           // .(40702.01.3 RAM Find em all)
+//     var  aSessions_Dir   = '\E:\\Repos\\Robin\\AIObjs_\\._\\DOCs\\code-sessions'
+       var  aSessions_Dir   =  FRT.join( __basedir, `docs/${aApp}/${aModel}` )
+       var  aMarkdown_File  =  `${aApp.slice(0,3)}_markdown`
+
+//     var  aVer2           =  getLastVer( 'FRTables-markdown', 'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
+       var  aVer2           =  getLastVer( aMarkdown_File, 'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
         if (aVer2 == "") {     process.exit() }
 
-       var  aMarkdown_Save  =  FRT.join( aSessions_Dir, `FRTables-markdown_${aVer2}.md` )
+//     var  aMarkdown_Save  =  FRT.join( aSessions_Dir, `FRTables-markdown_${aVer2}.md` )
+       var  aMarkdown_Save  =  FRT.join( aSessions_Dir, `${aMarkdown_File}_${aVer2}.md` )
 
                                await listScripts( aMarkdown_Save )    // <===  Step 5
             }
 //     ---  --------------  =  -----------------------------------------------
 
-//     var  aSteps = bRun ? `,6,` : aSteps, nSession = 16
-        if (aSteps.match( /,6,/ )) { // Show Scripts  from FRTables JSON file                          for nSession, nMessage
+       var  aSteps = bRun ? `,6,` : aSteps, nSession = 16
+        if (aSteps.match(   /,6,/  )) { // Save Scripts  from FRTables JSON file                        //  Step 6 saveScripts
 
-          var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : nSession
-          var  aVer2           =  getLastVer( 'FRTables-markdown', 'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
+          var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : ''  // nSession           // .(40702.01.3 RAM Find em all)
+//        var  aSessions_Dir   = '\E:\\Repos\\Robin\\AIObjs_\\._\\DOCs\\code-sessions'
+          var  aSessions_Dir   =  FRT.join( __basedir, `docs/${aApp}/${aModel}` )
+          var  aMarkdown_File  =  `${aApp.slice(0,3)}_markdown`
+
+//        var  aVer2           =  getLastVer( 'FRTables-markdown', 'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
+          var  aVer2           =  getLastVer( aMarkdown_File, 'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
            if (aVer2 == "") {     process.exit() }
 
-          var  aMarkdown_Save  =  FRT.join( aSessions_Dir, `FRTables-markdown_${aVer2}.md` )
-//        var  aSessions_File  =  FRT.join( aSessions_Dir, `Continue-sessions_${aVer}.txt` )
+//        var  aMarkdown_Save  =  FRT.join( aSessions_Dir, `FRTables-markdown_${aVer2}.md` )
+          var  aMarkdown_Save  =  FRT.join( aSessions_Dir, `${aMarkdown_File}_${aVer2}.md` )
+//        var  aMarkdown_Save   = 'docs/c35_calendar-app/OpenAI-GPT-4o-node/c35_markdown_u01.40701.1807.md'
 
-          var  aModel          = 'OpenAI-GPT-4o-maxi'
-          var  aApp            = 'client5/c51_calendar-app'
-
-                                  await saveScripts( aMarkdown_Save, aModel, aApp )   // <===  Step 6
+                                  await saveScripts( aMarkdown_Save, aModel, aApp, aMod )   // <===  Step 6
             }
 //     ---  --------------  =  -----------------------------------------------
 
@@ -273,7 +287,7 @@
 //     ---  --------------  =  -----------------------------------------------
 
        var  aSteps = bRun ? `,8,` : aSteps
-        if (aSteps.match(   /,8,/ )) { // Show Sessions from FRTables JSON .db file
+        if (aSteps.match(   /,8,/  )) { // Show Sessions from FRTables JSON .db file
      /*
        var  aSessions_File  =  FRT.join( _Continue_Dir, `sessions.json` )
        var  mSessions       =  JSON.parse( await FRT.readFile( aSessions_File ) )
@@ -300,7 +314,7 @@
         }
 //     ---  --------------  =  -----------------------------------------------
      
-        if (aSteps.match( /,9,/ )) { // Show Session  from FRTables JSON file
+        if (aSteps.match(   /,9,/  )) { // Show Session  from FRTables JSON file
 
        var  aSessions_File  =  FRT.join( aSessions_Dir, `Continue-sessions_${aVer}.txt` )
        var  aSessions       = (await mSessions.forEach( fmtSession)).join( "\n" )

@@ -1,6 +1,8 @@
-   import   fs     from 'fs/promises'
-   import   fsync  from 'fs'
-   import   path   from 'path'
+   import   fs               from 'fs/promises'
+// import { promises as fs } from 'fs';
+//    var   fs          = require('fs').promises 
+   import   fsync            from 'fs'
+   import   path             from 'path'
 
 //  --------------------------------------------------------------
 
@@ -77,7 +79,7 @@ async function  makDir(    aDirName  ) { aDirName = `${aDirName || ''}`
  try {
 // var  pOK             =  await fs.access(  aDirPath, fs.constants.F_OK )
 // var  pOK             =  await fs.access(  aDirPath )
-   var  bOK             =  fsync.existsSync( aDirPath )
+   var  bOK             =  fs.exists( aDirPath )
     if (bOK == false) {  
                            await fs.mkdir(   aDirPath, { recursive: true } );
 //                         fsync.mkdirSync(  aDirPath, { recursive: true } );
@@ -90,7 +92,29 @@ async function  makDir(    aDirName  ) { aDirName = `${aDirName || ''}`
 return  aDirPath;   //  return  aDirPath  to  callers
     }   // eof makDir    
 // --------------------------------------------------------------
-       
+
+function  makDirSync(      aDirName  ) { aDirName = `${aDirName || ''}`
+   var  aDirPath        =  aDirName.match( /^\./ ) ? path.join( __dirname, aDirName ) : aDirName;  // .(40527.01.2 CoPilot Only paths starting with '.' are relative) 
+//      aDirPath        =  path.resolve( aDirPath.replace( /^\/[A-Z]/, '' ) )                         // .(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
+        aDirPath        =  cleanPath( aDirPath )                         // .(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
+// var  pStat           =  await checkFile(  aDirPath )
+ try {
+// var  pOK             =  await fs.access(  aDirPath, fs.constants.F_OK )
+// var  pOK             =  await fs.access(  aDirPath )
+   var  bOK             =  fsync.existsSync( aDirPath )
+    if (bOK == false) {  
+                           fsync.mkdirSync(      aDirPath, { recursive: true } );
+//                         fsync.mkdirSync(  aDirPath, { recursive: true } );
+        console.log(    `  Directory, '${aDirName}', created successfully!` );
+        }  
+    } catch(pError) {
+        console.error(  `* Error checking directory: ${pError}` );
+        aDirPath        = ''
+        }
+return  aDirPath;   //  return  aDirPath  to  callers
+    }   // eof makDir    
+// --------------------------------------------------------------
+
 async function  checkFile2(  aFilePath  ) {
         aFilePath        =  aFilePath.match( /^\./ ) ? path.join( __dirname, aFilePath ) : aFilePath;   // .(40527.01.2 CoPilot Only paths starting with '.' are relative) 
         aFilePath        =  path.resolve( aFilePath.replace( /^\/[A-Z]/, '' ) )                         // .(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
@@ -299,7 +323,7 @@ return  aData
 // var  pFileFns = { setPaths, readFile, readFile2, writeFile, getDate }
         setPaths( ) 
         
- export default { setPaths,  isCalled, readFile, readFile2, writeFile, checkFile, makDir
+ export default { setPaths,  isCalled, readFile, readFile2, writeFile, checkFile, makDir, makDirSync
                 , listFiles, lastFile, getAPI: fetchFromOpenAI
                 , getDate,   join: path.join, path: myPath, _TS }
 

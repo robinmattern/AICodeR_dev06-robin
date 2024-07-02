@@ -41,7 +41,7 @@ var  Models1         =
       var  Models2 = 
       [ [ ' 1.', 'gp4oopw', 'GPT-4o_OpenAI-web       ' ] // ##    markdown, text, json (playground)
       , [ ' 2.', 'gp4oopu', 'GPT-4o_OpenAI-curl      ' ] // ##    json text
-      , [ ' 3.', 'gp4oopm', 'GPT-4o_OpenAI-node      ' ] //       json object
+      , [ ' 3.', 'gp4oopn', 'GPT-4o_OpenAI-node      ' ] //       json object
       , [ ' 4.', 'gp4oopf', 'GPT-4o_OpenAI-fetch     ' ] //       json object
       , [ ' 5.', 'gp4oopc', 'GPT-4o_OpenAI-cont      ' ] //       markdown /share
       , [ ' 6.', 'qw7bolu', 'Qwen2-7b_Ollama-curl    ' ]

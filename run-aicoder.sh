@@ -11,17 +11,24 @@ cd ._2/FRTs/AICodeR
     if [ "$1" == "5" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
     if [ "$1" == "7" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
     if [ "$1" == "8" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
+    if [ "$1" == "9" ]; then shift; node "../../../.vscode/task-createFolder.mjs" $@; exit; fi   
+
 
     echo ""
     echo "  AICoder Commands: "
-    echo "    1                               Save to Continue JSON File from Continue Sessions files"
-    echo "    7                               List Continue Sessions JSON files"
-    echo "    2  [Date]                       Save FRTables JSON File from Continue JSON File for [Date]"
-    echo "    8                               List Continue Sessions in FRTables JSON .db File"
-    echo "    3  [Date.Time]                  Format Sessions from FRTables JSON File"
-    echo "    4   S.M [TS]  [App] [Model]     Save Message Markdown file from FRTables JSON File for [App Model]"
-    echo "    5  [S[.M.TS]] [App] [Model]     Show App scripts for [last] Message Markdown  File for [App Model]"
-    echo "    6  [S[.M.TS]] [App] [Model]     Save App scripts for [last] Message Markdown  File for [App Model]"
+    echo "    1                               Save Continue Sessions JSON Fles into a Continue JSON File "
+    echo "    7                               List Continue Sessions JSON Files"
+    echo "    2  [Date]                       Save a FRTables JSON .db File from a Continue JSON File for [Date]"
+    echo "    8                               List Continue Sessions in a FRTables JSON .db File"
+    echo "    3  [Date.Time]                  Format Sessions from FRTables JSON .db File"
+#   echo "    5  [App] [Model] [Date] [Time]  Save a Session into a Continue JSON File for [App] [Model]"
+#   echo "    6  [App] [Model] [Date] [Time]  List Sessions in a Continue JSON File for [App] [Model]"  
+    echo "    4   S.M [TS]  [App] [Model]     Save a Message Markdown file from FRTables JSON File for [App] [Model]"
+    echo ""
+    echo "    9  [App]                        Create a Folder for [App] (c##_name-of-app or s##_name-of-api)"
+    echo "   10  [App] [Model]                Save a Message Markdown File for [App] [Model]"
+    echo "    5  [S[.M.TS]] [App] [Model]     Show App scripts for [last] Message Markdown File for [App] [Model]"
+    echo "    6  [S[.M.TS]] [App] [Model]     Save App scripts for [last] Message Markdown File for [App] [Model]"
     echo "" 
     echo "       [TS]        =>               Optional Date.Time per below"
     echo "       [App] [Model]                AppName ([cs]##_name-app) and Model (Owner_Model_Interface)"

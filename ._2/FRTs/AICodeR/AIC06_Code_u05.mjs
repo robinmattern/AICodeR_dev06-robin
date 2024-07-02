@@ -117,8 +117,11 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
        var  mMatch          = aCode.match(  /((File: *|`).+)\.(js|mjs|html)/ )
                            if (mMatch && mMatch[1]) {
 //                         var aScript = aCode.replace( /(File: *|`)/, '' ).replace( /[\n\r`]+/g, '' ).trim()  
-                           var aScript = mMatch[0].replace( /(File: *|`)/, '' ).replace( /[\n\r`]+/g, '' ).trim()  
-                      return [ i, aScript ] } 
+                           var aScript = mMatch[0].replace( /(File: *|`)/, '' ).replace( /[\n\r`]+/g, '' ).trim()
+//                             aScript = aScript.slice(0, `${aScript} `.indexOf( ' ' )).trim()                              //#.(40702.01.1 RAM No spaces)
+                               aScript = (aScript.indexOf( ' ' ) == -1) ? aScript : ''                                      // .(40702.01.1 RAM No spaces)
+                           if (aScript.match(/(\.js|mjs|html)/)) {
+                      return [ i, aScript ] } }
                                } )
             mScriptNames    =  mScriptNames.filter( a => a )    //  remove MT (undefined) rows
         
@@ -136,7 +139,7 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
             }
 // ------------------------------------------------------------------------------------------------------------------
 
-     async  function  saveScripts( aMarkdown_File, aAIName, aAppName ) {                      // Step 6 
+     async  function  saveScripts( aMarkdown_File, aAIName, aAppName, aMod ) {                      // Step 6 
             aAIName         =  aAIName   ? aAIName  :   aModel
             aAppName        = (aAppName  ? aAppName : __appname).split( /[\\\/]/ ).splice( -1 )[0]
 
@@ -147,34 +150,54 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
         if (mVersion[1] ) { aTS = mVersion.slice(1).join(".") } else { aTS = FRT._TS}
         var aVer            =  aUV + (+mVersion[0].slice(1)).toFixed( 1 ).padStart( 4, '0' );
             aVersion        =  aVer + '.' + aTS
-        var aCommit         =  `c${aVersion.substring(6,11)}.${aVer.substring( 1 ).replace( /[.0]+$/, '' )}`
-//      var aCommit         =  `c${aVersion.substring(6,11)}.${aVer}`
+        var aCommit         = `c${aVersion.substring(6,11)}.${aVer.substring( 1 ).replace( /[.0]+$/, '' )}`
+//      var aCommit         = `c${aVersion.substring(6,11)}.${aVer}`
 
-        var aClientDir      = ( aAppName.slice(0,1) == 'c' ? 'client' : 'server' ) + aAppName.slice(1,2)
+        var aClientDir      = (aAppName.slice(0,1) == 'c' ? 'client' : 'server') + aAppName.slice(1,2)
         var aAppDir         =  FRT.join( __basedir, aClientDir, aAppName ) 
         var aFileName       = `${aMarkdown_File.replace( /_[uv].+/, '' )}_${aVersion}.md`  // uNN.YMMDD.HHMM is now uNN.0.YMMDD.HHMM 
         var aAppName        =  aAppName ? aAppName : aFileName.replace( /_.+/, '' )  // ?? 
         var aFilePath       =  FRT.join(  aAppDir,   aFileName )  //  'c23_ChatGPT-4o-session_u1.03`40611.1512.md'
         var aBackPath       =  FRT.join(  aAppDir, `!_${aAppName.substr(0,3)}_App-Changes/${aAIName}` )
 
-        var aMsg            =  aMsg ? aMsg : `Update ${aAppName} to ${aVersion}`
+//      var aMsg            =  aMsg ? aMsg : `Update ${aAppName} to ${aVersion}`
+        var aMsg1           = `Update ${aAppName} (${aVersion})`
+        var aMsg2           = `Update re ${aMod} (${aVersion})`
+
 //          console.log(  `\n  aMarkdown_File: ${aMarkdown_File}`);  
-            console.log(    `  Saving commit:  ${aCommit}_${aMsg}` )
+            console.log(    `  Saving commit1:  ${aCommit}_${aMsg1}` )
+            console.log(    `  Saving commit2:  ${aAppName.slice(0,3)}.${aCommit.slice(1)}_${aMsg2}` )
 
        var  mScriptNames    =  await listScripts( aMarkdown_File )
 
        var  aMarkdown       =  await FRT.readFile( FRT.join( aMarkdown_File ), 'utf8' );
        var  mCodes          =  aMarkdown.split( /```|### / )
 
-            mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) )
+//                             mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) )
+//     var writePromises     = mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) )
+//          await Promise.all( writePromises );                                                                                  // Wait for all writes to finish
+            await Promise.all( mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) ) ); // Wait for all writes to finish
 
       async function savScript( mScript, aBackPath, aVer, aBaseDir ) {
-        var aScriptName     =  mScript[1].split(/[\\\/]/).slice(-1)[0]  // .match( /^`(.+\.(js|mjs|html))/ )[1]
-        var aScriptDir      =  mScript[1].split(/[\\\/]/).slice(0,-1).join('/')  // .match( /^`(.+\.(js|mjs|html))/ )[1]
+        var aScriptName     =  mScript[1].split(/[\\\/]/).slice(-1)[0]                  // .match( /^`(.+\.(js|mjs|html))/ )[1]
+        var aScriptDir      =  mScript[1].split(/[\\\/]/).slice(0,-1).join('/')         // .match( /^`(.+\.(js|mjs|html))/ )[1]
             aScriptDir      =  aScriptDir ? aScriptDir + '/' : ''
-                               await FRT.makDir( FRT.join( aAppDir,   aScriptDir ) )    // , { recursive: true } ) )  create parent directories
-                               await FRT.makDir( FRT.join( aBackPath, aScriptDir ) )
-//                             fsync.mkdirSync( FRT.join( __appname, aScriptDir ) )    // , { recursive: true } ) )  create parent directories
+
+        if (aScriptDir.match( /^client/)) { 
+            aScriptDir      =  aScriptDir.replace(/client\//,'') 
+        var aBakPath        =  aBackPath
+        var aAppPath        =  aAppDir
+            }
+        if (aScriptDir.match( /^server/)) { 
+            aScriptDir      =  aScriptDir.replace(/server\//,'') 
+        var aBakPath        =  aBackPath.replace( /client/, 'server' ).replace( /c([0-9]{2})/, 's$1' ) 
+        var aAppPath        =  aAppDir.replace(   /client/, 'server' ).replace( /c([0-9]{2})/, 's$1' ) 
+            }
+//                       await FRT.makDir( FRT.join( aAppPath, aScriptDir ) )        // .(40702.02.2 RAM was aAppDir) { recursive: true } ) )  create parent directories
+//                       await FRT.makDir( FRT.join( aAppPath, aScriptDir ) )        // .(40702.02.2 RAM was aAppDir) { recursive: true } ) )  create parent directories
+                               FRT.makDirSync( FRT.join( aBakPath, aScriptDir ) )           // .(40702.02.3 RAM was aBackPath) 
+                               FRT.makDirSync( FRT.join( aAppPath, aScriptDir ) )        // .(40702.02.2 RAM was aAppDir) { recursive: true } ) )  create parent directories
+//                             fsync.mkdirSync( FRT.join( __appname, aScriptDir ) )     // , { recursive: true } ) )  create parent directories
 //                             fsync.mkdirSync( FRT.join( aBackPath, aScriptDir ) )
 //                             fs.mkdir( FRT.join( aBackPath.replace( /!/, "^!" ), aScriptDir ) )
 //                             fs.mkdir( FRT.join( aBackPath.replace( /!/, "_" ), aScriptDir ) )
@@ -187,14 +210,14 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
 
 //                             await  fs.writeFile( FRT.join( aBackPath, aScriptDir, aScriptVer  ), aScriptCode )
 //                             await FRT.writeFile( FRT.join( aBackPath, aScriptDir, aScriptVer  ), aScriptCode )
-                                     FRT.writeFile( FRT.join( aBackPath, aScriptDir, aScriptVer  ), aScriptCode )
+                                     FRT.writeFile( FRT.join( aBakPath,  aScriptDir, aScriptVer  ), aScriptCode )      // .(40702.02.3)
 //                             await  fs.writeFile( FRT.join( __appname, aScriptDir, aScriptName ), aScriptCode )
 //                             await FRT.writeFile( FRT.join( __appname, aScriptDir, aScriptName ), aScriptCode )
-                                     FRT.writeFile( FRT.join(   aAppDir, aScriptDir, aScriptName ), aScriptCode )
-            console.log(    `  --------------------------------------------------------------------------------------------------------------` )
+                                     FRT.writeFile( FRT.join( aAppPath,  aScriptDir, aScriptName ), aScriptCode )      // .(40702.02.4)
+//          console.log(    `  --------------------------------------------------------------------------------------------------------------` )
 //          console.log(    `                 ${ FRT.join( __appname, aScriptDir, aScriptName) }` )
 //          console.log(    `  Saving backup: ${ aBackPath }/${ aScriptDir }/${ aScriptVer }` )
-            console.log(    `  Saving backup: ${ aBackPath.replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptVer }` )
+            console.log(  `\n  Saving backup: ${ aBackPath.replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptVer }` )
             console.log(    `  Saving script: ${ aAppDir  .replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptName } (${ aScriptType }):` )
 //          console.log(    `  --------------------------------------------------------------------------------------------------------------` )
 //          console.log(    `    ${ aScriptCode.replace( /[\r\n]+/g, "\n    " ) }` )
