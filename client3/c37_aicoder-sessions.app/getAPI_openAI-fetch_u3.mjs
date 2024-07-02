@@ -31,15 +31,15 @@
 
        var  aTS             = `${FRT._TS}`
 //     var  aTS             = '40621.2207'
-       var  aVer            = `u01.${aTS}`    // Session.Message (Commit) No 
        var  aVer1           = `u01.40701.0900`
+       var  aVer2           = `u02.${aTS}`    // Session.Message (Commit) No 
 //     var  aVer            =  getVer(          aSession_Dir, 'v40611.*' )
 
-       var  aRequest_File   =  FRT.join( __apppath,    `getAPI_openAI-fetch_u1.mjs` )
+       var  aRequest_File   =  FRT.join( __apppath,    `getAPI_openAI-fetch_${aVer2.slice(0.2)}.mjs` )
        var  aRequest_JSON   =  FRT.join( aSession_Dir, `${aAppName.slice(0,3)}_request__${aVer1}.json` )
-       var  aResponse_File  =  FRT.join( aSession_Dir, `${aAppName.slice(0,3)}_response_${aVer}.mjs`  )
-       var  aResponse_JSON  =  FRT.join( aSession_Dir, `${aAppName.slice(0,3)}_response_${aVer}.json` )
-       var  aMarkdown_Save  =  FRT.join( aSession_Dir, `${aAppName.slice(0,3)}_markdown_${aVer}.md`   )
+//     var  aResponse_File  =  FRT.join( aSession_Dir, `${aAppName.slice(0,3)}_response_${aVer2}.mjs`  )
+       var  aResponse_JSON  =  FRT.join( aSession_Dir, `${aAppName.slice(0,3)}_response_${aVer2}.json` )
+       var  aMarkdown_Save  =  FRT.join( aSession_Dir, `${aAppName.slice(0,3)}_markdown_${aVer2}.md`   )
 
        var  aCurl_Template  =  FRT.join( __libpath,    `AIT04_Curl-Request_u01.template.sh` )
        var  aNode_Template  =  FRT.join( __libpath,    `AIT04_Node-Request_u01.template.sh` )
@@ -53,7 +53,7 @@
 
 // ----------------------------------------------------------------------------------------------------
 
-     const  pRequestMessage =   await FRT.readFile( aRequest_JSON )
+     const  pRequestMessage =   JSON.parse( await FRT.readFile( aRequest_JSON ) )
 
 // --------------------------------------------------------------------------------------------------
        var  aRetreived      =  'no' 
