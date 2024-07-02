@@ -1,19 +1,19 @@
    import   FRT          from './AIC90_FileFns.mjs'
    import   AIC          from './AIC06_Code_u05.mjs'
    import   AIM          from './AIC98_Models.mjs'
-   
+
      const  saveScripts     =  AIC.saveScripts
      const  listScripts     =  AIC.listScripts
      const  selectRow       =  AIM.selectRow
      const  getModel        =  AIM.getModel
-       var  Tables 
+       var  Tables
 
-//   const  getSession_Row  =      getSessions 
+//   const  getSession_Row  =      getSessions
 //   const  getMessage_Row  =      getMessages
 //   const  getContent_Row  =      getContents
-     global.getSession_Row  = function( nFld, aVal ) { return selectRow( Tables.Sessions, nFld, aVal ) }  
-     global.getMessage_Row  = function( nFld, aVal ) { return selectRow( Tables.Messages, nFld, aVal ) }  
-     global.getContent_Row  = function( nFld, aVal ) { return selectRow( Tables.Contents, nFld, aVal ) }  
+     global.getSession_Row  = function( nFld, aVal ) { return selectRow( Tables.Sessions, nFld, aVal ) }
+     global.getMessage_Row  = function( nFld, aVal ) { return selectRow( Tables.Messages, nFld, aVal ) }
+     global.getContent_Row  = function( nFld, aVal ) { return selectRow( Tables.Contents, nFld, aVal ) }
 
        var  bIsNotCalled    =  FRT.isCalled( import.meta.url, process.argv[1]);
        var  bRun            =  bIsNotCalled && `${ process.env['CALL_IT'] }`.match( /true|1/ ) == null;
@@ -24,7 +24,7 @@
        var  aAppName        =  FRT.setPaths( aAppName )
        var  aSession_Dir    =  FRT.join( __basedir, `docs/${aAppName}/${aModel}` )
        var  aSessions_Dir   =  FRT.join( __basedir, `../._/DOCs/code-sessions` )
-       var _FRTables_Dir    =  aSessions_Dir                                                        // .(40701.05.1 RAM Add Global)  
+       var _FRTables_Dir    =  aSessions_Dir                                                        // .(40701.05.1 RAM Add Global)
        var _Continue_Dir    =                       '/C/Users/Robin/.continue/sessions'
 
        var  aTS             = `${FRT._TS}`
@@ -108,7 +108,7 @@
         if (process.argv.length > 2 ) {  // Process command line arguments
        var  aSteps = process.argv[2]
             }
-            aSteps = `,${aSteps},`  
+            aSteps = `,${aSteps},`
 // --- ---  --------------  =  -------------------------------------------------------------
 
 //     var  aSteps = bRun ? `,1,` : aSteps
@@ -122,7 +122,7 @@
             }
 //     ---  --------------  =  -----------------------------------------------
 
-//     var  aSteps = bRun ? `,2,` : aSteps;   // console.log( `aSteps: ${aSteps} - bRun: ${bRun}` ); process.exit() 
+//     var  aSteps = bRun ? `,2,` : aSteps;   // console.log( `aSteps: ${aSteps} - bRun: ${bRun}` ); process.exit()
         if (aSteps.match(   /,2,/  )) { // Save Sessions   from Continue JSON files          to FRTables JSON file
 
 //     var  aAppName        = 'c39_login-app'
@@ -178,7 +178,7 @@
             }
 //     ---  --------------  =  -----------------------------------------------
 
-//     var  aSteps = bRun ? `,4,` : aSteps 
+//     var  aSteps = bRun ? `,4,` : aSteps
 //     var  aAppName        = 'c39_login-app'
 //     var  aModel          = 'GPT-4o_OpenAI-cont'
         if (aSteps.match(   /,4,/  )) { // Save Sessions from FRTables JSON file             to .md  file for nSession, nMessage
@@ -217,46 +217,40 @@
 //     ---  --------------  =  -----------------------------------------------
 
 //     var  aModel          = 'OpenAI-GPT-4o-maxi'
-       var  aModel          = 'GPT-4o_OpenAI-node'
+       var  aModel          = 'GPT-4o_OpenAI-maxi'
+//     var  aModel          = 'Claude3-So_Anthropic-maxi'
        var  aApp            = 'c35_calendar-app'
        var  aMod            =  getModel( 3, aModel )[1]
 
 //     var  aSteps = bRun ? `,5,` : aSteps, nSession = 16
-        if (aSteps.match(   /,5,/  )) { // Show Scripts  from FRTables JSON file                    //  Step 6 listScripts
+        if (aSteps.match(   /,5,/  )) { // Show Scripts  from FRTables JSON file                    //  Step 5 listScripts
 
-       var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : '' // nSession           // .(40702.01.3 RAM Find em all)
+       var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : '' // nSession           // .(40702.04.1 RAM Find 'em all)
 //     var  aSessions_Dir   = '\E:\\Repos\\Robin\\AIObjs_\\._\\DOCs\\code-sessions'
        var  aSessions_Dir   =  FRT.join( __basedir, `docs/${aApp}/${aModel}` )
-       var  aMarkdown_File  =  `${aApp.slice(0,3)}_markdown`
 
-//     var  aVer2           =  getLastVer( 'FRTables-markdown', 'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
-       var  aVer2           =  getLastVer( aMarkdown_File, 'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
-        if (aVer2 == "") {     process.exit() }
+//     var  aMarkdown_File  =  `${aApp.slice(0,3)}_markdown`                                        //#.(40702.05.2 RAM New pattern) 
+//     var  aMarkdown_File  = `${aApp.slice(0,3)}_markdown_{ver}`                                   //#.(40702.05.2 RAM New pattern) 
+       var  aMarkdown_File  = `${aApp.slice(0,3)}_{ver}_session`                                    // .(40702.05.2 RAM New pattern) 
 
-//     var  aMarkdown_Save  =  FRT.join( aSessions_Dir, `FRTables-markdown_${aVer2}.md` )
-       var  aMarkdown_Save  =  FRT.join( aSessions_Dir, `${aMarkdown_File}_${aVer2}.md` )
+//     var  aMarkdown_Saved =  FRT.join( aSessions_Dir, `${aMarkdown_File}_${aVer2}.md` )
+       var  aMarkdown_Saved =  getLastVer_Saved(  aSessions_Dir,   aMarkdown_File, 'md', aDayTS )   // .(40702.05.3 RAM Use new function) 
 
-                               await listScripts( aMarkdown_Save )    // <===  Step 5
+                               await listScripts( aMarkdown_Saved )    // <===  Step 5
             }
 //     ---  --------------  =  -----------------------------------------------
 
        var  aSteps = bRun ? `,6,` : aSteps, nSession = 16
-        if (aSteps.match(   /,6,/  )) { // Save Scripts  from FRTables JSON file                        //  Step 6 saveScripts
+        if (aSteps.match(   /,6,/  )) { // Save Scripts  from FRTables JSON file                    //  Step 6 saveScripts
 
-          var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : ''  // nSession           // .(40702.01.3 RAM Find em all)
-//        var  aSessions_Dir   = '\E:\\Repos\\Robin\\AIObjs_\\._\\DOCs\\code-sessions'
-          var  aSessions_Dir   =  FRT.join( __basedir, `docs/${aApp}/${aModel}` )
-          var  aMarkdown_File  =  `${aApp.slice(0,3)}_markdown`
+       var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : '' // nSession           // .(40702.04.2 RAM Find 'em all)
+       var  aSessions_Dir   =  FRT.join( __basedir, `docs/${aApp}/${aModel}` )
 
-//        var  aVer2           =  getLastVer( 'FRTables-markdown', 'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
-          var  aVer2           =  getLastVer( aMarkdown_File, 'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
-           if (aVer2 == "") {     process.exit() }
+       var  aMarkdown_File  = `${aApp.slice(0,3)}_{ver}_session`                                    // .(40702.05.2 RAM New pattern) 
 
-//        var  aMarkdown_Save  =  FRT.join( aSessions_Dir, `FRTables-markdown_${aVer2}.md` )
-          var  aMarkdown_Save  =  FRT.join( aSessions_Dir, `${aMarkdown_File}_${aVer2}.md` )
-//        var  aMarkdown_Save   = 'docs/c35_calendar-app/OpenAI-GPT-4o-node/c35_markdown_u01.40701.1807.md'
+       var  aMarkdown_Saved =  getLastVer_Saved(  aSessions_Dir,   aMarkdown_File, 'md', aDayTS )   // .(40702.05.3 RAM Use new function) 
 
-                                  await saveScripts( aMarkdown_Save, aModel, aApp, aMod )   // <===  Step 6
+                               await saveScripts( aMarkdown_Saved, aModel, aApp, aMod )   // <===  Step 6
             }
 //     ---  --------------  =  -----------------------------------------------
 
@@ -286,7 +280,7 @@
             }
 //     ---  --------------  =  -----------------------------------------------
 
-       var  aSteps = bRun ? `,8,` : aSteps
+//     var  aSteps = bRun ? `,8,` : aSteps
         if (aSteps.match(   /,8,/  )) { // Show Sessions from FRTables JSON .db file
      /*
        var  aSessions_File  =  FRT.join( _Continue_Dir, `sessions.json` )
@@ -297,23 +291,23 @@
        var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : nSession
        var  pTables         =  getFRTables( aDayTS )
             console.log ( "\n  8. FRTables Sessions JSON db file")
-//     var  mSessions       =  pTables.Sessions.map( fmtFRTables_Sessions ).sort( (a,b) => a.slice(62,70) > b.slice(62,70) ? 1 : -1 )            
-            console.log(       pTables.Sessions.join( "\n") )          // not mSession from line above      
+//     var  mSessions       =  pTables.Sessions.map( fmtFRTables_Sessions ).sort( (a,b) => a.slice(62,70) > b.slice(62,70) ? 1 : -1 )
+            console.log(       pTables.Sessions.join( "\n") )          // not mSession from line above
        var  pStats          =  FRT.checkFile( aFRTables_File )
        var  aTS             =  FRT.getDate( +new Date( pStats.updatedOn ), -1 )
             console.log( `${ ''.padEnd(pConstants.No_Wdt) } ${aTS}  ${aFRTables_File}` )
- 
+
   function  fmtFRTables_Sessions( aSession, i )  {
        var  aNo             = `${i+1}.`.padStart( 4   )   //  0 +  4
        var  aCreatedOn      =  aSession.slice( 17, 33 )   //  6 + 16
        var  aGUID           =  aSession.slice( 34, 71 )   // 24 + 36
-       var  aID             =  aSession.slice(  7, 15 )   // 62 +  8 
+       var  aID             =  aSession.slice(  7, 15 )   // 62 +  8
        var  aTitle          =  aSession.slice( 73     )   // 72
     return `${aNo} ${aCreatedOn} ${aGUID}  ${aID}  ${aTitle}`
-            }               
+            }
         }
 //     ---  --------------  =  -----------------------------------------------
-     
+
         if (aSteps.match(   /,9,/  )) { // Show Session  from FRTables JSON file
 
        var  aSessions_File  =  FRT.join( aSessions_Dir, `Continue-sessions_${aVer}.txt` )
@@ -347,7 +341,7 @@
        var  mSessions       =  JSON.parse( await FRT.readFile( aSessions_File_toGet ) )
             mSessions       =  mSessions.sort( (a,b) => a.CreatedOn > b.CreatedOn ? 1 : -1 )
 //     var  pTables2        =  mSessions.map( fmtSession )
-       var  pTables         =  getSessions( mSessions )    // fmtSessions_asTable1  
+       var  pTables         =  getSessions( mSessions )    // fmtSessions_asTable1
 //     var  aSessions       =  pTables.join( "\n" )
 //          console.log(       JSON.stringify( aSessions, null, 2 ) )
     return  pTables
@@ -361,11 +355,11 @@
      const  getSessions     =  pFmters[ `fmtSessions_asTable1` ]
        var  mSessions2      =  JSON.parse( await FRT.readFile( aSessions_File_toGet ) )           // New and/or Old Continue Sessions JSON objects
 //          mSessions2      =  mSessions2.sort( (a,b) => a.CreatedOn > b.CreatedOn ? 1 : -1 )
-       var  pTables1        =  JSON.parse( await FRT.readFile( aFRTables_File_toGet ) )           // Old existing Sessions, Messages and  Contents in FRTables 
-                               getFRTables( aFRTables_File_toGet, aDayTS )                        // Old existing Sessions, Messages and  Contents in FRTables: global Tables  
+       var  pTables1        =  JSON.parse( await FRT.readFile( aFRTables_File_toGet ) )           // Old existing Sessions, Messages and  Contents in FRTables
+                               getFRTables( aFRTables_File_toGet, aDayTS )                        // Old existing Sessions, Messages and  Contents in FRTables: global Tables
 
 //     var  pTables2        =  mSessions.map( fmtSession )
-//     var  pTables2        =  getSessions( mSessions2 )                                          // New and/or Old fmtSessions_asTable1 as String   
+//     var  pTables2        =  getSessions( mSessions2 )                                          // New and/or Old fmtSessions_asTable1 as String
 //     var  aSessions       =  pTables.join( "\n" )
 //          console.log(       JSON.stringify( aSessions, null, 2 ) )
 //          pTables2.Sessions.forEach( pSession2  => {
@@ -374,29 +368,29 @@
 
 //           var  aOldValue =  pTables1.Sessions.find(      pSession1 => pSession1.SessionId === pSession2.SessionId )
 //           var  nOldIdx   =  pTables1.Sessions.findIndex( pSession1 => pSession1.GUID === pSession2.GUID )
-/*           var  nOldIdx   =  pTables1.Sessions.indexOf( aSession1 => {                          // each old record in pTables1.Sessons is a string 
-                          var  pSession1_GUID =  aSession1.slice(25,61)  
+/*           var  nOldIdx   =  pTables1.Sessions.indexOf( aSession1 => {                          // each old record in pTables1.Sessons is a string
+                          var  pSession1_GUID =  aSession1.slice(25,61)
                                pSession1_GUID == pSession2.GUID } )
 */
-             var  nOldIdx = 0; pTables1.Sessions.forEach( (aSession1,i) => {                      // each o;d record in pTables1.Sessons is a string 
-                          var  pSession1_GUID =  `${aSession1}`.slice(25,61) 
-                  nOldIdx =   (pSession1_GUID == pSession2.GUID) ? i+1 : nOldIdx 
+             var  nOldIdx = 0; pTables1.Sessions.forEach( (aSession1,i) => {                      // each o;d record in pTables1.Sessons is a string
+                          var  pSession1_GUID =  `${aSession1}`.slice(25,61)
+                  nOldIdx =   (pSession1_GUID == pSession2.GUID) ? i+1 : nOldIdx
 //            if (nOldIdx) {   return }
-                               } ) // eol for Old pTables1.Sessions 
+                               } ) // eol for Old pTables1.Sessions
 
              if (!nOldIdx) {   console.log( `    Inserting New Session Object: ${pSession2.CreatedOn} ${pSession2.GUID}` )
-//                             pTables1.Sessions.push( fmtSession(  pSession2) ) 
-//                             pTables1.Messages.push( fmtMessages( pSession2.Messages ) ) 
-//                             pTables1.Contents.push( fmtContents( pSession2.Messages.contents ) ) 
+//                             pTables1.Sessions.push( fmtSession(  pSession2) )
+//                             pTables1.Messages.push( fmtMessages( pSession2.Messages ) )
+//                             pTables1.Contents.push( fmtContents( pSession2.Messages.contents ) )
              } else {
              var bChanged   =  pTables1.Sessions[ nOldIdx-1 ].slice(7,23) != pSession2.CreatedOn
              if (bChanged) {   console.log( `    Updating  Old Session Object: ${pSession2.CreatedOn} ${pSession2.GUID}` )
                                fmtSessions_asTable1 ( [ pSession2 ] )
-                               pTables1.Sessions[ nOldIdx-1 ] =  pSession2 
-//                             pTables1.Messages.filter() = pSession2.Messages 
-//                             pTables1.Contents.filter() = pSession2.Messages.Contents 
-                               }  // eif changed 
-                 } } ) // eol for New and/or Old mSessions2 
+                               pTables1.Sessions[ nOldIdx-1 ] =  pSession2
+//                             pTables1.Messages.filter() = pSession2.Messages
+//                             pTables1.Contents.filter() = pSession2.Messages.Contents
+                               }  // eif changed
+                 } } ) // eol for New and/or Old mSessions2
     return  pTables1
             }   // eof updSessions_fromContinue_toFRTables
 // --- ---  --------------  =  -------------------------------------------------------------
@@ -489,7 +483,7 @@
        pRec.Title           =  pSession.title
 //     pRec.CreatedOn       =  FRT.getDate( pSessionId.dateCreated, -1, 5, -1 )  // 5 -> HH:MM, -1 -> convert GMT to Local
        pRec.CreatedOn       =  FRT.getDate( pSessionId.dateCreated, -1)          //-1 -> YYY-MM-DD HH:MM.SS
-       pRec.GUID            =  pSessionId.sessionId 
+       pRec.GUID            =  pSessionId.sessionId
        pRec.Messages        =  pSession.history.map( ( pMessage, i ) => getMessage( pSessionId, pMessage, i ) )
     return  pRec
 
@@ -840,7 +834,7 @@
        var  nMsgs           = `${ pSession.Messages.length },`.padStart( 4 )
        var  aGUID           = `${ pSession.GUID },`
        var  aMethod         = `${ pConstants.Method }`.padStart(4)
-       var  aCreatedOn      = `${ FRT.getDate( pSession.CreatedOn, -1 ) },`.padEnd(17)  // was 19 
+       var  aCreatedOn      = `${ FRT.getDate( pSession.CreatedOn, -1 ) },`.padEnd(17)  // was 19
        var  aSessionId      = `${ pSession.No },`.padStart( 4 )
 //     var  aSession        = `${ aID } ${ aMethod }_${ aNo } ${ aCreatedOn } ${nMsgs} ${ aGUID } "${pSession.Title}"`
        var  aSession        = `${ aNo } ${ aCreatedOn } ${ aGUID } ${ nMsgs } ${ aMethod }_${ aID } "${pSession.Title}"`
@@ -855,7 +849,7 @@
 //   const  fmtContent      =  pFmters[ `fmtContent_asTable1` ]
      const  fmtContent      =            fmtContent_asTable1
        var  aNo             = `${ pConstants.Tab1Cnt++ },`.padStart( pConstants.No_Wdt )
-       var  aID             = `${ pMessage.No     },`.padStart( pConstants.ID_Wdt ) 
+       var  aID             = `${ pMessage.No     },`.padStart( pConstants.ID_Wdt )
 //     var  aRole           = (pMessage.Role ? `${pMessage.Role}:` : 'unknown:').padEnd( 9 )   // assistant
        var  aRole           = `${ pMessage.Role   }`.padStart(9)
        var  nVer            = `${ pMessage.Ver    },`
@@ -949,12 +943,32 @@
 //          //     getSession_forContinue
 // ------------------------------------------------------------------------------------------------------------------------
 
-            function getLastVer( aLastFile_toFind, aExt, aToday ) {
+            function  getLastVer_Saved( aSessions_Dir, aFile_Pattern, aExt, aDayTS ) {              // .(40702.05.1 RAM Write function Beg)
+//     var  aMarkdown_File  =  `${aApp.slice(0,3)}_markdown`
+//     var  aMarkdown_File  =  `${aApp.slice(0,3)}_markdown_{ver}`
+//     var  aMarkdown_File  =  `${aApp.slice(0,3)}_{ver}_session`
+
+//     var  aVer2           =  getLastVer( 'FRTables-markdown', 'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
+//     var  aVer2           =  getLastVer( aMarkdown_File,      'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
+       var  aVer2           =  getLastVer( aFile_Pattern,       aExt, aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
+//      if (aVer2 == "") {     process.exit() }
+
+//     var  aMarkdown_Saved =  FRT.join( aSessions_Dir, `FRTables-markdown_${aVer2}.md` )
+//     var  aMarkdown_Saved =  FRT.join( aSessions_Dir, `${aMarkdown_File}_${aVer2}.md` )
+       var  aFile_SavedLast =  FRT.join( aSessions_Dir, aMarkdown_File.replace( /_{ver}/, `_${aVer2}`) + `.${aExt}` )
+    return  aFile_SavedLast
+            }                                                                                       // .(40702.05.1 End)
+// --- ---  --------------  =  -------------------------------------------------------------
+
+            function  getLastVer( aLastFile_toFind, aExt, aToday ) {
        var  aToday          =  aToday ? aToday : '' // FRT.getDate( ).substring( 0, 4 )  // YMMD
-//     var  aLastFile       = `${aLastFile_toFind}_u${aToday}\\.[0-9]*\\.${aExt}`
-       var  aLastFile       = `${aLastFile_toFind}_u${aToday}[0-9.]*\\.${aExt}`
+//     var  aLastFile_regEx = `${aLastFile_toFind}_u${aToday}\\.[0-9]*\\.${aExt}`
+       var  aLastFile_regEx = `${aLastFile_toFind}_u${aToday}[0-9.]*\\.${aExt}`
+        if (aLastFile_toFind.match( /_{ver}/)) {
+            aLastFile_regEx =  aLastFile_toFind.replace( /_{ver}/, `_u${aToday}[0-9.]*` ) + `.${aExt}`
+            }
 //          console.log( `aLastFile: ${aLastFile}` )
-            aLastFile       =  FRT.lastFile( aSessions_Dir, aLastFile )
+       var  aLastFile       =  FRT.lastFile( aSessions_Dir, aLastFile_regEx )
 //          console.log( `aLastFile: ${aLastFile}` ); process.exit()
        var  aVer            =  aLastFile.match( /u[0-9.]+/ ); aVer = aVer ? aVer[0].replace( /\.$/, '' ) : ''
         if (aVer == "" ) {
@@ -965,7 +979,7 @@
             }
 // --- ---  --------------  =  -------------------------------------------------------------
 
-  function  getApp( aApp ) {
+            function  getApp( aApp ) {
        var  aAppDir         = ''
        var  aStage          = `${ aApp.slice(0,1) == 'c' ? 'client' : 'server' }${aApp.slice(1,2)}`
             aStage          =  aApp.slice(0,1) == 'd' ? 'docs' : aStage
@@ -981,26 +995,24 @@
             }
 // --- ---  --------------  =  -------------------------------------------------------------
 
-  function  getFRTables( aFRTables_Dir, aDayTS ) {                                                  // .(40701.05.2 RAM Was aSessions_Dir)
+            function  getFRTables( aFRTables_Dir, aDayTS ) {                                        // .(40701.05.2 RAM Was aSessions_Dir)
     if (!`${aSessions_Dir}`.match( /\.db$/)) {
-       if (!aDayTS) {        aDayTS = aFRTables_Dir; aFRTables_Dir = _FRTables_Dir  }               // .(40701.05.3 RAM Check if MT)
-       var  aVer2            =  getLastVer( 'FRTables-sessions', 'db', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
-        if (aVer2 == "") {      process.exit() }
-       var  aFRTables_File   =  FRT.join( aFRTables_Dir, `FRTables-sessions_${aVer2}.db` )          // .(40701.05.4) 
+       if (!aDayTS) {          aDayTS = aFRTables_Dir; aFRTables_Dir = _FRTables_Dir  }             // .(40701.05.3 RAM Check if MT)
+       var  aVer2           =  getLastVer( 'FRTables-sessions', 'db', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
+        if (aVer2 == "") {     process.exit() }
+       var  aFRTables_File  =  FRT.join( aFRTables_Dir, `FRTables-sessions_${aVer2}.db` )           // .(40701.05.4)
         } else {
-            aFRTables_File     =  aSessions_Dir
+            aFRTables_File  =  aSessions_Dir
             }
 //     var  aFRTables_File_toGet = aFRTables_File
 
-       var  pTables          =  JSON.parse( FRT.readFile( aFRTables_File) )
-            Tables = 
-             {  Sessions     :  pTables.Sessions.map( a => a.split( ',' ))
-             ,  Messages     :  pTables.Messages.map( a => a.split( ',' ))
-             ,  Contents     :  pTables.Contents.map( a => a.split( ',' ))
+       var  pTables         =  JSON.parse( FRT.readFile( aFRTables_File) )
+            Tables =
+             {  Sessions    :  pTables.Sessions.map( a => a.split( ',' ))
+             ,  Messages    :  pTables.Messages.map( a => a.split( ',' ))
+             ,  Contents    :  pTables.Contents.map( a => a.split( ',' ))
                 }
-    return  pTables         
+    return  pTables
             }
 // --- ---  --------------  =  -------------------------------------------------------------
-
-
 
