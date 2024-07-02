@@ -107,21 +107,21 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
 //    var   aScrptName      =  aMarkdown.split( "\n" )[169].match( /^.*file:* `(.+)`:/ )[1]
      async  function  listScripts(    aMarkdown_File, aAIName, aAppName ) {                      // Step 5
 
-            console.log(  `\n  aMarkdown_File: ${aMarkdown_File}`);  
+            console.log(  `\n  Parsing aMarkdown_File: .${ aMarkdown_File.replace( /[\\\/]/g, '/' ). replace( __basedir, '' ) }` );  
        var  aMarkdown       =  await FRT.readFile( FRT.join( aMarkdown_File ), 'utf8' );
 
-       var  mCodes          =  aMarkdown.split( /```|### / )
+       var  mCodes          =  aMarkdown.split( /```|###/ )
 //          console.log( mCodes )
        var  mScriptNames    =  mCodes.map( (aCode, i) => {
 //                         if (aCode.match( /^((File: *|`).+)\.(js|mjs|html)/ )) {
-       var  mMatch          = aCode.match(  /((File: *|`).+)\.(js|mjs|html)/ )
+       var  mMatch          = aCode.match(  /((File: *|`).+)\.(json|js|mjs|html)/ )
                            if (mMatch && mMatch[1]) {
 //                         var aScript = aCode.replace( /(File: *|`)/, '' ).replace( /[\n\r`]+/g, '' ).trim()  
                            var aScript = mMatch[0].replace( /(File: *|`)/, '' ).replace( /[\n\r`]+/g, '' ).trim()
-//                             aScript = aScript.slice(0, `${aScript} `.indexOf( ' ' )).trim()                              //#.(40702.01.1 RAM No spaces)
-                               aScript = (aScript.indexOf( ' ' ) == -1) ? aScript : ''                                      // .(40702.01.1 RAM No spaces)
-                           if (aScript.match(/(\.js|mjs|html)/)) {
-                      return [ i, aScript ] } }
+//                             aScript = aScript.slice(0, `${aScript} `.indexOf( ' ' )).trim()      //#.(40702.01.1 RAM No spaces)
+                               aScript = (aScript.indexOf( ' ' ) == -1) ? aScript : ''              // .(40702.01.1 RAM No spaces)
+                           if (aScript.match(/\.(json|js|mjs|html)/)) {
+                   return [ i, aScript ] } }
                                } )
             mScriptNames    =  mScriptNames.filter( a => a )    //  remove MT (undefined) rows
         
@@ -144,7 +144,8 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
             aAppName        = (aAppName  ? aAppName : __appname).split( /[\\\/]/ ).splice( -1 )[0]
 
         var aUV             =  aMarkdown_File.match( /_([uv])/ )[1], aTS
-        var aVersion        =  aMarkdown_File.match( /_([vu][\d.`]+)\.md/ )[1]
+//      var aVersion        =  aMarkdown_File.match( /_([vu][\d.`]+)\.md/   )[1]
+        var aVersion        =  aMarkdown_File.match( /_([vu][\d.`]+).*\.md/ )[1]                         // .(40702.06.1 RAM)
             aVersion        =  aVersion.match( /`/ ) ?  aVersion.replace( /.+`/, '.') : aVersion
         var mVersion        =  aVersion.split( "." )
         if (mVersion[1] ) { aTS = mVersion.slice(1).join(".") } else { aTS = FRT._TS}
@@ -169,26 +170,61 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
             console.log(    `  Saving commit1:  ${aCommit}_${aMsg1}` )
             console.log(    `  Saving commit2:  ${aCommit}_${aMsg2}` )
             console.log(    `  Saving commit3:  ${aAppName.slice(0,3)}.${aCommit.slice(1)}_${aMsg3}` )
-            console.log(   "" )
 
        var  mScriptNames    =  await listScripts( aMarkdown_File )
-
+//          console.log(   "" )
+            
        var  aMarkdown       =  await FRT.readFile( FRT.join( aMarkdown_File ), 'utf8' );
        var  mCodes          =  aMarkdown.split( /```|### / )
 
-//                             mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) )
-//     var writePromises     = mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) )
-//          await Promise.all( writePromises );                                                                                  // Wait for all writes to finish
-            await Promise.all( mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) ) ); // Wait for all writes to finish
+//                             mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) )  //#.(40702.03.1 RAM Ignores awaits)
+/*          await Promise.all( mScriptNames.forEach( async (mScript, i) => {             //#.(40702.03.2 RAM Gets error: TypeError: undefined is not iterable) 
+                        return await savScript( mScript, aBackPath, aVer, __basedir ) 
+                               } ) ); 
+*/
+//      var writePromises   =  mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) )
+        var writePromises   =  mScriptNames.map(     async (mScript, i) => {             // .(40702.03.3 AIM Suggests this Beg) 
+                         try { await savScript( mScript, aBackPath, aVer, __basedir );
+                        return Promise.resolve( );                                       // .(40702.03.4 AIM Explicitly resolve with undefined (optional)
+                           } catch ( error ) {
+                        return Promise.reject(  error ); }                               // .(40702.03.5 AIM Reject with the error
+                           } );                        
+            await Promise.all( writePromises );                                          // .(40702.03.3 AIM Wait for all writes to finish End)
 
 //    ----- ----------------------------------------------------------------------
 
       async function savScript( mScript, aBackPath, aVer, aBaseDir ) {
-           console.log(    `  Saving script ${mScript[0]}: ${mScript[1]} `)
-       var aScriptName     =  mScript[1].split(/[\\\/]/).slice(-1)[0]                  // .match( /^`(.+\.(js|mjs|html))/ )[1]
+//          console.log(    `  Saving script ${mScript[0]}: ${mScript[1]} `)
+        var aScriptName     =  mScript[1].split(/[\\\/]/).slice(-1)[0]                  // .match( /^`(.+\.(js|mjs|html))/ )[1]
         var aScriptDir      =  mScript[1].split(/[\\\/]/).slice(0,-1).join('/')         // .match( /^`(.+\.(js|mjs|html))/ )[1]
             aScriptDir      =  aScriptDir ? aScriptDir + '/' : ''
 
+      if ( !mCodes[ mScript[0] + 1 ] ) { 
+            console.log( `\n  Saving script ${mScript[0]}: No code for script file: ${mScript[1]}.` ); 
+     return 
+            }  
+
+        var aBakPath        =  aBackPath
+        var aAppPath        =  aAppDir
+
+        if (aScriptName.match( /^package.json/)) {  } // should be ok to leave this alone
+
+        if (aScriptName.match( /^\.gitignore/)) { 
+        var aBakPath        =  '.vscode'
+        var aAppPath        =  __basedir
+     return // if one doesn't currently exist, then save it, but adjust the path name 
+            }  
+        if (aScriptName.match( /^\.env/)) { 
+        var aBakPath        =  aBackPath.replace( /client/, 'server' ).replace( /c([0-9]{2})/g, 's$1' ) 
+        var aAppPath        =  aAppDir.replace(   /client/, 'server' ).replace( /c([0-9]{2})/g, 's$1' ) 
+     return // if one doesn't currently exist, then save it, but adjust the path name 
+            }  
+        if (aScriptDir.match( /^\.vscode/)) { 
+        var aBakPath        =  aBackPath
+        var aAppPath        =  __basedir
+            console.log( `\n  Ignoring script ${mScript[0]}: ./${mScript[1]}.` ); 
+     return // if one doesn't currently exist, then save it, but adjust the path name 
+            }  
         if (aScriptDir.match( /^client/)) { 
             aScriptDir      =  aScriptDir.replace(/client\//,'') 
         var aBakPath        =  aBackPath
@@ -199,16 +235,16 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
         var aBakPath        =  aBackPath.replace( /client/, 'server' ).replace( /c([0-9]{2})/g, 's$1' ) 
         var aAppPath        =  aAppDir.replace(   /client/, 'server' ).replace( /c([0-9]{2})/g, 's$1' ) 
             }
-            console.log(    `  Saving script ${mScript[0]}: ${ aAppPath.replace( /[\\\/]/g, '/' ).replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptName } (${ aScriptType }):` )
-            return 
-//                       await FRT.makDir( FRT.join( aAppPath, aScriptDir ) )        // .(40702.02.2 RAM was aAppDir) { recursive: true } ) )  create parent directories
-//                       await FRT.makDir( FRT.join( aAppPath, aScriptDir ) )        // .(40702.02.2 RAM was aAppDir) { recursive: true } ) )  create parent directories
-                               FRT.makDirSync( FRT.join( aBakPath, aScriptDir ) )           // .(40702.02.3 RAM was aBackPath) 
-                               FRT.makDirSync( FRT.join( aAppPath, aScriptDir ) )        // .(40702.02.2 RAM was aAppDir) { recursive: true } ) )  create parent directories
-//                             fsync.mkdirSync( FRT.join( __appname, aScriptDir ) )     // , { recursive: true } ) )  create parent directories
+//         console.log(    `  Saving script ${mScript[0]}: ${ aAppPath.replace( /[\\\/]/g, '/' ).replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptName } (${ aScriptType }):` )
+//         return 
+//                       await FRT.makDir(     FRT.join( aAppPath,  aScriptDir ) )                          //#.(40702.02.2 RAM was aAppDir) { recursive: true } ) )  create parent directories
+//                       await FRT.makDir(     FRT.join( aAppPath,  aScriptDir ) )                          //#.(40702.02.2 RAM was aAppDir) { recursive: true } ) )  create parent directories
+                               FRT.makDirSync( FRT.join( aBakPath,  aScriptDir ) )                          // .(40702.02.3 RAM was aBackPath) 
+                               FRT.makDirSync( FRT.join( aAppPath,  aScriptDir ) )                          // .(40702.02.2 RAM was aAppDir) { recursive: true } ) )  create parent directories
+//                             fsync.mkdirSync( FRT.join( __appname, aScriptDir ) )                         //#, { recursive: true } ) )  create parent directories
 //                             fsync.mkdirSync( FRT.join( aBackPath, aScriptDir ) )
-//                             fs.mkdir( FRT.join( aBackPath.replace( /!/, "^!" ), aScriptDir ) )
-//                             fs.mkdir( FRT.join( aBackPath.replace( /!/, "_" ), aScriptDir ) )
+//                             fs.mkdir(        FRT.join( aBackPath.replace( /!/, "^!" ), aScriptDir ) )
+//                             fs.mkdir(        FRT.join( aBackPath.replace( /!/, "_" ), aScriptDir ) )
 
         var aScriptVer      =  aScriptName.replace( /\./, `_${aVersion}.` )
         var aScriptCode     =  mCodes[ mScript[0] + 1 ]
@@ -216,17 +252,17 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
             aScriptCode     =  aScriptCode.replace( /.+[\n\r]+/, '' )   //   indexOf( '\n' ) + 1 )
 //          aScriptCode     =  aScriptCode.replace( /\/\/.+[\n\r]+/, '' )   //  filenme comment
 
-//                             await  fs.writeFile( FRT.join( aBackPath, aScriptDir, aScriptVer  ), aScriptCode )
-//                             await FRT.writeFile( FRT.join( aBackPath, aScriptDir, aScriptVer  ), aScriptCode )
-                                     FRT.writeFile( FRT.join( aBakPath,  aScriptDir, aScriptVer  ), aScriptCode )      // .(40702.02.3)
-//                             await  fs.writeFile( FRT.join( __appname, aScriptDir, aScriptName ), aScriptCode )
-//                             await FRT.writeFile( FRT.join( __appname, aScriptDir, aScriptName ), aScriptCode )
-                                     FRT.writeFile( FRT.join( aAppPath,  aScriptDir, aScriptName ), aScriptCode )      // .(40702.02.4)
+//                       await  fs.writeFile(  FRT.join( aBackPath, aScriptDir, aScriptVer ), aScriptCode )
+//                       await FRT.writeFile(  FRT.join( aBackPath, aScriptDir, aScriptVer ), aScriptCode )
+                               FRT.writeFile(  FRT.join( aBakPath,  aScriptDir, aScriptVer ), aScriptCode ) // .(40702.02.3)
+//                       await  fs.writeFile(  FRT.join( __appname, aScriptDir, aScriptName), aScriptCode )
+//                       await FRT.writeFile(  FRT.join( __appname, aScriptDir, aScriptName), aScriptCode )
+                               FRT.writeFile(  FRT.join( aAppPath,  aScriptDir, aScriptName), aScriptCode ) // .(40702.02.4)
 //          console.log(    `  --------------------------------------------------------------------------------------------------------------` )
 //          console.log(    `                 ${ FRT.join( __appname, aScriptDir, aScriptName) }` )
 //          console.log(    `  Saving backup: ${ aBackPath }/${ aScriptDir }/${ aScriptVer }` )
-            console.log(  `\n  Saving backup ${mScript[0]}: ${ aBakPath.replace( /[\\\/]/g, '/' ).replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptVer }` )
-            console.log(    `  Saving script ${mScript[0]}: ${ aAppPath.replace( /[\\\/]/g, '/' ).replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptName } (${ aScriptType }):` )
+            console.log(  `\n  Saving backup ${mScript[0]}: .${ aBakPath.replace( /[\\\/]/g, '/' ).replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptVer }` )
+            console.log(    `  Saving script ${mScript[0]}: .${ aAppPath.replace( /[\\\/]/g, '/' ).replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptName } (${ aScriptType }):` )
 //          console.log(    `  --------------------------------------------------------------------------------------------------------------` )
 //          console.log(    `    ${ aScriptCode.replace( /[\r\n]+/g, "\n    " ) }` )
             } // eof savScript()
