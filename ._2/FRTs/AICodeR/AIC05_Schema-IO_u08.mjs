@@ -234,7 +234,7 @@
        var  aMarkdown_File  = `${aApp.slice(0,3)}_{ver}_session`                                    // .(40702.05.2 RAM New pattern) 
 
 //     var  aMarkdown_Saved =  FRT.join( aSessions_Dir, `${aMarkdown_File}_${aVer2}.md` )
-       var  aMarkdown_Saved =  getLastVer_Saved(  aSessions_Dir,   aMarkdown_File, 'md', aDayTS )   // .(40702.05.3 RAM Use new function) 
+       var  aMarkdown_Saved =  getLastVer_Saved(  aSessions_Dir,   aMarkdown_File, 'md', aDayTS )   // .(40702.05.3 RAM Use new function)   
 
                                await listScripts( aMarkdown_Saved )    // <===  Step 5
             }
