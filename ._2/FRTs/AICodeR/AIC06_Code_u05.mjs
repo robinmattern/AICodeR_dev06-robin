@@ -190,8 +190,8 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
             }
         if (aScriptDir.match( /^server/)) { 
             aScriptDir      =  aScriptDir.replace(/server\//,'') 
-        var aBakPath        =  aBackPath.replace( /client/, 'server' ).replace( /c([0-9]{2})/, 's$1' ) 
-        var aAppPath        =  aAppDir.replace(   /client/, 'server' ).replace( /c([0-9]{2})/, 's$1' ) 
+        var aBakPath        =  aBackPath.replace( /client/, 'server' ).replace( /c([0-9]{2})/g, 's$1' ) 
+        var aAppPath        =  aAppDir.replace(   /client/, 'server' ).replace( /c([0-9]{2})/g, 's$1' ) 
             }
 //                       await FRT.makDir( FRT.join( aAppPath, aScriptDir ) )        // .(40702.02.2 RAM was aAppDir) { recursive: true } ) )  create parent directories
 //                       await FRT.makDir( FRT.join( aAppPath, aScriptDir ) )        // .(40702.02.2 RAM was aAppDir) { recursive: true } ) )  create parent directories
