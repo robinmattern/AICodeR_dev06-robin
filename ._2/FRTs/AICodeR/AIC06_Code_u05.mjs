@@ -162,11 +162,14 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
 
 //      var aMsg            =  aMsg ? aMsg : `Update ${aAppName} to ${aVersion}`
         var aMsg1           = `Update ${aAppName} (${aVersion})`
-        var aMsg2           = `Update re ${aMod} (${aVersion})`
+        var aMsg2           = `Update ${aAppName.slice(0,3)} App (${aVersion} ${aMod})`
+        var aMsg3           = `Update re ${aMod} (${aVersion})`
 
 //          console.log(  `\n  aMarkdown_File: ${aMarkdown_File}`);  
             console.log(    `  Saving commit1:  ${aCommit}_${aMsg1}` )
-            console.log(    `  Saving commit2:  ${aAppName.slice(0,3)}.${aCommit.slice(1)}_${aMsg2}` )
+            console.log(    `  Saving commit2:  ${aCommit}_${aMsg2}` )
+            console.log(    `  Saving commit3:  ${aAppName.slice(0,3)}.${aCommit.slice(1)}_${aMsg3}` )
+            console.log(   "" )
 
        var  mScriptNames    =  await listScripts( aMarkdown_File )
 
@@ -178,8 +181,11 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
 //          await Promise.all( writePromises );                                                                                  // Wait for all writes to finish
             await Promise.all( mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) ) ); // Wait for all writes to finish
 
+//    ----- ----------------------------------------------------------------------
+
       async function savScript( mScript, aBackPath, aVer, aBaseDir ) {
-        var aScriptName     =  mScript[1].split(/[\\\/]/).slice(-1)[0]                  // .match( /^`(.+\.(js|mjs|html))/ )[1]
+           console.log(    `  Saving script ${mScript[0]}: ${mScript[1]} `)
+       var aScriptName     =  mScript[1].split(/[\\\/]/).slice(-1)[0]                  // .match( /^`(.+\.(js|mjs|html))/ )[1]
         var aScriptDir      =  mScript[1].split(/[\\\/]/).slice(0,-1).join('/')         // .match( /^`(.+\.(js|mjs|html))/ )[1]
             aScriptDir      =  aScriptDir ? aScriptDir + '/' : ''
 
@@ -193,6 +199,8 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
         var aBakPath        =  aBackPath.replace( /client/, 'server' ).replace( /c([0-9]{2})/g, 's$1' ) 
         var aAppPath        =  aAppDir.replace(   /client/, 'server' ).replace( /c([0-9]{2})/g, 's$1' ) 
             }
+            console.log(    `  Saving script ${mScript[0]}: ${ aAppPath.replace( /[\\\/]/g, '/' ).replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptName } (${ aScriptType }):` )
+            return 
 //                       await FRT.makDir( FRT.join( aAppPath, aScriptDir ) )        // .(40702.02.2 RAM was aAppDir) { recursive: true } ) )  create parent directories
 //                       await FRT.makDir( FRT.join( aAppPath, aScriptDir ) )        // .(40702.02.2 RAM was aAppDir) { recursive: true } ) )  create parent directories
                                FRT.makDirSync( FRT.join( aBakPath, aScriptDir ) )           // .(40702.02.3 RAM was aBackPath) 
@@ -217,8 +225,8 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
 //          console.log(    `  --------------------------------------------------------------------------------------------------------------` )
 //          console.log(    `                 ${ FRT.join( __appname, aScriptDir, aScriptName) }` )
 //          console.log(    `  Saving backup: ${ aBackPath }/${ aScriptDir }/${ aScriptVer }` )
-            console.log(  `\n  Saving backup: ${ aBackPath.replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptVer }` )
-            console.log(    `  Saving script: ${ aAppDir  .replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptName } (${ aScriptType }):` )
+            console.log(  `\n  Saving backup ${mScript[0]}: ${ aBakPath.replace( /[\\\/]/g, '/' ).replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptVer }` )
+            console.log(    `  Saving script ${mScript[0]}: ${ aAppPath.replace( /[\\\/]/g, '/' ).replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptName } (${ aScriptType }):` )
 //          console.log(    `  --------------------------------------------------------------------------------------------------------------` )
 //          console.log(    `    ${ aScriptCode.replace( /[\r\n]+/g, "\n    " ) }` )
             } // eof savScript()

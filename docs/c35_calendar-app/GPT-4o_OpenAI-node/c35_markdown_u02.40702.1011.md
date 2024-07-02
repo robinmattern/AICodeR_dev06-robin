@@ -1,6 +1,8 @@
-﻿### System Prompt
+﻿### Assistant Message
 
-We are going to create a small web application that allows users to upload an .ics (iCalendar) file and then query its content using OpenAI's GPT-3.5-turbo API. This application will use ES6 JavaScript syntax, `import` for module inclusion, and adhere to modern web practices. Files will have the `.mjs` extension.
+We are going to create a small web application that allows users to upload an .ics (iCalendar) 
+file and then query its content using OpenAI's GPT-3.5-turbo API. This application will use ES6 JavaScript syntax, 
+`import` for module inclusion, and adhere to modern web practices. Files will have the `.mjs` extension.
 
 #### 1. Project Structure
 
@@ -22,7 +24,7 @@ Create the following file structure for your application:
 
 **Client Side:**
 
-1. **File: index.html**: The main HTML file for the front-end interface of the application.
+1. **File: client/index.html**: The main HTML file for the front-end interface of the application.
 
 ```html
 <!-- client/index.html -->
@@ -42,7 +44,7 @@ Create the following file structure for your application:
 </html>
 ```
 
-2. **File: index.js**: JavaScript to initialize the application.
+2. **File: client/index.js**: JavaScript to initialize the application.
 
 ```javascript
 // client/index.js
@@ -58,7 +60,7 @@ document.getElementById('uploadButton').addEventListener('click', () => {
 });
 ```
 
-3. **File: upload.js**: JavaScript for handling the file upload functionality.
+**3. File: client/upload.js**: JavaScript for handling the file upload functionality.
 
 ```javascript
 // client/upload.js
@@ -86,8 +88,7 @@ export async function uploadFile(file) {
 
 **Server Side:**
 
-1. **server.mjs**: Sets up the server, handles file uploads, and interacts with OpenAI API.
-2. **openaiHelpers.mjs**: Contains helper functions for communicating with OpenAI API.
+1. **File: server/server.mjs**: Sets up the server, handles file uploads, and interacts with OpenAI API.
 
 ```javascript
 // server/server.mjs
@@ -118,7 +119,9 @@ app.listen(PORT, () => {
 });
 ```
 
+2. **File: server/openaiHelpers.mjs**: Contains helper functions for communicating with OpenAI API.
 ```javascript
+
 // server/openaiHelpers.mjs
 import fetch from 'node-fetch';
 
