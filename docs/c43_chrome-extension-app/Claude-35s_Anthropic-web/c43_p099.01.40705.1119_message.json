@@ -1,0 +1,15 @@
+
+content: "
+1 Créât« a Chrome extension called ‘Prompt Sever4 thet allows users to save, view, copy, and delete frequently used prompt». The extension should heve the following features:
+2.	A popup interface with fields to enter a prompt name and text.
+3.	A save button to store new prompts
+9.	A Net of seved prompts showing the name end a preview of the first S words.
+4.	Ability to expand/col lapse prompts to view full text.
+5.	A blue ‘Copy’ button for each prompt to copy its text to clipboard.
+6.	An orange ‘Delete’ button for each prompt to remove it from storage.
+7.	Confirm deletion before removing a prompt.
+5.	Use Chrome’s storage API to persist prompts.
+9. Style the interface for a clean, user-friendly look. Provide the necessary HTML, JavaScript. and CSS files for the extension, along with the manifest jeon file. Ensure the coda handles potential errors and odge cases, such as invalid data in storage.
+
+
+

@@ -53,7 +53,7 @@
 
 // ----------------------------------------------------------------------------------------------------
 
-     const  pRequestMessage =   JSON.parse( await FRT.readFile( aRequest_JSON ) )
+     const  pRequestMessage =   JSON.parse( await FRT.readFileSync( aRequest_JSON ) )
 
 // --------------------------------------------------------------------------------------------------
        var  aRetreived      =  'no' 

@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICS File Uploader</title>
-    <script type="module" src="./index.js" defer></script>
+    <title>ICS Query App</title>
 </head>
 <body>
-    <h1>Upload ICS File</h1>
-    <input type="file" id="fileInput" accept=".ics">
-    <button id="uploadButton">Upload</button>
-    <h2>Query ICS Content</h2>
-    <input type="text" id="queryInput">
-    <button id="queryButton">Query</button>
-    <pre id="responseOutput"></pre>
+    <h1>ICS Query App</h1>
+    <input type="file" id="icsFile" accept=".ics">
+    <button id="uploadBtn">Upload</button>
+    <textarea id="query" rows="4" cols="50" placeholder="Enter your query here"></textarea>
+    <button id="submitBtn">Submit Query</button>
+    <div id="result"></div>
+    <script type="module" src="main.js"></script>
 </body>
 </html>

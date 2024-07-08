@@ -1,31 +1,50 @@
 import express from 'express';
-import multer from 'multer';
-import { handleQuery } from './openaiHelpers.mjs';
+import fetch from 'node-fetch';
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+dotenv.config();
 
 const app = express();
-const upload = multer({ dest: 'uploads/' });
-const PORT = 3000;
+const port = process.env.PORT || 3000;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '../client')));
 
-app.post('/upload', upload.single('file'), (req, res) => {
-    if (req.file) {
-        res.status(200).send('File uploaded successfully.');
-    } else {
-        res.status(400).send('File upload failed.');
-    }
-});
+app.post('/api/query', async (req, res) => {
+    const { icsContent, query } = req.body;
 
-app.post('/query', async (req, res) => {
-    const { query } = req.body;
+    const prompt = `Given the following ICS content:\n\n${icsContent}\n\nAnswer the following query: ${query}`;
+
     try {
-        const response = await handleQuery(query);
-        res.status(200).json(response);
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                model: 'gpt-3.5-turbo',
+                messages: [{ role: 'user', content: prompt }],
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error('OpenAI API error');
+        }
+
+        const data = await response.json();
+        res.json({ response: data.choices[0].message.content });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error('Error:', error);
+        res.status(500).json({ error: 'An error occurred' });
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
 });
