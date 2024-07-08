@@ -169,7 +169,7 @@ async function  putSessionData( pData, nVer ) {
 async function  getSessionData( nVer ) {
       var   aSessionData_File =  getDataFilename( nVer )
 //     if ((await checkFile( aSessionData_File )).exists) {
-        var aData               =  await FRT.readFile( aSessionData_File )
+        var aData               =  await FRT.readFileSync( aSessionData_File )
        if (!aData) {
             pData             =  AIC_Data.DataTemplate
         } else {

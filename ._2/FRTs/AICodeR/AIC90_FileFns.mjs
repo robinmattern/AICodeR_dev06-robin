@@ -71,15 +71,17 @@
        }    }  // eof getDate()   
 // --------------------------------------------------------------
 
-async function  makDir(    aDirName  ) { aDirName = `${aDirName || ''}`
+async function  makDirASync(    aDirName  ) { aDirName = `${aDirName || ''}`
    var  aDirPath        =  aDirName.match( /^\./ ) ? path.join( __dirname, aDirName ) : aDirName;  // .(40527.01.2 CoPilot Only paths starting with '.' are relative) 
 //      aDirPath        =  path.resolve( aDirPath.replace( /^\/[A-Z]/, '' ) )                         // .(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
         aDirPath        =  cleanPath( aDirPath )                         // .(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
-// var  pStat           =  await checkFile(  aDirPath )
+// var  pStat           =  await checkFileASync( aDirPath )
  try {
 // var  pOK             =  await fs.access(  aDirPath, fs.constants.F_OK )
 // var  pOK             =  await fs.access(  aDirPath )
-   var  bOK             =  fs.exists( aDirPath )
+// var  bOK             =  await fs.exists(  aDirPath )
+   var  pStats          =  await checkFileASync( aDirPath ); console.log( `  pStats.exists: ${pStats.exists}, ${aDirPath}` )
+   var  bOK             =  pStats.exists // && pStats.isNotDir
     if (bOK == false) {  
                            await fs.mkdir(   aDirPath, { recursive: true } );
 //                         fsync.mkdirSync(  aDirPath, { recursive: true } );
@@ -97,11 +99,13 @@ function  makDirSync(      aDirName  ) { aDirName = `${aDirName || ''}`
    var  aDirPath        =  aDirName.match( /^\./ ) ? path.join( __dirname, aDirName ) : aDirName;  // .(40527.01.2 CoPilot Only paths starting with '.' are relative) 
 //      aDirPath        =  path.resolve( aDirPath.replace( /^\/[A-Z]/, '' ) )                         // .(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
         aDirPath        =  cleanPath( aDirPath )                         // .(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
-// var  pStat           =  await checkFile(  aDirPath )
+// var  pStat           =  await checkFileASync(  aDirPath )
  try {
 // var  pOK             =  await fs.access(  aDirPath, fs.constants.F_OK )
 // var  pOK             =  await fs.access(  aDirPath )
-   var  bOK             =  fsync.existsSync( aDirPath )
+// var  bOK             =  fsync.existsSync( aDirPath )
+   var  pStats          =  checkFileASync( aDirPath )
+   var  bOK             =  pStats.exists // && pStats.isDir == false
     if (bOK == false) {  
                            fsync.mkdirSync(      aDirPath, { recursive: true } );
 //                         fsync.mkdirSync(  aDirPath, { recursive: true } );
@@ -115,32 +119,34 @@ return  aDirPath;   //  return  aDirPath  to  callers
     }   // eof makDir    
 // --------------------------------------------------------------
 
-async function  checkFile2(  aFilePath  ) {
+async function  checkFileASync(  aFilePath  ) {
         aFilePath        =  aFilePath.match( /^\./ ) ? path.join( __dirname, aFilePath ) : aFilePath;   // .(40527.01.2 CoPilot Only paths starting with '.' are relative) 
         aFilePath        =  path.resolve( aFilePath.replace( /^\/[A-Z]/, '' ) )                         // .(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
    var  pStats           ={ path: aFilePath.split( /[\\\/]/ ).slice(-1) 
                          ,  name: aFilePath.split( /[\\\/]/ ).slice(-1).join() 
                          ,  size: 0
+                         ,  exists: false 
                          ,  updatedOn: '' 
                          ,  isNotDir: true 
                          ,  isDir: false }
  try {
    var  aStats           =  await fs.stat( aFilePath );
         pStats.size      =  aStats.size
-        pStats.updatedOn =  aStats.mtime.toISOString()
         pStats.exists    =  aStats.updatedOn > ""
+        pStats.updatedOn =  aStats.mtime.toISOString()
         pStats.isNotDir  =  aStats.isDirectory() == false 
         pStats.isDir     =  aStats.isDirectory() == true
     } catch(pError) { }
 return  pStats
-    }   // eof checkFile                           
+    }   // eof checkFileAsync                           
 // --------------------------------------------------------------
 
-function  checkFile( aFilePath  ) {
+function  checkFileSync( aFilePath  ) {
          aFilePath       =  cleanPath( aFilePath );                                         // .(40618.01.4) 
     var  pStats          ={ path: aFilePath.split( /[\\\/]/ ).slice(-1) 
                          ,  name: aFilePath.split( /[\\\/]/ ).slice(-1).join() 
                          ,  size: 0
+                         ,  exists: false 
                          ,  updatedOn: '' 
                          ,  isNotDir: true 
                          ,  isDir: false }
@@ -154,7 +160,7 @@ function  checkFile( aFilePath  ) {
         pStats.isDir     =  aStats.isDirectory() == true
     } catch(pError) { }
 return  pStats
-    }   // eof checkFile                           
+    }   // eof checkFileSync                           
 // --------------------------------------------------------------
 
 //   lastFile( 'E:\Repos\Robin\AIObjs_\._\DOCs\Code-Sessions', /Continue-sessions_u40624\.[0-9]{4}\.json/ )
@@ -186,7 +192,7 @@ function  listFiles( aPath ) {
       var mFiles2 = [ ];
         for (var aFile of mFiles1) {
              var aFilePath = path.join( aPath, aFile); // Join path with filename
-//           var pStats    = checkFile( aFilePath);
+//           var pStats    = checkFileSync( aFilePath);
              var pStats    = fsync.statSync( aFilePath);
           mFiles2.push(
               [  pStats.size.toLocaleString('en-US').padStart(10) // File size in bytes
@@ -210,7 +216,7 @@ function  listFiles( aPath ) {
         }    // eof cleanPath
 // --------------------------------------------------------------
 
- async function  writeFile( aFilePath, aData, pOptions = { encoding: 'utf8' } ) {
+ async function  writeFileASync( aFilePath, aData, pOptions = { encoding: 'utf8' } ) {
 //      pOptions         =  pOptions ? pOptions : { encoding: 'utf8' } 
         aFilePath        =  cleanPath( aFilePath );                                         // .(40618.01.3) 
 try {
@@ -227,13 +233,31 @@ try {
 return  aFilePath         
     }   // eof writeFile
 // --------------------------------------------------------------
-     
-async function  readFile2(   aFilePath, pOptions ) {
+
+async function  writeFileSync( aFilePath, aData, pOptions = { encoding: 'utf8' } ) {
+    //      pOptions         =  pOptions ? pOptions : { encoding: 'utf8' } 
+            aFilePath        =  cleanPath( aFilePath );                                         // .(40618.01.3) 
+    try {
+        if (typeof( aData ) == 'object') { aData = JSON.stringify( aData, null, 2 ); }
+    //                          await fsync.writeFile( aFilePath, aData, pOptions);
+                                       fsync.writeFileSync( aFilePath, aData, pOptions);
+    //      console.log(`File '${aFilePath}' written successfully!`);
+    //turn  Promise.resolve();
+        } catch(pError) {
+            console.error(   `* Error writing file: ${pError}` );
+            aFilePath       = '' 
+    //turn  Promise.reject(error);
+            }
+    return  aFilePath         
+        }   // eof writeFile
+    // --------------------------------------------------------------
+    
+async function  readFileASync(   aFilePath, pOptions ) {
         pOptions         =  pOptions  ? pOptions : { encoding: 'utf8' } 
         aFilePath        =  cleanPath(  aFilePath );                                         // .(40618.01.5) 
   try { aData            = ''
-// if ((await checkFile(    aFilePath ) ).exists) {  
-   var  bOK              =  checkFile2( aFilePath ).exists && checkFileSync( aFilePath ).isNotDir
+// if ((await checkFileAsync(    aFilePath ) ).exists) {  
+   var  bOK              =  await checkFileASync( aFilePath ).exists && checkFileASync( aFilePath ).isNotDir
     if (bOK == true) {
    var  aData            =  await fs.readFile( aFilePath, pOptions ); 
 // var  aData = Promise.resolve( ); // Resolve on success
@@ -251,12 +275,12 @@ return  aData
     }   // eof readFile
 // --------------------------------------------------------------
     
-function readFile(   aFilePath, pOptions ) {
+function readFileSync(   aFilePath, pOptions ) {
         pOptions         =  pOptions ? pOptions : { encoding: 'utf8' } 
         aFilePath        =  cleanPath( aFilePath );                                         // .(40618.01.6) 
   try { aData            = ''
 // var  bOK              =  fsync.existsSync( aFilePath )
-   var  bOK              =  checkFile( aFilePath ).exists && checkFile( aFilePath ).isNotDir
+   var  bOK              =  checkFileSync( aFilePath ).exists && checkFileSync( aFilePath ).isNotDir
     if (bOK == true) {
    var  aData            =  fsync.readFileSync( aFilePath, pOptions ); 
     } else {
@@ -323,7 +347,11 @@ return  aData
 // var  pFileFns = { setPaths, readFile, readFile2, writeFile, getDate }
         setPaths( ) 
         
- export default { setPaths,  isCalled, readFile, readFile2, writeFile, checkFile, makDir, makDirSync
-                , listFiles, lastFile, getAPI: fetchFromOpenAI
-                , getDate,   join: path.join, path: myPath, _TS }
+ export default { setPaths,  isCalled, listFiles, lastFile, getAPI: fetchFromOpenAI
+                , getDate,  join: path.join, path: myPath, _TS 
+                , checkFileSync, checkFileASync, checkFile: checkFileASync 
+                , writeFileSync, writeFileASync, writeFile: writeFileASync
+                , readFileSync,  readFileASync,  readFile:  readFileASync
+                , makDirSync,    makDirASync,    makDir:    makDirASync 
+                  } 
 

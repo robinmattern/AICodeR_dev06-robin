@@ -1,42 +1,11 @@
-var  Models1         = 
-[ 'gp4oopw GPT-4o_OpenAI-web'          // ##    markdown, text, json (playground)
-, 'gp4oopu GPT-4o_OpenAI-curl'         // ##    json text
-, 'gp4oopm GPT-4o_OpenAI-node'         //       json object
-, 'gp4oopf GPT-4o_OpenAI-fetch'        //       json object
-, 'gp4oopc GPT-4o_OpenAI-cont'         //       markdown /share
-, 'qw7bolu Qwen2-7b_Ollama-curl'
-, 'qw7bolu Qwen2-7b_Ollama-node'
-, 'qw7bolu Qwen2-7b_Ollama-cont'       // ##
-, 'cg2bolu CodeGemma-2b_Ollama-curl'
-, 'cg2boln CodeGemma-7b_Ollama-node'
-, 'cg2bolc CodeGemma-7b_Ollama-cont'
-, 'c2q5lmn Claude2-Q5_LMStudio-node'
-, 'c2q3lmn Claude2-Q3_LMStudio-node'
-, 'st20lmn StarCoder2_LMStudio-node'
-, 'cl00lmn CodeLlama_LMStudio-node'
-, 'gp4ovcp CodeParrot_VSCode-copy'
-, 'ge15gvw Gemini1.5_Vertex-web'
-   ] 
 
-   var  Models2 = 
-   [ [ 'gp4oopw', 'GPT-4o_OpenAI-web'         , ' 1'] // ##    markdown, text, json (playground)
-   , [ 'gp4oopu', 'GPT-4o_OpenAI-curl'        , ' 2'] // ##    json text
-   , [ 'gp4oopm', 'GPT-4o_OpenAI-node'        , ' 3'] //       json object
-   , [ 'gp4oopf', 'GPT-4o_OpenAI-fetch'       , ' 4'] //       json object
-   , [ 'gp4oopc', 'GPT-4o_OpenAI-cont'        , ' 5'] //       markdown /share
-   , [ 'qw7bolu', 'Qwen2-7b_Ollama-curl'      , ' 6']
-   , [ 'qw7boln', 'Qwen2-7b_Ollama-node'      , ' 7']
-   , [ 'qw7bolc', 'Qwen2-7b_Ollama-cont'      , ' 8'] // ##
-   , [ 'cg2bolu', 'CodeGemma-2b_Ollama-curl'  , ' 9']
-   , [ 'cg2boln', 'CodeGemma-7b_Ollama-node'  , '10' ]
-   , [ 'cg2bolc', 'CodeGemma-7b_Ollama-cont'  , '11' ]
-   , [ 'c2q5lmn', 'Claude2-Q5_LMStudio-node'  , '12' ]
-   , [ 'c2q3lmn', 'Claude2-Q3_LMStudio-node'  , '13' ]
-   , [ 'st20lmn', 'StarCoder2_LMStudio-node'  , '14' ]
-   , [ 'cl00lmn', 'CodeLlama_LMStudio-node'   , '15' ]
-   , [ 'gp4ovcp', 'CodeParrot_VSCode-copy'    , '16' ]
-   , [ 'ge15gvw', 'Gemini1.5_Vertex-web'      , '17' ]
-      ] 
+
+/*
+       shell AIC05  0 0 0 bRun: false,  bIsNotCalled :false, CALL_IT: 1
+       shell AIC98  1 1 1 bRun: true,   bIsNotCalled :true,  CALL_IT: 0
+       debug AIC05  0 0 0 bRun: false,  bIsNotCalled :false, CALL_IT: undefined
+       debug AIC98  1 1 1 bRun: true,   bIsNotCalled :true,  CALL_IT: undefined
+
 
       var  Models2 = 
       [ [ ' 1.', 'gp4oopw', 'GPT-4o_OpenAI-web       ' ] // ##    markdown, text, json (playground)
@@ -154,5 +123,4 @@ var  Models1         =
             */ 
 
      export default { getModel, selectRow }
-    
       

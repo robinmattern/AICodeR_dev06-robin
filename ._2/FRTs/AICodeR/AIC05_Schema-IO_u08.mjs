@@ -1,12 +1,13 @@
    import   FRT          from './AIC90_FileFns.mjs'
-   import   AIC          from './AIC06_Code_u05.mjs'
-   import   AIM          from './AIC98_Models.mjs'
+   import   AIC          from './AIC06_Code_u06.mjs'                                                // .(40703.03.1 RAM New Version)                                            
+   import   AIM          from './AIC98_Models_u01.mjs' 
 
      const  saveScripts     =  AIC.saveScripts
      const  listScripts     =  AIC.listScripts
      const  selectRow       =  AIM.selectRow
      const  getModel        =  AIM.getModel
        var  Tables
+//     var  aModel          =  getModel( 'gp4oopw' )[2]; console.log( `aModel: ${aModel}`); process.exit() 
 
 //   const  getSession_Row  =      getSessions
 //   const  getMessage_Row  =      getMessages
@@ -218,11 +219,13 @@
 
 //     var  aModel          = 'OpenAI-GPT-4o-maxi'
        var  aModel          = 'GPT-4o_OpenAI-maxi'
-//     var  aModel          = 'Claude3-So_Anthropic-maxi'
+       var  aModel          = 'Claude3-So_Anthropic-maxi'
        var  aApp            = 'c35_calendar-app'
        var  aMod            =  getModel( 3, aModel )[1]
 
-//     var  aSteps = bRun ? `,5,` : aSteps, nSession = 16
+//     ---  --------------  =  -----------------------------------------------
+
+       var  aSteps = bRun ? `,5,` : aSteps, nSession = 16
         if (aSteps.match(   /,5,/  )) { // Show Scripts  from FRTables JSON file                    //  Step 5 listScripts
 
        var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : '' // nSession           // .(40702.04.1 RAM Find 'em all)
@@ -240,7 +243,7 @@
             }
 //     ---  --------------  =  -----------------------------------------------
 
-       var  aSteps = bRun ? `,6,` : aSteps, nSession = 16
+//     var  aSteps = bRun ? `,6,` : aSteps, nSession = 16
         if (aSteps.match(   /,6,/  )) { // Save Scripts  from FRTables JSON file                    //  Step 6 saveScripts
 
        var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : '' // nSession           // .(40702.04.2 RAM Find 'em all)
@@ -284,7 +287,7 @@
         if (aSteps.match(   /,8,/  )) { // Show Sessions from FRTables JSON .db file
      /*
        var  aSessions_File  =  FRT.join( _Continue_Dir, `sessions.json` )
-       var  mSessions       =  JSON.parse( await FRT.readFile( aSessions_File ) )
+       var  mSessions       =  JSON.parse( await FRT.readFileSync( aSessions_File ) )
        var  aSessions       =  mSessions.map( getSession_fromContinue ).join( "\n" )   // <===  Step 7
             console.log(       aSessions )
      */
@@ -322,7 +325,7 @@
 
      const  fmtSession      =  pFmters[ `fmtSession_${aFmter}` ]     //  'fmtSession_forContinue', "fmtSession_forContinue_SessionsOnly"
 //     var  aSessions       =  await fmtSession( mSessions )         //   ???
-       var  mSessions       =  JSON.parse( await FRT.readFile( aSessions_File_toGet ) )
+       var  mSessions       =  JSON.parse( await FRT.readFileSync( aSessions_File_toGet ) )
 //          mSessions       =  mSessions.sort( (a,b) => a.CreatedOn > b.CreatedOn ? 1 : -1 )
             mSessions       =  mSessions.sort( (a,b) => a.dateCreated > b.dateCreated ? 1 : -1 )
 //     var  aSessions       = (await mSessions.forEach( fmtSession )).join( "\n" )
@@ -338,7 +341,7 @@
 
 //   const  getSessions     =  pFmters[ `fmtSessions_${aFmter}` ]
      const  getSessions     =  pFmters[ `fmtSessions_asTable1` ]
-       var  mSessions       =  JSON.parse( await FRT.readFile( aSessions_File_toGet ) )
+       var  mSessions       =  JSON.parse( await FRT.readFileSync( aSessions_File_toGet ) )
             mSessions       =  mSessions.sort( (a,b) => a.CreatedOn > b.CreatedOn ? 1 : -1 )
 //     var  pTables2        =  mSessions.map( fmtSession )
        var  pTables         =  getSessions( mSessions )    // fmtSessions_asTable1
@@ -353,9 +356,9 @@
 
 //   const  getSessions     =  pFmters[ `fmtSessions_${aFmter}` ]
      const  getSessions     =  pFmters[ `fmtSessions_asTable1` ]
-       var  mSessions2      =  JSON.parse( await FRT.readFile( aSessions_File_toGet ) )           // New and/or Old Continue Sessions JSON objects
+       var  mSessions2      =  JSON.parse( await FRT.readFileSync( aSessions_File_toGet ) )           // New and/or Old Continue Sessions JSON objects
 //          mSessions2      =  mSessions2.sort( (a,b) => a.CreatedOn > b.CreatedOn ? 1 : -1 )
-       var  pTables1        =  JSON.parse( await FRT.readFile( aFRTables_File_toGet ) )           // Old existing Sessions, Messages and  Contents in FRTables
+       var  pTables1        =  JSON.parse( await FRT.readFileSync( aFRTables_File_toGet ) )           // Old existing Sessions, Messages and  Contents in FRTables
                                getFRTables( aFRTables_File_toGet, aDayTS )                        // Old existing Sessions, Messages and  Contents in FRTables: global Tables
 
 //     var  pTables2        =  mSessions.map( fmtSession )
@@ -398,7 +401,7 @@
      async  function  savSessions( aFmter, aSessions_File_toGet, aSessions_File_toPut) {
 
      const  fmtSession      =  pFmters[ `fmtSession_${aFmter}` ]
-       var  mSessions       =  JSON.parse( await FRT.readFile( aSessions_File_toGet ) )
+       var  mSessions       =  JSON.parse( await FRT.readFileSync( aSessions_File_toGet ) )
             mSessions       =  mSessions.sort( (a,b) => a.CreatedOn > b.CreatedOn ? 1 : -1 )
        var  aSessions       =  ''
   for (var  i = 0; i < mSessions.length; i++) {
@@ -427,7 +430,7 @@
 //     var  aToFile         =  aContinue_JSONfile_toPut
        var  aToFile         =  FRT.join( aSessions_Dir, `Continue-sessions_u${aTS}.json` )
 
-       var  mSessions       =  JSON.parse(       FRT.readFile(  aFromFile ) )
+       var  mSessions       =  JSON.parse(       FRT.readFileSync(  aFromFile ) )
 /*     var  mRecs           =  [ ]
   for (var  i = 0; i < mSessions.length; i++ ) {
        var  pSession        =                                                                     await getSession( aContinue_Dir, mSessions[i], i )
@@ -475,9 +478,9 @@
 //   const  getMessage      =  pFmters[ "getMessage_forFRTables2_fromContinue" ]
      const  getMessage      =  pFmters[ "getMessage_forContinue_fromContinue"  ]
        var  aSession_File   = `${aContinue_Dir}/${pSessionId.sessionId}.json`
-//     var  pSession        =  JSON.parse( await FRT.readFile2( aSession_File ) )
-       var  pSession        =  JSON.parse( FRT.readFile( aSession_File ) )
-//     var  pSession        =  JSON.parse(       FRT.readFile(  aSession_File ) )
+//     var  pSession        =  JSON.parse( await FRT.readFileASync( aSession_File ) )
+       var  pSession        =  JSON.parse( FRT.readFileSync( aSession_File ) )
+//     var  pSession        =  JSON.parse(       FRT.readFileSync(  aSession_File ) )
        var  pRec            =  { }
        pRec.No              =  i + 1
        pRec.Title           =  pSession.title
@@ -527,8 +530,8 @@
 
        var  aSessionFile    = `${_Continue_Dir}/${pSessionId.sessionId}.json`
 //     var  pSession        =  JSON.parse( await readFile2(    aSessionFile ) )
-//     var  pSession        =  JSON.parse( await FRT.readFile( aSessionFile ) )
-       var  pSession        =  JSON.parse( FRT.readFile( aSessionFile ) )
+//     var  pSession        =  JSON.parse( await FRT.readFileSync( aSessionFile ) )
+       var  pSession        =  JSON.parse( FRT.readFileSync( aSessionFile ) )
        var  pStats          =  FRT.checkFile( aSessionFile )
        var  aNo             = `${ i + 1 }.`.padStart( pConstants.No_Wdt )
        var  aTitle          = `${ pSession.title }`
@@ -545,9 +548,9 @@
 
        var  fmtMessage      =  pFmters[ 'fmtMessage_forContinue' ]
        var  aSessionFile    = `${_Continue_Dir}/${pSessionId.sessionId}.json`
-//     var  pSession        =  JSON.parse( await readFile2(    aSessionFile ) )
-//     var  pSession        =  JSON.parse( await FRT.readFile( aSessionFile ) )
-       var  pSession        =  JSON.parse(       FRT.readFile( aSessionFile ) )
+//     var  pSession        =  JSON.parse( await readFileASync(    aSessionFile ) )
+//     var  pSession        =  JSON.parse( await FRT.readFileSync( aSessionFile ) )
+       var  pSession        =  JSON.parse(       FRT.readFileSync( aSessionFile ) )
        var  aNo             = `${ i + 1 }`.padStart(3)
        var  aTitle          = `${ pSessionId.title}`
        var  aDateCreated    = `${ FRT.getDate( pSessionId.dateCreated, -1 )}`
@@ -613,7 +616,7 @@
      const  getSession      =  pFmters[ "getSession_forFRTables2_fromContinue" ]
        var  aFromFile       =  aContinue_Dir + '/sessions.json'
        var  aToFile         =  aAICodeR_JSONfile_toPut
-       var  mSessions       =  JSON.parse(       FRT.readFile(  aFromFile ) )
+       var  mSessions       =  JSON.parse(       FRT.readFileSync(  aFromFile ) )
 
 /*     var  mRecs           =  [ ]
   for (var  i = 0; i < mSessions.length; i++ ) {
@@ -640,7 +643,7 @@
      async  function  fmtSessions_forFRTables2_fromContinue( aSessions_File_toGet, aSessions_File_toPut ) {                     // Step   none
 
      const  fmtSession      =  pFmters[ `fmtSession_forFRTables2` ]  // fmtSession_forAICodeR
-       var  mSessions       =  JSON.parse( await FRT.readFile( aSessions_File_toGet ) )
+       var  mSessions       =  JSON.parse( await FRT.readFileSync( aSessions_File_toGet ) )
        var  aSessions       =  ''
   for (var  i = 0; i < mSessions.length; i++) {
             aSessions      +=  await fmtSession( mSessions[i], i ) + "\n"
@@ -663,7 +666,7 @@
 //     var  aMarkdown_Save  =  FRT.join( __basedir,  aMarkdown_File )
 //     var  aMarkdown_File_toPut = aMarkdown_File_toPut.replace( __basedir )
 
-       var  pTables         =  JSON.parse( FRT.readFile( aFRTables_File_toGet ) )
+       var  pTables         =  JSON.parse( FRT.readFileSync( aFRTables_File_toGet ) )
 
        var [nSession, nMsg] =  nRecs, nMsg = nMsg ? nMsg : 1    // search for message 1 if not given
        var  aMsg            =  nRecs[1] ? `.${nRecs[1]}` : ``      // or '.0'
@@ -890,7 +893,7 @@
 
      async  function savSession_forContinue( __sessionDir ) {
 
-       var  mSessions       =  JSON.parse( await FRT.readFile( __sessionDir + '/sessions.json' ) )
+       var  mSessions       =  JSON.parse( await FRT.readFileSync( __sessionDir + '/sessions.json' ) )
     return  mSessions
 
         }   // eof savSession_forContinue
@@ -898,7 +901,7 @@
 
      async  function getSessions_forContinue( __sessionDir ) {
 
-       var  mSessions       =  JSON.parse( await FRT.readFile( __sessionDir + '/sessions.json' ) )
+       var  mSessions       =  JSON.parse( await FRT.readFileSync( __sessionDir + '/sessions.json' ) )
     return  mSessions
 
         }   // eof getSessions_forContinue
@@ -908,7 +911,7 @@
      async  function fmtSessions_forContinue(  __sessionDir, aSessionsFile ) {
 
        var  fmtSession      =  pFmters[ 'fmtSession _forContiue' ]
-       var  mSessions       =  JSON.parse( await FRT.readFile( __sessionDir + '/sessions.json' ) )
+       var  mSessions       =  JSON.parse( await FRT.readFileSync( __sessionDir + '/sessions.json' ) )
 //     var  aSessions       =  mSessions.map( await fmtSession ).join( "\n" )   // no workie
        var  aSessions       =  ''
        for (var i = 0; i < mSessions.length; i++ ) {
@@ -926,11 +929,11 @@
 
        var  i               = +`${nVer - 1}`.substring( 0, 2 )
 //     var  aTS2            = (new Date).toISOString().replace( /[-:.]/g, '').substr(0,15)
-       var  mSessions       =  JSON.parse( await FRT.readFile( __sessionDir + '/sessions.json') )
+       var  mSessions       =  JSON.parse( await FRT.readFileSync( __sessionDir + '/sessions.json') )
        var  aDayCreated     =  FRT.getDate( mSessions[i].dateCreated_session ).substr(3,11)
 //     var  aMarkdownFile   = `${__sessionDir}/../${aAppName}_${aVer}\`${aDayCreated}.session.md`
        var  aSessionFile    = `${__sessionDir}/${mSessions[i].sessionId}.json`
-       var  pSession        =  JSON.parse( await FRT.readFile( aSessionFile ))
+       var  pSession        =  JSON.parse( await FRT.readFileSync( aSessionFile ))
             pSession        = { ...pSession, dateCreated : FRT.getDate( mSessions[i].dateCreated ) }
     return  pSession
 
@@ -948,9 +951,10 @@
 //     var  aMarkdown_File  =  `${aApp.slice(0,3)}_markdown_{ver}`
 //     var  aMarkdown_File  =  `${aApp.slice(0,3)}_{ver}_session`
 
-//     var  aVer2           =  getLastVer( 'FRTables-markdown', 'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
-//     var  aVer2           =  getLastVer( aMarkdown_File,      'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
-       var  aVer2           =  getLastVer( aFile_Pattern,       aExt, aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
+//     var  aVer2           =  getLastVer(                'FRTables-markdown', 'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
+//     var  aVer2           =  getLastVer(                 aMarkdown_File,     'md', aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
+//     var  aVer2           =  getLastVer(                 aFile_Pattern,      aExt, aDayTS ); // console.log( `aVer2: ${aVer2}` ); process.exit()
+       var  aVer2           =  getLastVer2( aSessions_Dir, aFile_Pattern,      aExt, aDayTS );      // .(40703.02.1 RAM Pass folder to look in)
 //      if (aVer2 == "") {     process.exit() }
 
 //     var  aMarkdown_Saved =  FRT.join( aSessions_Dir, `FRTables-markdown_${aVer2}.md` )
@@ -960,10 +964,12 @@
             }                                                                                       // .(40702.05.1 End)
 // --- ---  --------------  =  -------------------------------------------------------------
 
-            function  getLastVer( aLastFile_toFind, aExt, aToday ) {
+       function  getLastVer2( aSessions_Dir, aLastFile_toFind, aExt, aToday ) {                     // .(40703.02.2)
+         return  getLastVer(                 aLastFile_toFind, aExt, aToday )                       // .(40703.02.3)
+       function  getLastVer(                 aLastFile_toFind, aExt, aToday ) {
        var  aToday          =  aToday ? aToday : '' // FRT.getDate( ).substring( 0, 4 )  // YMMD
 //     var  aLastFile_regEx = `${aLastFile_toFind}_u${aToday}\\.[0-9]*\\.${aExt}`
-       var  aLastFile_regEx = `${aLastFile_toFind}_u${aToday}[0-9.]*\\.${aExt}`
+       var  aLastFile_regEx = `${aLastFile_toFind}_u${aToday}[0-9.]+\\.${aExt}`
         if (aLastFile_toFind.match( /_{ver}/)) {
             aLastFile_regEx =  aLastFile_toFind.replace( /_{ver}/, `_u${aToday}[0-9.]*` ) + `.${aExt}`
             }
@@ -972,11 +978,12 @@
 //          console.log( `aLastFile: ${aLastFile}` ); process.exit()
        var  aVer            =  aLastFile.match( /u[0-9.]+/ ); aVer = aVer ? aVer[0].replace( /\.$/, '' ) : ''
         if (aVer == "" ) {
-            console.log( `\n* Can't find a ${aLastFile_toFind} file since date: ${aToday}*` )
+            console.log( `\n* Can't find a ${aLastFile_regEx} file in since date: ${aToday}*` )
+            console.log(   `    in folder: ${aSessions_Dir}` ) 
             process.exit()
             }
     return  aVer
-            }
+            }  }                                                                                    // .(40703.02.4)
 // --- ---  --------------  =  -------------------------------------------------------------
 
             function  getApp( aApp ) {
@@ -1006,7 +1013,7 @@
             }
 //     var  aFRTables_File_toGet = aFRTables_File
 
-       var  pTables         =  JSON.parse( FRT.readFile( aFRTables_File) )
+       var  pTables         =  JSON.parse( FRT.readFileSync( aFRTables_File) )
             Tables =
              {  Sessions    :  pTables.Sessions.map( a => a.split( ',' ))
              ,  Messages    :  pTables.Messages.map( a => a.split( ',' ))

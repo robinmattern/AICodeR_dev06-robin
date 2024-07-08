@@ -2,40 +2,31 @@
 #   echo "1. aOufile: ${aOufile}, aMDfile: ${aMDfile}";
 
 #   aInfile="OpenAI-image6_u02.1-messages1.json"
-    aInfile="${aRequest__File}"
-
 #   aOufile="OpenAI-image6_u02.1-response.log"
-#   aMDfile="${aOufile}"
-    aMDfile="${aMarkdown_File}"
-
+    aMDfile="${aOufile}"
 #   aOufile="${aOufile:0:(-3)}.log"
-#   aOufile="${aOufile/.md/.log}"
-    aOufile="${aResponse_File}"
-
-    aTitle="${AICodeR_Title}"
+    aOufile="${aOufile/.md/.log}"
 #   aTitle="### Result using 31 video frames created with python"
-
 #   aAPI_URL="https://api.openai.com/v1/chat/completions"
 #   aAPI_KEY="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"
 
-#   echo ""
-    echo -e "3. aAPI_URL: ${aAPI_URL}\n   aAPI_KEY: ${aAPI_KEY}";
-    echo -e "4. aInfile: ./docs${aInfile##*docs}\n   aOufile: ./docs${aOufile##*docs}\n   aMDfile: ./docs${aMDfile##*docs}"; # exit
+#   echo "4. aOufile: ${aOufile}, aMDfile: ${aMDfile}"; exit
 
     dStartTime=$(date +%s.%N)
     nMilliseconds1=$(echo "${dStartTime}" | awk -F '.' '{ printf( "%d", ($1 * 1000) + ($2 / 1000000) ) }' )
 
-    echo ""
-    echo "  cd $(pwd)"
+  echo ""
+  echo "  cd $(pwd)"
 
 # -------------------------------------------------
 
-if [ "${aAPI_KEY}" != "" ]; then
+if [ "${API_KEY}" != "" ]; then
 
   echo "  curl ${aAPI_URL}" \
    -H "Content-Type: application/json" \
    -H "Authorization: Bearer ${aAPI_KEY}" \
    -d  @${aInfile}
+  echo ""
 
   aResult="$( curl -s ${aAPI_URL} \
      -H "Content-Type: application/json" \
@@ -47,6 +38,7 @@ if [ "${aAPI_KEY}" != "" ]; then
   echo "  curl ${aAPI_URL}" \
    -H "Content-Type: application/json" \
    -d  @${aInfile}
+  echo ""
 
   aResult="$( curl -s ${aAPI_URL} \
      -H "Content-Type: application/json" \
@@ -62,22 +54,16 @@ if [ $? -ne 0 ]; then
    fi
 # --------------------------------------------------------------------------
 
-   echo -e "\n-----------------------------------------------------------------------------------------------------------------------\n"
-   echo -e "\n-------------------------------------------------------------------\n"  >"${aMDfile}"  # was aOuFile
-   echo -e "## ${aTitle}\n"
-   echo -e "## ${aTitle}\n"   >>"${aMDfile}"
+   echo -e "-------------------------------------------------------------------\n" >"${aOufile}"
+   echo -e "${aTitle}\n"   >>"${aOufile}"
 
-   echo "${aResult}"          >>"${aOufile}"                                                         # out to Response.json file
- # echo "${aResult}"          >>"${aMDfile}"
+   echo "${aResult}"       >>"${aOufile}"
 
    nErr="$( echo "${aResult}" | awk '/"error":/ { print 1 }' )"
-
    if [ "${nErr}" == "1" ]; then
-   echo "${aResult}"                                                      # out to console
-   echo -e "\n* Curl command failed"                                      # out to console
-   echo -e "\n**Curl command failed**"  >>"${aMDfile}"                    # send error notice to markdown file
-#  cat   "${aOufile}";  exit
-   exit
+#  echo "${aResult}";   exit
+   echo -e "\n* Curl command failed"    >>"${aOufile}"
+   cat   "${aOufile}";  exit
    fi
 # --------------------------------------------------------------------------
 
@@ -88,7 +74,6 @@ if [ $? -ne 0 ]; then
 /g' )"
 
    echo -e "${aContent//\"/}"
-
    echo -e "\nStats:\n"
         aModelNm="$( echo "${aResult}" | jq '.model' )"
         aCreated="$( echo "${aResult}" | jq '.created | strftime("%Y-%m-%d %H:%M:%S")' )"
@@ -106,7 +91,7 @@ if [ $? -ne 0 ]; then
 
 # --------------------------------------------------------------------------
 
-#  echo "## ${aTitle}"                                           >${aMDfile}
+   echo "${aTitle}"                                              >${aMDfile}
    echo ""                                                      >>${aMDfile}
    echo "${aContent//\"/}"                                      >>${aMDfile}
    echo ""                                                      >>${aMDfile}

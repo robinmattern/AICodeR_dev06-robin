@@ -1,18 +1,21 @@
 #!/bin/bash
 
 cd ._2/FRTs/AICodeR 
+    export CALL_IT=1;   
+                                      AIC98_Models="AIC98_Models_u01.mjs" 
+                                      AIC05_Schema_IO="AIC05_Schema-IO_u08.mjs" 
+    if [ "$1" ==  "1" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
+    if [ "$1" ==  "2" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
+    if [ "$1" ==  "3" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
+    if [ "$1" ==  "4" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
+    if [ "$1" ==  "5" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
+    if [ "$1" ==  "6" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
+    if [ "$1" ==  "7" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
+    if [ "$1" ==  "8" ]; then node "${AIC05_Schema_IO}" $@; exit; fi 
 
-    export CALL_IT=1
-                                     AIC05_Schema_IO="AIC05_Schema-IO_u08.mjs"  
-    if [ "$1" == "1" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
-    if [ "$1" == "2" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
-    if [ "$1" == "3" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
-    if [ "$1" == "4" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
-    if [ "$1" == "5" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
-    if [ "$1" == "7" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
-    if [ "$1" == "8" ]; then node "${AIC05_Schema_IO}" $@; exit; fi   
-    if [ "$1" == "9" ]; then shift; node "../../../.vscode/task-createFolder.mjs" $@; exit; fi   
-
+    export CALL_IT=0;   
+    if [ "$1" ==  "9" ]; then shift; node "../../../.vscode/task-createAppFolders_u02.mjs" $@; exit; fi   
+    if [ "$1" == "11" ]; then shift; node "${AIC98_Models}" $@; exit; fi   
 
     echo ""
     echo "  AICoder Commands: "
@@ -25,10 +28,12 @@ cd ._2/FRTs/AICodeR
 #   echo "    6  [App] [Model] [Date] [Time]  List Sessions in a Continue JSON File for [App] [Model]"  
     echo "    4   S.M [TS]  [App] [Model]     Save a Message Markdown file from FRTables JSON File for [App] [Model]"
     echo ""
-    echo "    9  [App]                        Create a Folder for [App] (c##_name-of-app or s##_name-of-api)"
+    echo "    9   App   Model                 Create a Folder for [App] (c##_name-of-app or s##_name-of-api)"
     echo "   10  [App] [Model]                Save a Message Markdown File for [App] [Model]"
     echo "    5  [S[.M.TS]] [App] [Model]     Show App scripts for [last] Message Markdown File for [App] [Model]"
     echo "    6  [S[.M.TS]] [App] [Model]     Save App scripts for [last] Message Markdown File for [App] [Model]"
+    echo "   11  [Model]                      List model for [Model] or all Models if 'all' or 'mt'"
+
     echo "" 
     echo "       [TS]        =>               Optional Date.Time per below"
     echo "       [App] [Model]                AppName ([cs]##_name-app) and Model (Owner_Model_Interface)"
