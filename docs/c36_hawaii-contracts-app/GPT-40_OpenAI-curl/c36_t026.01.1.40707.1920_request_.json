@@ -1,6 +1,5 @@
 {
   "model": "gpt-4o",
-  "comment": "1.1 Get Hawaii Purchases"
   "messages": [
     {
       "role": "user",
