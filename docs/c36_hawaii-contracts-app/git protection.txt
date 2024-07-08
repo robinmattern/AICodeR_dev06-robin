@@ -1,0 +1,172 @@
+
+
+
+   4.  gp4oopf  GPT-4o_OpenAI-fetch
+   5.  gp4oopc  GPT-4o_OpenAI-cont
+   6.  qw7bolu  Qwen2-7b_Ollama-curl
+   7.  qw7boln  Qwen2-7b_Ollama-node
+   8.  qw7bolc  Qwen2-7b_Ollama-cont
+   9.  cg2bolu  CodeGemma-2b_Ollama-curl
+  10.  cg2boln  CodeGemma-7b_Ollama-node
+  11.  cg2bolc  CodeGemma-7b_Ollama-cont
+  12.  c2q5lmn  Claude2-Q5_LMStudio-node
+  13.  c2q3lmn  Claude2-Q3_LMStudio-node
+  13.  c3q3lmn  Claude3-Q3_LMStudio-node
+  14.  c35sanm  Claude-35s_Anthropic-maxi
+  15.  c35sanu  Claude-35s_Anthropic-curl
+  16.  c35sann  Claude-35s_Anthropic-node
+  17.  c35sanw  Claude-35s_Anthropic-web
+  18.  st20lmn  StarCoder2_LMStudio-node
+  19.  cllalmn  CodeLlama_LMStudio-node
+  20.  gp4ovcp  CodeParrot_VSCode-copy
+  21.  ge15ggw  Gemini-15_Google-web
+  22.  ge15gvw  Gemini-15_Vertex-web
+
+Robin@rm228d-w11p MINGW64 /e/Repos/Robin/AIObjs_/dev03-robin (main)
+$ git remote -v
+
+Robin@rm228d-w11p MINGW64 /e/Repos/Robin/AIObjs_/dev03-robin (main)
+$ git branch -v
+* main 18a99d9 c40708.03_Add c36_hawaii-contracts-app
+
+Robin@rm228d-w11p MINGW64 /e/Repos/Robin/AIObjs_/dev03-robin (main)
+$ git remote
+
+Robin@rm228d-w11p MINGW64 /e/Repos/Robin/AIObjs_/dev03-robin (main)
+$ git remote add origin https://github.com/robinmattern/AICodeR_dev03-robin.git
+
+Robin@rm228d-w11p MINGW64 /e/Repos/Robin/AIObjs_/dev03-robin (main)
+$ git remote add origin github-ram:robinmattern/AICodeR_dev03-robin.git
+error: remote origin already exists.
+
+Robin@rm228d-w11p MINGW64 /e/Repos/Robin/AIObjs_/dev03-robin (main)
+$ git remote remove origin
+
+Robin@rm228d-w11p MINGW64 /e/Repos/Robin/AIObjs_/dev03-robin (main)
+$ git remote add origin github-ram:robinmattern/AICodeR_dev03-robin.git
+
+Robin@rm228d-w11p MINGW64 /e/Repos/Robin/AIObjs_/dev03-robin (main)
+$ git branch -M main
+
+Robin@rm228d-w11p MINGW64 /e/Repos/Robin/AIObjs_/dev03-robin (main)
+$ git push -u origin main
+Enumerating objects: 427, done.
+Counting objects: 100% (427/427), done.
+Delta compression using up to 24 threads
+Compressing objects: 100% (370/370), done.
+Writing objects: 100% (427/427), 643.73 KiB | 2.20 MiB/s, done.
+Total 427 (delta 124), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (124/124), done.
+remote: error: GH013: Repository rule violations found for refs/heads/main.
+remote:
+remote: - GITHUB PUSH PROTECTION
+remote:   —————————————————————————————————————————
+remote:     Resolve the following violations before pushing again
+remote:
+remote:     - Push cannot contain secrets
+remote:
+remote:
+remote:      (?) Learn how to resolve a blocked push
+remote:      https://docs.github.com/code-security/secret-scanning/pushing-a-branch-blocked-by-push-protection
+remote:
+remote:
+remote:       —— OpenAI API Key ————————————————————————————————————
+remote:        locations:
+remote:          - commit: c5c40ba41cada28164cbaecb8fc0d147ca0a9db3
+remote:            path: ._2/FRTs/AICodeR/AIC04_Curl-Request_u01.sh:11
+remote:          - commit: ec19395b96b9a6ab21d6ad57d4364345d0012719
+remote:            path: ._2/FRTs/AICodeR/AIC04_Curl-Request_u01.sh:19
+remote:
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+remote:        https://github.com/robinmattern/AICodeR_dev03-robin/security/secret-scanning/unblock-secret/2iy2f3RxAsagnxTOWe820VgqMN6
+remote:
+remote:
+remote:       —— OpenAI API Key ————————————————————————————————————
+remote:        locations:
+remote:          - commit: b4db1615bfda04c66c638bc7451a0589f0a03f91
+remote:            path: client3/c37_aicoder-sessions.app/getAPI_openAI-fetch_u3.mjs:50
+remote:          - commit: 555498cc417af816563a6320fa7f9131a146d1aa
+remote:            path: client3/c37_aicoder-sessions.app/getAPI_openAI-fetch_u3.mjs:50
+remote:          - commit: b4db1615bfda04c66c638bc7451a0589f0a03f91
+remote:            path: docs/c35_calendar-app/GPT-40_OpenAI-curl/c35_u020.01.40703.1805_request_.run.sh:3
+remote:          - commit: 18a99d98b221aa58712a48a4dae6cecc15cb7962
+remote:            path: docs/c36_hawaii-contracts-app/GPT-40_OpenAI-curl/c36_t026.00.0.40707.1919_request_curl.sh:15
+remote:          - commit: 18a99d98b221aa58712a48a4dae6cecc15cb7962
+remote:            path: docs/c36_hawaii-contracts-app/GPT-40_OpenAI-curl/c36_t026.00.0.40707.1919_request_curl.sh:169
+remote:
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+remote:        https://github.com/robinmattern/AICodeR_dev03-robin/security/secret-scanning/unblock-secret/2iy2f0OBHIFuA7bhSahugVfS6rK
+remote:
+remote:
+remote:
+To github-ram:robinmattern/AICodeR_dev03-robin.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'github-ram:robinmattern/AICodeR_dev03-robin.git'
+
+git push origin <branch_name> --force-with-lease --explanatory-message "<reason for bypassing>"
+
+git push origin main --force-with-lease --explanatory-message "I want to"
+
+
+
+$ git push origin main --force-with-lease 
+Enumerating objects: 427, done.
+Counting objects: 100% (427/427), done.
+Delta compression using up to 24 threads
+Compressing objects: 100% (370/370), done.
+Writing objects: 100% (427/427), 643.73 KiB | 2.27 MiB/s, done.
+Total 427 (delta 124), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (124/124), done.
+remote: error: GH013: Repository rule violations found for refs/heads/main.
+remote:
+remote: - GITHUB PUSH PROTECTION
+remote:   —————————————————————————————————————————
+remote:     Resolve the following violations before pushing again
+remote:
+remote:     - Push cannot contain secrets
+remote:
+remote:
+remote:      (?) Learn how to resolve a blocked push
+remote:      https://docs.github.com/code-security/secret-scanning/pushing-a-branch-blocked-by-push-protection
+remote:
+remote:
+remote:       —— OpenAI API Key ————————————————————————————————————
+remote:        locations:
+remote:          - commit: c5c40ba41cada28164cbaecb8fc0d147ca0a9db3
+remote:            path: ._2/FRTs/AICodeR/AIC04_Curl-Request_u01.sh:11
+remote:          - commit: ec19395b96b9a6ab21d6ad57d4364345d0012719
+remote:            path: ._2/FRTs/AICodeR/AIC04_Curl-Request_u01.sh:19
+remote:
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+remote:        https://github.com/robinmattern/AICodeR_dev03-robin/security/secret-scanning/unblock-secret/2iy2f3RxAsagnxTOWe820VgqMN6
+remote:
+remote:
+remote:       —— OpenAI API Key ————————————————————————————————————
+remote:        locations:
+remote:          - commit: b4db1615bfda04c66c638bc7451a0589f0a03f91
+remote:            path: client3/c37_aicoder-sessions.app/getAPI_openAI-fetch_u3.mjs:50
+remote:          - commit: 555498cc417af816563a6320fa7f9131a146d1aa
+remote:            path: client3/c37_aicoder-sessions.app/getAPI_openAI-fetch_u3.mjs:50
+remote:          - commit: b4db1615bfda04c66c638bc7451a0589f0a03f91
+remote:            path: docs/c35_calendar-app/GPT-40_OpenAI-curl/c35_u020.01.40703.1805_request_.run.sh:3
+remote:          - commit: 18a99d98b221aa58712a48a4dae6cecc15cb7962
+remote:            path: docs/c36_hawaii-contracts-app/GPT-40_OpenAI-curl/c36_t026.00.0.40707.1919_request_curl.sh:15
+remote:          - commit: 18a99d98b221aa58712a48a4dae6cecc15cb7962
+remote:            path: docs/c36_hawaii-contracts-app/GPT-40_OpenAI-curl/c36_t026.00.0.40707.1919_request_curl.sh:169
+remote:
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+remote:        https://github.com/robinmattern/AICodeR_dev03-robin/security/secret-scanning/unblock-secret/2iy2f0OBHIFuA7bhSahugVfS6rK
+remote:
+remote:
+remote:
+To github-ram:robinmattern/AICodeR_dev03-robin.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'github-ram:robinmattern/AICodeR_dev03-robin.git'
+
+Robin@rm228d-w11p MINGW64 /e/Repos/Robin/AIObjs_/dev03-robin (main)
+$
+
+
+
+
+
