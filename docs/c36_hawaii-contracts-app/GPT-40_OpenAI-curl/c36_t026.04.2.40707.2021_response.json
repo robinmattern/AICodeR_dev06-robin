@@ -1,0 +1,23 @@
+{
+  "id": "chatcmpl-9iWQWRkVqObMPWNKbpptptXlnn2Ym",
+  "object": "chat.completion",
+  "created": 1720398108,
+  "model": "gpt-4o-2024-05-13",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Based on the provided data, here is a summarized total award value for each category:\n\n### Summary of Total Award Values by Category:\n\n1. **Goods and Services:**\n   - Total: $5,586,478.97\n\n2. **Construction:**\n   - Total: $4,619,170.89\n\n3. **Services:**\n   - Total: $3,896,543.20\n\n4. **Professional Services:**\n   - Total: $2,238,445.03\n\n5. **Health & Human Services:**\n   - Total: $0.00 (Note: This category had a recorded award but without an amount specified).\n\n### Breakdown:\n- **Goods and Services:**\n  - $129,595.70\n  - $103,011.94\n  - $112,832.42\n  - $600,000.00\n  - $62,894.00\n  - $70,739.00\n  - $819,280.00\n  - $966,603.20\n  - $362,188.80\n  - $26,963.34\n  - $497,870.85\n  - $14,949.65\n  - $55,955.59\n  - $0.00 (On-Call Security Services entries)\n  - $190,999.90\n  - $250,000.00\n  - $3,000,000.00 (DonorsChoose.org)\n  - $63,592.00\n  - $797,385.60\n\n- **Construction:**\n  - $192,222.00\n  - $385,362.12\n  - $155,305.00\n  - $227,700.00\n  - $142,763.00\n  - $142,109.51\n  - $113,752.26\n  - $86,973.17\n  - $202,854.00\n  - $131,373.33\n  - $1,844,000.00 (Ahuimanu Elementary School ADA Improvements)\n  - $53,000.00\n\n- **Services:**\n  - $819,280.00\n  - $362,188.80\n  - $966,503.20\n\n- **Professional Services:**\n  - $200,000.00\n  - $87,771.00\n  - $164,886.00\n  - $338,751.00\n  - $356,535.00\n  - $116,528.00\n  - $465,618.00\n  - $198,000.00\n  - $199,171.03\n  - $894,186.00 \n\n- **Health & Human Services:**\n  - $0.00 (Community Clinic of Maui, Inc.* entry).\n\nPlease note that the dollar amount for several entries listed were $0.00, which are not included in the total for their respective categories."
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3356,
+    "completion_tokens": 634,
+    "total_tokens": 3990
+  },
+  "system_fingerprint": "fp_4008e3b719"
+}

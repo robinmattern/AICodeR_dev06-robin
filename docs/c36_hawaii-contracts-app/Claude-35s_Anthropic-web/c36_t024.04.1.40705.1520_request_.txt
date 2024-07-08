@@ -1,0 +1,10 @@
+-----------------------------------------------------------------------------------------------------------------------------------------
+<!-- 4. Use pasted cells -->
+
+## User Prompt Message No. 4.1
+
+Here I am pasting the 58 rows and 10 columns with the same column names as I described for the website.
+Again can you summarize the total award values for each category.
+
+[Copied cells from spreadsheet](c36_t024.04.1.40705.1520_request001.txt)
+

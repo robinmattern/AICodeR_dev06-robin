@@ -1,0 +1,23 @@
+{
+  "id": "chatcmpl-9iVjAbvtHNwkIr8uSTngoZSEFPM8k",
+  "object": "chat.completion",
+  "created": 1720395420,
+  "model": "gpt-4o-2024-05-13",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "No problem! It looks like you shared a link to the Hands Awards page on the eHawaii.gov website. How can I assist you with it? Are you looking for specific information from the site or do you need help navigating it? Let me know how I can help!"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 56,
+    "total_tokens": 95
+  },
+  "system_fingerprint": "fp_d576307f90"
+}

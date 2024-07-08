@@ -1,0 +1,12 @@
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+<!-- 1. Summarize Hawaii Contracts -->
+
+## User Prompt Message No. 1.1
+
+In am interested in state of hawaii purchases.  On this website they list all the awards or contracts that are issued by the state.
+Each contract has the name of the awardee, the  date awarded, Original Award amount, Jursidictions and the category.
+Can you summary these awards by by category showing the total awarded amount for each category.I'd be happy to help you summarize
+the Hawaii state contract awards by category. However, I don't have direct access to the website you're referring to or its data.
+To provide an accurate summary, I would need you to share the specific data from the website.
+

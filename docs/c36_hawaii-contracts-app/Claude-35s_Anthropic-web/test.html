@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My React App</title>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>-->
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">  //// Define a simple React component
+
+    function Hello() {
+      return <h1>Hello, World!</h1>;
+      }
+
+    class App extends React.Component {
+      render() { return <h1>Hello world!</h1> }
+      }
+
+    ReactDOM.render( <Hello />, document.getElementById( 'root' ) );  // Render the component using React DOM
+  </script>
+</body>
+</html>
+

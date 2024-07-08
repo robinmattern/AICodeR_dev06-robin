@@ -1,0 +1,20 @@
+{
+  "model": "gpt-4o",
+  "comment": "1.1 Get Hawaii Purchases"
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "In am interested in state of hawaii purchases.  On this website they list all the awards or contracts that are issued by the state. Each contract has the name of the awardee, the  date awarded, Original Award amount, Jursidictions and the category. Can you summary these awards by by category showing the total awarded amount for each category.  "
+        }
+      ]
+    }
+  ],
+  "temperature": 1,
+  "max_tokens": 2048,
+  "top_p": 1,
+  "frequency_penalty": 0,
+  "presence_penalty": 0
+}

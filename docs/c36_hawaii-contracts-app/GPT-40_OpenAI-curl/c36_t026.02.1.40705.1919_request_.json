@@ -1,0 +1,19 @@
+{
+  "model": "gpt-4o",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "2.1 I'm sorry I forgot to include the URL for the website. Here it is. https://hands.ehawaii.gov/hands/awards"
+        }
+      ]
+    }
+  ],
+  "temperature": 1,
+  "max_tokens": 2048,
+  "top_p": 1,
+  "frequency_penalty": 0,
+  "presence_penalty": 0
+}
