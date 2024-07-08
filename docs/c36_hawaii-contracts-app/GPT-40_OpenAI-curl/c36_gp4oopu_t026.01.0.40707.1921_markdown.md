@@ -49,6 +49,7 @@ To provide a summary of the awards by category, I'll outline the steps you can t
 Here is a simplified example assuming you have the data in an Excel spreadsheet:
 
 **Example Data:**
+
 | Awardee       | Date Awarded | Original Award Amount | Jurisdictions | Category      |
 |---------------|--------------|-----------------------|---------------|---------------|
 | Company A     | 01/01/2023   | $100,000              | Juris1        | Construction  |
@@ -63,6 +64,7 @@ Here is a simplified example assuming you have the data in an Excel spreadsheet:
 3. Ensure that the values are set to Sum to get the total amount.
 
 **Example Result:**
+
 | Category      | Total Awarded Amount |
 |---------------|----------------------|
 | Construction  | $250,000             |
@@ -151,12 +153,12 @@ No problem! It looks like you shared a link to the Hands Awards page on the eHaw
 
 Here is a spreadsheet exported from the website.
 
-[spreadsheet](c36_t026.03.2.40707.1940_request_001.xlsx)     
+<!-- [spreadsheet](c36_t026.03.2.40707.1940_request_001.xlsx) No workie -->   
+  <a href="/assets/c36_t026.03.2.40707.1940_request_001.xlsx">spreadsheet</a>  <!-- no workie in live server, must be docsify -->  
 
 -------------------------------------------------------------------
 
 ## Assistant Response Message No. 26.3.2
-
 
 It seems like you're referencing a specific spreadsheet file, possibly with a filename `c36_t024.03.2.40705.1520_request_001.xlsx`. Without access to the actual file, I can't review its contents directly. However, if you describe the information or data contained in the spreadsheet or share specific questions or tasks you'd like to handle, I'd be happy to help you interpret the data, provide insights, or guide you on how to manage it in Excel.
 
@@ -193,7 +195,7 @@ Please let me know how you would like to proceed!
 
 Here I am pasting the 58 rows and 10 columns with the same column names as I described for the website. Again can you summarize the total award values for each category.
 
-[copied cells](c36_t026.04.1.40707.1941_request_001.txt)  
+[copied cells](c36_t026.04.1.40707.1941_request_001.md)  
 
 -------------------------------------------------------------------
 

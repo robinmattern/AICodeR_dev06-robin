@@ -1,12 +1,16 @@
 #!/bin/bash
 
 #  Start Docsify server in the background, redirecting output to log file
+#if [ ! -f node_modules/.bin/docsify ]; then
+         bOK=$(which docsify 2>&1 | awk '/docsify/' ) 
+ if [ "${bOK}" == "" ]; then
 
- if [ ! -f node_modules/.bin/docsify ]; then
     echo -e "\n * Please run: npm install docsify"
     exit
     fi
 
+ if [ -d "docs" ]; then cd docs; fi 
+ 
  if [ ! -f docsify.log ]; then rm -f docsify.log; fi 
    
    docsify serve &> docsify.log &

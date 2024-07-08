@@ -107,6 +107,12 @@ git push origin <branch_name> --force-with-lease --explanatory-message "<reason 
 
 git push origin main --force-with-lease --explanatory-message "I want to"
 
+                                   docs/c36_hawaii-contracts-app/Claude-35s_Anthropic-web/c36_t024.04.1.40705.1520_request_001.txt
+E:/Repos/Robin/AIObjs_/dev03-robin/docs/c36_hawaii-contracts-app/Claude-35s_Anthropic-web/c36_t024.04.1.40705.1520_request001.txt
+
+ http://127.0.0.1:5500/docs/index.html#/c36_hawaii-contracts-app/Claude-35s_Anthropic-web/c36_t024.04.1.40705.1520_request_001.txt
+ http://127.0.0.1:5500/docs/index.html#/c36_hawaii-contracts-app/Claude-35s_Anthropic-web/c36_t024.04.1.40705.1520_request_001.txt
+                http://localhost:3000/#/c36_hawaii-contracts-app/Claude-35s_Anthropic-web/c36_t024.04.1.40705.1520_request_001.txt
 
 
 $ git push origin main --force-with-lease 
