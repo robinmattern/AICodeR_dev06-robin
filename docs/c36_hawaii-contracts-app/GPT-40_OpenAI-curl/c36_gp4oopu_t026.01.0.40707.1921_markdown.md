@@ -154,7 +154,8 @@ No problem! It looks like you shared a link to the Hands Awards page on the eHaw
 Here is a spreadsheet exported from the website.
 
 <!-- [spreadsheet](c36_t026.03.2.40707.1940_request_001.xlsx) No workie -->   
-  <a href="assets/c36_t026.03.2.40707.1940_request_001.xlsx">spreadsheet</a>  <!-- no workie in live server, must be docsify -->  
+  <a href="assets/c36_t026.03.2.40707.1940_request_001.xlsx" download="Spreadsheet.xlsx">Download spreadsheet</a><br>  <!-- no workie in live server, must be docsify --> 
+    
 
 -------------------------------------------------------------------
 
