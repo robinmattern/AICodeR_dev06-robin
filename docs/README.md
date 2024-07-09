@@ -23,4 +23,4 @@ Here is an out-of-the-box (non-AI) architecture that will allow us to manage AI 
 
 Here is a diagram detailing how I got there
 
-[AI Architectures](./assets/ai40709.04_SQL%20AI%20Model%20Architectures.png)
+<a href="./assets/ai40709.04_SQL%20AI%20Model%20Architectures.png"  download="AICodeR_Architectures.png">AI Architectures</a><br>
