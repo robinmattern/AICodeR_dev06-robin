@@ -12,7 +12,9 @@ if [ "${nMsg1/./}" == "${nMsg1}" ] && [ "$2" == "" ]; then nMessage=1; fi; fi
    aUV="t"
 
    export AICodeR_Title="Assistant Response Message No. ${nSession}.${nMessage}"
-   export aAPI_KEY=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
+#  export aAPI_KEY=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
+   export aAPI_KEY=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
+
    export aAPI_URL=https://api.openai.com/v1/chat/completions
 
 #  -----------------------------------------------------------------------------
@@ -113,6 +115,9 @@ if [ "${aFoundFile}" != "" ]; then
 #  aMessages_File="${aApp}_${aVer1}_messages.json"; export aMessages_File="${__dirname}/${aMessages_File}"
    aResponse_File="${aApp}_${aVer2}_response.json"; export aResponse_File="${__dirname}/${aResponse_File}"
    aMarkdown_File="${aApp}_${aVer2}_markdown.md";   export aMarkdown_File="${__dirname}/${aMarkdown_File}"
+
+#  aRequest__File="c36_t026.04.1.40705.1920_request_.json";                export aRequest__File="${__dirname}/${aRequest__File}"
+   aRequest__File="c36_t026.04.1.40707.1940_request_.json";
 
 #  echo "  aMessages_File:       ${aMessages_File}";   exit
    echo "  aResponse_File: ./docs${aResponse_File##*docs}";  # exit
