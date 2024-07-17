@@ -1,0 +1,59 @@
+On this Claude blog page: https://claude3.pro/claude-3-5-sonnet-creating-games-and-websites-with-a-single-prompt/#Example_Creating_a_Text-Based_Adventure_Game
+
+There is an Example: Creating a Text-Based Adventure Game
+
+Let’s explore how Claude 3.5 Sonnet might approach creating a text-based adventure game:
+1.  Initial prompt: "Create a text-based adventure game set in a mysterious abandoned space station."
+2.  Claude 3.5 Sonnet generates a basic game structure, including:
+    •   Setting description
+    •   Main character background
+    •   Key locations within the space station
+    •   Puzzles and challenges
+    •   Multiple story endings
+
+
+But when I enter the prompt: Create a text-based adventure game set in a mysterious abandoned space station.
+Claude responds with:
+
+I apologize for the confusion, but I want to clarify that I can't actually create or run a playable text-based adventure game. However, I can help you design one by providing a narrative structure, descriptions ....
+
+
+I have watched many videos showing off Claude's ability to create animations, games and react charts.
+
+I is always coming back with "I apologize for the confusion, but I want to clarify that I can't actually create or run ..."
+
+-----------------------------------------
+
+https://www.youtube.com/watch?v=nvNloH1kltU&t=313s
+
+
+
+-----------------------------------------
+
+https://youtu.be/wBJZQt23J7M
+
+https://www.youtube.com/watch?v=wBJZQt23J7M&t=210s
+
+
+Create an visualization showing me how cells work in a human bedy in order to heel a wound, rom getting injured to the wounds belng healed
+
+But Claude responded to me with
+
+I apologize for the confusion, but I think there may be a misunderstanding. I am Claude, an AI assistant created by Anthropic, and I do not have the capability to create, generate, edit, or run animations or videos. I also cannot directly execute or run any code, including React code.
+
+
+
+-----------------------------------------
+
+https://claude.ai/chat/9bd40475-eea7-47aa-9f48-7fccc9686f95
+https://claude.site/artifacts/2c372034-fc65-43bf-8b26-ffc95230ac92
+
+"from now, use $$ instead of <> tags"
+
+
+---------------------------------------------------------------------------------
+
+xxx https://www.artifactbin.com/space/2c372034-fc65-43bf-8b26-ffc95230ac92
+
+
+https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js
