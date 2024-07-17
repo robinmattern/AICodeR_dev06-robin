@@ -3,6 +3,7 @@
 //    var   fs          = require('fs').promises 
    import   fsync            from 'fs'
    import   path             from 'path'
+   import   dotenv           from 'dotenv';
 
 //  --------------------------------------------------------------
 
@@ -346,7 +347,9 @@ return  aData
 
 // var  pFileFns = { setPaths, readFile, readFile2, writeFile, getDate }
         setPaths( ) 
-        
+
+        dotenv.config( { path: path.join( __basedir, '.env' ) } );              // .(40607.02.1 RAM Load environment variables from .env file in script's folder)
+
  export default { setPaths,  isCalled, listFiles, lastFile, getAPI: fetchFromOpenAI
                 , getDate,  join: path.join, path: myPath, _TS 
                 , checkFileSync, checkFileASync, checkFile: checkFileASync 
