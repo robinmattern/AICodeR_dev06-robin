@@ -39,7 +39,7 @@ async function getLastCommitMessage( ) {
 
         if (commitMessage) {
             aMessage = commitMessage.trim();
-            console.log(   '  Last cmessage:', aMessage);
+            console.log(   `  Last cmessage: "${aMessage}"` );
         } else {
             console.error( '* No commits found in the repository.');
             }
@@ -52,32 +52,35 @@ async function getLastCommitMessage( ) {
 
 async function doCommitAll( aMsg ) {
   try {
-    
-    const addProcess = spawn('git', ['add', '.']);  // Stage all changed files (assuming you want to commit all)
+       var  aMsg1 = '', aMsg2 = '' 
+     const  addProcess = spawn('git', ['add', '.']);  // Stage all changed files (assuming you want to commit all)
 
-    addProcess.stdout.on(    'data', (data) => { console.log(    data.toString() ); } )   // Optional: Print output from `git add`
-    addProcess.stderr.on(    'data', (data) => { console.error( 'Error staging files:',      data.toString()); } );
+            addProcess.stdout.on(    'data', (data) => { aMsg1 = data.toString( ) } ) // console.log( aMsg1 ) } )   // Optional: Print output from `git add`
+            addProcess.stderr.on(    'data', (data) => {                                 console.error( 'Error staging files:',  data.toString()); } );
 
-    await new Promise((  resolve ) => addProcess.on(   'close', resolve ));
-
-//  ---------------------------------------------------------------------------------------
-
-//  const commitProcess = spawn('git', ['commit', '-m', '"Commit message (replace with your desired message)"']);       //#.(40718.04.6)
-    const commitProcess = spawn('git', ['commit', '-m', `"${aMsg}"` ]);                   // Commit staged changes      // .(40718.04.6 RAM Use aMsg )
-
-    commitProcess.stdout.on( 'data', (data) => { console.log(    data.toString() ); } )   // Optional: Print output from `git commit`
-    commitProcess.stderr.on( 'data', (data) => { console.error( 'Error committing changes:', data.toString()); });
-
-    await new Promise((  resolve ) => commitProcess.on( 'close', resolve ));
+            await new Promise((  resolve ) => addProcess.on(   'close', resolve ));
 
 //  ---------------------------------------------------------------------------------------
 
-    console.log('Commit successful.');
-  } catch (error) {
-    console.error('Error:', error);
+//   const  commitProcess = spawn('git', ['commit', '-m', '"Commit message (replace with your desired message)"']); //#.(40718.04.6)
+     const  commitProcess = spawn('git', ['commit', '-m', `${aMsg}` ]);               // Commit staged changes      // .(40718.04.6 RAM Use aMsg )
+
+            commitProcess.stdout.on( 'data', (data) => { aMsg2 = data.toString( ) } ) // console.log( aMsg2 ) } )   // Optional: Print output from `git commit`
+            commitProcess.stderr.on( 'data', (data) => {                                 console.error( 'Error committing changes:', data.toString()); });
+
+            await new Promise((  resolve ) => commitProcess.on( 'close', resolve ));
+
+//  ---------------------------------------------------------------------------------------
+        if (aMsg2.match(/nothing to commit/)) { 
+            console.log( `  Nothing to commit, working tree clean` )
+        } else {
+            console.log( `  Commit successful.\n  ${aMsg2.split("\n").join( "\n  " ) }` );
+            }
+        } catch (error) {
+            console.error( '* Error:', error);
+            }
+//  ---------------------------------------------------------------------------------------
     }
-//  ---------------------------------------------------------------------------------------
-  }
 // --------------------------------------------------------------------------------------------------
 
 export { getNextCommitNo, getLastCommitMessage, doCommitAll };

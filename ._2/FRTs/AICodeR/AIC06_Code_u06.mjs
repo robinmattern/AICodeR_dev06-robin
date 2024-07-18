@@ -147,63 +147,47 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
             aModel          =  aModel    ? aModel  :   aModel
             aAppName        = (aAppName  ? aAppName : __appname).split( /[\\\/]/ ).splice( -1 )[0]
 
-        var aUV             =  '_t', aTS                                                            // .(40717.05.3 RAM Always _v ??)
-        var aApp            =  aAppName.slice(0,3)                                                  // .(40718.03.1 RAM)
-//      var aUV             =  aMarkdown_File.match( /_([uv])/ ), aTS                               // .(40717.05.2)
-//      var aVersion        =  aMarkdown_File.match( /_([vu][\d.`]+)\.md/   )[1]
-//      var aVersion        =  aMarkdown_File.match( /_([vu][\d.`]+).*\.md/ )[1]                    // .(40702.05.4 RAM Adjust for new pattern)
-        var aVersion        =  aMarkdown_File.match( /_([vut][\d.`]+).*\.md/ )[1]                   // .(40717.05.3).(40702.05.4 RAM Adjust for new pattern)
+       var  aUV             =  '_t', aTS                                                            // .(40717.05.3 RAM Always _v ??)
+       var  aApp            =  aAppName.slice(0,3)                                                  // .(40718.03.1 RAM)
+//     var  aUV             =  aMarkdown_File.match( /_([uv])/ ), aTS                               // .(40717.05.2)
+//     var  aVersion        =  aMarkdown_File.match( /_([vu][\d.`]+)\.md/   )[1]
+//     var  aVersion        =  aMarkdown_File.match( /_([vu][\d.`]+).*\.md/ )[1]                    // .(40702.05.4 RAM Adjust for new pattern)
+       var  aVersion        =  aMarkdown_File.match( /_([vut][\d.`]+).*\.md/ )[1]                   // .(40717.05.3).(40702.05.4 RAM Adjust for new pattern)
             aVersion        =  aVersion.match( /`/ ) ?  aVersion.replace( /.+`/, '.') : aVersion
-        var mVersion        =  aVersion.split( "." )
+       var  mVersion        =  aVersion.split( "." )
 
-        if (mVersion[1] ) {                                                                         //   Has nMessage    
-        var aTS             =  mVersion.slice(3).join(".")                                          // .(40718.04.1 RAM was slice(2)).(40703.03.2 RAM Was slice(1))
-//      var aVer            =  mVersion.slice(0,2).join(".").slice(1)                               //#.(40718.04.2)
-        var aVer            =  mVersion.slice(0,3).join(".").slice(1)                               // .(40718.04.2).(40717.05.4).(40703.03.3 RAM Added)
+        if (mVersion[1]) {                                                                         //   Has nMessage    
+       var  aTS             =  mVersion.slice(3).join(".")                                          // .(40718.04.1 RAM was slice(2)).(40703.03.2 RAM Was slice(1))
+//     var  aVer            =  mVersion.slice(0,2).join(".").slice(1)                               //#.(40718.04.2)
+       var  aVer            =  mVersion.slice(0,3).join(".").slice(1)                               // .(40718.04.2).(40717.05.4).(40703.03.3 RAM Added)
         } else {
-        var aTS             =  FRT._TS                                                              // .(40717.05.5 RAM Not sure this is necesssary)
-//      var aVer            =  aUV + (+mVersion[0].slice(1)).toFixed( 2 ).padStart( 4, '0' );
-//      var aVer            =  aUV + (+mVersion[0].slice(1)).toFixed( 2 ).padStart( 6, '0' );
-        var aVer            = `${ +mVersion[0].slice(1)}`.padStart( 3, '0' ) + '.01.2';             // .(40718.04.3 RAM hardcode nMessage).(40717.05.6 RAM Remove aUV)
+       var  aTS             =  FRT._TS                                                              // .(40717.05.5 RAM Not sure this is necesssary)
+//     var  aVer            =  aUV + (+mVersion[0].slice(1)).toFixed( 2 ).padStart( 4, '0' );
+//     var  aVer            =  aUV + (+mVersion[0].slice(1)).toFixed( 2 ).padStart( 6, '0' );
+       var  aVer            = `${ +mVersion[0].slice(1)}`.padStart( 3, '0' ) + '.01.2';             // .(40718.04.3 RAM hardcode nMessage).(40717.05.6 RAM Remove aUV)
             }
             aVersion        =  aUV + aVer + '.' + aTS; mVersion = aVersion.split( "." )             // .(40717.05.7).(40703.03.4 RAM Reassigned mVersion)
 
-        var aClientDir      = (aApp.slice(0,1) == 'c' ? 'client' : 'server') + aApp.slice(1,2)      // .(40718.03.2 RAM Use aApp)
-        var aAppDir         =  FRT.join( __basedir, aClientDir, aAppName )
-//      var aFileName       = `${aMarkdown_File.replace( /_[uv].+/, '' )}_${aVersion}.md`           // uNN.YMMDD.HHMM is now uNN.0.YMMDD.HHMM
-//      var aFileName       = `${aMarkdown_File.replace( /_[tuv].+/, '' )}_${aVersion}.md`          // tNNN.NN.N.YMMDD.HHMM is now uNN.0.YMMDD.HHMM
-        var mParts          =  aMarkdown_File.split( /[\\\/]/ ).slice(-1)[0].split( '_' )           // .(40717.05.8 RAM )
+       var  aClientDir      = (aApp.slice(0,1) == 'c' ? 'client' : 'server') + aApp.slice(1,2)      // .(40718.03.2 RAM Use aApp)
+       var  aAppDir         =  FRT.join( __basedir, aClientDir, aAppName )
+//     var  aFileName       = `${aMarkdown_File.replace( /_[uv].+/, '' )}_${aVersion}.md`           // uNN.YMMDD.HHMM is now uNN.0.YMMDD.HHMM
+//     var  aFileName       = `${aMarkdown_File.replace( /_[tuv].+/, '' )}_${aVersion}.md`          // tNNN.NN.N.YMMDD.HHMM is now uNN.0.YMMDD.HHMM
+       var  mParts          =  aMarkdown_File.split( /[\\\/]/ ).slice(-1)[0].split( '_' )           // .(40717.05.8 RAM )
             mParts[2]       =  mParts[2].replace( /.md$/, '' );                                     // .(40717.05.9)
-        var aFileName       = `${mParts[0]}_${aMod}-${mParts[2]}_${mParts[1]}.md`                   // .(40717.05.10 RAM 'c35_ChatGPT-4o-session_u1.03`40611.1512.md'  <- c35_t020.03.1.40717.1053_markdown.md')
-//      var aAppName        =  aAppName ? aAppName : aFileName.replace( /_.+/, '' )                 // ??
-//      var aFilePath       =  FRT.join(  aAppDir,   aFileName )                                    //'c23_ChatGPT-4o-session_u1.03`40611.1512.md'
-        var aFilePath       =  FRT.join(  aAppDir,   aFileName )                                    //'c35_gp4oopm-markdown_t020.03.1.40717.1053.md'  <- c35_t020.03.1.40717.1053_markdown.md'
+       var  aFileName       = `${mParts[0]}_${aMod}-${mParts[2]}_${mParts[1]}.md`                   // .(40717.05.10 RAM 'c35_ChatGPT-4o-session_u1.03`40611.1512.md'  <- c35_t020.03.1.40717.1053_markdown.md')
+//     var  aAppName        =  aAppName ? aAppName : aFileName.replace( /_.+/, '' )                 // ??
+//     var  aFilePath       =  FRT.join(  aAppDir,   aFileName )                                    //'c23_ChatGPT-4o-session_u1.03`40611.1512.md'
+       var  aFilePath       =  FRT.join(  aAppDir,   aFileName )                                    //'c35_gp4oopm-markdown_t020.03.1.40717.1053.md'  <- c35_t020.03.1.40717.1053_markdown.md'
 
-//      var aVersion2       =  `_v${aVersion.slice(1)}-${aMod}`                                     //#.(40717.05.11)
-        var aVersion2       =  `_${aVersion.slice(1)}-${aMod}`                                      // .(40717.05.11 RAM Remove v)
-//      var aBackDir        = `!_${aAppName.substr(0,3)}_App-Changes`                               //#.(40718.02.1)
-        var aBackDir        = `._3/CHGs/_v${FRT._TS.slice(0,5)}/${aApp}`                            // .(40718.02.1 RAM New Backdir)
-//      var aBackPath       =  FRT.join(  aAppDir, `!_${aAppName.substr(0,3)}_App-Changes/${aModel}` )   //#.(40703.03.5)
-//      var aBackPath       =  FRT.join(  aAppDir, `!_${aAppName.substr(0,3)}_App-Changes/${aVersion2}`) //#.(40703.03.5 Was aModel)
-        var aBackPath       =  FRT.join(  aAppDir, `${aBackDir}${aVersion2}` )                      // .(40703.03.5 Was aModel)
+//     var  aVersion2       =  `_v${aVersion.slice(1)}-${aMod}`                                     //#.(40717.05.11)
+       var  aVersion2       =  `_${aVersion.slice(1)}-${aMod}`                                      // .(40717.05.11 RAM Remove v)
+//     var  aBackDir        = `!_${aAppName.substr(0,3)}_App-Changes`                               //#.(40718.02.1)
+       var  aBackDir        = `._3/CHGs/_v${FRT._TS.slice(0,5)}/${aApp}`                            // .(40718.02.1 RAM New Backdir)
+//     var  aBackPath       =  FRT.join(  aAppDir, `!_${aAppName.substr(0,3)}_App-Changes/${aModel}` )   //#.(40703.03.5)
+//     var  aBackPath       =  FRT.join(  aAppDir, `!_${aAppName.substr(0,3)}_App-Changes/${aVersion2}`) //#.(40703.03.5 Was aModel)
+       var  aBackPath       =  FRT.join(  aAppDir, `${aBackDir}${aVersion2}` )                      // .(40703.03.5 Was aModel)
 
-//      var aCommit         = `c${aVersion.substring(6,11)}.${aVer}`
-//      var aCommit         = `c${aVersion.substring(6,11)}.${aVer.substring( 1 ).replace( /[.0]+$/, '' )}`  //#4.(0703.04.1)
-//      var aCommit         = `c${mVersion[2]}.${mVersion[1]}`
-        var aCommit         =  await getNextCommitNo( )                                             // .(40703.04.1 RAM mVersion[1] S.B. Next version of the day)
-
-//      var aMsg            =  aMsg ? aMsg : `Update ${aAppName} to ${aVersion}`
-//      var aMsg1           = `Update ${aAppName} (${aVersion})`
-//      var aMsg2           = `Update ${aAppName.slice(0,3)} App (${aVersion2} ${aMod})`
-//      var aMsg3           = `Update re ${aMod} (${aVersion})`
-        var aMsg            = `Update ${aAppName.slice(0,3)} App (${aVersion2.slice(1)})`           // .(40718.04.4).(40703.04.2 RAM Use aVersion2)
-
-//          console.log(  `\n  aMarkdown_File: ${aMarkdown_File}`);
-//          console.log(    `  Saving commit1:  ${aCommit}_${aMsg1}` )
-//          console.log(    `  Saving commit2:  ${aCommit}_${aMsg2}` )
-//          console.log(    `  Saving commit3:  ${aAppName.slice(0,3)}.${aCommit.slice(1)}_${aMsg3}` )
-            console.log(    `  Saving commit: ${aCommit}_${aMsg}` )                                 // .(40703.04.3 RAM Backto aMsg )
-//                             await doCommitAll( `${aCommit}_${aMsg}` )                            //#.(40718.04.7 RAM Do commit 'em)
+//    ----- ----------------------------------------------------------------------
 
        var  mScriptNames    =  await listScripts( aMarkdown_File )
 //          console.log(   "" )
@@ -216,8 +200,8 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
                         return await savScript( mScript, aBackPath, aVer, __basedir )
                                } ) );
 */
-//      var writePromises   =  mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) )
-        var writePromises   =  mScriptNames.map(     async (mScript, i) => {                        // .(40702.03.3 Bard Suggests this Beg)
+//     var  writePromises   =  mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) )
+       var  writePromises   =  mScriptNames.map(     async (mScript, i) => {                        // .(40702.03.3 Bard Suggests this Beg)
                          try { await savScript( mScript, aBackPath, aVer, __basedir );
                        return  Promise.resolve( );                                                  // .(40702.03.4 Bard Explicitly resolve with undefined (optional)
                            } catch ( error ) {
@@ -225,9 +209,30 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
                                } );  // eol mScriptNames.map
             await Promise.all( writePromises );                                                     // .(40702.03.3 Bard Wait for all writes to finish End)
 
+//    ----- ----------------------------------------------------------------------
+
+            console.log( "" )
+//     var  aCommit         = `c${aVersion.substring(6,11)}.${aVer}`
+//     var  aCommit         = `c${aVersion.substring(6,11)}.${aVer.substring( 1 ).replace( /[.0]+$/, '' )}`  //#4.(0703.04.1)
+//     var  aCommit         = `c${mVersion[2]}.${mVersion[1]}`
+       var  aCommit         =  await getNextCommitNo( )                                             // .(40703.04.1 RAM mVersion[1] S.B. Next version of the day)
+
+//     var  aMsg            =  aMsg ? aMsg : `Update ${aAppName} to ${aVersion}`
+//     var  aMsg1           = `Update ${aAppName} (${aVersion})`
+//     var  aMsg2           = `Update ${aAppName.slice(0,3)} App (${aVersion2} ${aMod})`
+//     var  aMsg3           = `Update re ${aMod} (${aVersion})`
+       var  aMsg            = `Update ${aAppName.slice(0,3)} App (${aVersion2.slice(1)})`           // .(40718.04.4).(40703.04.2 RAM Use aVersion2)
+
+//          console.log(  `\n  aMarkdown_File: ${aMarkdown_File}`);
+//          console.log(    `  Saving commit1:  ${aCommit}_${aMsg1}` )
+//          console.log(    `  Saving commit2:  ${aCommit}_${aMsg2}` )
+//          console.log(    `  Saving commit3:  ${aAppName.slice(0,3)}.${aCommit.slice(1)}_${aMsg3}` )
+            console.log(    `  Saving commit: "${aCommit}_${aMsg}"` )                                 // .(40703.04.3 RAM Backto aMsg )
+//                             await doCommitAll( `${aCommit}_${aMsg}` )                            //#.(40718.04.7 RAM Do commit 'em)
+
             await doCommitAll( `${aCommit}_${aMsg}` )                                               // .(40718.04.7 RAM Do commit 'em here after changes)
 
-            //    ----- ----------------------------------------------------------------------
+//    ----- ----------------------------------------------------------------------
 
       async function savScript( mScript, aBackPath, aVer, aBaseDir ) {
 //          console.log(    `  Saving script ${mScript[0]}: ${mScript[1]} `)
