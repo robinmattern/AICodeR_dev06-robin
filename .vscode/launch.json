@@ -24,7 +24,7 @@
           "request": "launch",
           "name": "Launch Server",
           "skipFiles": [ "<node_internals>/**"],
-          "program": "${workspaceFolder}/server/server.mjs",
+          "program": "${workspaceFolder}/server3/s35_calendar1-app/server.mjs",
           "envFile": "${workspaceFolder}/.env"
       }
           ]

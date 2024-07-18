@@ -14,8 +14,9 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const upload = multer({ dest: 'uploads/' });
 
-app.use(express.json());
-app.use(express.static(path.join(__dirname, '../client')));
+   app.use(express.json());
+// app.use(express.static(path.join(__dirname, '../client')));
+   app.use(express.static(path.join(__dirname, '../../client3/c35_calendar1-app')));
 
 app.post('/upload', upload.single('icsFile'), async (req, res) => {
   try {
