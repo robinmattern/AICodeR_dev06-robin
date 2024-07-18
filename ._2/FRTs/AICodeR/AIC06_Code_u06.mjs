@@ -1,5 +1,6 @@
-    import  FRT          from './AIC90_FileFns.mjs'
-    import  { getNextCommitNo } from './AIC89_Commit.mjs'
+   import   FRT               from './AIC90_FileFns.mjs'
+   import { getNextCommitNo } from './AIC89_Commit.mjs'
+   import { doCommitAll     } from './AIC89_Commit.mjs'                                             // .(40718.04.5)
 
        var  bIsNotCalled    =  FRT.isCalled( import.meta.url, process.argv[1]);
 //          console.log( bIsNotCalled ? 'not called' : 'called'    )
@@ -195,13 +196,14 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
 //      var aMsg1           = `Update ${aAppName} (${aVersion})`
 //      var aMsg2           = `Update ${aAppName.slice(0,3)} App (${aVersion2} ${aMod})`
 //      var aMsg3           = `Update re ${aMod} (${aVersion})`
-        var aMsg            = `Update ${aAppName.slice(0,3)} App (${aVersion2})`                    // .(40703.04.2 RAM Use aVersion2)
+        var aMsg            = `Update ${aAppName.slice(0,3)} App (${aVersion2.slice(1)})`           // .(40718.04.4).(40703.04.2 RAM Use aVersion2)
 
 //          console.log(  `\n  aMarkdown_File: ${aMarkdown_File}`);
 //          console.log(    `  Saving commit1:  ${aCommit}_${aMsg1}` )
 //          console.log(    `  Saving commit2:  ${aCommit}_${aMsg2}` )
 //          console.log(    `  Saving commit3:  ${aAppName.slice(0,3)}.${aCommit.slice(1)}_${aMsg3}` )
             console.log(    `  Saving commit: ${aCommit}_${aMsg}` )                                 // .(40703.04.3 RAM Backto aMsg )
+//                             await doCommitAll( `${aCommit}_${aMsg}` )                            //#.(40718.04.7 RAM Do commit 'em)
 
        var  mScriptNames    =  await listScripts( aMarkdown_File )
 //          console.log(   "" )
@@ -210,20 +212,22 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
        var  mCodes          =  aMarkdown.split( /```|### / )
 
 //                             mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) )  //#.(40702.03.1 RAM Ignores awaits)
-/*          await Promise.all( mScriptNames.forEach( async (mScript, i) => {             //#.(40702.03.2 RAM Gets error: TypeError: undefined is not iterable)
+/*          await Promise.all( mScriptNames.forEach( async (mScript, i) => {                        //#.(40702.03.2 RAM Gets error: TypeError: undefined is not iterable)
                         return await savScript( mScript, aBackPath, aVer, __basedir )
                                } ) );
 */
 //      var writePromises   =  mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) )
-        var writePromises   =  mScriptNames.map(     async (mScript, i) => {             // .(40702.03.3 Bard Suggests this Beg)
+        var writePromises   =  mScriptNames.map(     async (mScript, i) => {                        // .(40702.03.3 Bard Suggests this Beg)
                          try { await savScript( mScript, aBackPath, aVer, __basedir );
-                        return Promise.resolve( );                                       // .(40702.03.4 Bard Explicitly resolve with undefined (optional)
+                       return  Promise.resolve( );                                                  // .(40702.03.4 Bard Explicitly resolve with undefined (optional)
                            } catch ( error ) {
-                        return Promise.reject(  error ); }                               // .(40702.03.5 Bard Reject with the error
-                           } );
-            await Promise.all( writePromises );                                          // .(40702.03.3 Bard Wait for all writes to finish End)
+                       return  Promise.reject(  error ); }                                          // .(40702.03.5 Bard Reject with the error
+                               } );  // eol mScriptNames.map
+            await Promise.all( writePromises );                                                     // .(40702.03.3 Bard Wait for all writes to finish End)
 
-//    ----- ----------------------------------------------------------------------
+            await doCommitAll( `${aCommit}_${aMsg}` )                                               // .(40718.04.7 RAM Do commit 'em here after changes)
+
+            //    ----- ----------------------------------------------------------------------
 
       async function savScript( mScript, aBackPath, aVer, aBaseDir ) {
 //          console.log(    `  Saving script ${mScript[0]}: ${mScript[1]} `)
