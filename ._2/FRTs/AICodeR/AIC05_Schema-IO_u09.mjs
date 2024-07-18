@@ -41,10 +41,6 @@
 
 //     var  aSessions_File  =  FRT.join( aSessions_Dir,   `AICodeR-sessions_${aVer}.json` )
 
-       var  aRequest_File   =  FRT.join( aSession_Dir,    `request__${aVer}.mjs` )
-       var  aCurl_Template  =  FRT.join( __dirname,       `AIC04_Curl-Request_u01.template.sh` )
-       var  aNode_Template  =  FRT.join( __dirname,       `AIC04_Node-Request_u01.template.sh` )
-
        var  pFmters =
          { "savSessions_forContinue_fromContinue"         : savSessions_forContinue_fromContinue
          , "fmtSessions_forContinue_fromContinue"         : fmtSessions_forContinue_fromContinue

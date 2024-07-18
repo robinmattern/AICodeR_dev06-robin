@@ -1,14 +1,14 @@
    import   FRT          from './AIC90_FileFns.mjs'
-   import   dotenv       from 'dotenv'; 
+   import   dotenv       from 'dotenv';
             dotenv.config( FRT.path( __basedir, '.env' ) )
 
 //     var  mEnvs       =   Object.entries( process.env ).filter( mEnv => mEnv[0].slice(0,4) == 'FRT_' )
-//          console.log( "${__basedir}/.env:       ", `${__basedir}/.env` ); 
-//          console.log( "process.env['FRT_APP']:  ", process.env['FRT_APP'  ] ); 
-//          console.log( "process.env['FRT_MODEL']:", process.env['FRT_MODEL'] ); 
+//          console.log( "${__basedir}/.env:       ", `${__basedir}/.env` );
+//          console.log( "process.env['FRT_APP']:  ", process.env['FRT_APP'  ] );
+//          console.log( "process.env['FRT_MODEL']:", process.env['FRT_MODEL'] );
 //          console.log( "mEvs:" ); console.dir( mEnvs )
-//          process.exit() 
- 
+//          process.exit()
+
        var  Apps =                                                                      // .(40711.01.3 RAM Add Apps table)
              [ [ ' 1.', 'c35', 'c35_calendar1-app        ' ] //
              , [ ' 2.', 'c36', 'c36_hawaii-contracts-app ' ] //
@@ -20,6 +20,38 @@
              , [ ' 8.', 's35', 's35_calendar-app         ' ] //
                ]
 // ----------------------------------------------------------------------------------
+
+       var  Model_Templates =
+             { 'gp4oopu': { 'usermsg_.txt' : 'AnyModel_Prompt-usrmsg_template.txt'              // GPT-4o_OpenAI-curl
+                          , 'request_.json': 'GPT-4o_OpenAI-request__template.json'
+                          , 'messages.json': 'GPT-4o_OpenAI-messages_template.json'
+                          , 'request_.sh'  : 'GPT-4o_OpenAI-curl_u02_template.sh'
+                             }
+             , 'gp4oopn': { 'usermsg_.txt' : 'AnyModel_Prompt-usrmsg_template.txt'              // GPT-4o_OpenAI-curl
+                          , 'request_.json': 'GPT-4o_OpenAI-request__template.json'
+                          , 'messages.json': 'GPT-4o_OpenAI-messages_template.json'
+                          , 'request_.mjs' : 'GPT-4o_OpenAI-node_u01_template.mjs'
+                             }
+             , 'gp35opn': { 'usermsg_.txt' : 'AnyModel_Prompt-usrmsg_template.txt'              // GPT-35_OpenAI-curl
+                          , 'request_.json': 'GPT-35_OpenAI-request__template.json'
+                          , 'messages.json': 'GPT-35_OpenAI-messages_template.json'
+                          , 'request_.mjs' : 'GPT-35_OpenAI-node_u01_template.mjs'
+                             }
+             , 'gp4oopm': { 'usermsg_.txt' : 'AnyModel_Prompt-usrmsg_template.txt'              // GPT-4o_OpenAI-maxi
+                             }
+             , 'c35sanm': { 'usermsg_.txt' : 'AnyModel_Prompt-usrmsg_template.txt'              // Claude-35s_Anthropic-maxi
+                             }
+             , 'c35sanu': { 'usermsg_.txt' : 'AnyModel_Prompt-usrmsg_template.txt'              // Claude-35s_Anthropic-curl
+                          , 'request_.json': 'GPT-4o_OpenAI-request__template.json'
+                          , 'messages.json': 'GPT-4o_OpenAI-messages_template.json'
+                          , 'request_.sh'  : 'GPT-4o_OpenAI-curl_u02_template.sh'
+                             }
+             , 'c35sann': { 'usermsg_.txt' : 'AnyModel_Prompt-usrmsg_template.txt'              // Claude-35s_Anthropic-node
+                          , 'request_.json': 'Claude-35s_Anthropic-request__template.json'
+                          , 'messages.json': 'Claude-35s_Anthropic-messages_template.json'
+                          , 'request_.mjs' : 'Claude-35s_Anthropic-node_u01_template.mjs'
+                             }
+                }
 
        var  Models2 =
              [ [ ' 1.', 'gp4oopw', 'GPT-4o_OpenAI-web       ' ] // ##    markdown, text, json (playground)
@@ -105,8 +137,38 @@
 //          console.log( "getApp( 2, 'c88' )[2]:", getApp( 2, 'c88' )[2] || '' )  // ''
 //          process.exit()
 
-   function getModel( nFld, aVal ) { return selectRow( Models2, nFld, aVal ) }
-   function getApp(   nFld, aVal ) { return selectRow( Apps,    nFld, aVal ) }          // .(40711.01.1 RAM Added)
+// function getApp(   nFld, aVal ) { return selectRow( Apps,    nFld, aVal ) }          //#.(40718.09.1).(40711.01.1 RAM Added)
+  function  getApp( nFld, aMod, aSub ) {                                              // .(40718.09.1 RAM Enhanced getApp )
+            aSub = typeof(aSub) != 'undefined' ? aSub : nFld 
+       if (!aMod     ) { return  selectRow( Apps, nFld ) }
+        if (nFld == 0) { return  selectRow( Apps, nFld, aMod ) }
+        if (nFld <= 2) { return (selectRow( Apps, nFld, aMod )[aSub] || '').trim() }
+    return ''
+            } // eof getApp
+// ------------------------------------------------------------------------------
+   /*
+            console.log( "getModel( 1, 'c35sanm' )[2]:", getModel( 1, 'c35sanm' )[2] || '' )   
+            console.log( "getModel( 2, 'c35sanm' )[2]:", getModel( 2, 'c35sanm' )[2] || '' )  
+            console.log( "getModel( 0, 'c35sanm'    ):", getModel( 0, 'c35sanm'    ) )   
+            console.log( "getModel( 1, 'c35sanm'    ):", getModel( 1, 'c35sanm'    ) )   
+            console.log( "getModel( 2, 'c35sanm'    ):", getModel( 2, 'c35sanm'    ) )    
+            console.log( "getModel( 1, 'c35sanm', 0 ):", getModel( 1, 'c35sanm', 0 ) )  
+            console.log( "getModel( 1, 'c35sanm', 2 ):", getModel( 1, 'c35sanm', 2 ) )  
+            console.log( "getModel(    'c35sanm'    ):", getModel(    'c35sanm'    ) )  
+            console.log( "getModel( 3 ,'c35sanm', 'usermsg_.txt' ):", getModel( 3, 'c35sanm', 'usermsg_.txt' ) )  
+            console.log( "getModel( 3 ,'gp4oopu', 'request_.sh'  ):", getModel( 3, 'gp4oopu', 'request_.sh'  ) )  
+            process.exit()
+*/
+//function  getModel( nFld, aVal ) { return selectRow( Apps,    nFld, aVal ) }          // .(40718.09.2).(40711.01.1 RAM Added)
+  function  getModel( nFld, aMod, aSub ) {                                              // .(40718.09.2 RAM Enhanced getModel )
+            aSub = typeof(aSub) != 'undefined' ? aSub : nFld 
+       if (!aMod     ) { return  selectRow( Models2, nFld ) }
+        if (nFld == 0) { return  selectRow( Models2, nFld, aMod ) }
+        if (nFld <= 2) { return (selectRow( Models2, nFld, aMod )[aSub] || '').trim() }
+        if (nFld == 3) { return (Model_Templates[ aMod ][ aSub ] || '').trim() }
+    return ''
+            }  // eof getModel
+// ------------------------------------------------------------------------------
 /*
 //          chkArgs( [] )
 //          chkArgs( [''] )
@@ -147,7 +209,7 @@
            }
 // ------------------------------------------------------------------------------
 
-  function  setArgs( mArgs, aGetSet, aQuit ) { 
+  function  setArgs( mArgs, aGetSet, aQuit ) {
 //     var  bSet  = 0,  bGet = 0, aVar;
             mArgs     =   mArgs.slice( 2 + (isNaN( mArgs[3] || '') ? 0 : 1 ) )
 //      if (aGetSet   == 'get') {  aVar = mArgs[0].slice(0,3).toLowerCase(); mArgs.shift(); bGet = 1 }
@@ -168,8 +230,8 @@
   function  getEnv( aVar, aVal, aPreFix ) {
             aPreFix   =   aPreFix ? `${aPreFix}` : "FRT"
        var  aEnvVar   =`${aPreFix}_${aVar.toUpperCase()}`
-       var  aVal      =   aVal ? aVal : process.env[  aEnvVar ] || '' 
-        if (aVal == '') { 
+       var  aVal      =   aVal ? aVal : process.env[  aEnvVar ] || ''
+        if (aVal == '') {
             console.log( `\n* The environment variable, '${aEnvVar}', is not defined` )
         } else {
 //          console.log( `  Got default ${ `${aEnvVar}:`.padEnd(10) } '${aVal}'` )
@@ -177,13 +239,13 @@
     return  aVal
             }
 // ------------------------------------------------------------------------------
- 
+
   function  setEnv( aVar, aVal, aPreFix ) {
             aPreFix     =   aPreFix ? `${aPreFix}` : "FRT"
        var  aEnvVar     =`${aPreFix}_${ aVar.toUpperCase().replace( `${aPreFix}_`, '' ) }`
             process.env[  aEnvVar ] = aVal
        var  mEnvs       =   Object.entries( process.env ).filter( mEnv => mEnv[0].slice(0,4) == `${aPreFix}_` )
-       var  mMyEnvs     =   mEnvs.map( mEnv => `${ mEnv[0].padEnd(12) } = "${mEnv[1]}"` ) 
+       var  mMyEnvs     =   mEnvs.map( mEnv => `${ mEnv[0].padEnd(12) } = "${mEnv[1]}"` )
             console.log( `  Setting default ${aEnvVar} to: '${aVal}' in .env file` )
             console.log( `  mMyEnvs:\n    ${ mMyEnvs.join( "\n    " ) }` )
             FRT.writeFileSync( FRT.path( __basedir, '.env' ), mMyEnvs.join( "\n" ) )
@@ -191,7 +253,7 @@
 // ------------------------------------------------------------------------------
 
   function  chkArgs( mArgs, aQuit ) {
-//          mArgs     =  mArgs.slice(2) 
+//          mArgs     =  mArgs.slice(2)
      //     mArgs[0]
        var  aSM = '', mParms = ['','','', '', '', ''], rNums = /^[0-9.]+/
         if (rNums.test(mArgs[0])) { aSM +=        mArgs[0]; mArgs.shift() }   // nThread (aka Session): 001
@@ -207,20 +269,20 @@
             mParms[3] = /[cs][0-9]{2}/.test( mArgs[0] || '') ?  mArgs[0] : `* Invalid App alias: '${mArgs[0]}'`
             mParms[3] = /^\*/.test(  mParms[3] ) ? mParms[3] : (getApp(   1, mParms[3] )[1] || '').trim()   // origin 0
             mParms[3] =  mParms[3] ? mParms[3] : `* App alias not found: '${mArgs[0]}'`
-            mArgs.shift() 
+            mArgs.shift()
             }
         if (mArgs.length == 2) { var n = 1 } else { var n = 0 }
         if (mArgs[n]  && mArgs[n].length == 7) {
             mParms[4] = /[a-z0-9]{7}/.test(  mArgs[n] || '') ?  mArgs[n] : `* Invalid Model alias: '${mArgs[0]}'`
             mParms[4] = /^\*/.test(  mParms[4] ) ? mParms[4] : (getModel( 1, mParms[4] )[1] || '').trim()   // origin 0
             mParms[4] =  mParms[4] ? mParms[4] : `* Model alias not found: '${mArgs[n]}'`
-            mArgs.splice(-1) 
+            mArgs.splice(-1)
             }
         if (mArgs[0]) {
-            n = mArgs.length == 1 ? "" : "s"  
+            n = mArgs.length == 1 ? "" : "s"
             mParms[5] =  `* Invalid argument${n}: '${ mArgs.join("', '") }'`
-            }   
-//      if (aQuit == 'quit') {  
+            }
+//      if (aQuit == 'quit') {
         var aCR="\n"; // aQuit = ''
             if (mParms[3].match( /^\*/)) { console.log( aCR + mParms[3] ); aCR = '' } // aQuit = 'quit' }
             if (mParms[4].match( /^\*/)) { console.log( aCR + mParms[4] ); aCR = '' } // aQuit = 'quit' }
@@ -262,10 +324,10 @@
 
         if (aTable == 'set' && aRow.slice(0,3) == 'sho' ) {                                         // .(40717.01.3 RAM Add set show)
        var  mEnvs1        =   Object.entries( process.env ).filter( mEnv => mEnv[0].slice(0,4) == `FRT_` )
-       var  mEnvs1        =   mEnvs1.map( mEnv => `${ mEnv[0].padEnd(12) } = "${mEnv[1]}"` ) 
+       var  mEnvs1        =   mEnvs1.map( mEnv => `${ mEnv[0].padEnd(12) } = "${mEnv[1]}"` )
             console.log( "" )
             console.log(   `  ${mEnvs1.join("\n  ") }`)
-            process.exit() 
+            process.exit()
             }
 // ---------------------------------------------------------------------------------------------------
 
