@@ -149,7 +149,7 @@
 
   function  setArgs( mArgs, aGetSet, aQuit ) { 
 //     var  bSet  = 0,  bGet = 0, aVar;
-            mArgs     =   mArgs.slice(2) 
+            mArgs     =   mArgs.slice( 2 + (isNaN( mArgs[3] || '') ? 0 : 1 ) )
 //      if (aGetSet   == 'get') {  aVar = mArgs[0].slice(0,3).toLowerCase(); mArgs.shift(); bGet = 1 }
        var  mParms    =   chkArgs( mArgs, `${aGetSet}${aQuit}`.match(/quit/) ? 'quit' : '' ) // not 'quit'
 //      if (mParms[3] == '' && bGet && aVar == 'app') { mParms[3] = getEnv( 'APP');                return mParms }
@@ -172,7 +172,7 @@
         if (aVal == '') { 
             console.log( `\n* The environment variable, '${aEnvVar}', is not defined` )
         } else {
-            console.log( `  Got default ${ `${aEnvVar}:`.padEnd(10) } '${aVal}'` )
+//          console.log( `  Got default ${ `${aEnvVar}:`.padEnd(10) } '${aVal}'` )
             }
     return  aVal
             }
@@ -225,7 +225,7 @@
             if (mParms[3].match( /^\*/)) { console.log( aCR + mParms[3] ); aCR = '' } // aQuit = 'quit' }
             if (mParms[4].match( /^\*/)) { console.log( aCR + mParms[4] ); aCR = '' } // aQuit = 'quit' }
             if (mParms[5].match( /^\*/)) { console.log( aCR + mParms[5] ); aCR = '' } // aQuit = 'quit' }
-            if (aQuit == 'quit') { process.exit() }
+            if (aQuit == 'quit' && aCR == '') { process.exit() }
 //          }
 //          console.log( `nThread: '${mParms[0]}', nMsg: '${mParms[1]}',  aTS: '${mParms[2]}', aApp: '${mParms[3]}', aMod: '${mParms[4]}' ` )
     return  mParms
@@ -243,6 +243,7 @@
        var  bRunHere        =  bIsNotCalled && `${ process.env['CALL_IT'] }`.match( /true|1/ ) == null;
 //          console.log( `bRun: ${ bRun },  bIsNotCalled :${ bIsNotCalled }, CALL_IT: ${ process.env['CALL_IT'] }` );
 //          process.exit()
+// ---------------------------------------------------------------------------------------------------
 
         if (bRunHere) {
 
@@ -255,10 +256,20 @@
        var  aRow           = 'model'
        var  aItem          = 'c35sann'
             }
+// ---------------------------------------------------------------------------------------------------
 //          console.log( `aTable: '${aTable}', aRow: '${aRow}', aItem: '${aItem}'` )
 //          process.exit()
 
-        if (aTable == 'set' && aRow.slice(0,3) == 'app' ) {
+        if (aTable == 'set' && aRow.slice(0,3) == 'sho' ) {                        // .(40717.01.1 RAM Add set show)
+       var  mEnvs1        =   Object.entries( process.env ).filter( mEnv => mEnv[0].slice(0,4) == `FRT_` )
+       var  mEnvs1        =   mEnvs1.map( mEnv => `${ mEnv[0].padEnd(12) } = "${mEnv[1]}"` ) 
+            console.log( "" )
+            console.log(   `  ${mEnvs1.join("\n  ") }`)
+            process.exit() 
+            }
+// ---------------------------------------------------------------------------------------------------
+
+       if (aTable == 'set' && aRow.slice(0,3) == 'app' ) {
 //     var  aRow           =  process.argv.length > 4 ? process.argv[4] : aRow
        var  aAppName       = (getApp( 1, aItem )[2] || '').trim()
         if (aAppName == "") {
@@ -270,6 +281,7 @@
                               setEnv( "App", aAppName )
             process.exit()
             }
+// ---------------------------------------------------------------------------------------------------
 
         if (aTable == 'set' && aRow.slice(0,3) == 'mod' ) {
 //     var  aRow           =  process.argv.length > 4 ? process.argv[4] : aRow
@@ -283,6 +295,7 @@
                               setEnv( "Model",  aModel )
             process.exit()
             }
+// ---------------------------------------------------------------------------------------------------
 
        if ("test2" == "text2") {
        var  aTable         = 'apps'
@@ -301,4 +314,5 @@
             console.log("")
             console.log(      mRows.map( m => '  ' + m.join( '  ' )).join( '\n' ) );
             }
+// ---------------------------------------------------------------------------------------------------
 
