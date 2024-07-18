@@ -260,7 +260,7 @@
 //          console.log( `aTable: '${aTable}', aRow: '${aRow}', aItem: '${aItem}'` )
 //          process.exit()
 
-        if (aTable == 'set' && aRow.slice(0,3) == 'sho' ) {                        // .(40717.01.1 RAM Add set show)
+        if (aTable == 'set' && aRow.slice(0,3) == 'sho' ) {                                         // .(40717.01.3 RAM Add set show)
        var  mEnvs1        =   Object.entries( process.env ).filter( mEnv => mEnv[0].slice(0,4) == `FRT_` )
        var  mEnvs1        =   mEnvs1.map( mEnv => `${ mEnv[0].padEnd(12) } = "${mEnv[1]}"` ) 
             console.log( "" )

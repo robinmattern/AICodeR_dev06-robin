@@ -146,7 +146,7 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
             aModel          =  aModel    ? aModel  :   aModel
             aAppName        = (aAppName  ? aAppName : __appname).split( /[\\\/]/ ).splice( -1 )[0]
 
-        var aUV             =  '_v', aTS                                                            // .(40717.05.3 RAM Always _v ??)
+        var aUV             =  '_t', aTS                                                            // .(40717.05.3 RAM Always _v ??)
         var aApp            =  aAppName.slice(0,3)                                                  // .(40718.03.1 RAM)
 //      var aUV             =  aMarkdown_File.match( /_([uv])/ ), aTS                               // .(40717.05.2)
 //      var aVersion        =  aMarkdown_File.match( /_([vu][\d.`]+)\.md/   )[1]
@@ -171,15 +171,15 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
         var aAppDir         =  FRT.join( __basedir, aClientDir, aAppName )
 //      var aFileName       = `${aMarkdown_File.replace( /_[uv].+/, '' )}_${aVersion}.md`           // uNN.YMMDD.HHMM is now uNN.0.YMMDD.HHMM
 //      var aFileName       = `${aMarkdown_File.replace( /_[tuv].+/, '' )}_${aVersion}.md`          // tNNN.NN.N.YMMDD.HHMM is now uNN.0.YMMDD.HHMM
-        var mParts          =  aMarkdown_File.split( /[\\\/]/ ).slice(-1)[0].split( '_' )           // .(40717.05.x RAM )
-            mParts[2]       =  mParts[2].replace( /.md$/, '' );                                     // .(40717.05.x)
-        var aFileName       = `${mParts[0]}_${aMod}-${mParts[2]}_${mParts[1]}.md`                   // .(40717.05.x RAM 'c35_ChatGPT-4o-session_u1.03`40611.1512.md'  <- c35_t020.03.1.40717.1053_markdown.md')
+        var mParts          =  aMarkdown_File.split( /[\\\/]/ ).slice(-1)[0].split( '_' )           // .(40717.05.8 RAM )
+            mParts[2]       =  mParts[2].replace( /.md$/, '' );                                     // .(40717.05.9)
+        var aFileName       = `${mParts[0]}_${aMod}-${mParts[2]}_${mParts[1]}.md`                   // .(40717.05.10 RAM 'c35_ChatGPT-4o-session_u1.03`40611.1512.md'  <- c35_t020.03.1.40717.1053_markdown.md')
 //      var aAppName        =  aAppName ? aAppName : aFileName.replace( /_.+/, '' )                 // ??
 //      var aFilePath       =  FRT.join(  aAppDir,   aFileName )                                    //'c23_ChatGPT-4o-session_u1.03`40611.1512.md'
         var aFilePath       =  FRT.join(  aAppDir,   aFileName )                                    //'c35_gp4oopm-markdown_t020.03.1.40717.1053.md'  <- c35_t020.03.1.40717.1053_markdown.md'
 
-//      var aVersion2       =  `_v${aVersion.slice(1)}-${aMod}`                                     // .(40717.05.x)
-        var aVersion2       =  `_${aVersion.slice(1)}-${aMod}`                                      // .(40717.05.x RAM Remove v)
+//      var aVersion2       =  `_v${aVersion.slice(1)}-${aMod}`                                     //#.(40717.05.11)
+        var aVersion2       =  `_${aVersion.slice(1)}-${aMod}`                                      // .(40717.05.11 RAM Remove v)
 //      var aBackDir        = `!_${aAppName.substr(0,3)}_App-Changes`                               //#.(40718.02.1)
         var aBackDir        = `._3/CHGs/_v${FRT._TS.slice(0,5)}/${aApp}`                            // .(40718.02.1 RAM New Backdir)
 //      var aBackPath       =  FRT.join(  aAppDir, `!_${aAppName.substr(0,3)}_App-Changes/${aModel}` )   //#.(40703.03.5)

@@ -87,7 +87,7 @@
     if [ "${aArg1:0:3}" == "sho" ] && [ "${aArg2:0:3}" != "mar" ]; then aCmd="show markdown"; aArg1=""; shift; fi          # 18                 # .(40717.02.1)
 
     if [ "$1" ==  "0" ]; then aCmd="set  $2"; shift; shift; fi
-#   if [ "${aCmd}" == "set  model"    ]; then run_node "${AIC98_Tables}"   "0" "set model" $@; exit; fi  #  0          # .(40716.01.x)
+#   if [ "${aCmd}" == "set  model"    ]; then run_node "${AIC98_Tables}"   "0" "set model" $@; exit; fi  #  0           # .(40716.01.1)
     if [ "$1" ==  "1" ]; then aCmd="save continue"; shift; fi
     if [ "$1" ==  "2" ]; then aCmd="save frtable";  shift; fi
     if [ "$1" ==  "3" ]; then aCmd="show sessions"; shift; fi
@@ -128,7 +128,7 @@
 #   if [ "${aCmd}" == "run  session"  ]; then run_node "${AIC05_Schema}" "15" "$@"; exit; fi
     if [ "${aCmd}" == "run  prompt"   ]; then run_node "${AIC05_Schema}" "15" "$@"; exit; fi
     if [ "${aCmd}" == "save session"  ]; then run_node "${AIC05_Schema}" "17" "$@"; exit; fi
-    if [ "${aCmd}" == "show markdown" ]; then run_node "${AIC05_Schema}" "18" "$@"; exit; fi                            # .(40717.02.3)
+    if [ "${aCmd}" == "show markdown" ]; then run_node "${AIC05_Schema}" "18" "$@"; exit; fi                            # .(40717.01.2)
 
     if [ "${aCmd}" == "set  vars"     ]; then aCmd="set  show"; fi 
     export CALL_IT=0;
@@ -136,9 +136,9 @@
     if [ "${aCmd}" == "make app"      ]; then run_node "${AIC91_Folders}"  "9" "app"       $@; exit; fi  #  9           # .(40714.01.x)
     if [ "${aCmd}" == "list apps"     ]; then run_node "${AIC98_Tables}"  "11" "apps"      $@; exit; fi  # 11           # .(40711.01.4)
     if [ "${aCmd}" == "list models"   ]; then run_node "${AIC98_Tables}"  "12" "models"    $@; exit; fi  # 12           # .(40711.01.5)
-    if [ "${aCmd}" == "set  app"      ]; then run_node "${AIC98_Tables}"   "0" "set app"   $@; exit; fi  #  0           # .(40716.01.x)
-    if [ "${aCmd}" == "set  model"    ]; then run_node "${AIC98_Tables}"   "0" "set model" $@; exit; fi  #  0           # .(40716.01.x)
-    if [ "${aCmd}" == "set  show"     ]; then run_node "${AIC98_Tables}"   "0" "set show"  $@; exit; fi  #  0           # .(40717.01.x)
+    if [ "${aCmd}" == "set  app"      ]; then run_node "${AIC98_Tables}"   "0" "set app"   $@; exit; fi  #  0           # .(40716.01.2)
+    if [ "${aCmd}" == "set  model"    ]; then run_node "${AIC98_Tables}"   "0" "set model" $@; exit; fi  #  0           # .(40716.01.3)
+    if [ "${aCmd}" == "set  show"     ]; then run_node "${AIC98_Tables}"   "0" "set show"  $@; exit; fi  #  0           # .(40717.02.2)
 #   if [ "${aCmd}" == "run  prompt"   ]; then echo "${ThePath}/c35_t021.00.0.40710.1754_request_curl.sh" $@; exit; fi   # .(40711.04.x)
 #   if [ "${aCmd}" == "run  prompt"   ]; then echo "${ThePath}/c35_t021.00.0.40710.1754_request_curl.sh" $@; exit; fi   # .(40711.04.x)
 
@@ -164,17 +164,17 @@
     echo ""
     echo "    0. set app         {App}                        Set App for AICodeR Commands in .env"
     echo "    0. set model       {Model}                      Set Model for AICodeR commands in .env"
-    echo "    0. show vars                                    Show FRT Environment Variables"                                        # .(40717.01.3)
+    echo "    0. show vars                                    Show FRT Environment Variables"                                     # .(40717.01.1)
     echo ""
-    echo "   11. list apps       [App]                        List App for [App] or all Apps if 'all' or 'mt' in DB"                 # .(40711.01.5)
-    echo "   12. list models     [Model]                      List Model for [Model] or all Models if 'all' or 'mt' in DB"           # .(40711.01.6)
-    echo "   14. list sessions   [App] [Model]                List AI Sessions for [App] in docs folder"                             # .(40711.01.6)
+    echo "   11. list apps       [App]                        List App for [App] or all Apps if 'all' or 'mt' in DB"              # .(40711.01.5)
+    echo "   12. list models     [Model]                      List Model for [Model] or all Models if 'all' or 'mt' in DB"        # .(40711.01.6)
+    echo "   14. list sessions   [App] [Model]                List AI Sessions for [App] in docs folder"                          # .(40711.01.6)
     echo "   17. save session    [S] [App] [Model]            Save all Messages for Sessios into Single Markdown File "
     echo "   10. save markdown   [App] [Model]                Save a last Message Markdown File for [App] [Model]"
-    echo "   18. show markdown   [S[.M]] [App] [Model]        Open Markdown file in browser for Session / Message "                  # .(40717.02.4)
+    echo "   18. show markdown   [S[.M]] [App] [Model]        Open Markdown file in browser for Session / Message "               # .(40717.02.1)
     echo ""
     echo "    9. make [app]      {App} {Model}                Create a Folder for [App] (c##_name-of-app or s##_name-of-api)"
-    echo "   13. show apps                                    List Apps that have an AI Session in docs folder"                      # .(40711.01.6)
+    echo "   13. show apps                                    List Apps that have an AI Session in docs folder"                   # .(40711.01.6)
     echo "   16. save prompt     [S[.M[.TS]]] [App] [Model]   Save a Prompt fpr [next] UsrMessage file for [App] [Model]"
 #   echo "   15. run  [session]  [App} [Model]                Run an AI Session for [last] UsrMessage file"
     echo "   15. run  [model]    [App} [Model]                Run an AI Session Prompt for [last] UsrMessage file for [Model]"
