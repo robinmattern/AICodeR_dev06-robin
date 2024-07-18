@@ -105,7 +105,7 @@ function  makDirSync(      aDirName  ) { aDirName = `${aDirName || ''}`
 // var  pOK             =  await fs.access(  aDirPath, fs.constants.F_OK )
 // var  pOK             =  await fs.access(  aDirPath )
 // var  bOK             =  fsync.existsSync( aDirPath )
-   var  pStats          =  checkFileASync( aDirPath )
+   var  pStats          =  checkFileSync( aDirPath )
    var  bOK             =  pStats.exists // && pStats.isDir == false
     if (bOK == false) {  
                            fsync.mkdirSync(      aDirPath, { recursive: true } );

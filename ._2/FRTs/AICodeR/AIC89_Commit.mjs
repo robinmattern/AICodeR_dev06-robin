@@ -4,7 +4,7 @@ import   FRT     from './AIC90_FileFns.mjs'
 
 // var aMsg = await getLastCommitMessage( )
 // var aNo = await getNextCommitNo( ); console.log(aNo)
-  console.log( `  getNextCommitNo( ): ${ await getNextCommitNo( ) }` ); process.exit()
+// console.log( `  getNextCommitNo( ): ${ await getNextCommitNo( ) }` ); process.exit()
 
 async function getNextCommitNo( ) {
    var aMsg = await getLastCommitMessage( )
@@ -13,7 +13,7 @@ async function getNextCommitNo( ) {
    if (aNo.slice(0,5) != aTS.slice(0,5)) { 
        aNo  = `${aTS.slice(0,5)}.01`
    } else {
-       aNo =  `${aNo.slice(0,5)}.${ `${aNo.slice(-2) + 1}`.padStart(2,'0') }`        
+       aNo =  `${aNo.slice(0,5)}.${ `${ ( aNo.slice(-2) * 1 )+ 1}`.padStart(2,'0') }`               // .(40718.01.1 RAM Multiply by 1 before adding 1)     
        }
        return 'c' + aNo
       } // eof getNextCommitNo
