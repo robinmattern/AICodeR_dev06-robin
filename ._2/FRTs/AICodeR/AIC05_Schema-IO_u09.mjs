@@ -104,8 +104,8 @@
 //     var  aSteps =  "2"             // Save Continue Sessions from Continue JSON files          to FRTables JSON file
 //     var  aSteps =  "3"             // List Sessions from Original Continue JSON files to .txt file
 //     var  aSteps =  "4" S.M[].TS]   // Get  FRTable  from FRTables JSON file           to .md  file for nSession, nMessage
-//     var  aSteps =  "5" S[.M.TS]    // Show Scripts  from FRTables JSON file                        for nSession, nMessage
-//     var  aSteps =  "6"             // Sava Scripts  from FRTables JSON file
+//     var  aSteps =  "5" S[.M.TS]    // List Scripts  from FRTables JSON file                        for nSession, nMessage
+//     var  aSteps =  "6" S[.M.TS]    // Save Scripts  from FRTables JSON file
 //     var  aSteps =  "7"             // List Continue Sessions JSON files
 //     var  aSteps =  "8"             // List FRTables from FRTables JSON file
 //     var  aSteps =  "9"             // Make App"
@@ -232,38 +232,50 @@
 
 //     var  aModel          = 'OpenAI-GPT-4o-maxi'
 //     var  aModel          = 'GPT-4o_OpenAI-curl'
+//     var  aModel          = 'GPT-4o_OpenAI-curl'
        var  aModel          = 'GPT-4o_OpenAI-maxi'
-       var  aModel          = 'Claude3-So_Anthropic-chatgpt'
+//     var  aModel          = 'Claude3-So_Anthropic-chatgpt'
 
 //     var  aModel          = 'Claude3-So_Anthropic-maxi'
-       var  aAppName        = 'c35_calendar1-app'
-       var  aAppName        = 'c37_aicoder-sessions-app'
+       var  aAppName        = 'c01_calendar-app'
+//     var  aAppName        = 'c35_calendar1-app'
+//     var  aAppName        = 'c37_aicoder-sessions-app'
 
-       var  aApp            = (getApp(   2, aAppName ).slice(1,2)[0] || '').trim()                  // .(40715.01.1 RAM Change nFld Origin, was 3)
-       var  aMod            = (getModel( 2, aModel   ).slice(1,2)[0] || '').trim()                  // .(40715.01.2)
+       var  aApp            = (getApp(    2,   aAppName, 1 )) // (().slice(1,2)[0] || '').trim()    // .(40718.09.3).(40715.01.1 RAM Change nFld Origin, was 3)
+       var  aMod            = (getModel(  2,   aModel  , 1 )) // (().slice(1,2)[0] || '').trim()    // .(40718.09.4).(40715.01.2)
 
 //     ---  --------------  =  -----------------------------------------------
 
 //     var  aSteps = bRun ? `,5,` : aSteps, nSession = 16
         if (aSteps.match(   /,5,/  )) { // List Scripts  from FRTables JSON file                    //  Step 5 listScripts
 //         console.log(    "  process.argv:", process.argv.slice(2).join( ", ") )
-//          aApp            = 'c35'                                                                // .(40711.04.1 Need to set via args)
-//          aMod            = 'gp4oopu'                                                            // .(40711.04.2)
+//          aApp            = 'c35'                                                                 // .(40711.04.1 Need to set via args)
+//          aMod            = 'gp4oopu'                                                             // .(40711.04.2)
 
-//     var  mArgs           =  setArgs( ['', '', 5, 1, 'xx'             ], 'get', 'uit' )
-//     var  mArgs           =  setArgs( ['', '', 5, 1, '',    'gp4oopu' ], 'get', 'uit' )
-//     var  mArgs           =  setArgs( ['', '', 5, 1, 'xx',  'mod'     ], 'get', 'uit' )
-//     var  mArgs           =  setArgs( ['', '', 5, 1, 'c35', 'mod'     ], 'get', 'uit' )
-//     var  mArgs           =  setArgs( ['', '', 5, 1, 'xx',  'gp4oopu' ], 'get', 'uit' )
-//     var  mArgs           =  setArgs( ['', '', 5, 1                   ], 'get', 'uit' )
-//     var  mArgs           =  setArgs( ['', ''                         ], 'get', 'uit' )
+//     var  mArgs           =  setArgs( ['', '', 5, 1, 'xx'             ], 'get', 'puit' )
+//     var  mArgs           =  setArgs( ['', '', 5, 1, '',    'gp4oopu' ], 'get', 'puit' )
+//     var  mArgs           =  setArgs( ['', '', 5, 1, 'xx',  'mod'     ], 'get', 'puit' )
+//     var  mArgs           =  setArgs( ['', '', 5, 1, 'c35', 'mod'     ], 'get', 'puit' )
+//     var  mArgs           =  setArgs( ['', '', 5, 1, 'xx',  'gp4oopu' ], 'get', 'puit' )
+//     var  mArgs           =  setArgs( ['', '', 5, 1                   ], 'get', 'puit' )
+//     var  mArgs           =  setArgs( ['', ''                         ], 'get', 'puit' )
+/*
+        if (bIsNotCalled) {
+       var  mArgs           =  setArgs( ['', '', 5, 20, 5               ], 'get', 'puit' )
+        } else { 
+            console.log( `  process.argv:  '${ process.argv.join( "'\n                 '" ) }'` )
        var  mArgs           =  setArgs( process.argv, 'get', 'quit' )
-
-            console.log(    `  mArgs: '${mArgs.join("', '")}`)
+            }
+*/       
+       var  mArgs           =  setArgs( process.argv, 'get', 'quit' )
+            console.log(    `  mArgs:  '${mArgs.join("', '")}`)
         if (mArgs.join("', '").match( /'\*/ ) ) { console.log( "  process.exit()" ) }
+
             aApp            =  mArgs[3]
             aMod            =  mArgs[4]
-       var  aDayTS          = `${mArgs[0]}.${ mArgs[1] == '00' ? '' : mArgs[0] }.${ mArgs[2] }`
+//     var  aDayTS          = `${ mArgs[0]}.${ mArgs[1] == '00' ? ''   : mArgs[0] }.${ mArgs[2] }`  //#.(40721.04.1 RAM When only session is in mArgs[1])
+       var  aDayTS          = `${ mArgs[0]}.${ mArgs[1] == '00' ? '01' : mArgs[1] }.${ mArgs[2] }`  // .(40721.04.1 RAM S.B. this)
+//     var  aDayTS          = `${ mArgs[0]}.${mArgs[1]}.${ mArgs[2] }`                              //#.(40721.04.1 RAM not this)
         if (aApp == '') { console.log( "* No App found. Please try again"   ) }
         if (aMod == '') { console.log( "* No Model found. Please try again" ) }
 //      if (aApp == '' || aMod == '') { process.exit() }
@@ -271,14 +283,14 @@
 //     var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : nVer // nSession         //#.(40702.04.1 RAM Find 'em all)
 //     var  aApp            =  process.argv.length > 4 ? process.argv[4] : aApp                     //#.(40711.04.2)
 //     var  aMod            =  process.argv.length > 5 ? process.argv[5] : aMod                     //#.(40711.04.3)
-            console.log(    `  nVer:  '${aDayTS}', aApp: '${aApp}',  aMod: '${aMod}'`)
+            console.log(    `  aDayTS: '${aDayTS}', aApp: '${aApp}',  aMod: '${aMod}'`)
 
 //          aApp            =  aApp              ? aApp : process.env["FRT_APP"]                    //#.(40716.02.2)
 //          aMod            =  aMod              ? aMod : process.env["FRT_MODEL"]                  //#.(40716.02.3)
         var nFld            = (aMod.length == 7) ? 1 : 2; aApp = aApp.slice(0,3)
-            aAppName        = (getApp(    1,   aApp ).slice(2,3)[0] || '' ).trim()                  // .(40715.01.3 RAM Was 2, aApp)
-            aModel          = (getModel( nFld, aMod ).slice(2,3)[0] || '' ).trim()                  // .(40715.01.4 RAM Was 2, aMod)
-            console.log(    `  nVer:  '${aDayTS}', aApp: '${aApp}', aAppName: '${aAppName}',  aMod: '${aMod}', aModel: '${aModel}'`)
+            aAppName        = (getApp(    2,   aApp    , 2 )) // (().slice(2,3)[0] || '').trim()    // .(40718.09.5).(40715.01.3 RAM Was 2, aApp)
+            aModel          = (getModel( nFld, aMod    , 2 )) // (().slice(2,3)[0] || '').trim()    // .(40718.09.6).(40715.01.4 RAM Was 2, aMod)
+            console.log(    `  aDayTS: '${aDayTS}', aApp: '${aApp}', aAppName: '${aAppName}',  aMod: '${aMod}', aModel: '${aModel}'`)
 //      if (!aModel) {
 //          console.log(  `\n* Invalid Model, ${aMod}` ); process.exit() }
 //      if (!aModel) {
@@ -292,41 +304,42 @@
 //     var  aMarkdown_File  = `${aApp.slice(0,3)}_markdown_{ver}`                                   //#.(40702.05.2 RAM New pattern)
 //     var  aMarkdown_File  = `${aApp.slice(0,3)}_{ver}_session`                                    // .(40702.05.2 RAM New pattern)
        var  aMarkdown_File  = `${aApp.slice(0,3)}_{ver}_markdown`                                   // .(40711.04.3 RAM File is now markdown.md)
+//          console.log(    `  aMarkdown_File: '${aMarkdown_File}'` )
 
-//     var  aMarkdown_Saved =  FRT.join( aSessions_Dir, `${aMarkdown_File}_${aVer2}.md` )
-       var  aMarkdown_Saved =  getLastVer_Saved(  aSessions_Dir, aMarkdown_File, 'md', aDayTS )     // .(40702.05.3 RAM Use new function)
+       var  aMarkdown_Saved =  getLastVer_Saved(  aSessions_Dir,   aMarkdown_File, 'md', aDayTS)    // .(40702.05.3 RAM Use new function)
 
                                await listScripts( aMarkdown_Saved )    // <===  Step 5
             }
 //     ---  --------------  =  -----------------------------------------------
 
-//     var  aSteps = bRun ? `,6,` : aSteps, nSession = 16
+       var  aSteps = bRun ? `,6,` : aSteps, nSession = 16
         if (aSteps.match(   /,6,/  )) { // Save Scripts  from FRTables JSON file                    //  Step 6 saveScripts
 
-//     var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : '' // nSession           // .(40702.04.2 RAM Find 'em all)
-       var [aDayTS, aApp, aMod ] = AIM.setArgs( process.argv  )                                     // .(40711.04.x RAM Set Args)
+//     var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : '' // nSession           //#.(40702.04.2 RAM Find 'em all)
+//     var [aDayTS, aApp, aMod ] = AIM.setArgs( process.argv  )                                     //#.(40711.04.x RAM Set Args)
 //     var  aAppCD          =  AIM.getApp(   process.argv[4], aApp )
 //     var  aModCD          =  AIM.getModel( process.argv[5], aMod )
 /*
-       var  aApp            =  process.argv.length > 3 ? process.argv[3] : aApp                     // .(40711.04.x RAM )
-       var  aMod            =  process.argv.length > 4 ? process.argv[4] : aMod                     // .(40711.04.x)
-//     var  aDayTS          =  process.argv.length > 5 ? process.argv[5] : '' // nSession           // .(40702.04.1 RAM Find 'em all)
-            aModel          = (getModel(  2, aMod ).slice(2,3)[0] || '').trim()
+       var  aApp            =  process.argv.length > 3 ? process.argv[3] : aApp                     //#.(40711.04.x RAM )
+       var  aMod            =  process.argv.length > 4 ? process.argv[4] : aMod                     //#.(40711.04.x)
+//     var  aDayTS          =  process.argv.length > 5 ? process.argv[5] : '' // nSession           //#.(40702.04.1 RAM Find 'em all)
+//          aModel          = (getModel(  2,   aMod                ).slice(2,3)[0] || '').trim()    //#.(40718.09.7)
         if (aModel == "") {
             console.log(  `\n* Invalid Model, ${aMod}` ); process.exit() }
         if (aModel == "") {
-            consolr.log(  `\n* Invalid App, ${aApp}`   ); process.exit() }                          // .(40711.04.x End)
+            consolr.log(  `\n* Invalid App, ${aApp}`   ); process.exit() }                          //#.(40711.04.x End)
 */
-//     var  aAppName        = (getApp(   2, aApp ).slice(2,3)[0] || '').trim()                      // .(40711.04.x)
-//     var  aModel          = (getModel( 2, aApp ).slice(2,3)[0] || '').trim()                      // .(40715.01.5)
+//     var  aAppName        = (getApp(    2,   aApp                ).slice(2,3)[0] || '').trim()    //#.(40718.09.8)
+//     var  aModel          = (getModel(  2,   aApp                ).slice(2,3)[0] || '').trim()    //#.(40718.09.9)
 
-       var  mArgs           =  setArgs( process.argv, 'get', 'quit' )
-
-//          console.log(    `  mArgs: '${mArgs.join("', '")}`)
+       var  mArgs           =  setArgs( ['', '', 5, 20, 5 ], 'get', 'puit' )
+//     var  mArgs           =  setArgs( process.argv       , 'get', 'quit' )
+            console.log(    `  mArgs:  '${mArgs.join("', '")}`)
         if (mArgs.join("', '").match( /'\*/ ) ) { console.log( "  process.exit()" ) }
+
             aApp            =  mArgs[3]
             aMod            =  mArgs[4]
-       var  aDayTS          = `${mArgs[0]}.${ mArgs[1] == '00' ? '' : mArgs[0] }.${ mArgs[2] }`
+       var  aDayTS          = `${ mArgs[0]}.${ mArgs[1] == '00' ? '01' : mArgs[1] }.${ mArgs[2] }`  // .(40721.04.2)
         if (aApp == '') { console.log( "* No App found. Please try again"   ) }
         if (aMod == '') { console.log( "* No Model found. Please try again" ) }
 //      if (aApp == '' || aMod == '') { process.exit() }
@@ -334,15 +347,15 @@
 //     var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : nVer // nSession         // .(40702.04.1 RAM Find 'em all)
 //     var  aApp            =  process.argv.length > 4 ? process.argv[4] : aApp                     // .(40711.04.x)
 //     var  aMod            =  process.argv.length > 5 ? process.argv[5] : aMod                     // .(40711.04.x)
-//          console.log(    `  nVer:  '${aDayTS}', aApp: '${aApp}',  aMod: '${aMod}'`)
+            console.log(    `  aDayTS: '${aDayTS}', aApp: '${aApp}',  aMod: '${aMod}'`)
 
 //          aApp            =  aApp              ? aApp : process.env["FRT_APP"]                    //#.(40716.02.4)
 //          aMod            =  aMod              ? aMod : process.env["FRT_MODEL"]                  //#.(40716.02.5)
         var nFld            = (aMod.length == 7) ? 1 : 2; aApp = aApp.slice(0,3)
-            aAppName        = (getApp(    1,   aApp ).slice(2,3)[0] || '' ).trim()                  // .(40715.01.3 RAM Was 2, aApp)
-            aModel          = (getModel( nFld, aMod ).slice(2,3)[0] || '' ).trim()                  // .(40715.01.4 RAM Was 2, aMod)
-            aMod            = (getModel( nFld, aMod ).slice(1,2)[0] || '' ).trim()                  // .(40717.05.x RAM Need the alias) 
-//          console.log(    `  nVer:  '${aDayTS}', aApp: '${aApp}', aAppName: '${aAppName}',  aMod: '${aMod}', aModel: '${aModel}'`)
+            aAppName        = (getApp(    1,   aApp    , 2 )) // (().slice(2,3)[0] || '').trim()    // .(40718.09.10).(40715.01.3 RAM Was 2, aApp)
+            aModel          = (getModel( nFld, aMod    , 2 )) // (().slice(2,3)[0] || '').trim()    // .(40718.09.11).(40715.01.4 RAM Was 2, aMod)
+            aMod            = (getModel( nFld, aMod    , 1 )) // (().slice(1,2)[0] || '').trim()    // .(40718.09.12).(40717.05.x RAM Need the alias) 
+            console.log(    `  aDayTS: '${aDayTS}', aApp: '${aApp}', aAppName: '${aAppName}',  aMod: '${aMod}', aModel: '${aModel}'`)
 
        var  aSessions_Dir   =  getDocsPath( aAppName, aModel )                                      // .(40715.03.2)
 //     var  aSessions_Dir   =  FRT.join( __basedir, `docs/${aAppName}/${aModel}` )                  //#.(40711.04.x RAM was aApp).(40715.03.2)
@@ -561,10 +574,10 @@ return `${ `${j+0}.`.padStart(5)}  ${aMod}  ${aModel.padEnd(30)}  ${aFile}`
        var  aAppPath        =  getDocsPath( aAppName, aModel )                                      // .(40715.03.5 Add chk function)
             console.log(    `  aAppPath: '${aAppPath}'`)
 
-       var  aMarkdown_File  = `${aAppName.slice(0,3)}_{ver}_markdown`                                   // .(40702.05.2 RAM New pattern)
+       var  aMarkdown_File  = `${aAppName.slice(0,3)}_{ver}_markdown`                               // .(40702.05.2 RAM New pattern)
      
             console.log(    "  aMarkdown_File: ", aMarkdown_File)
-       var  aMarkdown_Saved =  getLastVer_Saved(  aAppPath,  aMarkdown_File, 'md', aDayTS )   // .(40702.05.3 RAM Use new function)
+       var  aMarkdown_Saved =  getLastVer_Saved(  aAppPath,        aMarkdown_File, 'md', aDayTS )   // .(40702.05.3 RAM Use new function)
             console.log(    "  aMarkdown_Saved:", aMarkdown_Saved)
 
 //     var  openChrome = spawn(  'cmd.exe', ['/c', 'start chrome', '--profile-directory="Profile 1"', aMarkdown_Saved ]);
@@ -1242,7 +1255,7 @@ return `${ `${j+0}.`.padStart(5)}  ${aMod}  ${aModel.padEnd(30)}  ${aFile}`
 //          console.log( `aLastFile: ${aLastFile}` ); process.exit()
        var  aVer            =  aLastFile.match( /t[0-9.]+/ ); aVer = aVer ? aVer[0].replace( /\.$/, '' ) : '' // .(40711.04.x)
         if (aVer == "" ) {
-            console.log( `\n* Can't find a ${aLastFile_regEx} file in since date: ${aToday}*` )
+            console.log( `\n* Can't find file matching, /${aLastFile_regEx}/, since ver.date: ${aToday}*` )
             console.log(   `    in folder: ${aSessions_Dir}` )
             process.exit()
             }

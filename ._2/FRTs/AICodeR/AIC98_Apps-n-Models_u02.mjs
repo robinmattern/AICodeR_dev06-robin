@@ -10,14 +10,15 @@
 //          process.exit()
 
        var  Apps =                                                                      // .(40711.01.3 RAM Add Apps table)
-             [ [ ' 1.', 'c35', 'c35_calendar1-app        ' ] //
-             , [ ' 2.', 'c36', 'c36_hawaii-contracts-app ' ] //
-             , [ ' 3.', 'c37', 'c37_aicoder-sessions-app ' ] //
-             , [ ' 4.', 'c38', 'c38_login-app            ' ] //
-             , [ ' 5.', 'c42', 'c42_whatever-app         ' ] //
-             , [ ' 6.', 'c43', 'c43_chrome-extension-app ' ] //
-             , [ ' 7.', 'c44', 'c44_a-dancers-dream-app  ' ] //
-             , [ ' 8.', 's35', 's35_calendar-app         ' ] //
+             [ [ ' 1.', 'c01', 'c01_calendar-app         ' ] //                         // .(40719.01.1 RAM Add C01 App)
+             , [ ' 2.', 'c35', 'c35_calendar1-app        ' ] //
+             , [ ' 3.', 'c36', 'c36_hawaii-contracts-app ' ] //
+             , [ ' 4.', 'c37', 'c37_aicoder-sessions-app ' ] //
+             , [ ' 5.', 'c38', 'c38_login-app            ' ] //
+             , [ ' 6.', 'c42', 'c42_whatever-app         ' ] //
+             , [ ' 7.', 'c43', 'c43_chrome-extension-app ' ] //
+             , [ ' 8.', 'c44', 'c44_a-dancers-dream-app  ' ] //
+             , [ ' 9.', 's35', 's35_calendar-app         ' ] //
                ]
 // ----------------------------------------------------------------------------------
 
@@ -96,12 +97,12 @@
   function  getDocsPath( aAppName, aModel_ ) {                                                       // .(40715.04.4 Add function getDocsPath Beg)
             aAppName       = (aAppName || '').trim()
        var  aModel         = (aModel_  || '').trim()
-       var  aDir           =  aModel ? `docs/${aAppName}/${aModel}` : `docs/${aAppName}`
-       var  aSessions_Dir  =  FRT.path( __basedir, aDir )
+       var  aDocs_Dir      =  aModel ? `docs/${aAppName}/${aModel}` : `docs/${aAppName}`
+       var  aSessions_Dir  =  FRT.path( __basedir, aDocs_Dir )
        var  pStat          =  FRT.checkFileSync( aSessions_Dir )
        if (!pStat.isDir   ||  aAppName == '' || (aModel == '' && aModel_ == '')) {
-//     var  aErrMsg        =  aAppName && aModel_ != '' ?  `AppName/Model folder, ./${aDir}` : ( aModel_ ? `AppName, ''` : `aModel, ''` )
-       var  aErrMsg        =  aAppName && aModel_ != '' ?  `AppName/Model folder, ./${aDir}` : `AppName/Model, ''`
+//     var  aErrMsg        =  aAppName && aModel_ != '' ?  `AppName/Model folder, ./${aDocs_Dir}` : ( aModel_ ? `AppName, ''` : `aModel, ''` )
+       var  aErrMsg        =  aAppName && aModel_ != '' ?  `AppName/Model folder, ./${aDocs_Dir}` : `AppName/Model, ''`
             console.log( `* ${aErrMsg}, does not exist.` )
             process.exit()
 //   return `* ${aErrMsg}, does not exist.`
@@ -111,17 +112,21 @@
 // ----------------------------------------------------------------------------------
 
   function  selectRow( mRows, nFld, aVal ) {  var nOrigin = 0
-        if (typeof(nFld) == 'undefined' ||  `${ nFld || '' }` == '') { return mRows }
+//      if (typeof(nFld) == 'undefined' ||  `${ typeof(nFld) || '' }` == '') { return mRows }       //#.(40721.01.1)
+        if (typeof(nFld) == 'undefined' ||  nFld == ''   ) { return mRows }                         // .(40721.01.1 RAM S.B. this)
+//      if (typeof(nFld) == 'undefined'                  ) { return mRows }                         //#.(40721.01.1 RAM )
         if (typeof(nFld) == 'string'    ) { aVal = nFld; nFld  =  2 - (1 - nOrigin) }
         if (typeof(aVal) == 'undefined' ) { return mRows.map( mRow => mRow[ nFld - nOrigin ] ) }
         if ( aVal  == '' ) { return ''}
-        if (isNaN(aVal)) { var nVal = 0 } else {var nVal = aVal * 1 }
+//      if (isNaN(aVal)) { var nVal = 0 } else {var nVal = `{aVal * 1}.`.padStart(3) }              // .(40719.02.1 RAM Find ' 1.' )
+        if (isNaN(aVal)) { var nVal = 0 } else  var nVal =   aVal * 1                               // .(40719.02.1 RAM Find ' 1.' )
         if (nFld > mRows[0].length - (1 - nOrigin)) {
             console.log( `\n* Invalid field No ${nFld}. (Origin is now ${nOrigin})`); return '' }
-       var  nRow = mRows.findIndex( ( mRow, i ) => { var  aFld  = mRow[ nFld - nOrigin ];
+       var  nRow = mRows.findIndex( ( mRow, i ) => { 
+               var  aFld  = mRow[ nFld - nOrigin ];
 //          console.log(  aFld.slice( 0, aVal.length ), aVal )
-    return  nVal ? (mRow[ nFld - nOrigin ] * 1) == nVal : aFld.slice( 0, aVal.length ) == aVal
-            } )
+            return  nVal ? (mRow[ nFld - nOrigin ] * 1) == nVal : aFld.slice( 0, aVal.length ) == aVal
+                   } )
     return (nRow != -1) ? mRows[ nRow ] : ''
             }
 // ----------------------------------------------------------------------------------
@@ -137,8 +142,8 @@
 //          console.log( "getApp( 2, 'c88' )[2]:", getApp( 2, 'c88' )[2] || '' )  // ''
 //          process.exit()
 
-// function getApp(   nFld, aVal ) { return selectRow( Apps,    nFld, aVal ) }          //#.(40718.09.1).(40711.01.1 RAM Added)
-  function  getApp( nFld, aMod, aSub ) {                                              // .(40718.09.1 RAM Enhanced getApp )
+//function  getApp(   nFld, aVal ) { return selectRow( Apps,    nFld, aVal ) }          //#.(40718.09.1).(40711.01.1 RAM Added)
+  function  getApp(   nFld, aMod, aSub ) {                                              // .(40718.09.1 RAM Enhance getApp )
             aSub = typeof(aSub) != 'undefined' ? aSub : nFld 
        if (!aMod     ) { return  selectRow( Apps, nFld ) }
         if (nFld == 0) { return  selectRow( Apps, nFld, aMod ) }
@@ -159,7 +164,7 @@
             console.log( "getModel( 3 ,'gp4oopu', 'request_.sh'  ):", getModel( 3, 'gp4oopu', 'request_.sh'  ) )  
             process.exit()
 */
-//function  getModel( nFld, aVal ) { return selectRow( Apps,    nFld, aVal ) }          // .(40718.09.2).(40711.01.1 RAM Added)
+//function  getModel( nFld, aVal ) { return selectRow( Apps,    nFld, aVal ) }          //#.(40718.09.2).(40711.01.1 RAM Added)
   function  getModel( nFld, aMod, aSub ) {                                              // .(40718.09.2 RAM Enhanced getModel )
             aSub = typeof(aSub) != 'undefined' ? aSub : nFld 
        if (!aMod     ) { return  selectRow( Models2, nFld ) }
@@ -185,6 +190,7 @@
             chkArgs( ['1.2.40711.1304', 'c35', 'c35sann' ] )
 */
        var  bTesting_Args   =  false
+//     var  bTesting_Args   =  true 
        var  bIsNotCalled    =  FRT.isCalled( import.meta.url, process.argv[1]);
         if (bIsNotCalled && bTesting_Args) {
 //          setArgs( [ 'c55'        ] )   //  ** App alias not found: 'c55'  (if not in mApps)
@@ -193,12 +199,17 @@
 //          setArgs( [ 'c37'        ] )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
 //          setArgs( [ 'get', 'c37' ] )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
 //          setArgs( [ 'set', 'foo'     ] )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
-       var  mParms = setArgs( [ 'set', 'fooey'       ] )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
-            mParms = setArgs( [ 'get', 'app',  'c37' ] )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
-            mParms = setArgs( [ 'get', 'model', ''   ] )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
-            mParms = setArgs( [ 'set', 'gp4oopu'     ] )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
-            mParms = setArgs( [ 'set', 'c35'         ] )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
-//          mParms = setArgs(    process.env           )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
+//     var  mParms = setArgs( [ 'set', 'fooey'       ] )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
+//     var  mParms = setArgs( [ 'get', 'app',  'c37' ] )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
+//     var  mParms = setArgs( [ 'get', 'model', ''   ] )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
+//     var  mParms = setArgs( [ 'set', 'gp4oopu'     ] )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
+//     var  mParms = setArgs( [ 'set', 'c35'         ] )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
+//          mParms = setArgs(    process.argv          )   // nThread: '', nMsg: '',  aTS: '', aApp: 'c37', aMod: ''
+
+//     var  mParms = setArgs( [ '', '', 'c37'                 ], 'get' )   // nThread: '',    nMsg: '',    aTS: '', aApp: 'c37', aMod: ''
+//     var  mParms = setArgs( [ '', '', '20.2', '', 'gp4oopm' ], 'get' )   // nThread: '020', nMsg: '02',  aTS: '', aApp: '',    aMod: 'gp4oopm'
+       var  mParms = setArgs( [ '', '', '20', '2' ], 'get' )               // nThread: '020', nMsg: '02',  aTS: '', aApp: '',    aMod: ''
+
             console.log( `nThread: '${mParms[0]}', nMsg: '${mParms[1]}',  aTS: '${mParms[2]}', aApp: '${mParms[3]}', aMod: '${mParms[4]}' ` )
 
 //          setArgs( [ '1.2.40711.1304' ] )
@@ -211,15 +222,20 @@
 
   function  setArgs( mArgs, aGetSet, aQuit ) {
 //     var  bSet  = 0,  bGet = 0, aVar;
-            mArgs     =   mArgs.slice( 2 + (isNaN( mArgs[3] || '') ? 0 : 1 ) )
+//          console.log( `  mArgs:         '${ mArgs.join( "'\n                 '" ) }'` )
+//          mArgs     =   mArgs.slice( 2 )                                                          //#.(40721.03.1 RAM ??) 
+//          mArgs     =   mArgs.slice( 2 + ( isNaN( mArgs[3] || '') ? 0 : 1 ) )                     //#.(40721.03.1 ??) 
+//          console.log( `  isNaN( mArgs[2]: : '${isNaN(mArgs[2])}'`  )
+            mArgs     =   mArgs.slice( 2 + ( isNaN( mArgs[2]      ) ? 0 : 1 ) )                     // .(40721.03.1 Remove Step No from CLI) 
+//          console.log( `  mArgs:  '${ mArgs.join( "', '" ) }'` )
 //      if (aGetSet   == 'get') {  aVar = mArgs[0].slice(0,3).toLowerCase(); mArgs.shift(); bGet = 1 }
-       var  mParms    =   chkArgs( mArgs, `${aGetSet}${aQuit}`.match(/quit/) ? 'quit' : '' ) // not 'quit'
-//      if (mParms[3] == '' && bGet && aVar == 'app') { mParms[3] = getEnv( 'APP');                return mParms }
-//      if (mParms[4] == '' && bGet && aVar == 'mod') { mParms[4] = getEnv( 'Model');              return mParms }
+       var  mParms    =   chkArgs( mArgs, `${aGetSet}${aQuit}`.match(/quit/) ? 'quit' : '' )        // not 'quit'
+//      if (mParms[3] == '' && bGet && aVar == 'app') { mParms[3] = getEnv( 'APP');                    return mParms }
+//      if (mParms[4] == '' && bGet && aVar == 'mod') { mParms[4] = getEnv( 'Model');                  return mParms }
        var  bGet      =  (aGetSet == 'get' && mParms[5] == '') ? 1 : 0
        var  bSet      =  (aGetSet == 'set' && mParms[5] == '') ? 1 : 0
-        if (mParms[3] == '' && bGet                 ) { mParms[3] = getEnv( 'APP') || '';             }  //    return mParms }
-        if (mParms[4] == '' && bGet                 ) { mParms[4] = getEnv( 'Model') || '';              } // return mParms }
+        if (mParms[3] == '' && bGet                 ) { mParms[3] = getEnv( 'APP') || '';          } // return mParms }
+        if (mParms[4] == '' && bGet                 ) { mParms[4] = getEnv( 'Model') || '';        } // return mParms }
         if (mParms[3] != '' && bSet                 ) {             setEnv( 'APP',    mParms[3] ); } // return mParms }
         if (mParms[4] != '' && bSet                 ) {             setEnv( 'Model',  mParms[4] ); } // return mParms }
 //          console.log( `* Invalid app or model alias: '${ mArgs.join( `','` ) }'` )
@@ -243,7 +259,7 @@
   function  setEnv( aVar, aVal, aPreFix ) {
             aPreFix     =   aPreFix ? `${aPreFix}` : "FRT"
        var  aEnvVar     =`${aPreFix}_${ aVar.toUpperCase().replace( `${aPreFix}_`, '' ) }`
-            process.env[  aEnvVar ] = aVal
+            process.env[    aEnvVar ] = aVal
        var  mEnvs       =   Object.entries( process.env ).filter( mEnv => mEnv[0].slice(0,4) == `${aPreFix}_` )
        var  mMyEnvs     =   mEnvs.map( mEnv => `${ mEnv[0].padEnd(12) } = "${mEnv[1]}"` )
             console.log( `  Setting default ${aEnvVar} to: '${aVal}' in .env file` )
@@ -265,16 +281,19 @@
             mParms[1] = (mSM[1] || '').padStart( 2, '0' )
             mParms[2] =  mSM[3] ? `${mSM[2]}.${mSM[3]}` : (mSM[2] || '')
             }
-        if (mArgs[0]  && mArgs[0].length == 3) {
+        if (mArgs[0]  && mArgs[0].length == 3) {   // Check App alias
             mParms[3] = /[cs][0-9]{2}/.test( mArgs[0] || '') ?  mArgs[0] : `* Invalid App alias: '${mArgs[0]}'`
-            mParms[3] = /^\*/.test(  mParms[3] ) ? mParms[3] : (getApp(   1, mParms[3] )[1] || '').trim()   // origin 0
+//          mParms[3] = /^\*/.test(  mParms[3] ) ? mParms[3] : (getApp(   1, mParms[3] )[1] || '').trim()     //#.(40718.09.13 ) // origin 0
+//          mParms[3] = /^\*/.test(  mParms[3] ) ? mParms[3] : (getApp(   1, mParms[3] )                      //#.(40718.xx.x  RAM Keep leading '*') 
+            mParms[3] = /^\*/.test(  mParms[3] ) ? mParms[3] :  getApp(   1, mParms[3] )                      // .(40718.09.13 RAM New getApp)
             mParms[3] =  mParms[3] ? mParms[3] : `* App alias not found: '${mArgs[0]}'`
             mArgs.shift()
             }
-        if (mArgs.length == 2) { var n = 1 } else { var n = 0 }
-        if (mArgs[n]  && mArgs[n].length == 7) {
+        if (mArgs.length == 2) { var n = 1 } else { var n = 0 }                                               // .(40718.xx.x RAM ??)
+        if (mArgs[n]  && mArgs[n].length == 7) {    // Check Model alias
             mParms[4] = /[a-z0-9]{7}/.test(  mArgs[n] || '') ?  mArgs[n] : `* Invalid Model alias: '${mArgs[0]}'`
-            mParms[4] = /^\*/.test(  mParms[4] ) ? mParms[4] : (getModel( 1, mParms[4] )[1] || '').trim()   // origin 0
+//          mParms[4] = /^\*/.test(  mParms[4] ) ? mParms[4] : (getModel( 1, mParms[4] )[1] || '').trim()     //#.(40718.09.14)
+            mParms[4] = /^\*/.test(  mParms[4] ) ? mParms[4] :  getModel( 1, mParms[4] )                      // .(40718.09.14 RAM New getApp)   
             mParms[4] =  mParms[4] ? mParms[4] : `* Model alias not found: '${mArgs[n]}'`
             mArgs.splice(-1)
             }
@@ -333,7 +352,8 @@
 
        if (aTable == 'set' && aRow.slice(0,3) == 'app' ) {
 //     var  aRow           =  process.argv.length > 4 ? process.argv[4] : aRow
-       var  aAppName       = (getApp( 1, aItem )[2] || '').trim()
+//     var  aAppName       = (getApp(   1, aItem )[2] || '').trim()                                 //#.(40718.09.xx) 
+       var  aAppName       = (getApp(   1, aItem,  2 ))         // (()[2] || '').trim()             // .(40718.09.xx)
         if (aAppName == "") {
             console.log( `\n* Invalid app: '${aItem}'` )
             process.exit()
@@ -347,7 +367,7 @@
 
         if (aTable == 'set' && aRow.slice(0,3) == 'mod' ) {
 //     var  aRow           =  process.argv.length > 4 ? process.argv[4] : aRow
-       var  aModel         = (getModel( 1, aItem )[2] || '').trim()
+       var  aModel         = (getModel( 1, aItem,  2 ))             // (()[2] || '').trim()             // .(40718.09.xx)
         if (aModel == "") {
             console.log( `\n* Invalid model: '${aItem}'` )
             process.exit()
@@ -359,16 +379,18 @@
             }
 // ---------------------------------------------------------------------------------------------------
 
-       if ("test2" == "text2") {
+       if ("test2" == "test2") {
        var  aTable         = 'apps'
        var  aTable         = 'models'
        var  aRow           = 'c35sann'
+       var  aRow           = ''
             }
+// ---------------------------------------------------------------------------------------------------
 
 //     var  aRow           = '' // 'gp4oopm'
 //     var  aRow           =  process.argv.length > 3 ? process.argv[3] : ''
 
-//          console.log(   `  aTable: ${aTable}, aRow: '${aRow}'` )
+            console.log(   `  aTable: ${aTable}, aRow: '${aRow}'` )
        var  xTable         = (aTable.slice(0,3) == 'mod') ? getModel : getApp
 //          console.log(      getModel( aRow ).map( m => '  ' + m.join( '  ' )).join( '\n' ) );
        var  mRows          =  aRow ? [ xTable( aRow ) || [ `* ${aTable.slice(0,-1)} not found: '${aRow}'` ] ] : xTable( aRow );

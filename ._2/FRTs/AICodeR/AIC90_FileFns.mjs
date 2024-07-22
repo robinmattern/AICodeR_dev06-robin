@@ -81,7 +81,8 @@ async function  makDirASync(    aDirName  ) { aDirName = `${aDirName || ''}`
 // var  pOK             =  await fs.access(  aDirPath, fs.constants.F_OK )
 // var  pOK             =  await fs.access(  aDirPath )
 // var  bOK             =  await fs.exists(  aDirPath )
-   var  pStats          =  await checkFileASync( aDirPath ); console.log( `  pStats.exists: ${pStats.exists}, ${aDirPath}` )
+   var  pStats          =  await checkFileASync( aDirPath ); 
+//    console.log(  `  pStats.exists: ${pStats.exists}, ${aDirPath}` )
    var  bOK             =  pStats.exists // && pStats.isNotDir
     if (bOK == false) {  
                            await fs.mkdir(   aDirPath, { recursive: true } );
@@ -121,9 +122,10 @@ return  aDirPath;   //  return  aDirPath  to  callers
 // --------------------------------------------------------------
 
 async function  checkFileASync(  aFilePath  ) {
-        aFilePath        =  aFilePath.match( /^\./ ) ? path.join( __dirname, aFilePath ) : aFilePath;   // .(40527.01.2 CoPilot Only paths starting with '.' are relative) 
-        aFilePath        =  path.resolve( aFilePath.replace( /^\/[A-Z]/, '' ) )                         // .(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
-   var  pStats           ={ path: aFilePath.split( /[\\\/]/ ).slice(-1) 
+//      aFilePath        =  aFilePath.match(/^\./) ? path.join( __dirname, aFilePath ) : aFilePath; // .(40527.01.2 CoPilot Only paths starting with '.' are relative) 
+//      aFilePath        =  path.resolve( aFilePath.replace( /^\/[A-Z]/, '' ) )                     // .(40721.08.1).(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
+        aFilePath        =  cleanPath( aFilePath );                                                 // .(40721.08.1 RAM Make it the same as checkFileASync).(40618.01.4) 
+   var  pStats           ={ path: aFilePath.split( /[\\\/]/ ).slice(-1)[0] 
                          ,  name: aFilePath.split( /[\\\/]/ ).slice(-1).join() 
                          ,  size: 0
                          ,  exists: false 
@@ -133,8 +135,8 @@ async function  checkFileASync(  aFilePath  ) {
  try {
    var  aStats           =  await fs.stat( aFilePath );
         pStats.size      =  aStats.size
-        pStats.exists    =  aStats.updatedOn > ""
         pStats.updatedOn =  aStats.mtime.toISOString()
+        pStats.exists    =  pStats.updatedOn > ""
         pStats.isNotDir  =  aStats.isDirectory() == false 
         pStats.isDir     =  aStats.isDirectory() == true
     } catch(pError) { }
@@ -144,7 +146,7 @@ return  pStats
 
 function  checkFileSync( aFilePath  ) {
          aFilePath       =  cleanPath( aFilePath );                                         // .(40618.01.4) 
-    var  pStats          ={ path: aFilePath.split( /[\\\/]/ ).slice(-1) 
+    var  pStats          ={ path: aFilePath.split( /[\\\/]/ ).slice(-1)[0] 
                          ,  name: aFilePath.split( /[\\\/]/ ).slice(-1).join() 
                          ,  size: 0
                          ,  exists: false 
@@ -258,7 +260,7 @@ async function  readFileASync(   aFilePath, pOptions ) {
         aFilePath        =  cleanPath(  aFilePath );                                         // .(40618.01.5) 
   try { aData            = ''
 // if ((await checkFileAsync(    aFilePath ) ).exists) {  
-   var  bOK              =  await checkFileASync( aFilePath ).exists && checkFileASync( aFilePath ).isNotDir
+   var  bOK              = (await checkFileASync( aFilePath )).exists && (await checkFileASync( aFilePath )).isNotDir
     if (bOK == true) {
    var  aData            =  await fs.readFile( aFilePath, pOptions ); 
 // var  aData = Promise.resolve( ); // Resolve on success

@@ -4,7 +4,7 @@
 
             AIC98_Tables="AIC98_Apps-n-Models_u02.mjs"
             AIC05_Schema="AIC05_Schema-IO_u09.mjs"
-            AIC91_Folders="AIC91_App_Folders.mjs"
+            AIC91_Folders="AIC91_AppFolders_u03.mjs"
 
             ThePath='E:/Repos/Robin/AIObjs_/dev03-robin/docs/c35_calendar1-app/GPT-4o_OpenAI-curl'
             aDir="E:/Repos/Robin/AIObjs_/dev03-robin/._2/FRTs/AICodeR/"
@@ -40,9 +40,12 @@
             fi;
             exit; fi
 
-            echo -e "  Running Node $1 $3 $4 $5 $6 $7 $8 $9"
     if [ "${aSteps2_}" != "${aSteps2}" ]; then
-    if [ "${aStep}" == "9" ]; then exit; fi
+    if [ "${aStep}" == "9" ]; then 
+            echo -e "  Running Node $1 $4 $5 $6 $7 $8 $9"
+            node "${aDir}/$1" $4 $5 $6 $7 $8 $9; exit; fi 
+
+            echo -e "  Running Node $1 $3 $4 $5 $6 $7 $8 $9"
             node "${aDir}/$1" $3 $4 $5 $6 $7 $8 $9
             exit
             fi

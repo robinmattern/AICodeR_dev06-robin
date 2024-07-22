@@ -109,6 +109,7 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
 //    var   aScrptName      =  aMarkdown.split( "\n" )[169].match( /^.*file:* `(.+)`:/ )[1]
      async  function  listScripts(    aMarkdown_File, aModel, aAppName ) {                      // Step 5
 
+          
             console.log(  `\n  Parsing aMarkdown_File: .${ aMarkdown_File.replace( /[\\\/]/g, '/' ). replace( __basedir, '' ) }` );
 //     var  aMarkdown =  await FRT.readFileSync( FRT.join( aMarkdown_File ), 'utf8' );
 //     var  aMarkdown =  await FRT.readFileASync( FRT.path( aMarkdown_File ), 'utf8' );
@@ -118,13 +119,14 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
 //          console.log( mCodes )
        var  mScriptNames    =  mCodes.map( (aCode, i) => {
 //                         if (aCode.match( /^((File: *|`).+)\.(js|mjs|html)/ )) {
-       var  mMatch          = aCode.match(  /((File: *|`).+)\.(json|js|mjs|html)/ )
+//     var  mMatch          = aCode.match(  /((File: *|`).+)\.(json|js|mjs|html)/ )                 //#.(40721.06.1)
+       var  mMatch          = aCode.match(  /((File: *|`).+)\.(json|js|mjs|html|gitgnore|env)/ )    // .(40721.06.1 RAM Add .env & .gitgnore)
                            if (mMatch && mMatch[1]) {
 //                         var aScript = aCode.replace( /(File: *|`)/, '' ).replace( /[\n\r`]+/g, '' ).trim()
                            var aScript = mMatch[0].replace( /(File: *|`)/, '' ).replace( /[\n\r`]+/g, '' ).trim()
 //                             aScript = aScript.slice(0, `${aScript} `.indexOf( ' ' )).trim()      //#.(40702.01.1 RAM No spaces in script name)
                                aScript = (aScript.indexOf( ' ' ) == -1) ? aScript : ''              // .(40702.01.1)
-                           if (aScript.match(/\.(json|js|mjs|html)/)) {
+                           if (aScript.match(/\.(json|js|mjs|html|gitgnore|env)/)) {                // .(40721.06.2) 
                    return [ i, aScript ] } }
                                } )
             mScriptNames    =  mScriptNames.filter( a => a )    //  remove MT (undefined) rows
@@ -168,7 +170,9 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
             }
             aVersion        =  aUV + aVer + '.' + aTS; mVersion = aVersion.split( "." )             // .(40717.05.7).(40703.03.4 RAM Reassigned mVersion)
 
-       var  aClientDir      = (aApp.slice(0,1) == 'c' ? 'client' : 'server') + aApp.slice(1,2)      // .(40718.03.2 RAM Use aApp)
+       var  aStage0         =  aApp.slice(1,2) == "0" ? "" :  aApp.slice(1,2);                      // .(40721.06.1 RAM No client# is app c0#)   
+       var  aClientDir      = (aApp.slice(0,1) == 'c' ? 'client' : 'server') + aStage0              // .(40721.06.1      // .(40718.03.2 RAM Use aApp)
+
        var  aAppDir         =  FRT.join( __basedir, aClientDir, aAppName )
 //     var  aFileName       = `${aMarkdown_File.replace( /_[uv].+/, '' )}_${aVersion}.md`           // uNN.YMMDD.HHMM is now uNN.0.YMMDD.HHMM
 //     var  aFileName       = `${aMarkdown_File.replace( /_[tuv].+/, '' )}_${aVersion}.md`          // tNNN.NN.N.YMMDD.HHMM is now uNN.0.YMMDD.HHMM
@@ -202,8 +206,9 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
 */
 //     var  writePromises   =  mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) )
        var  writePromises   =  mScriptNames.map(     async (mScript, i) => {                        // .(40702.03.3 Bard Suggests this Beg)
-                         try { await savScript( mScript, aBackPath, aVer, __basedir );
-                       return  Promise.resolve( );                                                  // .(40702.03.4 Bard Explicitly resolve with undefined (optional)
+//                        try { await savScript( mScript, aBackPath, aVer,    __basedir );          // .(40721.07.x aVer not used)
+                          try { await savScript( mScript, aBackPath, aAppDir, __basedir );          // .(40721.07.x aAppDir is needed)
+                                   return  Promise.resolve( );                                                  // .(40702.03.4 Bard Explicitly resolve with undefined (optional)
                            } catch ( error ) {
                        return  Promise.reject(  error ); }                                          // .(40702.03.5 Bard Reject with the error
                                } );  // eol mScriptNames.map
@@ -234,49 +239,64 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
 
 //    ----- ----------------------------------------------------------------------
 
-      async function savScript( mScript, aBackPath, aVer, aBaseDir ) {
-//          console.log(    `  Saving script ${mScript[0]}: ${mScript[1]} `)
-        var aScriptName     =  mScript[1].split(/[\\\/]/).slice(-1)[0]                  // .match( /^`(.+\.(js|mjs|html))/ )[1]
-        var aScriptDir      =  mScript[1].split(/[\\\/]/).slice(0,-1).join('/')         // .match( /^`(.+\.(js|mjs|html))/ )[1]
+//    async function savScript( mScript, aBackPath_, aVer,     aBaseDir ) {                         //#.(40721.07.2)
+      async function savScript( mScript, aBackPath_, aAppDir_, aBaseDir ) {                         // .(40721.07.2)
+              //          console.log(    `  Saving script ${mScript[0]}: ${mScript[1]} `)
+        var aScriptName     =  mScript[1].split(/[\\\/]/).slice(-1)[0]                              // .match( /^`(.+\.(js|mjs|html))/ )[1]
+        var aScriptDir      =  mScript[1].split(/[\\\/]/).slice(0,-1).join('/')                     // .match( /^`(.+\.(js|mjs|html))/ )[1]
             aScriptDir      =  aScriptDir ? aScriptDir + '/' : ''
 
       if ( !mCodes[ mScript[0] + 1 ] ) {
             console.log( `\n  Saving script ${mScript[0]}: No code for script file: ${mScript[1]}.` );
             return
             }
-
+        var aAppName        =  aAppDir_.match( /[\\\/][cs][0-9]{2}_.+/ )[0]                          // .(40721.07.3 RAM Has leaading /)
+        var bStage0         =  aAppName.slice(2,3) == '0'                                               // .(40721.07.4)
+        var aBackPath       =  bStage0 ? aBackPath_.replace( aAppName, '') : aBackPath              // .(40721.07.5)
+        var aAppDir         =  bStage0 ? aAppDir_.replace(   aAppName, '') : aAppDir                // .(40721.07.6 RAM Remove stage for c0# apps)
         var aBakPath        =  aBackPath
         var aAppPath        =  aAppDir
-        var bSaveIt         =  true                                                                           // .(40703.05.1 RAM Don't save some files)
+        var bSaveIt         =  true                                                                 // .(40703.05.1 RAM Don't save some files)
 
-        if (aScriptName.match( /^package.json/)) {  } // should be ok to leave this alone
-
-        if (aScriptName.match( /^\.gitignore/)) {
-        var aBakPath        =  '.vscode'
+        if (aScriptName.match( /^package.json/)) {   // should be ok to leave this alone
+        var aBakPath        =  ''
         var aAppPath        =  __basedir
-        var bSaveIt         =  false //  FRT.getStat( ).exists( aBakPath )? 1 : 0                             // .(40703.05.2 )
-//          return // if one doesn't currently exist, then save it, but adjust the path name                  // .(40703.05.3 )
+        var pStats          =  await FRT.checkFile( `${aAppPath}/${aScriptName}` )                             // .(40721.07.x) 
+        var bSaveIt         =- pStats.exists == false                                                         // .(40721.07.x).(40703.05.5)
+            }
+        if (aScriptName.match( /^\.gitignore/)) {
+        var aBakPath        =  ''                                                                             // .(40721.07.x RAM Was .vscode)  
+        var aAppPath        =  __basedir
+        var pStats          =  await FRT.checkFile( `${aAppPath}/${aScriptName}` )                             // .(40721.07.x) 
+        var bSaveIt         =- pStats.exists == false                                                         // .(40721.07.x).(40703.05.5)
             }
         if (aScriptName.match( /^\.env/)) {
-        var aBakPath        =  aBackPath.replace( /client/, 'server' ).replace( /c([0-9]{2})/g, 's$1' )
-        var aAppPath        =  aAppDir.replace(   /client/, 'server' ).replace( /c([0-9]{2})/g, 's$1' )
-        var bSaveIt         =  false //  FRT.getStat( ).exists( aBakPath )? 1 : 0                             // .(40703.05.4 )
-//   return // if one doesn't currently exist, then save it, but adjust the path name                         // .(40703.05.5 )
+//      var aBakPath        =  aBackPath.replace( /client/, 'server' ).replace( /c([0-9]{2})/g, 's$1' )  //#.(40721.07.x)  
+        var aBakPath        =  ''                                                                             // .(40721.07.x)  
+//      var aAppPath        =  aAppDir.replace(   /client/, 'server' ).replace( /c([0-9]{2})/g, 's$1' )
+        var aAppPath        =  __basedir                                                                      // .(40721.07.x) 
+        var pStats          =  await FRT.checkFile( `${aAppPath}/${aScriptName}` )                             // .(40721.07.x) 
+        var bSaveIt         =- pStats.exists == false                                                         // .(40721.07.x).(40703.05.5)
             }
-        if (aScriptDir.match( /^\.vscode/)) {
-        var aBakPath        =  aBackPath
-        var aAppPath        =  __basedir
-//          console.log( `\n  Ignoring script ${mScript[0]}: ./${mScript[1]}.` );                             // .(40703.05.6 )
-        var bSaveIt         =  false //  FRT.getStat( ).exists( aBakPath )? 1 : 0                             // .(40703.05.7 )
-//          return // if one doesn't currently exist, then save it, but adjust the path name                  // .(40703.05.8 )
+/*      if (aScriptName.match( /^\.vscode/launch.json)) {                                                     // .(40721.07.x RAM Add launcj.json Beg)
+        var aBakPath        =  '.vscode'                                                                      
+        var aAppPath        = `{__baseDir}/.vscode`                                                                      
+        var pStats          =  await FRT.checkFile( `${aAppPath}/${aScriptName}` )                             
+        var bSaveIt         =- pStats.exists == false                                                         
+            } */                                                                                              // .(40721.07.x End)
+        if (aScriptDir.match( /^\.vscode/) && aBakPath != '.vscode') {                                        // .(40721.07.x RAM Is any file in .vscode ok to save if it doesn't exist)
+        var aBakPath        =  '.vscode'                                                                      
+        var aAppPath        = `${__basedir}/.vscode`                                                           // .(40721.07.x RAM was aBackpath)             
+        var pStats          =  await FRT.checkFile( `${aAppPath}/${aScriptName}` )                             
+        var bSaveIt         =- pStats.exists == false                                                        // .(40703.05.7 RAM Was just false) 
             }
         if (aScriptDir.match( /^client/)) {
-            aScriptDir      =  aScriptDir.replace(/client\//,'')
+            aScriptDir      =  aScriptDir.replace(/client\//,'')   // subfolder, if any 
         var aBakPath        =  aBackPath
         var aAppPath        =  aAppDir
             }
         if (aScriptDir.match( /^server/)) {
-            aScriptDir      =  aScriptDir.replace(/server\//,'')
+            aScriptDir      =  aScriptDir.replace(/server\//,'')   // subfolder, if any 
         var aBakPath        =  aBackPath.replace( /client/, 'server' ).replace( /c([0-9]{2})/g, 's$1' )
         var aAppPath        =  aAppDir.replace(   /client/, 'server' ).replace( /c([0-9]{2})/g, 's$1' )
             }
@@ -284,6 +304,7 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
 //         return
 //                       await FRT.makDir(     FRT.join( aAppPath,  aScriptDir ) )                          //#.(40702.02.1 RAM was aAppDir) { recursive: true } ) )  create parent directories
 //                       await FRT.makDir(     FRT.join( aAppPath,  aScriptDir ) )                          //#.(40702.02.1 RAM was aAppDir) { recursive: true } ) )  create parent directories
+           console.log( "" )
                                FRT.makDirSync( FRT.path( aBakPath,  aScriptDir ) )                          // .(40702.02.2 RAM was aBackPath)
                                FRT.makDirSync( FRT.join( aAppPath,  aScriptDir ) )                          // .(40702.02.3 RAM was aAppDir) { recursive: true } ) )  create parent directories
 //                             fsync.mkdirSync( FRT.join( __appname, aScriptDir ) )                         //#, { recursive: true } ) )  create parent directories
@@ -305,7 +326,8 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
 //                       await FRT.writeFile(  FRT.join( aBackPath, aScriptDir, aScriptVer  ), aScriptCode) //#.(40703.01.2).(40702.02.3) 
                                FRT.writeFile(  FRT.join( aBakPath,  aScriptDir, aScriptName ), aScriptCode) // .(40703.01.2 RAM Was aScriptVer).(40702.02.3)
 //          console.log(  `\n  Saving backup ${mScript[0]}: .${ aBakPath.replace( /[\\\/]/g, '/' ).replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptVer}` )  //#.(40703.01.3)
-            console.log(  `\n  Saving backup ${mScript[0]}: .${ aBakPath.replace( /[\\\/]/g, '/' ).replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptName}` ) // .(40703.01.3)
+//          console.log(  `\n  Saving backup ${mScript[0]}: .${ aBakPath.replace( /[\\\/]/g, '/' ).replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptName}` ) // .(40703.01.3)
+            console.log(    `  Saving backup ${mScript[0]}: .${ aBakPath.replace( /[\\\/]/g, '/' ).replace( aBaseDir, '' ).replace( /[\\\/]/g, "/" )}/${ aScriptDir }${ aScriptName}` ) // .(40703.01.3)
 //          console.log(    `  Saving backup: ${ aBackPath }/${ aScriptDir }/${ aScriptVer }` )
         if (bSaveIt) {                                                                                        // .(40703.05.9 )
 //                       await  fs.writeFile(  FRT.join( __appname, aScriptDir, aScriptVer ), aScriptCode )   //#.(40702.02.4)
