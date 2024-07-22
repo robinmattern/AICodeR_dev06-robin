@@ -53,6 +53,7 @@ async function getLastCommitMessage( ) {
 async function doCommitAll( aMsg ) {
   try {
        var  aMsg1 = '', aMsg2 = '' 
+            console.log( '  git add .' )
      const  addProcess = spawn('git', ['add', '.']);  // Stage all changed files (assuming you want to commit all)
 
             addProcess.stdout.on(    'data', (data) => { aMsg1 = data.toString( ) } ) // console.log( aMsg1 ) } )   // Optional: Print output from `git add`
@@ -62,6 +63,7 @@ async function doCommitAll( aMsg ) {
 
 //  ---------------------------------------------------------------------------------------
 
+            console.log( '  git commit -m aMsg' )
 //   const  commitProcess = spawn('git', ['commit', '-m', '"Commit message (replace with your desired message)"']); //#.(40718.04.6)
      const  commitProcess = spawn('git', ['commit', '-m', `${aMsg}` ]);               // Commit staged changes      // .(40718.04.6 RAM Use aMsg )
 
