@@ -1,0 +1,61 @@
+{
+  version: 1,
+  mediaFileName: 'rm41217.01_Save-Grok Session.mp4',
+  cutSegments: [
+    {
+      start: 8.1053,
+      end: 24.246133,
+      name: '',
+    },
+    {
+      start: 31.3358,
+      end: 37.603667,
+      name: '',
+    },
+    {
+      start: 45.009867,
+      end: 64.247533,
+      name: '',
+    },
+    {
+      start: 68.279333,
+      end: 94.9683,
+      name: '',
+    },
+    {
+      start: 112.182667,
+      end: 165.3938,
+      name: '',
+    },
+    {
+      start: 172.421233,
+      end: 193.250433,
+      name: '',
+    },
+    {
+      start: 930.7666,
+      end: 934.973333,
+      name: '',
+    },
+    {
+      start: 938.9776,
+      end: 944.0005,
+      name: '',
+    },
+    {
+      start: 946.996867,
+      end: 950.1328,
+      name: '',
+    },
+    {
+      start: 954.152833,
+      end: 960.308,
+      name: '',
+    },
+    {
+      start: 967.2805,
+      end: 994.341067,
+      name: '',
+    },
+  ],
+}
