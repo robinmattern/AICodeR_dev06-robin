@@ -2,18 +2,28 @@
 
 ## Overview
 
-Only the c36 App link regarding Hawaii Contracts is active at the mmoment. 
+For instructions on how to use AICodeR to setup these apps using these models--
+- c01_calendar-app
+  - [Claude-35s_Anthropic-chat](./appinfo/d01_aicoder-info/c01_Claude-35s_Anthropic-chat_setup.md)
+  - [Claude-35s_Anthropic-maxi](./appinfo/d01_aicoder-info/c01_Claude-35s_Anthropic-maxi_setup.md)
+  - [GPT-4o_OpenAI-maxi       ](./ppinfo/d01_aicoder-info//c01_GPT-4o_OpenAI-maxi_setup.md)
+  - [Claude3-So_Anthropic     ]
 
 For best results view this readme at our GitHub Pages website [here](https://robinmattern.github.io/AICodeR_dev03-robin/#/)
 
 ## AICoder Apps   
 
+- [c01_calendar-app](../client/index.html)  
+<!-- 
 - [c35_calendar-app]()   
 - [c36_hawaii-contracts-app](c36_hawaii-contracts-app/c36_u40707.1921_summary.md)   
 - [c37_aicoder-sessions-app]()   
 - [c38_login-app]()   
 - [c43_chrome-extension-app]()   
 - [c44_a-dancers-dream-app]()   
+
+Note: Only the c36 App link regarding Hawaii Contracts is active at the mmoment. 
+-->
 
 ## AICodeR Architecture
 

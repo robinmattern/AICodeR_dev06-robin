@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "docsify-cli": "^4.4.4"
+  },
+  "dependencies": {
+    "mime-types": "^2.1.35"
   }
 }
