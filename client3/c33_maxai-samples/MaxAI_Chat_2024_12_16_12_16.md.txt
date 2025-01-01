@@ -1,0 +1,202 @@
+---------------------------------------------------------
+Ask AI anything powered by MaxAI.me
+---------------------------------------------------------
+
+User: Code System Prompt
+
+
+AI: I'll help you create a simple web app using modern JavaScript. The app will demonstrate client-server communication.
+
+First, here's the folder structure:
+
+```
+project-root/
+├── client/
+│   ├── index.html
+│   ├── styles.css
+│   └── scripts/
+│       ├── main.mjs
+│       └── api.mjs
+├── server/
+│   ├── server.mjs
+│   └── services/
+│       └── dataService.mjs
+├── package.json
+└── .vscode/
+    └── launch.json
+```
+
+### File: package.json
+```json
+{
+  "name": "modern-js-app",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server/server.mjs",
+    "dev": "nodemon server/server.mjs"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
+```
+This defines the project dependencies and scripts.
+
+### File: client/index.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern JS App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Data from Server</h1>
+        <div id="data-container"></div>
+    </div>
+    <script type="module" src="scripts/main.mjs"></script>
+</body>
+</html>
+```
+The main HTML file that loads the client-side JavaScript modules.
+
+### File: client/styles.css
+```css
+#app {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+```
+Basic styling for the app.
+
+### File: client/scripts/main.mjs
+```javascript
+import { fetchData } from './api.mjs';
+
+async function init() {
+    try {
+        const data = await fetchData();
+        document.getElementById('data-container').innerHTML = 
+            `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+init();
+```
+Main client-side script that initializes the app and displays data.
+
+### File: client/scripts/api.mjs
+```javascript
+export async function fetchData() {
+    const response = await fetch('http://localhost:3000/api/data');
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+}
+```
+Client-side API module for making HTTP requests.
+
+### File: server/server.mjs
+```javascript
+import express from 'express';
+import cors from 'cors';
+import { getData } from './services/dataService.mjs';
+
+const app = express();
+const port = 3000;
+
+app.use(cors());
+app.use(express.json());
+
+app.get('/api/data', (req, res) => {
+    const data = getData();
+    res.json(data);
+});
+
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+});
+```
+The main server file that sets up the Express server and routes.
+
+### File: server/services/dataService.mjs
+```javascript
+export function getData() {
+    return {
+        message: "Hello from the server!",
+        timestamp: new Date().toISOString()
+    };
+}
+```
+Server-side service for handling data operations.
+
+### File: .vscode/launch.json
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Server",
+            "skipFiles": ["<node_internals>/**"],
+            "program": "${workspaceFolder}/server/server.mjs"
+        }
+    ]
+}
+```
+VSCode debug configuration for the server.
+
+### Instructions:
+
+1. Install Node.js dependencies:
+```bash
+npm install
+```
+
+2. Start the server:
+- Development mode with auto-reload:
+```bash
+npm run dev
+```
+- Production mode:
+```bash
+npm run start
+```
+
+3. Serve the client:
+- Using VSCode's Live Server extension:
+  - Install "Live Server" extension
+  - Right-click on client/index.html and select "Open with Live Server"
+  - The client will be available at http://127.0.0.1:5500/client/index.html
+
+4. Debugging:
+- Server:
+  - Set breakpoints in server files
+  - Press F5 or use the Debug menu in VSCode
+  - Select "Debug Server" configuration
+- Client:
+  - Open Chrome DevTools (F12)
+  - Use the Sources tab to set breakpoints in client scripts
+  - Use console.log() for debugging output
+
+5. Development Tips:
+- Use the VSCode integrated terminal
+- Watch the server console for errors
+- Check Chrome DevTools console for client-side errors
+- The server runs on port 3000
+- The client (using Live Server) typically runs on port 5500
+
+This setup provides a modern JavaScript development environment with ES modules, async/await, and proper separation of client and server code. The server uses Express for HTTP handling and CORS for cross-origin requests, while the client uses native fetch API for making HTTP requests.
