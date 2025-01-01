@@ -1,0 +1,11 @@
+
+   File Size     Date      Time    /d/Home/Robin/Repos1/AICodeR_dev04-robin/client3/assets
+  ----------  -------------------  ---------------------------------------------------------------------------
+           0  2024-12-13 21:09.42  client3/assets
+           0  2024-12-13 21:09.53  client3/assets/videos
+n  331054391  2024-12-13 20:35.12  client3/assets/videos/Birds v41213.02_12-13-24_5 06PM.mov
+n  462789871  2024-12-13 11:11.38  client3/assets/videos/Birds V41212.02_12-13-24_10 33AM.mov
+n   78368714  2024-12-13 20:40.10  client3/assets/videos/Birds v41212.01_12-13-24_2 30PM.mov
+n 2349111860  2024-12-14 20:12.36  client3/assets/videos/IMG_0961.MOV
+n  817241078  2024-12-13 10:49.44  client3/assets/videos/ARYH3361.MOV
+n 1465044551  2024-12-15 09:58.08  client3/assets/videos/Birds v41214.01_12-15-24_9 24AM.mov
