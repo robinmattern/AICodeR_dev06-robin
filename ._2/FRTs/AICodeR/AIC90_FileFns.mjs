@@ -1,9 +1,6 @@
-   import   fs               from 'fs/promises'
-// import { promises as fs } from 'fs';
-//    var   fs          = require('fs').promises 
-   import   fsync            from 'fs'
-   import   path             from 'path'
-   import   dotenv           from 'dotenv';
+   import   fs     from 'fs/promises'
+   import   fsync  from 'fs'
+   import   path   from 'path'
 
 //  --------------------------------------------------------------
 
@@ -72,18 +69,15 @@
        }    }  // eof getDate()   
 // --------------------------------------------------------------
 
-async function  makDirASync(    aDirName  ) { aDirName = `${aDirName || ''}`
+async function  makDir(    aDirName  ) { aDirName = `${aDirName || ''}`
    var  aDirPath        =  aDirName.match( /^\./ ) ? path.join( __dirname, aDirName ) : aDirName;  // .(40527.01.2 CoPilot Only paths starting with '.' are relative) 
 //      aDirPath        =  path.resolve( aDirPath.replace( /^\/[A-Z]/, '' ) )                         // .(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
         aDirPath        =  cleanPath( aDirPath )                         // .(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
-// var  pStat           =  await checkFileASync( aDirPath )
+// var  pStat           =  await checkFile(  aDirPath )
  try {
 // var  pOK             =  await fs.access(  aDirPath, fs.constants.F_OK )
 // var  pOK             =  await fs.access(  aDirPath )
-// var  bOK             =  await fs.exists(  aDirPath )
-   var  pStats          =  await checkFileASync( aDirPath ); 
-//    console.log(  `  pStats.exists: ${pStats.exists}, ${aDirPath}` )
-   var  bOK             =  pStats.exists // && pStats.isNotDir
+   var  bOK             =  fsync.existsSync( aDirPath )
     if (bOK == false) {  
                            await fs.mkdir(   aDirPath, { recursive: true } );
 //                         fsync.mkdirSync(  aDirPath, { recursive: true } );
@@ -96,39 +90,13 @@ async function  makDirASync(    aDirName  ) { aDirName = `${aDirName || ''}`
 return  aDirPath;   //  return  aDirPath  to  callers
     }   // eof makDir    
 // --------------------------------------------------------------
-
-function  makDirSync(      aDirName  ) { aDirName = `${aDirName || ''}`
-   var  aDirPath        =  aDirName.match( /^\./ ) ? path.join( __dirname, aDirName ) : aDirName;  // .(40527.01.2 CoPilot Only paths starting with '.' are relative) 
-//      aDirPath        =  path.resolve( aDirPath.replace( /^\/[A-Z]/, '' ) )                         // .(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
-        aDirPath        =  cleanPath( aDirPath )                         // .(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
-// var  pStat           =  await checkFileASync(  aDirPath )
- try {
-// var  pOK             =  await fs.access(  aDirPath, fs.constants.F_OK )
-// var  pOK             =  await fs.access(  aDirPath )
-// var  bOK             =  fsync.existsSync( aDirPath )
-   var  pStats          =  checkFileSync( aDirPath )
-   var  bOK             =  pStats.exists // && pStats.isDir == false
-    if (bOK == false) {  
-                           fsync.mkdirSync(      aDirPath, { recursive: true } );
-//                         fsync.mkdirSync(  aDirPath, { recursive: true } );
-        console.log(    `  Directory, '${aDirName}', created successfully!` );
-        }  
-    } catch(pError) {
-        console.error(  `* Error checking directory: ${pError}` );
-        aDirPath        = ''
-        }
-return  aDirPath;   //  return  aDirPath  to  callers
-    }   // eof makDir    
-// --------------------------------------------------------------
-
-async function  checkFileASync(  aFilePath  ) {
-//      aFilePath        =  aFilePath.match(/^\./) ? path.join( __dirname, aFilePath ) : aFilePath; // .(40527.01.2 CoPilot Only paths starting with '.' are relative) 
-//      aFilePath        =  path.resolve( aFilePath.replace( /^\/[A-Z]/, '' ) )                     // .(40721.08.1).(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
-        aFilePath        =  cleanPath( aFilePath );                                                 // .(40721.08.1 RAM Make it the same as checkFileASync).(40618.01.4) 
-   var  pStats           ={ path: aFilePath.split( /[\\\/]/ ).slice(-1)[0] 
+       
+async function  checkFile2(  aFilePath  ) {
+        aFilePath        =  aFilePath.match( /^\./ ) ? path.join( __dirname, aFilePath ) : aFilePath;   // .(40527.01.2 CoPilot Only paths starting with '.' are relative) 
+        aFilePath        =  path.resolve( aFilePath.replace( /^\/[A-Z]/, '' ) )                         // .(40618.01.1 RA< if path starts with a drive letter, remove the first '/' )
+   var  pStats           ={ path: aFilePath.split( /[\\\/]/ ).slice(-1) 
                          ,  name: aFilePath.split( /[\\\/]/ ).slice(-1).join() 
                          ,  size: 0
-                         ,  exists: false 
                          ,  updatedOn: '' 
                          ,  isNotDir: true 
                          ,  isDir: false }
@@ -136,20 +104,19 @@ async function  checkFileASync(  aFilePath  ) {
    var  aStats           =  await fs.stat( aFilePath );
         pStats.size      =  aStats.size
         pStats.updatedOn =  aStats.mtime.toISOString()
-        pStats.exists    =  pStats.updatedOn > ""
+        pStats.exists    =  aStats.updatedOn > ""
         pStats.isNotDir  =  aStats.isDirectory() == false 
         pStats.isDir     =  aStats.isDirectory() == true
     } catch(pError) { }
 return  pStats
-    }   // eof checkFileAsync                           
+    }   // eof checkFile                           
 // --------------------------------------------------------------
 
-function  checkFileSync( aFilePath  ) {
+function  checkFile( aFilePath  ) {
          aFilePath       =  cleanPath( aFilePath );                                         // .(40618.01.4) 
-    var  pStats          ={ path: aFilePath.split( /[\\\/]/ ).slice(-1)[0] 
+    var  pStats          ={ path: aFilePath.split( /[\\\/]/ ).slice(-1) 
                          ,  name: aFilePath.split( /[\\\/]/ ).slice(-1).join() 
                          ,  size: 0
-                         ,  exists: false 
                          ,  updatedOn: '' 
                          ,  isNotDir: true 
                          ,  isDir: false }
@@ -163,7 +130,7 @@ function  checkFileSync( aFilePath  ) {
         pStats.isDir     =  aStats.isDirectory() == true
     } catch(pError) { }
 return  pStats
-    }   // eof checkFileSync                           
+    }   // eof checkFile                           
 // --------------------------------------------------------------
 
 //   lastFile( 'E:\Repos\Robin\AIObjs_\._\DOCs\Code-Sessions', /Continue-sessions_u40624\.[0-9]{4}\.json/ )
@@ -195,7 +162,7 @@ function  listFiles( aPath ) {
       var mFiles2 = [ ];
         for (var aFile of mFiles1) {
              var aFilePath = path.join( aPath, aFile); // Join path with filename
-//           var pStats    = checkFileSync( aFilePath);
+//           var pStats    = checkFile( aFilePath);
              var pStats    = fsync.statSync( aFilePath);
           mFiles2.push(
               [  pStats.size.toLocaleString('en-US').padStart(10) // File size in bytes
@@ -219,7 +186,7 @@ function  listFiles( aPath ) {
         }    // eof cleanPath
 // --------------------------------------------------------------
 
- async function  writeFileASync( aFilePath, aData, pOptions = { encoding: 'utf8' } ) {
+ async function  writeFile( aFilePath, aData, pOptions = { encoding: 'utf8' } ) {
 //      pOptions         =  pOptions ? pOptions : { encoding: 'utf8' } 
         aFilePath        =  cleanPath( aFilePath );                                         // .(40618.01.3) 
 try {
@@ -236,31 +203,13 @@ try {
 return  aFilePath         
     }   // eof writeFile
 // --------------------------------------------------------------
-
-async function  writeFileSync( aFilePath, aData, pOptions = { encoding: 'utf8' } ) {
-    //      pOptions         =  pOptions ? pOptions : { encoding: 'utf8' } 
-            aFilePath        =  cleanPath( aFilePath );                                         // .(40618.01.3) 
-    try {
-        if (typeof( aData ) == 'object') { aData = JSON.stringify( aData, null, 2 ); }
-    //                          await fsync.writeFile( aFilePath, aData, pOptions);
-                                       fsync.writeFileSync( aFilePath, aData, pOptions);
-    //      console.log(`File '${aFilePath}' written successfully!`);
-    //turn  Promise.resolve();
-        } catch(pError) {
-            console.error(   `* Error writing file: ${pError}` );
-            aFilePath       = '' 
-    //turn  Promise.reject(error);
-            }
-    return  aFilePath         
-        }   // eof writeFile
-    // --------------------------------------------------------------
-    
-async function  readFileASync(   aFilePath, pOptions ) {
+     
+async function  readFile2(   aFilePath, pOptions ) {
         pOptions         =  pOptions  ? pOptions : { encoding: 'utf8' } 
         aFilePath        =  cleanPath(  aFilePath );                                         // .(40618.01.5) 
   try { aData            = ''
-// if ((await checkFileAsync(    aFilePath ) ).exists) {  
-   var  bOK              = (await checkFileASync( aFilePath )).exists && (await checkFileASync( aFilePath )).isNotDir
+// if ((await checkFile(    aFilePath ) ).exists) {  
+   var  bOK              =  checkFile2( aFilePath ).exists && checkFileSync( aFilePath ).isNotDir
     if (bOK == true) {
    var  aData            =  await fs.readFile( aFilePath, pOptions ); 
 // var  aData = Promise.resolve( ); // Resolve on success
@@ -278,12 +227,12 @@ return  aData
     }   // eof readFile
 // --------------------------------------------------------------
     
-function readFileSync(   aFilePath, pOptions ) {
+function readFile(   aFilePath, pOptions ) {
         pOptions         =  pOptions ? pOptions : { encoding: 'utf8' } 
         aFilePath        =  cleanPath( aFilePath );                                         // .(40618.01.6) 
   try { aData            = ''
 // var  bOK              =  fsync.existsSync( aFilePath )
-   var  bOK              =  checkFileSync( aFilePath ).exists && checkFileSync( aFilePath ).isNotDir
+   var  bOK              =  checkFile( aFilePath ).exists && checkFile( aFilePath ).isNotDir
     if (bOK == true) {
    var  aData            =  fsync.readFileSync( aFilePath, pOptions ); 
     } else {
@@ -299,22 +248,22 @@ return  aData
         }
 // ---------------------------------------------------------------------------------
 
- async  function fetchFromOpenAI( aAPI_URL, pMessageObject, aAPI_KEY ) {                            // .(40701.06.1 RAM Add API_URL and API_KEY)
+ async  function fetchFromOpenAI( pMessageObject ) {
     try {
 //          ---------------------------------------------------------
 
-     const  pResponse       =   await fetch( aAPI_URL, 
+     const  pResponse       =   await fetch( API_URL, 
              {  method : 'POST'
              ,  headers: 
                  { 'Content-Type' : 'application/json'
-                 , 'Authorization': `Bearer ${aAPI_KEY}`
+                 , 'Authorization': `Bearer ${API_KEY}`
                     }
              ,  body   :  JSON.stringify( pMessageObject )
                 } );
 //          ---------------------------------------------------------
 
        if (!pResponse.ok) {
-       var  pResponse_err   = { Error: `HTTP Status: ${pResponse.status}, URL: ${aAPI_URL}` }
+       var  pResponse_err   = { Error: `HTTP Status: ${response.status}, URL: ${API_URL}` }
 //          throw new Error(   `Error: ${ pResponse_err.Error }` );
             console.error( `\n* Error: ${ pResponse_err.Error }` );
     return  pResponse_err                   
@@ -327,7 +276,7 @@ return  aData
 //          ---------------------------------------------------------
 
         if (pResponse_data.error) {
-       var  pResponse_err   = { Error: `OpenAI API Data message: ${response_data.error.message}, URL: ${aAPI_URL}` }
+       var  pResponse_err   = { Error: `OpenAI API Data message: ${response_data.error.message}, URL: ${API_URL}` }
 //          throw new Error(   `Error: ${ pResponse_err.Error }` );
             console.error( `\n* Error: ${ pResponse_err.Error }` );
     return  pResponse_err                   
@@ -339,7 +288,7 @@ return  aData
 //          ---------------------------------------------------------
 
    } catch( pError) {
-       var  pResponse_err   = { Error: `Fetch Message: ${pError.message}, URL: ${aAPI_URL}` }
+       var  pResponse_err   = { Error: `Fetch Message: ${pError.message}, URL: ${API_URL}` }
             console.error( `\n* Error: ${ pResponse_err.Error }` );
     return  pResponse_err   
             }
@@ -349,14 +298,8 @@ return  aData
 
 // var  pFileFns = { setPaths, readFile, readFile2, writeFile, getDate }
         setPaths( ) 
-
-        dotenv.config( { path: path.join( __basedir, '.env' ) } );              // .(40607.02.1 RAM Load environment variables from .env file in script's folder)
-
- export default { setPaths,  isCalled, listFiles, lastFile, getAPI: fetchFromOpenAI
-                , getDate,  join: path.join, path: myPath, _TS 
-                , checkFileSync, checkFileASync, checkFile: checkFileASync 
-                , writeFileSync, writeFileASync, writeFile: writeFileASync
-                , readFileSync,  readFileASync,  readFile:  readFileASync
-                , makDirSync,    makDirASync,    makDir:    makDirASync 
-                  } 
+        
+ export default { setPaths,  isCalled, readFile, readFile2, writeFile, checkFile, makDir
+                , listFiles, lastFile, getAPI: fetchFromOpenAI
+                , getDate,   join: path.join, path: myPath, _TS }
 
