@@ -1,0 +1,22 @@
+
+
+
+
+ https://robinmattern.github.io/AICodeR_test1-robin
+            window.$docsify = {
+              hideSidebar: true,
+              relativePath: true
+              
+ https://robinmattern.github.io/AICodeR_dev03-robin
+            window.$docsify = {
+              hideSidebar: true,              
+
+ https://robinmattern.github.io/AIDocs_demo1-master
+ 
+ https://robinmattern.github.io/AIApps_prod-master
+ 
+ https://robinmattern.github.io/AIApps_prod1-robin   just AI Research 1/06/24 
+ 
+ 
+ 
+ 
