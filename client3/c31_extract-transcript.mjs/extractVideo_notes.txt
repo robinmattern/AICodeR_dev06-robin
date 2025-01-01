@@ -1,0 +1,22 @@
+
+https://jscriptwareus-my.sharepoint.com/personal/jay_parker_jscriptware_us/_layouts/15/stream.aspx?id=%2Fpersonal%2Fjay%5Fparker%5Fjscriptware%5Fus%2FDocuments%2FRecordings%2FFormR%20Meeting%2D20241212%5F110150%2DMeeting%20Recording%2Emp4&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E44d0afcc%2Dca62%2D4aa1%2D9b21%2Dce776b22168d
+
+https://jscriptwareus-my.sharepoint.com/personal/jay_parker_jscriptware_us/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fjay%5Fparker%5Fjscriptware%5Fus%2FDocuments%2FRecordings&FolderCTID=0x012000EFF7C38D62BAAB45A025857449FF7F81&view=0
+
+
+  SicommNet Public Team             tenantId=b5d500c1-e385-42eb-ab34-db10f116a192
+    Jay Parker (Google Profile)       Member  lt.Blue      jay.parker41650@gmail.com         Goo.jay4rty  5/21/24                 site: goo.jay@goo
+    Jepee Parker (Office365)                                    jepee@jscriptware.us         Off.jep2023 10/31/23   Office365     site: off-jsw-jep@jsw  Member of Teams, JScriptware, account, but can't see the Team, FormR Project.
+    Suzee Parker (Live)               Guest                   suzee.parker@gmail.com         Off.sue16    5/22/24                 site: off-sue-sue@goo
+  JScriptware                       tenantId=1cc92a84-9bca-4014-93d1-7aad07ae614f
+!   JP Scripter (Office365)           Owner   tan                  jp@jscriptware.us         Off.jay5tyu 11/08/24                 site: off-jsw-jp@jsw   1098 0987 9876 8765
+!   Robin Mattern (Sicomm) (Guest)    Guest   pink          robin.mattern@sicomm.net         Off.ram900   1/21/19   Sicomm.net    site: off-jsw-ram@scn
+!   Sue Parker                        Guest   yellow          suzee.parker@gmail.com         Off.sue16   12/07/19                 site: off-jsw-sue@goo
+
+
+Error Code: 120000
+Request Id: 32aef836-27d2-463c-91d5-8cd46081a000
+Correlation Id: eec5014c-dcb7-4bb8-88ac-e5426d7e6e70
+Timestamp: 12/13/2024 21:52:16
+
+
