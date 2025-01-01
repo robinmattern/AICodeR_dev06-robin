@@ -1,0 +1,1706 @@
+extractVideo_notes
+
+"ffmpeg version 7.0-full_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 13.2.0 (Rev5, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-libsnappy --enable-zlib --enable-librist --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-libbluray --enable-libcaca --enable-sdl2 --enable-libaribb24 --enable-libaribcaption --enable-libdav1d --enable-libdavs2 --enable-libuavs3d --enable-libxevd --enable-libzvbi --enable-librav1e --enable-libsvtav1 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxavs2 --enable-libxeve --enable-libxvid --enable-libaom --enable-libjxl --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-frei0r --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-liblensfun --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libshaderc --enable-vulkan --enable-libplacebo --enable-opencl --enable-libcdio --enable-libgme --enable-libmodplug --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libshine --enable-libtheora --enable-libtwolame --enable-libvo-amrwbenc --enable-libcodec2 --enable-libilbc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-ladspa --enable-libbs2b --enable-libflite --enable-libmysofa --enable-librubberband --enable-libsoxr --enable-chromaprint
+  libavutil      59.  8.100 / 59.  8.100
+  libavcodec     61.  3.100 / 61.  3.100
+  libavformat    61.  1.100 / 61.  1.100
+  libavdevice    61.  1.100 / 61.  1.100
+  libavfilter    10.  1.100 / 10.  1.100
+  libswscale      8.  1.100 /  8.  1.100
+  libswresample   5.  1.100 /  5.  1.100
+  libpostproc    58.  1.100 / 58.  1.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'E:\\Repos\\Robin\\AICoder_\\AICodeR_dev03-robin\\client3\\assets\\videos\\Birds V41212.02_12-13-24_10 33AM.mov':
+  Metadata:
+    major_brand     : qt  
+    minor_version   : 0
+    compatible_brands: qt  
+    creation_time   : 2024-12-13T16:02:53.000000Z
+  Duration: 00:01:39.44, start: 0.000000, bitrate: 37231 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, mono, fltp, 1 kb/s (default)
+      Metadata:
+        creation_time   : 2024-12-13T16:02:53.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, progressive), 1280x720, 37202 kb/s, 24 fps, 24 tbr, 600 tbn (default)
+      Metadata:
+        creation_time   : 2024-12-13T16:02:53.000000Z
+        handler_name    : Core Media Video
+        vendor_id       : [0][0][0][0]
+        encoder         : H.264
+Stream mapping:
+  Stream #0:1 -> #0:0 (h264 (native) -> wrapped_avframe (native))
+  Stream #0:0 -> #0:1 (aac (native) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, null, to 'pipe:':
+  Metadata:
+    major_brand     : qt  
+    minor_version   : 0
+    compatible_brands: qt  
+    encoder         : Lavf61.1.100
+  Stream #0:0(und): Video: wrapped_avframe, yuv420p(tv, progressive), 1280x720, q=2-31, 200 kb/s, 24 fps, 24 tbn (default)
+      Metadata:
+        creation_time   : 2024-12-13T16:02:53.000000Z
+        handler_name    : Core Media Video
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.3.100 wrapped_avframe
+  Stream #0:1(und): Audio: pcm_s16le, 44100 Hz, mono, s16, 705 kb/s (default)
+      Metadata:
+        creation_time   : 2024-12-13T16:02:53.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.3.100 pcm_s16le
+
+frame=   35 fps=0.0 q=-0.0 size=N/A time=00:00:05.00 bitrate=N/A speed=9.54x    
+frame=   89 fps= 87 q=-0.0 size=N/A time=00:00:11.00 bitrate=N/A speed=10.7x    
+frame=  123 fps= 79 q=-0.0 size=N/A time=00:00:16.79 bitrate=N/A speed=10.8x    
+frame=  144 fps= 70 q=-0.0 size=N/A time=00:00:21.29 bitrate=N/A speed=10.3x    
+frame=  160 fps= 62 q=-0.0 size=N/A time=00:00:25.79 bitrate=N/A speed=  10x    
+frame=  187 fps= 60 q=-0.0 size=N/A time=00:00:34.62 bitrate=N/A speed=11.2x    
+frame=  206 fps= 57 q=-0.0 size=N/A time=00:00:40.62 bitrate=N/A speed=11.2x    
+frame=  216 fps= 52 q=-0.0 size=N/A time=00:00:45.00 bitrate=N/A speed=10.9x    
+frame=  221 fps= 48 q=-0.0 size=N/A time=00:00:50.62 bitrate=N/A speed=10.9x    
+frame=  223 fps= 43 q=-0.0 size=N/A time=00:00:53.41 bitrate=N/A speed=10.3x    
+frame=  227 fps= 40 q=-0.0 size=N/A time=00:01:02.08 bitrate=N/A speed=10.9x    
+frame=  227 fps= 37 q=-0.0 size=N/A time=00:01:02.08 bitrate=N/A speed=9.99x    
+frame=  228 fps= 34 q=-0.0 size=N/A time=00:01:17.00 bitrate=N/A speed=11.4x    
+frame=  230 fps= 32 q=-0.0 size=N/A time=00:01:19.70 bitrate=N/A speed=  11x    
+frame=  230 fps= 30 q=-0.0 size=N/A time=00:01:19.70 bitrate=N/A speed=10.3x    
+frame=  230 fps= 28 q=-0.0 size=N/A time=00:01:19.70 bitrate=N/A speed=9.64x    
+
+[out#0/null @ 000002c7d94ea0c0] video:99KiB audio:8566KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame=  230 fps= 27 q=-0.0 Lsize=N/A time=00:01:19.70 bitrate=N/A speed=9.42x  
+
+00:00.00
+Clip 1 
+00:05.00
+Clip 2 
+00:11.00
+Clip 3 
+00:16.79
+Clip 4 
+00:21.29
+Clip 5 
+00:25.79
+Clip 6 
+00:34.62
+Clip 7 
+00:40.62
+Clip 8 
+00:45.00
+Clip 9 
+00:50.62
+Clip 10 
+00:53.41
+Clip 11 
+01:02.08
+Clip 12 
+01:02.08
+Clip 13 
+01:17.00
+Clip 14 
+01:19.70
+Clip 15 
+01:19.70
+Clip 16 
+01:19.70
+Clip 17 
+
+
+Process exited with code 1
+C:\Users\Robin\AppData\Local\nvs\default\node.exe .\client3\c39_motion-detection.app\FFMpeg-Claude3.5_v1.02.mjs
+33 1 0.166 0.7001851600310076
+53 2 0.25 0.606546982975104
+55 3 0.375 0.7751475488948487
+57 4 0.458 0.9704221064949046
+59 5 0.541 0.3729321218086268
+61 6 0.666 0.8670361614270581
+63 7 0.75 0.2527879188866873
+65 8 0.875 0.03763551492480777
+67 9 0.958 0.2888356451399554
+69 10 1.041 0.9619487179756765
+71 11 1.166 0.7378410116364089
+73 12 1.25 0.9810145727870139
+75 13 2.166 0.8179976449619883
+77 14 2.375 0.7467468480487471
+79 15 2.458 0.9138369000057054
+81 16 2.583 0.8776318684534352
+83 17 2.666 0.4127783034757484
+85 18 2.75 0.9757983017662171
+87 19 2.875 0.4926280893754149
+89 20 2.958 0.27719828540103664
+91 21 3.083 0.2912844952573639
+93 22 3.166 0.46856540235610344
+95 23 3.25 0.3459562537954102
+97 24 3.375 0.027964253116449678
+99 25 3.458 0.31364692000210925
+101 26 3.583 0.11061481162854725
+103 27 3.666 0.3762220350515324
+105 28 3.75 0.41983307501373424
+107 29 3.875 0.1898933927130282
+109 30 3.958 0.3079916337707369
+111 31 4.166 0.9746943152313063
+113 32 4.25 0.676413667599622
+115 33 4.458 0.42600598634899134
+117 34 4.541 0.4903095651593872
+119 35 4.958 0.1532230636585099
+121 36 5.458 0.0728835203137721
+123 37 5.541 0.3223594907174385
+125 38 5.666 0.6489996789217654
+127 39 5.75 0.8653718424821559
+129 40 5.875 0.7790976450180054
+131 41 5.958 0.815264319213099
+133 42 6.041 0.20914401221243017
+135 43 6.166 0.2216988643602702
+137 44 6.25 0.901478161825171
+139 45 6.375 0.8481797013157955
+141 46 6.458 0.5564047925101894
+143 47 6.541 0.44104744853861644
+145 48 6.666 0.4193509322396758
+147 49 6.75 0.06130696274923175
+149 50 6.875 0.5401874699797322
+151 51 6.958 0.9010990128559222
+153 52 7.041 0.6125023291298297
+155 53 7.166 0.8808006770532657
+157 54 7.25 0.02522223990692929
+159 55 7.375 0.7768471398591572
+161 56 7.458 0.5138312890804877
+163 57 7.541 0.568416575360259
+165 58 7.666 0.8542973737839901
+167 59 7.75 0.7567142893251919
+169 60 7.875 0.305666247984999
+171 61 7.958 0.398247231750954
+173 62 8.083 0.760511387611426
+175 63 8.375 0.011402088057741677
+177 64 8.458 0.20058202138687387
+179 65 8.583 0.15117523277160183
+181 66 8.666 0.7978068146710842
+183 67 8.75 0.6609750109412802
+185 68 8.875 0.3687004127635667
+187 69 8.958 0.5503278354676533
+189 70 9.083 0.7435364037980976
+191 71 9.166 0.23055553890213276
+193 72 9.25 0.8264903234254088
+195 73 9.375 0.9670102741163686
+197 74 9.458 0.9429976741984876
+199 75 9.583 0.3761266948065587
+201 76 9.666 0.4281548246405582
+203 77 9.75 0.9897980618720377
+205 78 9.875 0.7192264985780528
+207 79 9.958 0.4546271791296963
+209 80 10.08 0.28826815156002605
+211 81 10.16 0.16998828490210016
+213 82 10.25 0.7912718844005535
+215 83 10.37 0.4868335266182766
+217 84 10.45 0.5261359440652813
+219 85 10.58 0.8738873180239908
+221 86 10.66 0.011285586232561373
+223 87 10.75 0.9849482930466427
+225 88 10.87 0.20133409523407542
+227 89 10.95 0.6345885311515136
+229 90 11.08 0.7353251193431574
+231 91 11.37 0.31996516121412144
+233 92 11.45 0.19892869854075101
+235 93 11.58 0.2855932908593457
+237 94 11.66 0.5298018438360541
+239 95 11.75 0.16937099671884748
+241 96 11.87 0.24656362267784981
+243 97 11.95 0.8164455617219863
+245 98 12.08 0.9193267846807174
+247 99 12.25 0.9721080970623253
+249 100 12.37 0.19680346636718715
+251 101 12.45 0.8842832040347925
+253 102 12.58 0.8612625657006574
+255 103 12.66 0.7931600758297506
+257 104 12.75 0.5699568421687746
+259 105 12.87 0.28605891199411504
+261 106 12.95 0.6430854184778501
+263 107 13.08 0.4073180583648024
+265 108 13.16 0.868258127307042
+267 109 13.25 0.29207038729249657
+269 110 13.37 0.482691041693871
+271 111 13.45 0.9943805708810276
+273 112 13.58 0.9113208559902699
+275 113 13.66 0.44030540038552823
+277 114 13.87 0.513087404256046
+279 115 13.95 0.5019550861001234
+281 116 14.08 0.9066367055070599
+283 117 14.16 0.7829674039563628
+285 118 14.25 0.8052095092352778
+287 119 14.37 0.810492370828499
+289 120 14.58 0.3544164131841425
+291 121 14.95 0.85632304052856
+293 122 16.66 0.9013747457880332
+295 123 16.75 0.08552445847353418
+297 124 17.04 0.8052491233686925
+299 125 17.16 0.15920256963217194
+301 126 17.25 0.2756386550418286
+303 127 17.37 0.567708491821338
+305 128 17.45 0.9681255966759836
+307 129 17.54 0.9389862412592886
+309 130 17.66 0.9064972316681728
+311 131 17.75 0.2804680316432495
+313 132 17.87 0.029582459621592117
+315 133 17.95 0.8469159121471885
+317 134 18.04 0.1512879104837881
+319 135 18.16 0.5627431191863306
+321 136 18.45 0.8161712169055633
+323 137 20.16 0.2694866675924623
+325 138 20.25 0.6883613039785004
+327 139 20.37 0.43213887251791916
+329 140 20.45 0.009104473887543652
+331 141 20.54 0.01398425520211899
+333 142 20.66 0.4087361588067133
+335 143 21.16 0.31667533244582535
+337 144 21.25 0.068630356404485
+339 145 23.37 0.7393677224307822
+341 146 23.45 0.30378507127622467
+343 147 23.95 0.7514285076723441
+345 148 24.04 0.2124226968596059
+347 149 24.16 0.012478108076634742
+349 150 24.25 0.370870401911481
+351 151 24.87 0.6427924601861876
+353 152 24.95 0.3629539788628866
+355 153 25.04 0.6123934260707125
+357 154 25.16 0.09751365745906071
+359 155 25.25 0.5515027088631359
+361 156 25.37 0.5963697496082818
+363 157 25.45 0.9464163667519552
+365 158 25.54 0.438202751243556
+367 159 25.66 0.4232724822314611
+369 160 25.75 0.43862562451307285
+371 161 29.95 0.9467773355093014
+373 162 30.04 0.8815227019313379
+375 163 30.16 0.8366807428032765
+377 164 30.25 0.4568264798313222
+379 165 30.37 0.288269510053337
+381 166 30.45 0.8566980242867577
+383 167 30.54 0.2923391872509229
+385 168 30.66 0.7716708574630644
+387 169 30.75 0.7354523181499593
+389 170 30.87 0.1267904461124707
+391 171 31.45 0.17554911261558193
+393 172 31.58 0.7468016984275676
+395 173 31.66 0.278273562380565
+397 174 31.75 0.8928818835431607
+399 175 31.87 0.5874462378227894
+401 176 31.95 0.4914897750776892
+403 177 32.08 0.5358156424988851
+405 178 32.16 0.3699359494732293
+407 179 32.25 0.3802435057166429
+409 180 32.37 0.5392164839026117
+411 181 32.45 0.8256180547295313
+413 182 32.58 0.5189796525707366
+415 183 33.75 0.4842579571851675
+417 184 33.87 0.2177071313350749
+419 185 34.37 0.7215480753012147
+421 186 34.45 0.4542350746996826
+423 187 34.58 0.6807940465933109
+425 188 34.66 0.8706475519040002
+427 189 34.75 0.5863511444502292
+429 190 34.87 0.22008185865471908
+431 191 34.95 0.6587789090876301
+433 192 35.37 0.2902017658199514
+435 193 36.58 0.030519440386811203
+437 194 36.66 0.7072073462227262
+439 195 36.75 0.3930743739388851
+441 196 37.25 0.5130348592013521
+443 197 37.37 0.8726103569312231
+445 198 37.66 0.8387020279190545
+447 199 38.58 0.9620850084420329
+449 200 38.66 0.539857586282025
+451 201 38.75 0.7332088685589413
+453 202 38.87 0.5833205752204511
+455 203 40.25 0.1393009486178125
+457 204 40.37 0.8294924956944731
+459 205 40.45 0.4465585377210324
+461 206 40.58 0.9557468083871075
+463 207 43.95 0.1595035410409884
+465 208 44.08 0.760118856519767
+467 209 44.16 0.5773840516578339
+469 210 44.37 0.017695943766333544
+471 211 44.45 0.4256949404713455
+473 212 44.58 0.973199673634144
+475 213 44.66 0.5269832700466859
+477 214 44.75 0.1881499662437871
+479 215 44.87 0.4579925257646402
+481 216 44.95 0.586135843348033
+483 217 48.75 0.2680310791763447
+485 218 48.87 0.5977290028640505
+487 219 48.95 0.6314117294918431
+489 220 49.25 0.5143186724936397
+491 221 50.58 0.1279501928058313
+493 222 53.08 0.3877927959784506
+495 223 53.37 0.4645319233760161
+497 224 61.37 0.024509439207982098
+499 225 61.66 0.6707128114617096
+501 226 61.95 0.24823648597827042
+503 227 62.04 0.7229697914653943
+505 228 76.95 0.5219709887301611
+507 229 79.54 0.06697442274578957
+509 230 79.66 0.8979411653234228
+high
+  0. 0.166  0.700
+  1. 0.375  0.775
+  2. 0.458  0.970
+  3. 0.666  0.867
+  4. 1.041  0.961
+  5. 1.166  0.737
+  6. 1.25   0.981
+  7. 2.166  0.817
+  8. 2.375  0.746
+  9. 2.458  0.913
+ 10. 2.583  0.877
+ 11. 2.75   0.975
+ 12. 4.166  0.974
+ 13. 5.75   0.865
+ 14. 5.875  0.779
+ 15. 5.958  0.815
+ 16. 6.25   0.901
+ 17. 6.375  0.848
+ 18. 6.958  0.901
+ 19. 7.166  0.880
+ 20. 7.375  0.776
+ 21. 7.666  0.854
+ 22. 7.75   0.756
+ 23. 8.083  0.760
+ 24. 8.666  0.797
+ 25. 9.083  0.743
+ 26. 9.25   0.826
+ 27. 9.375  0.967
+ 28. 9.458  0.942
+ 29. 9.75   0.989
+ 30. 9.875  0.719
+ 31. 10.25  0.791
+ 32. 10.58  0.873
+ 33. 10.75  0.984
+ 34. 11.08  0.735
+ 35. 11.95  0.816
+ 36. 12.08  0.919
+ 37. 12.25  0.972
+ 38. 12.45  0.884
+ 39. 12.58  0.861
+ 40. 12.66  0.793
+ 41. 13.16  0.868
+ 42. 13.45  0.994
+ 43. 13.58  0.911
+ 44. 14.08  0.906
+ 45. 14.16  0.782
+ 46. 14.25  0.805
+ 47. 14.37  0.810
+ 48. 14.95  0.856
+ 49. 16.66  0.901
+ 50. 17.04  0.805
+ 51. 17.45  0.968
+ 52. 17.54  0.938
+ 53. 17.66  0.906
+ 54. 17.95  0.846
+ 55. 18.45  0.816
+ 56. 23.37  0.739
+ 57. 23.95  0.751
+ 58. 25.45  0.946
+ 59. 29.95  0.946
+ 60. 30.04  0.881
+ 61. 30.16  0.836
+ 62. 30.45  0.856
+ 63. 30.66  0.771
+ 64. 30.75  0.735
+ 65. 31.58  0.746
+ 66. 31.75  0.892
+ 67. 32.45  0.825
+ 68. 34.37  0.721
+ 69. 34.66  0.870
+ 70. 36.66  0.707
+ 71. 37.37  0.872
+ 72. 37.66  0.838
+ 73. 38.58  0.962
+ 74. 38.75  0.733
+ 75. 40.37  0.829
+ 76. 40.58  0.955
+ 77. 44.08  0.760
+ 78. 44.58  0.973
+ 79. 62.04  0.722
+ 80. 79.66  0.897
+moderate
+  0. 0.25   0.606
+  1. 0.541  0.372
+  2. 2.666  0.412
+  3. 2.875  0.492
+  4. 3.166  0.468
+  5. 3.25   0.345
+  6. 3.458  0.313
+  7. 3.666  0.376
+  8. 3.75   0.419
+  9. 3.958  0.307
+ 10. 4.25   0.676
+ 11. 4.458  0.426
+ 12. 4.541  0.490
+ 13. 5.541  0.322
+ 14. 5.666  0.648
+ 15. 6.458  0.556
+ 16. 6.541  0.441
+ 17. 6.666  0.419
+ 18. 6.875  0.540
+ 19. 7.041  0.612
+ 20. 7.458  0.513
+ 21. 7.541  0.568
+ 22. 7.875  0.305
+ 23. 7.958  0.398
+ 24. 8.75   0.660
+ 25. 8.875  0.368
+ 26. 8.958  0.550
+ 27. 9.583  0.376
+ 28. 9.666  0.428
+ 29. 9.958  0.454
+ 30. 10.37  0.486
+ 31. 10.45  0.526
+ 32. 10.95  0.634
+ 33. 11.37  0.319
+ 34. 11.66  0.529
+ 35. 12.75  0.569
+ 36. 12.95  0.643
+ 37. 13.08  0.407
+ 38. 13.37  0.482
+ 39. 13.66  0.440
+ 40. 13.87  0.513
+ 41. 13.95  0.501
+ 42. 14.58  0.354
+ 43. 17.37  0.567
+ 44. 18.16  0.562
+ 45. 20.25  0.688
+ 46. 20.37  0.432
+ 47. 20.66  0.408
+ 48. 21.16  0.316
+ 49. 23.45  0.303
+ 50. 24.25  0.370
+ 51. 24.87  0.642
+ 52. 24.95  0.362
+ 53. 25.04  0.612
+ 54. 25.25  0.551
+ 55. 25.37  0.596
+ 56. 25.54  0.438
+ 57. 25.66  0.423
+ 58. 25.75  0.438
+ 59. 30.25  0.456
+ 60. 31.87  0.587
+ 61. 31.95  0.491
+ 62. 32.08  0.535
+ 63. 32.16  0.369
+ 64. 32.25  0.380
+ 65. 32.37  0.539
+ 66. 32.58  0.518
+ 67. 33.75  0.484
+ 68. 34.45  0.454
+ 69. 34.58  0.680
+ 70. 34.75  0.586
+ 71. 34.95  0.658
+ 72. 36.75  0.393
+ 73. 37.25  0.513
+ 74. 38.66  0.539
+ 75. 38.87  0.583
+ 76. 40.45  0.446
+ 77. 44.16  0.577
+ 78. 44.45  0.425
+ 79. 44.66  0.526
+ 80. 44.87  0.457
+ 81. 44.95  0.586
+ 82. 48.87  0.597
+ 83. 48.95  0.631
+ 84. 49.25  0.514
+ 85. 53.08  0.387
+ 86. 53.37  0.464
+ 87. 61.66  0.670
+ 88. 76.95  0.521
+low
+  0. 0.75   0.252
+  1. 0.875  0.037
+  2. 0.958  0.288
+  3. 2.958  0.277
+  4. 3.083  0.291
+  5. 3.375  0.027
+  6. 3.583  0.110
+  7. 3.875  0.189
+  8. 4.958  0.153
+  9. 5.458  0.072
+ 10. 6.041  0.209
+ 11. 6.166  0.221
+ 12. 6.75   0.061
+ 13. 7.25   0.025
+ 14. 8.375  0.011
+ 15. 8.458  0.200
+ 16. 8.583  0.151
+ 17. 9.166  0.230
+ 18. 10.08  0.288
+ 19. 10.16  0.169
+ 20. 10.66  0.011
+ 21. 10.87  0.201
+ 22. 11.45  0.198
+ 23. 11.58  0.285
+ 24. 11.75  0.169
+ 25. 11.87  0.246
+ 26. 12.37  0.196
+ 27. 12.87  0.286
+ 28. 13.25  0.292
+ 29. 16.75  0.085
+ 30. 17.16  0.159
+ 31. 17.25  0.275
+ 32. 17.75  0.280
+ 33. 17.87  0.029
+ 34. 18.04  0.151
+ 35. 20.16  0.269
+ 36. 20.45  0.009
+ 37. 20.54  0.013
+ 38. 21.25  0.068
+ 39. 24.04  0.212
+ 40. 24.16  0.012
+ 41. 25.16  0.097
+ 42. 30.37  0.288
+ 43. 30.54  0.292
+ 44. 30.87  0.126
+ 45. 31.45  0.175
+ 46. 31.66  0.278
+ 47. 33.87  0.217
+ 48. 34.87  0.220
+ 49. 35.37  0.290
+ 50. 36.58  0.030
+ 51. 40.25  0.139
+ 52. 43.95  0.159
+ 53. 44.37  0.017
+ 54. 44.75  0.188
+ 55. 48.75  0.268
+ 56. 50.58  0.127
+ 57. 61.37  0.024
+ 58. 61.95  0.248
+ 59. 79.54  0.066
+
+
+The ?? approach at scene detection using a random activity 
+
+  '-vf', 'select=\'gte(scene,0.1)\',metadata=print',
+  '-f', 'null',
+  '-frame_pts', '1',
+  '-vsync', '0',
+      
+  activity: Math.random()  // Since we don't have actual scene scores, generate random activity
+
+      
+Alternatively, you could try a different approach using frame differences instead of scene detection:
+
+  '-vf', 'framestep=1,metadata=print:file=-',
+  '-f', 'null',
+
+  activity: lastFrame ? Math.abs(frameNum - lastFrame) / 30 : 0
+
+
+
+I would like you to create a NodeJS script that uses ffmpeg to determine scene changes of a video file.
+For each scene that is sufficiently different from the next scene, please add an object to a array of scenes
+that has the following values
+
+  BegFrame  -- starting frame number
+  BegTime   -- starting timecode in 'h:mm:ss' format  
+  EndFrame  -- ending frame number   
+  EndTime   -- ending timecode in 'h:mm:ss' format
+  Duration  -- in 'h:mm:ss' format
+  Activity  -- a normalized activity score, i.e. score / max of all scores 
+  
+For the Javascript code please use an ES6 script with an .mjs extension
+And if I need you to make corrections, I will send you back my current version.
+
+Please preserve all code spacing, indents and comments. 
+And put your own comments into the code indicating 
+// BEGIN DELETE 
+// END DELETE
+// BEGIN INSERT 
+// END INSERT
+When replacing large chunks of code do the delete first. Try to replace entire functions, 
+in which case. use a comment like: DELETE FUNCTION functionName.
+
+
+
+C:\Users\Robin\AppData\Local\nvs\default\node.exe .\client3\c39_motion-detection.app\FFMpeg-ClaudeAI3.5_v1.04`41214.1421.mjs
+Starting scene detection for: E:\Repos\Robin\AICoder_\AICodeR_dev03-robin\client3\assets\videos\Birds V41212.02_12-13-24_10 33AM.mov
+Using threshold: 0.3
+FFprobe command: ffprobe -v 0 -of csv=p=0 -select_streams v:0 -show_entries stream=r_frame_rate E:\Repos\Robin\AICoder_\AICodeR_dev03-robin\client3\assets\videos\Birds V41212.02_12-13-24_10 33AM.mov
+Raw FPS data: 24/1
+Calculated FPS: 24
+FFprobe process exited with code: 0
+Starting FFmpeg scene detection with FPS: 24
+FFmpeg raw output: ffmpeg version 7.0-full_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 13.2.0 (Rev5, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-libsnappy --enable-zlib --enable-librist --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-libbluray --enable-libcaca --enable-sdl2 --enable-libaribb24 --enable-libaribcaption --enable-libdav1d --enable-libdavs2 --enable-libuavs3d --enable-libxevd --enable-libzvbi --enable-librav1e --enable-libsvtav1 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxavs2 --enable-libxeve --enable-libxvid --enable-libaom --enable-libjxl --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-frei0r --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-liblensfun --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libshaderc --enable-vulkan --enable-libplacebo --enable-opencl --enable-libcdio --enable-libgme --enable-libmodplug --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libshine --enable-libtheora --enable-libtwolame --enable-libvo-amrwbenc --enable-libcodec2 --enable-libilbc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-ladspa --enable-libbs2b --enable-libflite --enable-libmysofa --enable-librubberband --enable-libsoxr --enable-chromaprint
+FFmpeg raw output:   libavutil      59.  8.100 / 59.  8.100
+  libavcodec     61.  3.100 / 61.  3.100
+  libavformat    61.  1.100 / 61.  1.100
+  libavdevice    61.  1.100 / 61.  1.100
+  libavfilter    10.  1.100 / 10.  1.100
+  libswscale      8.  1.100 /  8.  1.100
+  libswresample   5.  1.100 /  5.  1.100
+  libpostproc    58.  1.100 / 58.  1.100
+FFmpeg raw output: Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'E:\Repos\Robin\AICoder_\AICodeR_dev03-robin\client3\assets\videos\Birds V41212.02_12-13-24_10 33AM.mov':
+  Metadata:
+    major_brand     : qt  
+    minor_version   : 0
+    compatible_brands: qt  
+    creation_time   : 2024-12-13T16:02:53.000000Z
+  Duration: 00:01:39.44, start: 0.000000, bitrate: 37231 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, mono, fltp, 1 kb/s (default)
+      Metadata:
+        creation_time   : 2024-12-13T16:02:53.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, progressive), 1280x720, 37202 kb/s, 24 fps, 24 tbr, 600 tbn (default)
+      Metadata:
+        creation_time   : 2024-12-13T16:02:53.000000Z
+        handler_name    : Core Media Video
+        vendor_id       : [0][0][0][0]
+        encoder         : H.264
+FFmpeg raw output: Stream mapping:
+  Stream #0:1 -> #0:0 (h264 (native) -> wrapped_avframe (native))
+  Stream #0:0 -> #0:1 (aac (native) -> pcm_s16le (native))
+FFmpeg raw output: Press [q] to stop, [?] for help
+
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:0    pts:100     pts_time:0.166667
+
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.212809
+Frame 0: Scene score 0.212809
+
+FFmpeg raw output: Output #0, null, to 'pipe:':
+  Metadata:
+    major_brand     : qt  
+    minor_version   : 0
+    compatible_brands: qt  
+    encoder         : Lavf61.1.100
+  Stream #0:0(und): Video: wrapped_avframe, yuv420p(tv, progressive), 1280x720, q=2-31, 200 kb/s, 24 fps, 24 tbn (default)
+      Metadata:
+        creation_time   : 2024-12-13T16:02:53.000000Z
+        handler_name    : Core Media Video
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.3.100 wrapped_avframe
+  Stream #0:1(und): Audio: pcm_s16le, 44100 Hz, mono, s16, 705 kb/s (default)
+      Metadata:
+        creation_time   : 2024-12-13T16:02:53.000000Z
+        handler_name    : Core Media Audio
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.3.100 pcm_s16le
+
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:1    pts:150     pts_time:0.25
+
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.987884
+Frame 1: Scene score 0.987884
+Scene change detected at frame 1 with score 0.987884
+
+New scene started: {BegFrame: 1, BegTime: '0:00:00', Activity: 0.987884}
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:2    pts:225     pts_time:0.375
+
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.990958
+Frame 2: Scene score 0.990958
+Scene change detected at frame 2 with score 0.990958
+Scene completed: {BegFrame: 1, BegTime: '0:00:00', Activity: 0.987884, EndFrame: 1, EndTime: '0:00:00', …}
+New scene started: {BegFrame: 2, BegTime: '0:00:00', Activity: 0.990958}
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:3    pts:275     pts_time:0.458333
+
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.712697
+Frame 3: Scene score 0.712697
+Scene change detected at frame 3 with score 0.712697
+Scene completed: {BegFrame: 2, BegTime: '0:00:00', Activity: 0.990958, EndFrame: 2, EndTime: '0:00:00', …}
+New scene started: {BegFrame: 3, BegTime: '0:00:00', Activity: 0.712697}
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:4    pts:325     pts_time:0.541667
+
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.641446
+Frame 4: Scene score 0.641446
+Scene change detected at frame 4 with score 0.641446
+Scene completed: {BegFrame: 3, BegTime: '0:00:00', Activity: 0.712697, EndFrame: 3, EndTime: '0:00:00', …}
+
+New scene started: {BegFrame: 4, BegTime: '0:00:00', Activity: 0.641446}
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:5    pts:400     pts_time:0.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.655930
+Frame 5: Scene score 0.65593
+Scene change detected at frame 5 with score 0.65593
+Scene completed: {BegFrame: 4, BegTime: '0:00:00', Activity: 0.641446, EndFrame: 4, EndTime: '0:00:00', …}
+
+New scene started: {BegFrame: 5, BegTime: '0:00:00', Activity: 0.65593}
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:6    pts:450     pts_time:0.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.126330
+Frame 6: Scene score 0.12633
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:7    pts:525     pts_time:0.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.177658
+Frame 7: Scene score 0.177658
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:8    pts:575     pts_time:0.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.208347
+Frame 8: Scene score 0.208347
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:9    pts:625     pts_time:1.041667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.265091
+Frame 9: Scene score 0.265091
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:10   pts:700     pts_time:1.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.236196
+Frame 10: Scene score 0.236196
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:11   pts:750     pts_time:1.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.114829
+Frame 11: Scene score 0.114829
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:12   pts:1300    pts_time:2.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.115205
+Frame 12: Scene score 0.115205
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:13   pts:1425    pts_time:2.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.114303
+Frame 13: Scene score 0.114303
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:14   pts:1475    pts_time:2.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0]
+FFmpeg raw output: lavfi.scene_score=0.110364
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:15   pts:1550    pts_time:2.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.120214
+Frame 15: Scene score 0.120214
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:16   pts:1600    pts_time:2.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.159763
+Frame 16: Scene score 0.159763
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:17   pts:1650    pts_time:2.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.166063
+Frame 17: Scene score 0.166063
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:18   pts:1725    pts_time:2.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.129476
+Frame 18: Scene score 0.129476
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:19   pts:1775    pts_time:2.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.123851
+Frame 19: Scene score 0.123851
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:20   pts:1850    pts_time:3.083333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.184795
+Frame 20: Scene score 0.184795
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:21   pts:1900    pts_time:3.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.112203
+Frame 21: Scene score 0.112203
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:22   pts:1950    pts_time:3.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.130791
+Frame 22: Scene score 0.130791
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:23   pts:2025    pts_time:3.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.106158
+Frame 23: Scene score 0.106158
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:24   pts:2075    pts_time:3.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.136518
+Frame 24: Scene score 0.136518
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:25   pts:2150    pts_time:3.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.141823
+Frame 25: Scene score 0.141823
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:26   pts:2200    pts_time:3.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.136972
+Frame 26: Scene score 0.136972
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:27   pts:2250    pts_time:3.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.133400
+Frame 27: Scene score 0.1334
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:28   pts:2325    pts_time:3.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.110345
+Frame 28: Scene score 0.110345
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:29   pts:2375    pts_time:3.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.115453
+Frame 29: Scene score 0.115453
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:30   pts:2500    pts_time:4.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.132742
+Frame 30: Scene score 0.132742
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:31   pts:2550    pts_time:4.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.113553
+Frame 31: Scene score 0.113553
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:32   pts:2675    pts_time:4.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.132029
+Frame 32: Scene score 0.132029
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:33   pts:2725    pts_time:4.541667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.105766
+Frame 33: Scene score 0.105766
+FFmpeg raw output: frame=   34 fps=0.0 q=-0.0 size=N/A time=00:00:04.58 bitrate=N/A speed=9.06x
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:34   pts:2975    pts_time:4.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.101012
+Frame 34: Scene score 0.101012
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:35   pts:3275    pts_time:5.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.115191
+Frame 35: Scene score 0.115191
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:36   pts:3325    pts_time:5.541667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.135905
+Frame 36: Scene score 0.135905
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:37   pts:3400    pts_time:5.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.145421
+Frame 37: Scene score 0.145421
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:38   pts:3450    pts_time:5.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.128907
+Frame 38: Scene score 0.128907
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:39   pts:3525    pts_time:5.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.120715
+Frame 39: Scene score 0.120715
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:40   pts:3575    pts_time:5.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.132758
+Frame 40: Scene score 0.132758
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:41   pts:3625    pts_time:6.041667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.121988
+Frame 41: Scene score 0.121988
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:42   pts:3700    pts_time:6.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.127928
+Frame 42: Scene score 0.127928
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:43   pts:3750    pts_time:6.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.121630
+Frame 43: Scene score 0.12163
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:44   pts:3825    pts_time:6.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.143277
+Frame 44: Scene score 0.143277
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:45   pts:3875    pts_time:6.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.135919
+Frame 45: Scene score 0.135919
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:46   pts:3925    pts_time:6.541667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.131491
+Frame 46: Scene score 0.131491
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:47   pts:4000    pts_time:6.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.126125
+Frame 47: Scene score 0.126125
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:48   pts:4050    pts_time:6.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.149628
+Frame 48: Scene score 0.149628
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:49   pts:4125    pts_time:6.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.128177
+Frame 49: Scene score 0.128177
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:50   pts:4175    pts_time:6.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.140513
+Frame 50: Scene score 0.140513
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:51   pts:4225    pts_time:7.041667
+[Parsed_metadata_1 @ 0000014e255f0dc0]
+FFmpeg raw output: lavfi.scene_score=0.137343
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:52   pts:4300    pts_time:7.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.146841
+Frame 52: Scene score 0.146841
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:53   pts:4350    pts_time:7.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.116486
+Frame 53: Scene score 0.116486
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:54   pts:4425    pts_time:7.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.102212
+Frame 54: Scene score 0.102212
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:55   pts:4475    pts_time:7.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.108241
+Frame 55: Scene score 0.108241
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:56   pts:4525    pts_time:7.541667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.107473
+Frame 56: Scene score 0.107473
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:57   pts:4600    pts_time:7.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.126882
+Frame 57: Scene score 0.126882
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:58   pts:4650    pts_time:7.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.121052
+Frame 58: Scene score 0.121052
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:59   pts:4725    pts_time:7.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.101258
+Frame 59: Scene score 0.101258
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:60   pts:4775    pts_time:7.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.125303
+Frame 60: Scene score 0.125303
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:61   pts:4850    pts_time:8.083333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.103238
+Frame 61: Scene score 0.103238
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:62   pts:5025    pts_time:8.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.115837
+Frame 62: Scene score 0.115837
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:63   pts:5075    pts_time:8.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.121851
+Frame 63: Scene score 0.121851
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:64   pts:5150    pts_time:8.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.126877
+Frame 64: Scene score 0.126877
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:65   pts:5200    pts_time:8.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.118803
+Frame 65: Scene score 0.118803
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:66   pts:5250    pts_time:8.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.111348
+Frame 66: Scene score 0.111348
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:67   pts:5325    pts_time:8.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.136335
+Frame 67: Scene score 0.136335
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:68   pts:5375    pts_time:8.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.157126
+Frame 68: Scene score 0.157126
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:69   pts:5450    pts_time:9.083333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.157991
+Frame 69: Scene score 0.157991
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:70   pts:5500    pts_time:9.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.148589
+Frame 70: Scene score 0.148589
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:71   pts:5550    pts_time:9.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.114214
+Frame 71: Scene score 0.114214
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:72   pts:5625    pts_time:9.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.126765
+Frame 72: Scene score 0.126765
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:73   pts:5675    pts_time:9.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.116965
+Frame 73: Scene score 0.116965
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:74   pts:5750    pts_time:9.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.200292
+Frame 74: Scene score 0.200292
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:75   pts:5800    pts_time:9.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.224680
+Frame 75: Scene score 0.22468
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:76   pts:5850    pts_time:9.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.155512
+Frame 76: Scene score 0.155512
+FFmpeg raw output: frame=   77 fps= 75 q=-0.0 size=N/A time=00:00:09.79 bitrate=N/A speed=9.56x
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:77   pts:5925    pts_time:9.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.151135
+Frame 77: Scene score 0.151135
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:78   pts:5975    pts_time:9.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.146912
+Frame 78: Scene score 0.146912
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:79   pts:6050    pts_time:10.083333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.133055
+Frame 79: Scene score 0.133055
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:80   pts:6100    pts_time:10.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.126952
+Frame 80: Scene score 0.126952
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:81   pts:6150    pts_time:10.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.115228
+Frame 81: Scene score 0.115228
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:82   pts:6225    pts_time:10.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.136253
+Frame 82: Scene score 0.136253
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:83   pts:6275    pts_time:10.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.121758
+Frame 83: Scene score 0.121758
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:84   pts:6350    pts_time:10.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.129104
+Frame 84: Scene score 0.129104
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:85   pts:6400    pts_time:10.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.125765
+Frame 85: Scene score 0.125765
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:86   pts:6450    pts_time:10.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.110726
+Frame 86: Scene score 0.110726
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:87   pts:6525    pts_time:10.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.126576
+Frame 87: Scene score 0.126576
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:88   pts:6575    pts_time:10.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.125343
+Frame 88: Scene score 0.125343
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:89   pts:6650    pts_time:11.083333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.113627
+Frame 89: Scene score 0.113627
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:90   pts:6825    pts_time:11.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.227441
+Frame 90: Scene score 0.227441
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:91   pts:6875    pts_time:11.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.255493
+Frame 91: Scene score 0.255493
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:92   pts:6950    pts_time:11.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.243349
+Frame 92: Scene score 0.243349
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:93   pts:7000    pts_time:11.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.137002
+Frame 93: Scene score 0.137002
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:94   pts:7050    pts_time:11.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.100150
+Frame 94: Scene score 0.10015
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:95   pts:7125    pts_time:11.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.116959
+Frame 95: Scene score 0.116959
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:96   pts:7175    pts_time:11.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.107407
+Frame 96: Scene score 0.107407
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:97   pts:7250    pts_time:12.083333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.105724
+Frame 97: Scene score 0.105724
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:98   pts:7350    pts_time:12.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.117911
+Frame 98: Scene score 0.117911
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:99   pts:7425    pts_time:12.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.103459
+Frame 99: Scene score 0.103459
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:100  pts:7475    pts_time:12.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.102619
+Frame 100: Scene score 0.102619
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:101  pts:7550    pts_time:12.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.123781
+Frame 101: Scene score 0.123781
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:102  pts:7600    pts_time:12.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.110234
+Frame 102: Scene score 0.110234
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:103  pts:7650    pts_time:12.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.136103
+Frame 103: Scene score 0.136103
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:104  pts:7725    pts_time:12.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.139104
+Frame 104: Scene score 0.139104
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:105  pts:7775    pts_time:12.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.105917
+Frame 105: Scene score 0.105917
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:106  pts:7850    pts_time:13.083333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.112697
+Frame 106: Scene score 0.112697
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:107  pts:7900    pts_time:13.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.122215
+Frame 107: Scene score 0.122215
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:108  pts:7950    pts_time:13.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.112248
+Frame 108: Scene score 0.112248
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:109  pts:8025    pts_time:13.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.100540
+Frame 109: Scene score 0.10054
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:110  pts:8075    pts_time:13.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.108054
+Frame 110: Scene score 0.108054
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:111  pts:8150    pts_time:13.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.118896
+Frame 111: Scene score 0.118896
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:112  pts:8200    pts_time:13.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.107433
+Frame 112: Scene score 0.107433
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:113  pts:8325    pts_time:13.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.178907
+Frame 113: Scene score 0.178907
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:114  pts:8375    pts_time:13.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.170993
+Frame 114: Scene score 0.170993
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:115  pts:8450    pts_time:14.083333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.145178
+Frame 115: Scene score 0.145178
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:116  pts:8500    pts_time:14.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.128276
+Frame 116: Scene score 0.128276
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:117  pts:8550    pts_time:14.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.140498
+Frame 117: Scene score 0.140498
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:118  pts:8625    pts_time:14.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.117699
+Frame 118: Scene score 0.117699
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:119  pts:8750    pts_time:14.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.105381
+Frame 119: Scene score 0.105381
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:120  pts:8975    pts_time:14.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.101378
+Frame 120: Scene score 0.101378
+FFmpeg raw output: frame=  121 fps= 78 q=-0.0 size=N/A time=00:00:15.00 bitrate=N/A speed=9.72x
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:121  pts:10000   pts_time:16.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.108150
+Frame 121: Scene score 0.10815
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:122  pts:10050   pts_time:16.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.108390
+Frame 122: Scene score 0.10839
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:123  pts:10225   pts_time:17.041667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.117296
+Frame 123: Scene score 0.117296
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:124  pts:10300   pts_time:17.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.132343
+Frame 124: Scene score 0.132343
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:125  pts:10350   pts_time:17.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.143879
+Frame 125: Scene score 0.143879
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:126  pts:10425   pts_time:17.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.143474
+Frame 126: Scene score 0.143474
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:127  pts:10475   pts_time:17.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.135647
+Frame 127: Scene score 0.135647
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:128  pts:10525   pts_time:17.541667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.123654
+Frame 128: Scene score 0.123654
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:129  pts:10600   pts_time:17.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.190764
+Frame 129: Scene score 0.190764
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:130  pts:10650   pts_time:17.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.247419
+Frame 130: Scene score 0.247419
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:131  pts:10725   pts_time:17.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.213958
+Frame 131: Scene score 0.213958
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:132  pts:10775   pts_time:17.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.197711
+Frame 132: Scene score 0.197711
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:133  pts:10825   pts_time:18.041667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.199351
+Frame 133: Scene score 0.199351
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:134  pts:10900   pts_time:18.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.130232
+Frame 134: Scene score 0.130232
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:135  pts:11075   pts_time:18.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.103034
+Frame 135: Scene score 0.103034
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:136  pts:12100   pts_time:20.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.133719
+Frame 136: Scene score 0.133719
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:137  pts:12150   pts_time:20.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.111623
+Frame 137: Scene score 0.111623
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:138  pts:12225   pts_time:20.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.124029
+Frame 138: Scene score 0.124029
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:139  pts:12275   pts_time:20.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.208643
+Frame 139: Scene score 0.208643
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:140  pts:12325   pts_time:20.541667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.198236
+Frame 140: Scene score 0.198236
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:141  pts:12400   pts_time:20.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.103431
+Frame 141: Scene score 0.103431
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:142  pts:12700   pts_time:21.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.102116
+Frame 142: Scene score 0.102116
+FFmpeg raw output: frame=  143 fps= 69 q=-0.0 size=N/A time=00:00:21.20 bitrate=N/A speed=10.3x
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:143  pts:12750   pts_time:21.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.102636
+Frame 143: Scene score 0.102636
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:144  pts:14025   pts_time:23.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.113062
+Frame 144: Scene score 0.113062
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:145  pts:14075   pts_time:23.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.103642
+Frame 145: Scene score 0.103642
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:146  pts:14375   pts_time:23.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.118722
+Frame 146: Scene score 0.118722
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:147  pts:14425   pts_time:24.041667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.111939
+Frame 147: Scene score 0.111939
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:148  pts:14500   pts_time:24.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.123984
+Frame 148: Scene score 0.123984
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:149  pts:14550   pts_time:24.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.128765
+Frame 149: Scene score 0.128765
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:150  pts:14925   pts_time:24.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.118965
+Frame 150: Scene score 0.118965
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:151  pts:14975   pts_time:24.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.103565
+Frame 151: Scene score 0.103565
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:152  pts:15025   pts_time:25.041667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.100980
+Frame 152: Scene score 0.10098
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:153  pts:15100   pts_time:25.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.115278
+Frame 153: Scene score 0.115278
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:154  pts:15150   pts_time:25.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.118549
+Frame 154: Scene score 0.118549
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:155  pts:15225   pts_time:25.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.122801
+Frame 155: Scene score 0.122801
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:156  pts:15275   pts_time:25.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.182767
+Frame 156: Scene score 0.182767
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:157  pts:15325   pts_time:25.541667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.144885
+Frame 157: Scene score 0.144885
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:158  pts:15400   pts_time:25.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.133004
+Frame 158: Scene score 0.133004
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:159  pts:15450   pts_time:25.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.108668
+Frame 159: Scene score 0.108668
+FFmpeg raw output: frame=  160 fps= 62 q=-0.0 size=N/A time=00:00:25.79 bitrate=N/A speed=  10x
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:160  pts:17975   pts_time:29.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.118107
+Frame 160: Scene score 0.118107
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:161  pts:18025   pts_time:30.041667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.172632
+Frame 161: Scene score 0.172632
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:162  pts:18100   pts_time:30.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.183017
+Frame 162: Scene score 0.183017
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:163  pts:18150   pts_time:30.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.142452
+Frame 163: Scene score 0.142452
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:164  pts:18225   pts_time:30.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.139728
+Frame 164: Scene score 0.139728
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:165  pts:18275   pts_time:30.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.123248
+Frame 165: Scene score 0.123248
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:166  pts:18325   pts_time:30.541667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.108530
+Frame 166: Scene score 0.10853
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:167  pts:18400   pts_time:30.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.114481
+Frame 167: Scene score 0.114481
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:168  pts:18450   pts_time:30.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.102169
+Frame 168: Scene score 0.102169
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:169  pts:18525   pts_time:30.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.102563
+Frame 169: Scene score 0.102563
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:170  pts:18875   pts_time:31.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.104215
+Frame 170: Scene score 0.104215
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:171  pts:18950   pts_time:31.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.113201
+Frame 171: Scene score 0.113201
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:172  pts:19000   pts_time:31.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.131374
+Frame 172: Scene score 0.131374
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:173  pts:19050   pts_time:31.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.118550
+Frame 173: Scene score 0.11855
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:174  pts:19125   pts_time:31.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.115396
+Frame 174: Scene score 0.115396
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:175  pts:19175   pts_time:31.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.105529
+Frame 175: Scene score 0.105529
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:176  pts:19250   pts_time:32.083333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.211115
+Frame 176: Scene score 0.211115
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:177  pts:19300   pts_time:32.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.170709
+Frame 177: Scene score 0.170709
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:178  pts:19350   pts_time:32.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.163322
+Frame 178: Scene score 0.163322
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:179  pts:19425   pts_time:32.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.172795
+Frame 179: Scene score 0.172795
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:180  pts:19475   pts_time:32.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.154934
+Frame 180: Scene score 0.154934
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:181  pts:19550   pts_time:32.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.101230
+Frame 181: Scene score 0.10123
+FFmpeg raw output: frame=  182 fps= 59 q=-0.0 size=N/A time=00:00:32.62 bitrate=N/A speed=10.5x
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:182  pts:20250   pts_time:33.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.104417
+Frame 182: Scene score 0.104417
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:183  pts:20325   pts_time:33.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.101348
+Frame 183: Scene score 0.101348
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:184  pts:20625   pts_time:34.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.100329
+Frame 184: Scene score 0.100329
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:185  pts:20675   pts_time:34.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.181088
+Frame 185: Scene score 0.181088
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:186  pts:20750   pts_time:34.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.173473
+Frame 186: Scene score 0.173473
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:187  pts:20800   pts_time:34.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.162343
+Frame 187: Scene score 0.162343
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:188  pts:20850   pts_time:34.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.136563
+Frame 188: Scene score 0.136563
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:189  pts:20925   pts_time:34.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.109521
+Frame 189: Scene score 0.109521
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:190  pts:20975   pts_time:34.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.109767
+Frame 190: Scene score 0.109767
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:191  pts:21225   pts_time:35.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.101657
+Frame 191: Scene score 0.101657
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:192  pts:21950   pts_time:36.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.101638
+Frame 192: Scene score 0.101638
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:193  pts:22000   pts_time:36.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.106253
+Frame 193: Scene score 0.106253
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:194  pts:22050   pts_time:36.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.101967
+Frame 194: Scene score 0.101967
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:195  pts:22350   pts_time:37.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.104153
+Frame 195: Scene score 0.104153
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:196  pts:22425   pts_time:37.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.105146
+Frame 196: Scene score 0.105146
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:197  pts:22600   pts_time:37.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.105361
+Frame 197: Scene score 0.105361
+FFmpeg raw output: frame=  198 fps= 55 q=-0.0 size=N/A time=00:00:37.70 bitrate=N/A speed=10.5x
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:198  pts:23150   pts_time:38.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.106307
+Frame 198: Scene score 0.106307
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:199  pts:23200   pts_time:38.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.112451
+Frame 199: Scene score 0.112451
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:200  pts:23250   pts_time:38.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.121206
+Frame 200: Scene score 0.121206
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:201  pts:23325   pts_time:38.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.107125
+Frame 201: Scene score 0.107125
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:202  pts:24150   pts_time:40.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.116294
+Frame 202: Scene score 0.116294
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:203  pts:24225   pts_time:40.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.120866
+Frame 203: Scene score 0.120866
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:204  pts:24275   pts_time:40.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.110161
+Frame 204: Scene score 0.110161
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:205  pts:24350   pts_time:40.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.104056
+Frame 205: Scene score 0.104056
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:206  pts:26375   pts_time:43.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.123395
+Frame 206: Scene score 0.123395
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:207  pts:26450   pts_time:44.083333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.123328
+Frame 207: Scene score 0.123328
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:208  pts:26500   pts_time:44.166667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.110480
+Frame 208: Scene score 0.11048
+FFmpeg raw output: frame=  209 fps= 51 q=-0.0 size=N/A time=00:00:44.20 bitrate=N/A speed=10.7x
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:209  pts:26625   pts_time:44.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.138230
+Frame 209: Scene score 0.13823
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:210  pts:26675   pts_time:44.458333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.125822
+Frame 210: Scene score 0.125822
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:211  pts:26750   pts_time:44.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.139041
+Frame 211: Scene score 0.139041
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:212  pts:26800   pts_time:44.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.140280
+Frame 212: Scene score 0.14028
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:213  pts:26850   pts_time:44.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.113928
+Frame 213: Scene score 0.113928
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:214  pts:26925   pts_time:44.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.124416
+Frame 214: Scene score 0.124416
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:215  pts:26975   pts_time:44.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.104280
+Frame 215: Scene score 0.10428
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:216  pts:29250   pts_time:48.75
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.127592
+Frame 216: Scene score 0.127592
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:217  pts:29325   pts_time:48.875
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.136533
+Frame 217: Scene score 0.136533
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:218  pts:29375   pts_time:48.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.109267
+Frame 218: Scene score 0.109267
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:219  pts:29550   pts_time:49.25
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.103707
+Frame 219: Scene score 0.103707
+FFmpeg raw output: frame=  220 fps= 48 q=-0.0 size=N/A time=00:00:49.29 bitrate=N/A speed=10.7x
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:220  pts:30350   pts_time:50.583333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.104196
+Frame 220: Scene score 0.104196
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:221  pts:31850   pts_time:53.083333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.100946
+Frame 221: Scene score 0.100946
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:222  pts:32025   pts_time:53.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.100875
+Frame 222: Scene score 0.100875
+FFmpeg raw output: frame=  223 fps= 43 q=-0.0 size=N/A time=00:00:53.41 bitrate=N/A speed=10.4x
+
+FFmpeg raw output:
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:223  pts:36825   pts_time:61.375
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.101697
+Frame 223: Scene score 0.101697
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:224  pts:37000   pts_time:61.666667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.116648
+Frame 224: Scene score 0.116648
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:225  pts:37175   pts_time:61.958333
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.105686
+Frame 225: Scene score 0.105686
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:226  pts:37225   pts_time:62.041667
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.127650
+Frame 226: Scene score 0.12765
+FFmpeg raw output: frame=  227 fps= 40 q=-0.0 size=N/A time=00:01:02.08 bitrate=N/A speed=10.9x
+FFmpeg raw output: frame=  227 fps= 37 q=-0.0 size=N/A time=00:01:02.08 bitrate=N/A speed=  10x
+FFmpeg raw output: frame=  227 fps= 34 q=-0.0 size=N/A time=00:01:02.08 bitrate=N/A speed=9.27x
+FFmpeg raw output:
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:227  pts:46175   pts_time:76.958333
+
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.111745
+Frame 227: Scene score 0.111745
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:228  pts:47725   pts_time:79.541667
+
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.107658
+Frame 228: Scene score 0.107658
+FFmpeg raw output: [Parsed_metadata_1 @ 0000014e255f0dc0] frame:229  pts:47800   pts_time:79.666667
+
+[Parsed_metadata_1 @ 0000014e255f0dc0] lavfi.scene_score=0.118339
+Frame 229: Scene score 0.118339
+FFmpeg raw output: frame=  230 fps= 32 q=-0.0 size=N/A time=00:01:19.70 bitrate=N/A speed=  11x
+FFmpeg raw output: frame=  230 fps= 30 q=-0.0 size=N/A time=00:01:19.70 bitrate=N/A speed=10.3x
+FFmpeg raw output: frame=  230 fps= 28 q=-0.0 size=N/A time=00:01:19.70 bitrate=N/A speed=9.66x
+FFmpeg raw output: frame=  230 fps= 26 q=-0.0 size=N/A time=00:01:19.70 bitrate=N/A speed= 9.1x
+FFmpeg raw output:
+FFmpeg raw output: [out#0/null @ 0000014e2594f300] video:99KiB audio:8566KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+                   frame=  230 fps= 26 q=-0.0 Lsize=N/A time=00:01:19.70 bitrate=N/A speed=9.01x
+
+FFmpeg process exited with code: 0
+Processing final scene
+Max score found: 0.990958
+Detection complete. Found 5 scenes
+[
+  {
+    "BegFrame": 1,
+    "Activity": 0.997,
+    "EndFrame": 1,
+    "BegTime": "0:00:00",
+    "EndTime": "0:00:00",
+    "Duration": "0:00:00"
+  },
+  {
+    "BegFrame": 2,
+    "BegTime": "0:00:00",
+    "Activity": 1,
+    "EndFrame": 2,
+    "EndTime": "0:00:00",
+    "Duration": "0:00:00"
+  },
+  {
+    "BegFrame": 3,
+    "BegTime": "0:00:00",
+    "Activity": 0.719,
+    "EndFrame": 3,
+    "EndTime": "0:00:00",
+    "Duration": "0:00:00"
+  },
+  {
+    "BegFrame": 4,
+    "BegTime": "0:00:00",
+    "Activity": 0.647,
+    "EndFrame": 4,
+    "EndTime": "0:00:00",
+    "Duration": "0:00:00"
+  },
+  {
+    "BegFrame": 5,
+    "BegTime": "0:00:00",
+    "Activity": 0.662,
+    "EndFrame": 6,
+    "EndTime": "0:00:00",
+    "Duration": "0:00:00"
+  }
+]
+
+
+---------------------------------------------------------
+
+  activity: Math.random()  // Since we don't have actual scene scores, generate random activity
+
+Frame   0: Scene score 0.212809
+Frame   1: Scene score 0.987884
+
+Frame   2: Scene score 0.990958
+Frame   3: Scene score 0.712697
+Frame   4: Scene score 0.641446
+Frame   5: Scene score 0.65593
+
+Frame   6: Scene score 0.12633
+Frame   7: Scene score 0.177658
+Frame   8: Scene score 0.208347
+Frame   9: Scene score 0.265091
+Frame  10: Scene score 0.236196
+Frame  11: Scene score 0.114829
+Frame  12: Scene score 0.115205
+Frame  13: Scene score 0.114303
+Frame  15: Scene score 0.120214
+Frame  16: Scene score 0.159763
+Frame  17: Scene score 0.166063
+Frame  18: Scene score 0.129476
+Frame  19: Scene score 0.123851
+Frame  20: Scene score 0.184795
+Frame  21: Scene score 0.112203
+Frame  22: Scene score 0.130791
+Frame  23: Scene score 0.106158
+Frame  24: Scene score 0.136518
+Frame  25: Scene score 0.141823
+Frame  26: Scene score 0.136972
+Frame  27: Scene score 0.1334
+Frame  28: Scene score 0.110345
+Frame  29: Scene score 0.115453
+Frame  30: Scene score 0.132742
+Frame  31: Scene score 0.113553
+Frame  32: Scene score 0.132029
+Frame  33: Scene score 0.105766
+Frame  34: Scene score 0.101012
+Frame  35: Scene score 0.115191
+Frame  36: Scene score 0.135905
+Frame  37: Scene score 0.145421
+Frame  38: Scene score 0.128907
+Frame  39: Scene score 0.120715
+Frame  40: Scene score 0.132758
+Frame  41: Scene score 0.121988
+Frame  42: Scene score 0.127928
+Frame  43: Scene score 0.12163
+Frame  44: Scene score 0.143277
+Frame  45: Scene score 0.135919
+Frame  46: Scene score 0.131491
+Frame  47: Scene score 0.126125
+Frame  48: Scene score 0.149628
+Frame  49: Scene score 0.128177
+Frame  50: Scene score 0.140513
+Frame  52: Scene score 0.146841
+Frame  53: Scene score 0.116486
+Frame  54: Scene score 0.102212
+Frame  55: Scene score 0.108241
+Frame  56: Scene score 0.107473
+Frame  57: Scene score 0.126882
+Frame  58: Scene score 0.121052
+Frame  59: Scene score 0.101258
+Frame  60: Scene score 0.125303
+Frame  61: Scene score 0.103238
+Frame  62: Scene score 0.115837
+Frame  63: Scene score 0.121851
+Frame  64: Scene score 0.126877
+Frame  65: Scene score 0.118803
+Frame  66: Scene score 0.111348
+Frame  67: Scene score 0.136335
+Frame  68: Scene score 0.157126
+Frame  69: Scene score 0.157991
+Frame  70: Scene score 0.148589
+Frame  71: Scene score 0.114214
+Frame  72: Scene score 0.126765
+Frame  73: Scene score 0.116965
+Frame  74: Scene score 0.200292
+Frame  75: Scene score 0.22468
+Frame  76: Scene score 0.155512
+Frame  77: Scene score 0.151135
+Frame  78: Scene score 0.146912
+Frame  79: Scene score 0.133055
+Frame  80: Scene score 0.126952
+Frame  81: Scene score 0.115228
+Frame  82: Scene score 0.136253
+Frame  83: Scene score 0.121758
+Frame  84: Scene score 0.129104
+Frame  85: Scene score 0.125765
+Frame  86: Scene score 0.110726
+Frame  87: Scene score 0.126576
+Frame  88: Scene score 0.125343
+Frame  89: Scene score 0.113627
+Frame  90: Scene score 0.227441
+Frame  91: Scene score 0.255493
+Frame  92: Scene score 0.243349
+Frame  93: Scene score 0.137002
+Frame  94: Scene score 0.10015
+Frame  95: Scene score 0.116959
+Frame  96: Scene score 0.107407
+Frame  97: Scene score 0.105724
+Frame  98: Scene score 0.117911
+Frame  99: Scene score 0.103459
+Frame 100: Scene score 0.102619
+Frame 101: Scene score 0.123781
+Frame 102: Scene score 0.110234
+Frame 103: Scene score 0.136103
+Frame 104: Scene score 0.139104
+Frame 105: Scene score 0.105917
+Frame 106: Scene score 0.112697
+Frame 107: Scene score 0.122215
+Frame 108: Scene score 0.112248
+Frame 109: Scene score 0.10054
+Frame 110: Scene score 0.108054
+Frame 111: Scene score 0.118896
+Frame 112: Scene score 0.107433
+Frame 113: Scene score 0.178907
+Frame 114: Scene score 0.170993
+Frame 115: Scene score 0.145178
+Frame 116: Scene score 0.128276
+Frame 117: Scene score 0.140498
+Frame 118: Scene score 0.117699
+Frame 119: Scene score 0.105381
+Frame 120: Scene score 0.101378
+Frame 121: Scene score 0.10815
+Frame 122: Scene score 0.10839
+Frame 123: Scene score 0.117296
+Frame 124: Scene score 0.132343
+Frame 125: Scene score 0.143879
+Frame 126: Scene score 0.143474
+Frame 127: Scene score 0.135647
+Frame 128: Scene score 0.123654
+Frame 129: Scene score 0.190764
+Frame 130: Scene score 0.247419
+Frame 131: Scene score 0.213958
+Frame 132: Scene score 0.197711
+Frame 133: Scene score 0.199351
+Frame 134: Scene score 0.130232
+Frame 135: Scene score 0.103034
+Frame 136: Scene score 0.133719
+Frame 137: Scene score 0.111623
+Frame 138: Scene score 0.124029
+Frame 139: Scene score 0.208643
+Frame 140: Scene score 0.198236
+Frame 141: Scene score 0.103431
+Frame 142: Scene score 0.102116
+Frame 143: Scene score 0.102636
+Frame 144: Scene score 0.113062
+Frame 145: Scene score 0.103642
+Frame 146: Scene score 0.118722
+Frame 147: Scene score 0.111939
+Frame 148: Scene score 0.123984
+Frame 149: Scene score 0.128765
+Frame 150: Scene score 0.118965
+Frame 151: Scene score 0.103565
+Frame 152: Scene score 0.10098
+Frame 153: Scene score 0.115278
+Frame 154: Scene score 0.118549
+Frame 155: Scene score 0.122801
+Frame 156: Scene score 0.182767
+Frame 157: Scene score 0.144885
+Frame 158: Scene score 0.133004
+Frame 159: Scene score 0.108668
+Frame 160: Scene score 0.118107
+Frame 161: Scene score 0.172632
+Frame 162: Scene score 0.183017
+Frame 163: Scene score 0.142452
+Frame 164: Scene score 0.139728
+Frame 165: Scene score 0.123248
+Frame 166: Scene score 0.10853
+Frame 167: Scene score 0.114481
+Frame 168: Scene score 0.102169
+Frame 169: Scene score 0.102563
+Frame 170: Scene score 0.104215
+Frame 171: Scene score 0.113201
+Frame 172: Scene score 0.131374
+Frame 173: Scene score 0.11855
+Frame 174: Scene score 0.115396
+Frame 175: Scene score 0.105529
+Frame 176: Scene score 0.211115
+Frame 177: Scene score 0.170709
+Frame 178: Scene score 0.163322
+Frame 179: Scene score 0.172795
+Frame 180: Scene score 0.154934
+Frame 181: Scene score 0.10123
+Frame 182: Scene score 0.104417
+Frame 183: Scene score 0.101348
+Frame 184: Scene score 0.100329
+Frame 185: Scene score 0.181088
+Frame 186: Scene score 0.173473
+Frame 187: Scene score 0.162343
+Frame 188: Scene score 0.136563
+Frame 189: Scene score 0.109521
+Frame 190: Scene score 0.109767
+Frame 191: Scene score 0.101657
+Frame 192: Scene score 0.101638
+Frame 193: Scene score 0.106253
+Frame 194: Scene score 0.101967
+Frame 195: Scene score 0.104153
+Frame 196: Scene score 0.105146
+Frame 197: Scene score 0.105361
+Frame 198: Scene score 0.106307
+Frame 199: Scene score 0.112451
+Frame 200: Scene score 0.121206
+Frame 201: Scene score 0.107125
+Frame 202: Scene score 0.116294
+Frame 203: Scene score 0.120866
+Frame 204: Scene score 0.110161
+Frame 205: Scene score 0.104056
+Frame 206: Scene score 0.123395
+Frame 207: Scene score 0.123328
+Frame 208: Scene score 0.11048
+Frame 209: Scene score 0.13823
+Frame 210: Scene score 0.125822
+Frame 211: Scene score 0.139041
+Frame 212: Scene score 0.14028
+Frame 213: Scene score 0.113928
+Frame 214: Scene score 0.124416
+Frame 215: Scene score 0.10428
+Frame 216: Scene score 0.127592
+Frame 217: Scene score 0.136533
+Frame 218: Scene score 0.109267
+Frame 219: Scene score 0.103707
+Frame 220: Scene score 0.104196
+Frame 221: Scene score 0.100946
+Frame 222: Scene score 0.100875
+Frame 223: Scene score 0.101697
+Frame 224: Scene score 0.116648
+Frame 225: Scene score 0.105686
+Frame 226: Scene score 0.12765
+Frame 227: Scene score 0.111745
+Frame 228: Scene score 0.107658
+Frame 229: Scene score 0.118339
+
+
