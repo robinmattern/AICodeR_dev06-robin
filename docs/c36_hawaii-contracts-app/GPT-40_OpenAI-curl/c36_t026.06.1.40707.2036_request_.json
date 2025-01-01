@@ -1,0 +1,19 @@
+{
+    "model": "gpt-4o",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "26..6.1 Can you create a live view the piechart in an 'artifacts interface' similar to what the claude.ai website is able to produce?"
+          }
+        ]
+      }
+    ],
+    "temperature": 1,
+    "max_tokens": 4095,
+    "top_p": 1,
+    "frequency_penalty": 0,
+    "presence_penalty": 0
+  }

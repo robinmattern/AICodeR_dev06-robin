@@ -1,0 +1,6 @@
+{
+    "python.analysis.diagnosticSeverityOverrides": {
+        
+    },
+    "code-runner.showExecutionMessage": false
+}

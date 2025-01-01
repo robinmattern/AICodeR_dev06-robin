@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label"  : "Create New Project Folder", // Task name displayed in the menu
+        "type"   : "shell", // Use shell for running the script
+        "command": "node", // Command to run (node)
+        "args"   : ["./.vscode/task-createFolder.js", "${input:folderName}"], // Argument: path to your script
+        "group"  : { // Optional group for organization
+          "kind"     : "build",
+          "isDefault":  true // Set as default task in the group
+        },
+        "presentation": { // Optional configuration for task output
+//        "reveal"    : "always" // Always show the output panel
+//        "reveal"    : "silent"   // Focus on output panel after task completes
+//        "reveal"  : "never"
+        },
+//  "problemMatcher": "$tsc" // Optional: Use a problem matcher for errors (adjust if needed)
+      }
+    ]
+
+  , "inputs": [ // New inputs section
+    {
+      "id": "folderName", // Unique identifier for input
+      "type": "promptString", // Input type is promptString
+      "description": "Enter the name of the folder to create:", // Prompt message
+      "default": "" // Optional default value for the prompt
+    }
+  ]
+
+  }
+  

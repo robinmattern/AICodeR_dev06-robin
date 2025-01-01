@@ -1,0 +1,23 @@
+{
+  "id": "chatcmpl-9fvWKK4qh1uK391M5FsbkXY1LkTjs",
+  "object": "chat.completion",
+  "created": 1719779584,
+  "model": "gpt-3.5-turbo-0125",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Bonjour le monde"
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 19,
+    "completion_tokens": 3,
+    "total_tokens": 22
+  },
+  "system_fingerprint": null
+}

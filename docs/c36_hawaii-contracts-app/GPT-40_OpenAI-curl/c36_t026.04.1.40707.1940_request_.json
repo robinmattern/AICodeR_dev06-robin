@@ -1,0 +1,83 @@
+{
+    "model": "gpt-4o",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "26.4.1 Here I am pasting the 58 rows and 10 columns with the same column names as I described for the website. Again can you summarize the total award values for each category."
+             }
+          ]
+      },
+      {
+        "role": "user",
+        "content": [
+           { "type": "text", "text": "Date Awarded    Solicitation #  Title   Original Award Amount   Awardee Jurisdiction    Department  Division    Category    Island" }
+         , { "type": "text", "text": "06/28/2024  B24002488   Print and Deliver Various Forms for the HIDOE   $129,595.70     EMSS, Inc.  Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/28/2024  Q2024000048 Leihoku Elementary School - Playground Repairs  $192,222.00     ISLAND CONSTRUCTION&DEMOLITIONLLC   Department of Education Department of Education     Construction    Honolulu" }
+         , { "type": "text", "text": "06/27/2024  B24002383   Maintenance for Grease Traps on the Island of Hawaii for HIDOE  $103,011.94     Pacific Biodiesel Technologies, LLC Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Hawaii" }
+         , { "type": "text", "text": "06/27/2024  P24002067   Design and Build a new HIDOE Public-Facing Website  $112,832.42     Stacey Leong Design LLC Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Oahu" }
+         , { "type": "text", "text": "06/27/2024      Request and Notice of Exemption from Procurement (PE/D E24-406) $600,000.00     DESIGN THINKING HAWAII  Education   Education   Office of Curriculum and Instructional Design   Goods & Services    Statewide" }
+         , { "type": "text", "text": "06/26/2024  B24002269   Inspect, Test, Certify & Repair Backflow Devices for HIDOE  $62,894.00  PURAL WATER SPECIALTY CO INC    Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Oahu" }
+         , { "type": "text", "text": "06/26/2024  B24002269   Inspect, Test, Certify & Repair Backflow Devices for HIDOE  $70,739.00  Alaka'i Mechanical Corporation  Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Oahu" }
+         , { "type": "text", "text": "06/26/2024      Amendment to Exemption from Procurement $819,280.00     SPENCER'S BUS SERVICE, INC. Education   Education   Office of Facilities and Operations (OFO)   Services    Maui" }
+         , { "type": "text", "text": "06/26/2024      Amendment to Exemption From Procurement $966,603.20     DUDOIT'S BUS SERVICE, INC.  Education   Education   Office of Facilities and Operations (OFO)   Services    Maui" }
+         , { "type": "text", "text": "06/26/2024      Amendment to Exemption from Procurement $362,188.80     MOLOKAI TRANSPORTATION ASSOCIATES, INC. Education   Education   Office of Facilities and Operations (OFO)   Services    Maui" }
+         , { "type": "text", "text": "06/26/2024      MOA D24-173 CO-20528 To Provide Single Sign On (SSO) Setup and Annual F5 Licenses   $26,963.34  Office of Enterprise Technology Services    Education   Education   Office of Information Technology Services   Goods & Services    Statewide" }
+         , { "type": "text", "text": "06/25/2024  B24002683   Furnish, Deliver and Install Eaton 9PX UPS System for HIDOE $497,870.85     Graybar Electric Company    Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/25/2024  Q2024000042 Kapaa Elementary- Replace flooring in various classrooms    $385,362.12     PACIFIC BLUE CONSTRUCTION LLC   Department of Education Department of Education     Construction    Kauai" }
+         , { "type": "text", "text": "06/24/2024  P24002314   External Investigator(s) for Investigation Services for HIDOE   $0.00   Matt Levi Investigations    Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/24/2024  Q2024000078 CKMS - AC installation Admin and Science Storage    $155,305.00     PACIFIC BLUE CONSTRUCTION LLC   Department of Education Department of Education     Construction    Kauai" }
+         , { "type": "text", "text": "06/20/2024  B24002644   Deliver, Install, and Train for Multi Jet 3-D Printer for HIDOE $190,999.90     bwi,llc Department of Education Education   Office of Curriculum and Instructional Design   Goods and Services  Hawaii, Kauai, Oahu" }
+         , { "type": "text", "text": "06/20/2024  Q2024000071 Kailua High - Football Stadium Light Poles P1, P2, P3 and Football Field Scoreboard $227,700.00     PAULS ELECTRICAL CONTRACTING LLC    Department of Education Department of Education     Construction    Honolulu" }
+         , { "type": "text", "text": "06/20/2024      MOA D24-172 CO-20527 To Provide Support for Data Analysis and Reporting for the Hawaii State Department of Education    $250,000.00     University of Hawaii    Education   Education   Office of Strategy, Innovation and Performance  Goods & Services    Statewide" }
+         , { "type": "text", "text": "06/19/2024  B24002626   Disposable Food Service Products for the HIDOE  $14,949.65  ALOHA PACKAGING AND SUPPLIES, LLC   Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Lanai, Maui, Molokai, Oahu" }
+         , { "type": "text", "text": "06/19/2024  Q2024000081 Waimea Canyon Middle School AV Sound, Projector and Systems upgrade $55,955.59  KAUAI ELECTRONICS INC.  Department of Education Department of Education     Goods and Services  Kauai" }
+         , { "type": "text", "text": "06/18/2024  P24002530   On-Call Security Services for the HIDOE, Statewide  $0.00   Arekat Pacific Security, Inc.   Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/18/2024  P24002530   On-Call Security Services for the HIDOE, Statewide  $0.00   Lloyd Services ENT.,LLC Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/17/2024  PS D22-0003 To provide Architectural and Engineering services for Keaau High School, Swimming Pool  $200,000.00     Fleming & Associates, LLC   Education   Education   Department of Education (DOE)   Professional Services   Hawaii" }
+         , { "type": "text", "text": "06/17/2024  PS D23-0001 To provide Architectural and Engineering services for Aliiolani Elementary School, Campus Perimeter Fence   $87,771.00  BOW ENGINEERING & DEVELOPMENT, INC. Education   Education   Department of Education (DOE)   Professional Services   Oahu" }
+         , { "type": "text", "text": "06/17/2024  PS D23-0001 To provide Architectural and Engineering services for McKinley High School, Campus Perimeter Fence  $164,886.00     FUKUNAGA & ASSOCIATES, INC. Education   Education   Department of Education (DOE)   Professional Services   Oahu" }
+         , { "type": "text", "text": "06/17/2024  PS D23-0001 To provide Architectural and Engineering services for Kapaa High School, Track and Field Improvements   $338,751.00     FUKUNAGA & ASSOCIATES, INC. Education   Education   Department of Education (DOE)   Professional Services   Kauai" }
+         , { "type": "text", "text": "06/14/2024      NSA F23-024 CO-20509 To Provide a Community-School Partnership Model of Co-Locating Health Services on School Campus of Lokelani Intermediate School    $0.00   COMMUNITY CLINIC OF MAUI, INC.* Education   Education   Office of Student Support Services  Health and Human Services   Maui" }
+         , { "type": "text", "text": "06/12/2024  P24001596   Provide Driver & Traffic Safety Awareness to Students at HIDOE  $0.00   TYREDD  Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/12/2024  P24001596   Provide Driver & Traffic Safety Awareness to Students at HIDOE  $0.00   Utah Operation Lifesaver, Inc.  Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/12/2024  P24001596   Provide Driver & Traffic Safety Awareness to Students at HIDOE  $0.00   CompDrug    Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/12/2024  P24001596   Provide Driver & Traffic Safety Awareness to Students at HIDOE  $0.00   Scott Backovich Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/12/2024  P24001596   Provide Driver & Traffic Safety Awareness to Students at HIDOE  $0.00   Choose to Love LLC  Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/12/2024  P24001596   Provide Driver & Traffic Safety Awareness to Students at HIDOE  $0.00   10 Seconds Inc  Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/12/2024  P24001596   Provide Driver & Traffic Safety Awareness to Students at HIDOE  $0.00   Hang Up and Drive, Inc  Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/12/2024  P24001596   Provide Driver & Traffic Safety Awareness to Students at HIDOE  $0.00   Brandon L White Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/12/2024  P24001596   Provide Driver & Traffic Safety Awareness to Students at HIDOE  $0.00   Harriet Turk, LLC   Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/12/2024  P24001596   Provide Driver & Traffic Safety Awareness to Students at HIDOE  $0.00   Vision Fillers Inc  Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/12/2024  P24001598   Driver and Traffic Safety Education Program Training for HIDOE      $0.00   NW Safety Consultants,LLC   Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Statewide" }
+         , { "type": "text", "text": "06/12/2024      Request and Notice of Exemption From Procurement    $819,280.00     SPENCER'S BUS SERVICE, INC. Education   Education   Office of Facilities and Operations (OFO)   Services    Molokai" }
+         , { "type": "text", "text": "06/12/2024      Request and Notice of Exemption From Procurement    $362,188.80     MOLOKAI TRANSPORTATION ASSOCIATES, INC. Education   Education   Office of Facilities and Operations (OFO)   Services    Molokai" }
+         , { "type": "text", "text": "06/12/2024      Request and Notice of Exemption from Procurement    $966,503.20     DUDOIT'S BUS SERVICE, INC.  Education   Education   Office of Facilities and Operations (OFO)   Services    Molokai" }
+         , { "type": "text", "text": "06/10/2024  PS D22-0003 To provide Architectural and Engineering services for Jarrett Middle School, ADA Improvements   $356,535.00     ARCHITECTS PACIFIC, INC.    Education   Education   Department of Education (DOE)   Professional Services   Oahu" }
+         , { "type": "text", "text": "06/10/2024  PS D22-0003 To provide Architectural and Engineering services for Kilauea Elementary School, Architectural Barrier Removal  $116,528.00     ARCHITECTS PACIFIC, INC.    Education   Education   Department of Education (DOE)   Professional Services   Hawaii" }
+         , { "type": "text", "text": "06/07/2024  B2024000006 Ahuimanu Elementary School, ADA Improvements, DOE Job No. Q91217-21 $1,844,000.00   T. IIDA CONTRACTING, LTD.   Department of Education Department of Education     Construction    Honolulu" }
+         , { "type": "text", "text": "06/07/2024  Q2024000014 CASTLE HIGH SCHOOL AC INSTALLATION BLDGS E, F, G, H, & I    $142,763.00     MAX ISLAND AIR CONDITIONING L.L.C.  Department of Education Department of Education     Construction    Honolulu" }
+         , { "type": "text", "text": "06/07/2024  Q2024000040 Castle High, Building A - Replace R-22 AC Unit  $142,109.51     ONS REFRIGERATION LLC   Department of Education Department of Education     Construction    Honolulu" }
+         , { "type": "text", "text": "06/07/2024  Q2024000046 Kaohao PCS, Building D and Portable 7 - Replace R-22 AC Units   $113,752.26     ONS REFRIGERATION LLC   Department of Education Department of Education     Construction    Honolulu" }
+         , { "type": "text", "text": "06/07/2024  Q2024000047 Kaneohe Elementary, Library - Replace R-22 AC Unit  $86,973.17  ONS REFRIGERATION LLC   Department of Education Department of Education     Construction    Honolulu" }
+         , { "type": "text", "text": "06/07/2024  Q2024000050 Nuuanu Elementary, Building O, Library - Replace R-22 AC Unit   $202,854.00     ISLAND WIDE A/C SERVICE, LLC    Department of Education Department of Education     Construction    Honolulu" }
+         , { "type": "text", "text": "06/07/2024  Q2024000054 MOANALUA HIGH SCHOOL - BLDG Q, VARIOUS CLASSROOMS, INSTALL SPLIT AC UNITS   $131,373.33     ONS REFRIGERATION LLC   Department of Education Department of Education     Construction    Honolulu" }
+         , { "type": "text", "text": "06/07/2024      EX D24-107 CO-20499 For Administering Hepatitis B Vaccinations to All Eligible Employees Statewide for the Hawaii State Department of Education $63,592.00  NA KAHU MALAMA NURSES, INC. Education   Education   Office of Talent Management Goods & Services    Statewide" }
+         , { "type": "text", "text": "06/06/2024  B24002538   Provide Refuse & Recycling Collection & Disposal for HIDOE Maui $797,385.60     Waste Pro Hawaii, LLC   Department of Education Education   Office of Fiscal Services Procurement and Contracts Branch  Goods and Services  Maui" }
+         , { "type": "text", "text": "06/06/2024  PS D22-0003 To provide Architectural and Engineering services for Waimea Elementary School, Master Plan $465,618.00     FERRARO CHOI AND ASSOCIATES LTD.    Education   Education   Department of Education (DOE)   Professional Services   Hawaii" }
+         , { "type": "text", "text": "06/05/2024  PS D22-0003 To provide Architectural and Engineering services for Kahakai Elementary School, Architectural Barrier Removal  $198,000.00     ARCHITECTS PACIFIC, INC.    Education   Education   Department of Education (DOE)   Professional Services   Hawaii" }
+         , { "type": "text", "text": "06/05/2024  PS D22-0003 To provide Architectural and Engineering services for Kalanianaole EIS, Architectural Barrier Removal   $199,171.03     AM PARTNERS INC.    Education   Education   Department of Education (DOE)   Professional Services   Hawaii" }
+         , { "type": "text", "text": "06/05/2024  PS D23-0001 To provide Architectural and Engineering services for Various, Lahaina Elementary Replacement School    $894,186.00     WRNS STUDIO Education   Education   Department of Education (DOE)   Professional Services   Maui" }
+         , { "type": "text", "text": "06/05/2024  Q2024000077 Waimea Canyon Middle School - Play court netting installation   $53,000.00  DMK & ASSOCIATES    Department of Education Department of Education     Construction    Kauai" }
+         , { "type": "text", "text": "06/05/2024      Request and Notice of Exemption from Procurement (PE/D E24-408  $3,000,000.00   DonorsChoose.org    Education   Education   Office of the Superintendent    Goods & Services    Statewide" }
+        ]
+      }
+    ],
+    "temperature": 1,
+    "max_tokens": 4095,
+    "top_p": 1,
+    "frequency_penalty": 0,
+    "presence_penalty": 0
+  }
