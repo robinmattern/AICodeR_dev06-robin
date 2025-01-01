@@ -1,0 +1,1 @@
+{"id":"msg_01664hHA9RpKct37iT9ZPN3f","type":"message","role":"assistant","model":"claude-3-sonnet-20240229","content":[{"type":"text","text":"Why did the programmer quit his job? Because he didn't get arrays!"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":14,"output_tokens":18}}
