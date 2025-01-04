@@ -23,8 +23,8 @@
 #                               |
 ##CHGS     .--------------------+-------+-------------------+------+-----------+
 # .(41228.01 12/28/24 RAM 10:30a| Created
-# .(41229.01 12/29/24 RAM  4:15p| Fixe launch paths
-# .(41229.02 12/29/24 RAM  4:15p| Add ai2code
+# .(41229.01 12/29/24 RAM  4:15p| Add ai2code
+# .(41229.03 12/29/24 RAM  4:15p| Fix launch paths in AICodeR
 
 ##PRGM     +====================+===============================================+
 ##ID 69.600. Main0              |
@@ -148,8 +148,8 @@ function cpyToBin() {
                                      Sudo chmod 777 "${aScrDir}"; fi;
         fi;
     cpyScript "aic     " "${aRepo_Dir}/._2/FRTs/AICodeR/AIC01_Main0.sh"
-    cpyScript "aicoder " "${aRepo_Dir}/._2/FRTs/AICodeR/AIC01_Main0.sh"                #.(41229.02.1 RAM Add aicoder)
-    cpyScript "ai2code " "${aRepo_Dir}/._2/FRTs/AI2Code/AI201_Main0.sh"                #.(41229.02.2 RAM Add ai2code)
+    cpyScript "aicoder " "${aRepo_Dir}/._2/FRTs/AICodeR/AIC01_Main0.sh"                #.(41229.01.2 RAM Add aicoder)
+    cpyScript "ai2code " "${aRepo_Dir}/._2/FRTs/AI2Code/AI201_Main0.sh"                #.(41229.01.3 RAM Add ai2code)
 
    cd "${aRepo_Dir}"
 
@@ -168,7 +168,7 @@ function cpyScript() {
 
   if [ "${bDoScripts}" == "0" ]; then                  echo "  Will create script: ${aScrDir}/${aName1} for \"${aScript}\""; return; fi
   if [ "${bDoScripts}" == "1" ]; then
-  if [ -f "${aScript}"        ]; then makScript  "${aScript}" "${aRepo_Dir}" "${aName}"; echo "  Created script in:                              \"${aRepo_Dir}/${aName}\"";   # .(41229.02.1 RAM Create command in aRepo_Dir)
+  if [ -f "${aScript}"        ]; then makScript  "${aScript}" "${aRepo_Dir}" "${aName}"; echo "  Created script in:                              \"${aRepo_Dir}/${aName}\"";   # .(41229.01.4 RAM Create command in aRepo_Dir)
                                       makScript  "${aScript}" "${aScrDir}" "${aName}";   echo "  Created script in: ${aScrDir}/${aName1} for \"${aScript}\"";
                                  fi
 #                                Sudo chmod  777 "${aScript}";                          ##.(41104.03.1 RAM No need to set permission for each script
