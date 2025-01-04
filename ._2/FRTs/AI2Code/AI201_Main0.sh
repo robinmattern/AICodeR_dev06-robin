@@ -1,8 +1,8 @@
 #!/bin/sh
 #   AIC Launcher (Prod Copy)
 
-#       AI2_Scr=AI202_AI2code_u1.01.sh               ##.(41229.01.4)
-        AI2_Scr=AI201_Main1_u1.01.sh                 # .(41229.01.4 RAM Latest version)
+#       AI2_Scr=AI202_AI2code_u1.01.sh               ##.(41229.03.1)
+        AI2_Scr=AI201_Main1_u1.01.sh                 # .(41229.03.2 RAM Latest version)
 
 #       AI2_Dir=$( dirname "$0" );                   # echo "AI2_Dir: '${AI2_Dir}'";      # Returns "." if run from it's folder location
 #       AI2_Dir=$( realpath "$0" );                  # echo "AI2_Dir: '${AI2_Dir}'";      # fails in MacOS Catalina's zsh 

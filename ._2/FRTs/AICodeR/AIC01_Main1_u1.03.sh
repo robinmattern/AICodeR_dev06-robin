@@ -35,10 +35,10 @@
             AIC91_Folders="AIC91_AppFolders_u03.mjs"
             AIC97_Ports="AIC87_Ports.sh"                                                # .(40724.01.1 RAM Move script to AICodeR)
 
-            aPath=$(readlink -f "$0");        
+            aPath=$(readlink -f "$0");
             __filename="${aPath##*/}"
-            __dirname="${aPath%/*}";        
-            __basedir="${aPath%/._2*}";    #  echo "  __basedir: '${__basedir}'"; exit  # .(41229.01.6)          
+            __dirname="${aPath%/*}";
+            __basedir="${aPath%/._2*}";    #  echo "  __basedir: '${__basedir}'"; exit  # .(41229.03.4)          
 
             bDebug=0; if [ "$1" == "debug" ]; then bDebug=1; shift; fi;            		# .(40727.01.1 RAM Add bDebug switch)
             bNoisy=0; if [ "$1" == "noisy" ]; then bNoisy=1; shift; fi;            		# .(40724.01.1 RAM Add bNoisy switch)
@@ -48,9 +48,9 @@
 #           ThePath='E:/Repos/Robin/AIObjs_/dev03-robin/docs/c35_calendar1-app/GPT-4o_OpenAI-curl'
 #           ThePath="${__dirname}/docs/c35_calendar1-app/GPT-4o_OpenAI-curl"
 #           aDir="E:/Repos/Robin/AIObjs_/dev03-robin/._2/FRTs/AICodeR/"
-#           aAICodeR_Dir="${__dirname}/._2/FRTs/AICodeR/"     # with trailing slash     ##.(40804.01 RAM Was aDir).(41229.01.6)
-            aAICodeR_Dir="${__basedir}/._2/FRTs/AICodeR/"     # with trailing slash     # .(41229.01.6 RAM Use __basedir).(40804.01 RAM Was aDir)
-#           aAICodeR_Dir="$( cd "$( dirname "$0" )" && pwd)/" # with trailing slash     ##.(41229.01.6 RAM Also works)
+#           aAICodeR_Dir="${__dirname}/._2/FRTs/AICodeR/"     # with trailing slash     ##.(40804.01 RAM Was aDir).(41229.03.5)
+            aAICodeR_Dir="${__basedir}/._2/FRTs/AICodeR/"     # with trailing slash     # .(41229.03.5 RAM Use __basedir).(40804.01 RAM Was aDir)
+#           aAICodeR_Dir="$( cd "$( dirname "$0" )" && pwd)/" # with trailing slash     ##.(41229.03.5 RAM Also works)
 
             aOS=${OSTYPE:0:6};   if [ "${aOS}" != "darwin" ]; then aOS="windows"; fi    # .(40910.01.1 Get OS)
             bLstLine=1; if [ "${aOS}" != "darwin" ]; then bLstLine=0; fi                # .(40910.02.1 Set aMTline)
