@@ -1,5 +1,5 @@
 // import fetch from 'node-fetch';
-   import   FRT             from '../../._2/FRTs/AICodeR/AIC90_FileFns.mjs'                         // .(40701.05.5 RAM Add getAPI_openAI-fetch_u3.mjs)
+   import   FRT             from '../../._2/FRTs/AICodeR/AIC90_FileFns_u03.mjs'                     // .(50101.06.9).(40701.05.5 RAM Add getAPI_openAI-fetch_u3.mjs)
    import   AIC             from '../../._2/FRTs/AICodeR/AIC06_Code_u05.mjs'
    import   AIM             from '../../._2/FRTs/AICodeR/AIC98_Models.mjs'
 
