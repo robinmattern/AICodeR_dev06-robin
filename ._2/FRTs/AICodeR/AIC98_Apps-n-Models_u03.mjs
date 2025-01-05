@@ -230,7 +230,7 @@
             }
        var  nRow = mRows.findIndex( ( mRow, i ) => {
                var  aFld  =  mRow[ nFld - nOrigin ];
-//          console.log(  aFld.slice( 0, aVal.length ), aVal )
+//         console.log(  aFld.slice( 0, aVal.length ), aVal )
             return  nVal  ? (mRow[ nFld - nOrigin ] * 1) == nVal : aFld.slice( 0, aVal.length ) == aVal
                    } )
     return (nRow  != -1)  ?  mRows[ nRow ] : ''
@@ -261,7 +261,7 @@
          return  bFound != null
                  } )  // eol mRows.filter 
     return  mRows2
-            }  // eof selectModels                                                                  // .(40727.03.2 End)
+            }  // eof selectRows                                                                    // .(40727.03.2 End)
        // ----------------------------------------------------------------------------------
 /*
 //          chkArgs( [] )
@@ -306,7 +306,7 @@
 //          setArgs( [ 'set', '1.2.40711.1304', 'c35', 'c35sann' ] )
 //          setArgs( [ 'get', '1.2.40711.1304', 'c35' ] )
             process.exit()
-           }
+            } // eif IsNotCalled && bTesting_Args 
 // ------------------------------------------------------------------------------
 
   function  setArgs( mArgs, aGetSet, aQuit ) {
@@ -438,12 +438,12 @@
        var  bIsCalled       = `${ process.env['CALL_IT'] }`.match( /true|1/ ) != null;
 
        var  bRunHere        =  bIsNotCalled && `${ process.env['CALL_IT'] }`.match( /true|1/ ) == null;
-//          console.log( `bRun: ${ bRun },  bIsNotCalled :${ bIsNotCalled }, CALL_IT: ${ process.env['CALL_IT'] }` );
+            console.log( `  AIC98[441]:    bRunHere:  ${ bRunHere };  bIsNotCalled: ${ bIsNotCalled };  CALL_IT: ${ process.env['CALL_IT'] }` );  // .(50102.02.5 RAM Was bRun)
 //          process.exit()
 // ---------------------------------------------------------------------------------------------------
 
-        if (bRunHere) {
-
+        if (bRunHere) {                                                                             // .(50102.02.6 RAM i.e. Test this script AIC98_Apps-n-Models_u03.mjs)
+          
        var  aTable         =  process.argv.length > 2 ? process.argv[2] : ''
        var  aRow           =  process.argv.length > 3 ? process.argv[3] : ''
        var  aItem          =  process.argv.length > 4 ? process.argv[4] : ''

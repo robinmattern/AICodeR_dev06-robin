@@ -24,7 +24,7 @@
 
        var  bIsNotCalled    =  FRT.isCalled( import.meta.url, process.argv[1]);
        var  bRun            =  bIsNotCalled && `${ process.env['CALL_IT'] }`.match( /true|1/ ) == null;
-
+ 
         if (bIsNotCalled) {                                                                         // .(50102.02.1 RAM Not called by aicoder bash script)
 //     var  aAppName        = 'c39_login-app'
 //     var  aModel          = 'GPT-4o_OpenAI-cont'         //       markdown /share
