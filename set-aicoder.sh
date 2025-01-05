@@ -23,9 +23,10 @@
 #                               |
 ##CHGS     .--------------------+-------+-------------------+------+-----------+
 # .(41228.01 12/28/24 RAM 10:30a| Created
-# .(41229.01 12/29/24 RAM  4:15p| Add ai2code
-# .(41229.03 12/29/24 RAM  4:15p| Fix launch paths in AICodeR
- 
+# .(41229.01 12/29/24 RAM  4:15p| Fixe launch paths
+# .(41229.02 12/29/24 RAM  4:15p| Add ai2code
+# .(50105.07  1/05/25 RAM  4:00p| Cleaned up show command
+
 ##PRGM     +====================+===============================================+
 ##ID 69.600. Main0              |
 ##SRCE     +====================+===============================================+
@@ -83,11 +84,11 @@ function exit_withCR() {
      }
 # -----------------------------------------------------------
 
-                                      aCmd="help";    bDoWipe="0";   bDoShow="0";    bDoScripts="0";
+                                      aCmd="help";    bDoWipe="0";   bDoShow="0";   bDoScripts="0";
 #  if [[ "$1" == ""          ]]; then aCmd="help";    fi
    if [[ "${1:0:3}" == "hel" ]]; then aCmd="help";    fi
-   if [[ "${1:0:2}" == "-d"  ]]; then aCmd="doit";                                   bDoScripts="1";  fi
-   if [[ "${1:0:3}" == "doi" ]]; then aCmd="doit";                                   bDoScripts="1";  fi
+   if [[ "${1:0:2}" == "-d"  ]]; then aCmd="doit";                                  bDoScripts="1";  fi
+   if [[ "${1:0:3}" == "doi" ]]; then aCmd="doit";                                  bDoScripts="1";  fi
    if [[ "${1:0:3}" == "sho" ]]; then aCmd="showEm";  fi
    if [[ "${1:0:3}" == "scr" ]]; then aCmd="copyEm";  if [[ "$2" == "doit" ]]; then bDoScripts="1";  fi; fi
    if [[ "${1:0:3}" == "wip" ]]; then aCmd="wipeIt";  if [[ "$2" == "doit" ]]; then bDoWipe="1"; fi; fi
@@ -96,17 +97,13 @@ function exit_withCR() {
 
 function showEm() {
 
-  echo "   aBinDir: '${aBinDir}'"
-  if [ -f "${aBinDir}/frt" ]; then ls -l "${aBinDir}" | awk 'NR > 1 { print "    " $0 }'; fi
+  echo "  aBinDir: '${aBinDir}'"
+# if [ -f "${aBinDir}/frt" ]; then ls -l "${aBinDir} ai" | awk 'NR > 1 { print "    " $0 }'; fi
+  if [ -f "${aBinDir}/frt" ]; then rdir "${aBinDir}" "ai" | awk 'NR > 3 { print substr( $0, 7 ) }'; fi      #  .(50105.07.1)
   echo ""
-
-  echo "  .Bashrc: '${aBashrc}' contents:"
-  echo "  ------------------------------------------------"
-  if [ -f "${aBashrc}" ]; then cat  "${aBashrc}" | awk '{ print "    " $0 }'; fi
-  echo "  ------------------------------------------------"; echo ""
-
+                                                                                                            ## .(50105.07.1 RAM Removed a lot)
   echo "  \${PATH (bin folders only):"
-  echo "${PATH}" | awk '{ gsub( /:/, "\n" );  print }' | awk '/[.]*bin$/ { print "    " $0 }'
+  echo "${PATH}" | awk '{ gsub( /:/, "\n" );  print }' | awk '/[us]ers|[hH]ome/ && length($0) < 20' | awk '/[.]*bin$/ { print "    " $0 }'
   }
 # -----------------------------------------------------------
 
@@ -148,14 +145,14 @@ function cpyToBin() {
                                      Sudo chmod 777 "${aScrDir}"; fi;
         fi;
     cpyScript "aic     " "${aRepo_Dir}/._2/FRTs/AICodeR/AIC01_Main0.sh"
-    cpyScript "aicoder " "${aRepo_Dir}/._2/FRTs/AICodeR/AIC01_Main0.sh"                #.(41229.01.2 RAM Add aicoder)
-    cpyScript "ai2code " "${aRepo_Dir}/._2/FRTs/AI2Code/AI201_Main0.sh"                #.(41229.01.3 RAM Add ai2code)
+    cpyScript "aicoder " "${aRepo_Dir}/._2/FRTs/AICodeR/AIC01_Main0.sh"                #.(41229.02.1 RAM Add aicoder)
+    cpyScript "ai2code " "${aRepo_Dir}/._2/FRTs/AI2Code/AI201_Main0.sh"                #.(41229.02.2 RAM Add ai2code)
 
    cd "${aRepo_Dir}"
 
-  Sudo find . -type f -name "*.sh" -exec chmod 755 {} \;                               #  For those in aRepo_Dir
+  Sudo find . -type f -name "*.sh" -exec chmod 755 {} \;                                #  For those in aRepo_Dir
 
-  echo -e "\n  AICoder scripts installed."
+  if [ "${bDoScripts}" == "1" ]; then echo -e "\n  AICoder scripts installed."; fi                          #  .(50105.07.2)
   }
 # ---------------------------------------------------------------------------
 
@@ -168,7 +165,7 @@ function cpyScript() {
 
   if [ "${bDoScripts}" == "0" ]; then                  echo "  Will create script: ${aScrDir}/${aName1} for \"${aScript}\""; return; fi
   if [ "${bDoScripts}" == "1" ]; then
-  if [ -f "${aScript}"        ]; then makScript  "${aScript}" "${aRepo_Dir}" "${aName}"; echo "  Created script in:                              \"${aRepo_Dir}/${aName}\"";   # .(41229.01.4 RAM Create command in aRepo_Dir)
+  if [ -f "${aScript}"        ]; then makScript  "${aScript}" "${aRepo_Dir}" "${aName}"; echo "  Created script in:                              \"${aRepo_Dir}/${aName}\"";   # .(41229.02.1 RAM Create command in aRepo_Dir)
                                       makScript  "${aScript}" "${aScrDir}" "${aName}";   echo "  Created script in: ${aScrDir}/${aName1} for \"${aScript}\"";
                                  fi
 #                                Sudo chmod  777 "${aScript}";                          ##.(41104.03.1 RAM No need to set permission for each script
