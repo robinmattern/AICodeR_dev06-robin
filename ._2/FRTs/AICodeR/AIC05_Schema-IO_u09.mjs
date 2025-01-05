@@ -25,7 +25,7 @@
        var  bIsNotCalled    =  FRT.isCalled( import.meta.url, process.argv[1]);
        var  bRun            =  bIsNotCalled && `${ process.env['CALL_IT'] }`.match( /true|1/ ) == null;
 
-        if (bIsNotCalled) {                                                                         // .(50102.01.3 RAM Not called by aicoder bash script)
+        if (bIsNotCalled) {                                                                         // .(50102.02.1 RAM Not called by aicoder bash script)
 //     var  aAppName        = 'c39_login-app'
 //     var  aModel          = 'GPT-4o_OpenAI-cont'         //       markdown /share
        var  aAppName        = 'c99_unknown-app'                                                     // .(50102.01.4 RAM For AnyLLM)
@@ -34,7 +34,7 @@
 
        var  aAppName        =  FRT.setPaths( aAppName )
        var  aSession_Dir    =  FRT.join( __basedir, `docs/${aAppName}/${aModel}` )
-       var  aSessions_Dir   =  FRT.join( __basedir, `../._/DOCs/code-sessions` )                 // .(50102.01.2 RAM Used for Steps 2,3,4,5,6, 9; "E:\Repos\Robin\AIObjs_\._\DOCs\Code-Sessions")
+       var  aSessions_Dir   =  FRT.join( __basedir, `../._/DOCs/code-sessions` )                    // .(50102.01.5 RAM Used for Steps 2,3,4,5,6, 9; "E:\Repos\Robin\AIObjs_\._\DOCs\Code-Sessions")
        var _FRTables_Dir    =  aSessions_Dir                                                        // .(40701.05.1 RAM Add Global)
        var _Continue_Dir    =                                                                          '/C/Users/Robin/.continue/sessions'
 
@@ -101,10 +101,10 @@
 
 // --- ---  --------------  =  -------------------------------------------------------------
        var  nSession        =  null
-       var  aAppName        =  bIsNotCalled ? aAppName : ''                                         // .(50102.01.x RAM Not Called by aicoder bash script)
-       var  aModel          =  bIsNotCalled ? aModel   : ''                                         // .(50102.01.x)
+       var  aAppName        =  bIsNotCalled ? aAppName : ''                                         // .(50102.01.6 RAM Not Called by aicoder bash script)
+       var  aModel          =  bIsNotCalled ? aModel   : ''                                         // .(50102.01.7)
 
-        if (bIsNotCalled) {                                                                         // .(50102.01.x)                          
+        if (bIsNotCalled) {                                                                         // .(50102.02.2)                          
 //     var  aSteps =  "1"             // Save Sessions from Original Continue JSON files to Continue JSON file
 //     var  aSteps =  "2"             // Save Continue Sessions from Continue JSON files          to FRTables JSON file
 //     var  aSteps =  "3"             // List Sessions from Original Continue JSON files to .txt file
@@ -118,12 +118,12 @@
 //     var  aSteps = "11"             // List Models
 //     var  aSteps = "12"             // List Apps
 //     var  aSteps = "13"             // Show Apps
-       var  aSteps = "14"             // Show Sessions                                              // .(50102.01.4 RAM Set for bRunHere == false)
+       var  aSteps = "14"             // Show Sessions                                              // .(50102.01.8 RAM Set for bRunHere == false)
 //     var  aSteps = "16"             // Save Prompt
 //     var  aSteps = "15"             // Run  Prompt
 //     var  aSteps = "17"             // Save Session
 //     var  aSteps = "18"             // Show Markdown                                              // .(40717.02.3)
-            }  // eif bNotCalled                                                                     // .(50102.01.x)
+            }  // eif bNotCalled                                                                    // .(50102.02.3)
 
         if (process.argv.length > 2 ) {  // Process command line arguments
        var  aSteps = process.argv[2]
@@ -239,16 +239,16 @@
 //     var  aModel          = 'OpenAI-GPT-4o-maxi'
 //     var  aModel          = 'GPT-4o_OpenAI-curl'
 //     var  aModel          = 'GPT-4o_OpenAI-curl'
-//     var  aModel          = 'GPT-4o_OpenAI-maxi'                                                  // .(50102.01.x RAM Was set here, Not a good place)
+//     var  aModel          = 'GPT-4o_OpenAI-maxi'                                                  //#.(50102.01.9 RAM Was set here, Not a good place Beg)
 //     var  aModel          = 'Claude3-So_Anthropic-chatgpt'
 
 //     var  aModel          = 'Claude3-So_Anthropic-maxi'
 //     var  aAppName        = 'c01_calendar-app'
-//     var  aAppName        = 'c35_calendar1-app'                                                   // .(50102.01.x RAM Was set here, Not a good place)
+//     var  aAppName        = 'c35_calendar1-app'                                                   //#.(50102.01.9 End)
 //     var  aAppName        = 'c37_aicoder-sessions-app'
 
-//     var  aModel          = 'Unknown_model-allm'                                                  // .(50102.01.x RAM But we'll do it anyway)
-//     var  aAppName        = 'c00_unknown-app'                                                     // .(50102.01.x)
+//     var  aModel          = 'Unknown_model-allm'                                                  //#.(50102.01.10 RAM But we'll do it anyway. Not)
+//     var  aAppName        = 'c00_unknown-app'                                                     //#.(50102.01.11)
 
        var  aApp            = (getApp(    2,   aAppName, 1 )) // (().slice(1,2)[0] || '').trim()    // .(40718.09.3).(40715.01.1 RAM Change nFld Origin, was 3)
        var  aMod            = (getModel(  2,   aModel  , 1 )) // (().slice(1,2)[0] || '').trim()    // .(40718.09.4).(40715.01.2)
@@ -341,7 +341,7 @@
 //     var  aAppName        = (getApp(    2,   aApp                ).slice(2,3)[0] || '').trim()    //#.(40718.09.8)
 //     var  aModel          = (getModel(  2,   aApp                ).slice(2,3)[0] || '').trim()    //#.(40718.09.9)
 
-       var  mArgs           =  setArgs( ['', '', 5, 20, 5 ], 'get', 'quit' )                        // .(50102.01.x RAM Was: 'puit')
+       var  mArgs           =  setArgs( ['', '', 5, 20, 5 ], 'get', 'quit' )                        // .(50102.02.4 RAM Was: 'puit')
 //     var  mArgs           =  setArgs( process.argv       , 'get', 'quit' )
             console.log(    `  AIC05[346]:    mArgs:    '${mArgs.join("', '")}`)
         if (mArgs.join("', '").match( /'\*/ ) ) { console.log( "  process.exit()" ) }
