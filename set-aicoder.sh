@@ -18,7 +18,7 @@
 #            cpyToBin           |
 #            cpyScript          |
 #            setOSvars          |
-#            exit_withCR        |
+#            exit_wCR           |
 #            Sudo               |
 #                               |
 ##CHGS     .--------------------+-------+-------------------+------+-----------+
@@ -35,6 +35,7 @@
 
   aVer="v1.05\`41128.1030"
   aVer="v1.05\`41129.1615"
+  aVer="v1.05\`50105.1915"
 
   echo ""
 
@@ -47,7 +48,8 @@ function help() {
   echo "    doit             Do scripts -doit"                                                              # .(41031.02.1)
   echo "    scripts [-doit]  Copy FRTools scripts"
   echo "    wipe    [-doit]  Erase all setup changes"                                                       # .(41030.03.1)
-  exit_withCR
+# echo ""                                                                                                   ##.(50105.07.1)
+  exit_wCR                                                                                                  # .(50105.07.1 RAM Add exit_wCR)
   }
 # -----------------------------------------------------------
 
@@ -79,19 +81,19 @@ function Sudo() {
      }
 # -----------------------------------------------------------
 
-function exit_withCR() {
-  if [[ "${aOS}" != "windows" ]]; then echo ""; fi
+function exit_wCR() {
+  if [[ "${aOS}" != "windows" ]]; then echo ""; fi; exit                                                    # .(50105.07.2 RAM Add exit)
      }
 # -----------------------------------------------------------
 
-                                      aCmd="help";    bDoWipe="0";   bDoShow="0";   bDoScripts="0";
+                                      aCmd="help";    bDoWipe="0";    bDoShow="0";      bDoScripts="0";
 #  if [[ "$1" == ""          ]]; then aCmd="help";    fi
    if [[ "${1:0:3}" == "hel" ]]; then aCmd="help";    fi
-   if [[ "${1:0:2}" == "-d"  ]]; then aCmd="doit";                                  bDoScripts="1";  fi
-   if [[ "${1:0:3}" == "doi" ]]; then aCmd="doit";                                  bDoScripts="1";  fi
+   if [[ "${1:0:2}" == "-d"  ]]; then aCmd="doit";                                      bDoScripts="1";  fi
+   if [[ "${1:0:3}" == "doi" ]]; then aCmd="doit";                                      bDoScripts="1";  fi
    if [[ "${1:0:3}" == "sho" ]]; then aCmd="showEm";  fi
-   if [[ "${1:0:3}" == "scr" ]]; then aCmd="copyEm";  if [[ "$2" == "doit" ]]; then bDoScripts="1";  fi; fi
-   if [[ "${1:0:3}" == "wip" ]]; then aCmd="wipeIt";  if [[ "$2" == "doit" ]]; then bDoWipe="1"; fi; fi
+   if [[ "${1:0:3}" == "scr" ]]; then aCmd="copyEm";  if [[     "$2" == "doit" ]]; then bDoScripts="1";  fi; fi
+   if [[ "${1:0:3}" == "wip" ]]; then aCmd="wipeIt";  if [[     "$2" == "doit" ]]; then bDoWipe="1";     fi; fi
 
 # ---------------------------------------------------------------------------
 
@@ -102,34 +104,36 @@ function showEm() {
   if [ -f "${aBinDir}/frt" ]; then rdir "${aBinDir}" "ai" | awk 'NR > 3 { print substr( $0, 7 ) }'; fi      #  .(50105.07.1)
   echo ""
                                                                                                             ## .(50105.07.1 RAM Removed a lot)
-  echo "  \${PATH (bin folders only):"
+  echo "  \$PATH (bin folders only):"
   echo "${PATH}" | awk '{ gsub( /:/, "\n" );  print }' | awk '/[us]ers|[hH]ome/ && length($0) < 20' | awk '/[.]*bin$/ { print "    " $0 }'
+  exit_wCR                                                                                                  # .(50105.07.3)
   }
 # -----------------------------------------------------------
 
 function clnHouse() {
 
   if [[  "${bDoWipe}" == "0" ]]; then
-   echo "  About to delete the AICoder scripts from ${aBinDir}"; return
+   echo "  About to delete the AICodeR scripts from ${aBinDir}"; return
    else
 #    PATH="${PATH/${aBinDir}:/}"    # remmove "${aBinDir}:"" from $PATH
 
   if [[ -f "${aBinDir}"/aic ]] || [[ -f "${aBinDir}"/ai2code ]]; then
-   echo "  Deleting the AICoder scripts from ${aBinDir}"
+   echo "  Deleting the AICodeR scripts from ${aBinDir}"
      rm   "${aBinDir}"/aic;
      rm   "${aBinDir}"/aicoder;
      rm   "${aBinDir}"/ai2code;
    else
-   echo "  Nothing to delete from ${aBinDir}";
-   exit_CR
+     echo "  Nothing to delete from ${aBinDir}";
+     exit_wCR
      fi
 
 #    cp -p "${aBashrc}" "${aBashrc}_v${aTS}"
 #    cat   "${aBashrc}" | awk '/._0/ { exit }; NF > 0 { print }' >"${aBashrc}_@tmp"
 #    mv    "${aBashrc}_@tmp" "${aBashrc}"
 
-   echo "  Wipe of the AICoder scripts complete";
+   echo "  Wipe of the AICodeR scripts complete";
      fi
+     exit_wCR                                                                                               # .(50105.07.5)
   }
 # -----------------------------------------------------------
 
@@ -152,7 +156,7 @@ function cpyToBin() {
 
   Sudo find . -type f -name "*.sh" -exec chmod 755 {} \;                                #  For those in aRepo_Dir
 
-  if [ "${bDoScripts}" == "1" ]; then echo -e "\n  AICoder scripts installed."; fi                          #  .(50105.07.2)
+  if [ "${bDoScripts}" == "1" ]; then echo -e "\n  AICodeR scripts installed."; fi                          #  .(50105.07.2)
   }
 # ---------------------------------------------------------------------------
 
@@ -161,20 +165,20 @@ function cpyScript() {
   aScript="$2"; aName1="$1"; aName="${aName1// /}"   # echo "  cp -p \"${aScript}\" to \"${aScrDir}/${aName}\""
 #                                                      echo "  copying script:    \"${aScript}\" to \"${aScrDir}/${aName}\""
 
-# if [ ! -f "${aScript}" ]; then                       echo "* Script not found:  \"${aScript}\""; return; fi
+# if [ ! -f "${aScript}" ]; then                       echo "* Script not found:  \"${aScript}\""; return; fi                                                                ##.(41211.02.3 RAM Can't create it in aBinDir if not found in FRTools)
 
   if [ "${bDoScripts}" == "0" ]; then                  echo "  Will create script: ${aScrDir}/${aName1} for \"${aScript}\""; return; fi
-  if [ "${bDoScripts}" == "1" ]; then
-  if [ -f "${aScript}"        ]; then makScript  "${aScript}" "${aRepo_Dir}" "${aName}"; echo "  Created script in:                              \"${aRepo_Dir}/${aName}\"";   # .(41229.02.1 RAM Create command in aRepo_Dir)
-                                      makScript  "${aScript}" "${aScrDir}" "${aName}";   echo "  Created script in: ${aScrDir}/${aName1} for \"${aScript}\"";
+  if [ "${bDoScripts}" == "1" ]; then                                                                                                                                        # .(41211.02.4 RAM Add if bDoScripts for clarity)
+  if [ -f "${aScript}"        ]; then makScript  "${aScript}" "${aRepo_Dir}" "${aName}"; echo "  Created script in:                              \"${aRepo_Dir}/${aName}\""; # .(41229.02.1 RAM Create command in aRepo_Dir)
+                                      makScript  "${aScript}" "${aScrDir}" "${aName}";   echo "  Created script in: ${aScrDir}/${aName1} for \"${aScript}\"";                # .(41211.02.6 RAM It's created it in aBinDir)
                                  fi
-#                                Sudo chmod  777 "${aScript}";                          ##.(41104.03.1 RAM No need to set permission for each script
+#                                Sudo chmod  777 "${aScript}";                           ##.(41104.03.1 RAM No need to set permission for each script
        fi # eif bDoScripts
   }
 # ---------------------------------------------------------------------------
 
 function  makScript() {
-# echo -e "\n  Making  script in: $2/$3";  return
+# echo -e "\n  Making script in: $2/$3"; # exit
 # echo "    aAnyLLMscr:  $2/$3"
 # return
   echo "#!/bin/bash"   >"$2/$3"
@@ -183,10 +187,12 @@ function  makScript() {
   }
 # -----------------------------------------------------------
 
-     aRepo_Dir="$(pwd)"
-     cd ..
+  aRepo_Dir="$(pwd)"
+  cd ..
+
 
   setOSvars;          # echo "  OS: ${aOS}"
+
 
   if [[ "${aCmd}" == "help"    ]]; then help; fi
   if [[ "${aCmd}" == "doit"    ]]; then cpyToBin; fi  # setBashrc; fi                                       # .(41031.02.3)
@@ -197,4 +203,9 @@ function  makScript() {
 # ---------------------------------------------------------------------------
 
 #    cd "${aRepo_Dir}"
-     exit_withCR
+
+     if [ "${bDoScripts}" == "1" ]; then                                                # .(50105.07.9)
+     echo -e "\n  AICodeR project is installed.";
+     fi                                                                                 # .(50105.07.10)
+
+     exit_wCR
