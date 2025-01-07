@@ -110,10 +110,10 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
      async  function  listScripts(    aMarkdown_File, aModel, aAppName ) {                      // Step 5
 
           
-            console.log(  `\n  Parsing aMarkdown_File: .${ aMarkdown_File.replace( /[\\\/]/g, '/' ). replace( __basedir, '' ) }` );
-//     var  aMarkdown =  await FRT.readFileSync( FRT.join( aMarkdown_File ), 'utf8' );
+            console.log(  `\n  Parsing aMarkdown_File: .${  aMarkdown_File.replace( /[\\\/]/g, '/' ). replace( __basedir, '' ) }` );
+//     var  aMarkdown =  await FRT.readFileSync( FRT.join(  aMarkdown_File ), 'utf8' );
 //     var  aMarkdown =  await FRT.readFileASync( FRT.path( aMarkdown_File ), 'utf8' );
-       var  aMarkdown       =  FRT.readFileSync( FRT.path( aMarkdown_File ), 'utf8' );
+       var  aMarkdown       =  FRT.readFileSync( FRT.path(  aMarkdown_File ), 'utf8' );
 
        var  mCodes          =  aMarkdown.split( /```|### / )
 //          console.log( mCodes )
@@ -204,6 +204,9 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
                         return await savScript( mScript, aBackPath, aVer, __basedir )
                                } ) );
 */
+            console.log(    `\n  AIC06[207]:    aMarkdown_File: '${ aMarkdown_File.replace( /.+[\\\/]docs/, "./docs" ) }'` )
+            console.log(      `  AIC06[208]:    aBackPath: '${ aBackPath }'` )
+
 //     var  writePromises   =  mScriptNames.forEach( async (mScript, i) => savScript( mScript, aBackPath, aVer, __basedir ) )
        var  writePromises   =  mScriptNames.map(     async (mScript, i) => {                        // .(40702.03.3 Bard Suggests this Beg)
 //                        try { await savScript( mScript, aBackPath, aVer,    __basedir );          // .(40721.07.x aVer not used)
@@ -212,6 +215,7 @@ async function getMarkdownFile( aSessionDir, aUseContinueDir, mSessionMessage ) 
                            } catch ( error ) {
                        return  Promise.reject(  error ); }                                          // .(40702.03.5 Bard Reject with the error
                                } );  // eol mScriptNames.map
+
             await Promise.all( writePromises );                                                     // .(40702.03.3 Bard Wait for all writes to finish End)
 
 //    ----- ----------------------------------------------------------------------

@@ -277,7 +277,7 @@
             }
 */       
        var  mArgs           =  setArgs( process.argv, 'get', 'quit' )
-            console.log(    `  mArgs:  '${mArgs.join("', '")}`)
+            console.log(    `  AIC05[280]:    mArgs:  '${mArgs.join("', '")}`)
         if (mArgs.join("', '").match( /'\*/ ) ) { console.log( "  process.exit()" ) }
 
             aApp            =  mArgs[3]
@@ -292,14 +292,14 @@
 //     var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : nVer // nSession         //#.(40702.04.1 RAM Find 'em all)
 //     var  aApp            =  process.argv.length > 4 ? process.argv[4] : aApp                     //#.(40711.04.2)
 //     var  aMod            =  process.argv.length > 5 ? process.argv[5] : aMod                     //#.(40711.04.3)
-            console.log(    `  aDayTS: '${aDayTS}', aApp: '${aApp}',  aMod: '${aMod}'`)
+            console.log(    `  AIC05[295]:    aDayTS: '${aDayTS}', aApp: '${aApp}',  aMod: '${aMod}'`)
 
 //          aApp            =  aApp              ? aApp : process.env["FRT_APP"]                    //#.(40716.02.2)
 //          aMod            =  aMod              ? aMod : process.env["FRT_MODEL"]                  //#.(40716.02.3)
         var nFld            = (aMod.length == 7) ? 1 : 2; aApp = aApp.slice(0,3)
             aAppName        = (getApp(    2,   aApp    , 2 )) // (().slice(2,3)[0] || '').trim()    // .(40718.09.5).(40715.01.3 RAM Was 2, aApp)
             aModel          = (getModel( nFld, aMod    , 2 )) // (().slice(2,3)[0] || '').trim()    // .(40718.09.6).(40715.01.4 RAM Was 2, aMod)
-            console.log(    `  aDayTS: '${aDayTS}', aApp: '${aApp}', aAppName: '${aAppName}',  aMod: '${aMod}', aModel: '${aModel}'`)
+            console.log(    `  AIC05[302]:    aDayTS: '${aDayTS}', aApp: '${aApp}', aAppName: '${aAppName}',  aMod: '${aMod}', aModel: '${aModel}'`)
 //      if (!aModel) {
 //          console.log(  `\n* Invalid Model, ${aMod}` ); process.exit() }
 //      if (!aModel) {
@@ -315,7 +315,10 @@
        var  aMarkdown_File  = `${aApp.slice(0,3)}_{ver}_markdown`                                   // .(40711.04.3 RAM File is now markdown.md)
 //          console.log(    `  aMarkdown_File: '${aMarkdown_File}'` )
 
+            console.log(    `  AIC05[318]:    aMarkdown_File: '${aMarkdown_File}', aDayTS: '${aDayTS}' )`)
        var  aMarkdown_Saved =  getLastVer_Saved(  aSessions_Dir,   aMarkdown_File, 'md', aDayTS)    // .(40702.05.3 RAM Use new function)
+
+            console.log(    `  AIC05[321]:    listScripts( aMarkdown_Saved: '${ aMarkdown_Saved.replace( /.+[\\\/]docs/, "./docs" ) }'` )
 
                                await listScripts( aMarkdown_Saved )    // <===  Step 5
             }
@@ -341,9 +344,11 @@
 //     var  aAppName        = (getApp(    2,   aApp                ).slice(2,3)[0] || '').trim()    //#.(40718.09.8)
 //     var  aModel          = (getModel(  2,   aApp                ).slice(2,3)[0] || '').trim()    //#.(40718.09.9)
 
-       var  mArgs           =  setArgs( ['', '', 5, 20, 5 ], 'get', 'quit' )                        // .(50102.02.4 RAM Was: 'puit')
+//     var  mArgs           =  setArgs( ['', '', 5, 20, 5 ], 'get', 'quit' )                        //#.(50102.02.4 RAM Was: 'puit').(50106.03.1)
+       var  mArgs           =  setArgs(  process.argv,       'get', 'quit' )                        // .(50106.03.1 RAM Use Args same as listScripts')
+
 //     var  mArgs           =  setArgs( process.argv       , 'get', 'quit' )
-            console.log(    `  AIC05[346]:    mArgs:    '${mArgs.join("', '")}`)
+            console.log(    `  AIC05[349]:    mArgs:    '${mArgs.join("', '")}`)
         if (mArgs.join("', '").match( /'\*/ ) ) { console.log( "  process.exit()" ) }
 
             aApp            =  mArgs[3]
@@ -356,7 +361,7 @@
 //     var  aDayTS          =  process.argv.length > 3 ? process.argv[3] : nVer // nSession         // .(40702.04.1 RAM Find 'em all)
 //     var  aApp            =  process.argv.length > 4 ? process.argv[4] : aApp                     // .(40711.04.x)
 //     var  aMod            =  process.argv.length > 5 ? process.argv[5] : aMod                     // .(40711.04.x)
-            console.log(    `  AIC05[359]:    aDayTS:   '${aDayTS}', aApp: '${aApp}',  aMod: '${aMod}'`)
+            console.log(    `  AIC05[364]:    aDayTS:   '${aDayTS}', aApp: '${aApp}',  aMod: '${aMod}'`)
 
 //          aApp            =  aApp              ? aApp : process.env["FRT_APP"]                    //#.(40716.02.4)
 //          aMod            =  aMod              ? aMod : process.env["FRT_MODEL"]                  //#.(40716.02.5)
@@ -364,7 +369,7 @@
             aAppName        = (getApp(    1,   aApp    , 2 )) // (().slice(2,3)[0] || '').trim()    // .(40718.09.10).(40715.01.3 RAM Was 2, aApp)
             aModel          = (getModel( nFld, aMod    , 2 )) // (().slice(2,3)[0] || '').trim()    // .(40718.09.11).(40715.01.4 RAM Was 2, aMod)
             aMod            = (getModel( nFld, aMod    , 1 )) // (().slice(1,2)[0] || '').trim()    // .(40718.09.12).(40717.05.x RAM Need the alias) 
-            console.log(    `  aDayTS: '${aDayTS}', aApp: '${aApp}', aAppName: '${aAppName}',  aMod: '${aMod}', aModel: '${aModel}'`)
+            console.log(    `  AIC05[372]:    aDayTS:   '${aDayTS}', aApp: '${aApp}', aAppName: '${aAppName}',  aMod: '${aMod}', aModel: '${aModel}'`)
 
        var  aSessions_Dir   =  getDocsPath( aAppName, aModel )                                      // .(40715.03.2)
 //     var  aSessions_Dir   =  FRT.join( __basedir, `docs/${aAppName}/${aModel}` )                  //#.(40711.04.x RAM was aApp).(40715.03.2)
@@ -372,7 +377,9 @@
 //     var  aMarkdown_File  = `${aApp.slice(0,3)}_{ver}_session`                                    // .(40702.05.2 RAM New pattern)
        var  aMarkdown_File  = `${aApp.slice(0,3)}_{ver}_markdown`                                   // .(40702.05.2 RAM New pattern)
 
+            console.log(    `  AIC05[380]:    aMarkdown_File: '${aMarkdown_File}', aDayTS: '${aDayTS}' )`)
        var  aMarkdown_Saved =  getLastVer_Saved(  aSessions_Dir,   aMarkdown_File, 'md', aDayTS )   // .(40702.05.3 RAM Use new function)
+            console.log(    `  AIC05[382]:    listScripts( aMarkdown_Saved: '${ aMarkdown_Saved.replace( /.+[\\\/]docs/, "./docs" ) }'` )
 
                                await saveScripts( aMarkdown_Saved, aAppName, aModel, aMod )         // .(40717.05.x RAM Pass aAppName not aApp) <===  Step 6
             }

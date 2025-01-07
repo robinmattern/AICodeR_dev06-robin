@@ -13,9 +13,9 @@
        var  _TS                                                                         // .(40908.02.x RAM Need this too) 
        var  _OS         =  os.platform                                                  // .(40910.03.2)  
 
- if (typeof(vscode) == 'object')  {                                                     // .(40819.10.5 RAM Need to reassign __basedir Beg)
-        var workspaceFolders = vscode.workspace.workspaceFolders;
-        if (workspaceFolders && workspaceFolders.length > 0) {
+    if (typeof(vscode) == 'object')  {                                                  // .(40819.10.5 RAM Need to reassign __basedir Beg)
+        var  workspaceFolders = vscode.workspace.workspaceFolders;
+         if (workspaceFolders && workspaceFolders.length > 0) {
         var   aAppName  =   'AICodeR_VSCodeExt'                                         // .(40828.02.3) 
         var __dirname   =   workspaceFolders[0].uri.fsPath;
         var __basedir   = __dirname.replace( /[\\\/]\._2.+/, '' ).replace( /^\/([A-Z]):/, '$1:' )
@@ -45,13 +45,14 @@
               aCS       =  aCS.match( /[0-9]$/ ) ? aCS : '._2/FRTs'                     // .(40819.03.x RAM ?? )
      global.__apppath   =  path.join(  __basedir, `${aCS}/${ __appname }` )
 //            console.log(`  FRT[2]: __basedir:  '${ __basedir }'`  )                   // .(40908.01.1 RAM setPath is called 4 times)
-
-         if ("showPaths" == "showPaths") {
+     global.__basedir2  = `${ process.cwd() }`.replace( /[\\\/]/g, '/' ).replace( /^\/([A-Z]):/, '$1:' )    // .(50106.03.2 RAM Assign __BaseDir2 )
+         if ("showPaths" != "showPaths") {
               console.log(`  setPaths[1]: __libpath:  '${ __libpath }'`  )
               console.log(`  setPaths[2]: __dirname:  '${ __dirname }'`  )
               console.log(`  setPaths[3]: __basedir:  '${ __basedir }'`  )
-              console.log(`  setPaths[4]: __appname:  '${ __appname }'`  )
-              console.log(`  setPaths[5]:  _TS:       '${  _TS      }'`  )
+              console.log(`  setPaths[4]: __basedir2: '${ __basedir2 }'`  )                                 // .(50106.03.3)
+              console.log(`  setPaths[5]: __appname:  '${ __appname }'`  )
+              console.log(`  setPaths[6]:  _TS:       '${  _TS      }'`  )
 //            console.log(`  setPaths[6]:   aCS:      '${   aCS     }'`  )
               }
        return global.__appname
@@ -437,17 +438,18 @@ async  function fetchFromOpenAI( aAPI_URL, pMessageObject, aAPI_KEY ) {         
 // ---------------------------------------------------------------------------------
 
   try {
-//     var  aAppName    =   setPaths( )                                                 //#.(40828.02.7 RAM Will it set the global vars? No) 
-//          dotenv.config({ path: FRT.path( __basedir, '.env' ), override: true, debug: _debug } ); //#.(40829.01.4).(40607.02.1 RAM Load environment variables from .env file in script's folder).(40829.03.15)
-            dotenv.config({ path: FRT_path( __basedir, '.env' ), override: true, debug: _debug } ); // .(40829.03.15 RAM Was FRT.path).(40829.01.4).(40607.02.1 RAM Load environment variables from .env file in script's folder)
-            console.log( `  AIC90[443]:  __basedir:  '${ __basedir }'` )
-            console.log( `  AIC90[444]:    FRT_.ENV: '${ process.env['FRT_.ENV'] }'` )                  // .(40908.06.1 RAM Must be quoted name)
-//          console.log( `  AIC90[445]:   .env:      '${ cleanPath( path.join( __basedir, '.env' ) ) }'`)//#.(40829.03.9)
-            console.log( `  AIC90[446]:   .env:      '${ FRT_path( __basedir, '.env' ) }'` )             // .(40829.03.16 RAM Was FRT.path).(40829.03.4)
-//          console.log( `  AIC90[447]:    aAppName: '${ aAppName }'` )
+//     var  aAppName    =   setPaths( )                                                                     //#.(40828.02.7 RAM Will it set the global vars? No) 
+//          dotenv.config({ path: FRT.path( __basedir, '.env' ), override: true, debug: _debug } );         //#.(40829.01.4).(40607.02.1 RAM Load environment variables from .env file in script's folder).(40829.03.15)
+            console.log( `  AIC90[443]:  __basedir2: '${ __basedir2 }'` )                                    
+            dotenv.config({ path: FRT_path( __basedir, '.env' ), override: true, debug: _debug } );         // .(40829.03.15 RAM Was FRT.path).(40829.01.4).(40607.02.1 RAM Load environment variables from .env file in script's folder)
+            console.log( `  AIC90[444]:  __basedir:  '${ __basedir  }'` )
+            console.log( `  AIC90[445]:    FRT_.ENV: '${ process.env['FRT_.ENV'] }'` )                      // .(40908.06.1 RAM Must be quoted name)
+//          console.log( `  AIC90[446]:   .env:      '${ cleanPath( path.join( __basedir, '.env' ) ) }'`)   //#.(40829.03.9)
+            console.log( `  AIC90[447]:   .env:      '${ FRT_path( __basedir, '.env' ) }'` )                // .(40829.03.16 RAM Was FRT.path).(40829.03.4)
+//          console.log( `  AIC90[448]:    aAppName: '${ aAppName }'` )
 //          console.log( '' )
        } catch(error) {
-            console.log( "  AIC90[450]:  * An error has occured in the imported module" )
+            console.log( "  AIC90[452]:  * An error has occured in the imported module" )
             }
 // ---------------------------------------------------------------------------------
 

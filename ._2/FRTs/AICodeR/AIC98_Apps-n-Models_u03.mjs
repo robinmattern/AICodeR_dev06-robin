@@ -21,6 +21,9 @@
 //          console.log( "  mEnvs:" ); console.log( " ", mEnvs.join( "\n  " ) )
 //          process.exit()
 
+//    var   aApps_n_Models = "._2/FRTs/AICodeR/metadata/AIC80_Apps-n-Model-data.jsonc"  //#.(50106.03.4 RAM )
+      var   aApps_n_Models = "._2/FRTs/AI2Code/metadata/AIC80_Apps-n-Model-data.jsonc"  // .(50106.03.4 RAM New list of models) 
+
       var   Apps                                                                        // .(40907.01.1 Beg)
       var   Models2
       var   Model_Templates
@@ -40,8 +43,8 @@
 */  
 // ----------------------------------------------------------------------------------
        
-  function  getApps_n_Models( ) {                                                                   // .(40907.01.3 Write getApps_n_Models Beg)
-       var  aJSONc_file     =    FRT.path( __basedir, '._2/FRTs/AICodeR/metadata/AIC80_Apps-n-Model-data.jsonc' )
+  function  getApps_n_Models( ) {                                                       // .(40907.01.3 Write getApps_n_Models Beg)
+       var  aJSONc_file     =    FRT.path( __basedir, aApps_n_Models )                  // .(50106.03.2)        
        var  mJSONc          =    FRT.readFileSync( aJSONc_file ).split( /\r?\n/ )
        var  aJSON           = mJSONc.map( aLine => aLine.replace( /\/\/.*/, '' ).replace( /'/g, '"' ) ).join('\n')  // .(40907.01.4 RAM Could fail with embedded ' in string)  
 //                               FRT.writeFileSync( aJSONc_file.replace(/\.jsonc/, '.json.mjs' ), `console.dir( \n${aJSON} \n)` )
@@ -98,7 +101,11 @@
        var  aModel_        =  aMod ? getModel( (aMod.length == 7) ? 1 : 2, aMod, 2 ) : ''           // .(40821.05.1 RAM aMod is MT for list sessions)
        var  aModel         = (aModel_  || '').trim()
        var  aDocs_Dir      =  aModel ? `docs/${aAppName}/${aModel}` : `docs/${aAppName}`
-       var  aSessions_Dir  =  FRT.path( __basedir, aDocs_Dir )
+            
+            console.log( `  AIC98[106]:    aDocs_Dir: '${aDocs_Dir}', __basedir2: ${__basedir2}` )
+       var  aSessions_Dir  =  FRT.path( __basedir2, aDocs_Dir )
+            console.log( `  AIC98[108]:    aSessions_Dir: '${aSessions_Dir}'` )
+
        var  pStat          =  FRT.checkFileSync( aSessions_Dir )
        if (!pStat.isDir   ||  aAppName == '' || (aModel == '' && aModel_ != '')) {                   // .(40821.05.1 RAM aModel_ is not MT is aMod is passed)
 //     var  aErrMsg        =  aAppName && aModel_ != '' ?  `AppName/Model folder, ./${aDocs_Dir}` : ( aModel_ ? `AppName, ''` : `aModel, ''` )
